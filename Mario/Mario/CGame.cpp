@@ -1,5 +1,8 @@
 #include "CGame.h"
 
+CGame* CGame::_instance = NULL;
+
+
 CGame::~CGame()
 {
 }

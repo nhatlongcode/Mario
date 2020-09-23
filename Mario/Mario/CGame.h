@@ -4,7 +4,6 @@
 class CGame
 {
 private:
-	CGame();
 	static CGame* _instance;
 	CWindow wnd;
 
