@@ -64,7 +64,7 @@ void CWindow::CreateGameWindow(HINSTANCE hInstance, int nCmdWindow)
 	{
 		ShowWindow(hWnd, nCmdWindow);
 		UpdateWindow(hWnd);
-		OutputDebugString(L"[INFO] Init window complete");
+		OutputDebugString(L"[INFO] Init window complete\n");
 	}
 
 }

@@ -8,24 +8,6 @@ void CGame::Update(DWORD dt)
 
 }
 
-void CGame::Render()
-{
-	if (d3ddv->BeginScene())
-	{
-		// Clear screen (back buffer) with a color
-		d3ddv->ColorFill(backBuffer, NULL, BACKGROUND_COLOR);
-
-		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-
-		D3DXVECTOR3 p(1.0f, 100.0f, 0);
-
-		//D3DXVECTOR3 p(100.0f,10.0f, 0);
-		spriteHandler->Draw(texBrick, NULL, NULL, &p, D3DCOLOR_XRGB(255, 255, 255));
-
-		spriteHandler->End();
-		d3ddv->EndScene();
-	}
-}
 
 CGame::~CGame()
 {
@@ -41,22 +23,13 @@ CGame* CGame::Instance()
 	return _instance;
 }
 
-void CGame::PublicTestVoid()
-{
-	
-}
-
 void CGame::InitGame(HINSTANCE hInstance, int nCmdShow)
 {
-	//wnd = new CWindow();
+	//Create window
 	wnd.CreateGameWindow(hInstance, nCmdShow);
+	//Init directX
+	directx.InitDirectX(wnd.GetHandleWindow());
 }
-
-void CGame::InitDirectX()
-{
-
-}
-
 
 
 int CGame::Run()
@@ -86,7 +59,7 @@ int CGame::Run()
 		{
 			frameStart = now;
 			Update(dt);
-			Render();
+			directx.Render();
 		}
 		else
 			Sleep(tickPerFrame - dt);

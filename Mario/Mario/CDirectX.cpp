@@ -36,7 +36,28 @@ void CDirectX::InitDirectX(HWND hWnd)
 	d3ddv->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &backBuffer);
 
 	// Initialize sprite helper from Direct3DX helper library
-	//D3DXCreateSprite(d3ddv, &spriteHandler);
+	D3DXCreateSprite(d3ddv, &spriteHandler);
 
 	OutputDebugString(L"[INFO] InitGame is done\n");
+}
+
+void CDirectX::Render()
+{
+	if (d3ddv->BeginScene())
+	{
+		// Clear screen (back buffer) with a color
+		d3ddv->ColorFill(backBuffer, NULL, BACKGROUND_COLOR);
+
+		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+
+		D3DXVECTOR3 p(1.0f, 100.0f, 0);
+
+		//D3DXVECTOR3 p(100.0f,10.0f, 0);
+		spriteHandler->Draw(texBrick, NULL, NULL, &p, D3DCOLOR_XRGB(255, 255, 255));
+
+		spriteHandler->End();
+		d3ddv->EndScene();
+	}
+
+	d3ddv->Present(NULL, NULL, NULL, NULL);
 }
