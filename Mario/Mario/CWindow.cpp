@@ -15,6 +15,11 @@ LRESULT CWindow::WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
+HWND CWindow::GetHandleWindow()
+{
+	return hWnd;
+}
+
 CWindow::CWindow()
 {
 }
