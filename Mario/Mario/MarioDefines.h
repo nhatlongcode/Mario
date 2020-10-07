@@ -1,4 +1,8 @@
-#pragma once
+#ifndef MARIODEFINES_H
+#define MARIODEFINES_H
+#endif
+
+
 #define WINDOW_CLASS_NAME L"MARIO"
 #define MAIN_WINDOW_TITLE L"MARIO BROS 3"
 #define SCREEN_WIDTH 800

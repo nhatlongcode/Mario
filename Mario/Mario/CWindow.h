@@ -1,4 +1,8 @@
-#pragma once
+#ifndef CWINDOW_H
+#define CWINDOW_H
+#endif
+
+
 #include <Windows.h>
 class CWindow
 {

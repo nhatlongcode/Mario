@@ -1,6 +1,5 @@
 #include "CGame.h"
 
-CGame* CGame::_instance = NULL;
 
 
 void CGame::Update(DWORD dt)
@@ -14,14 +13,6 @@ CGame::~CGame()
 
 }
 
-CGame* CGame::Instance()
-{
-	if (_instance == NULL)
-	{
-		_instance = new CGame();
-	}
-	return _instance;
-}
 
 void CGame::InitGame(HINSTANCE hInstance, int nCmdShow)
 {

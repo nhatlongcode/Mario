@@ -10,7 +10,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//CGame* MarioGame = CGame::Instance();
 	//MarioGame->InitGame(hInstance, nCmdShow);
-	CGame* game = CGame::Instance();
+	CGame* game = new CGame();
 	game->InitGame(hInstance, nCmdShow);
 	game->Run();
 	return 0;

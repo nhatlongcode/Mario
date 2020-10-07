@@ -1,4 +1,7 @@
-#pragma once
+#ifndef CDIRECTX_H
+#define CDIRECTX_H
+#endif
+
 #include <d3dx9.h>
 #include "MarioDefines.h"
 class CDirectX

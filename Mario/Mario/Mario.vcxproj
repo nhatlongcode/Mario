@@ -148,16 +148,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CAbstractService.cpp" />
+    <ClCompile Include="CDebug.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CLocator.cpp" />
+    <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CAbstractService.h" />
+    <ClInclude Include="CDebug.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CGame.h" />
+    <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CLocator.h" />
+    <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="MarioDefines.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
