@@ -20,11 +20,19 @@ HWND CWindow::GetHandleWindow()
 	return hWnd;
 }
 
-CWindow::CWindow()
+
+CWindow::CWindow(HINSTANCE hinstance, int ncmdwindow)
 {
+	hInstance = hinstance;
+	nCmdWindow = ncmdwindow;
 }
 
-void CWindow::CreateGameWindow(HINSTANCE hInstance, int nCmdWindow)
+void CWindow::Init()
+{
+	CreateGameWindow();
+}
+
+void CWindow::CreateGameWindow()
 {
 	WNDCLASSEX wc;
 	wc.cbSize = sizeof(WNDCLASSEX);

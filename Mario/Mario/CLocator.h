@@ -1,6 +1,5 @@
 #ifndef CLOCATOR_H
 #define CLOCATOR_H
-#endif
 
 #include <vector>
 #include "CAbstractService.h"
@@ -28,3 +27,5 @@ inline T* CLocator::Get()
 	}
 	return nullptr;
 }
+
+#endif

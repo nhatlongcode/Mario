@@ -1,12 +1,17 @@
 #include "CGame.h"
 
 
-
 void CGame::Update(DWORD dt)
 {
 
 }
 
+
+CGame::CGame()
+{
+	wnd = CLocator::Instance()->Get<CWindow>();
+	directx = CLocator::Instance()->Get<CDirectX>();
+}
 
 CGame::~CGame()
 {
@@ -14,12 +19,10 @@ CGame::~CGame()
 }
 
 
-void CGame::InitGame(HINSTANCE hInstance, int nCmdShow)
+
+void CGame::InitGame()
 {
-	//Create window
-	wnd.CreateGameWindow(hInstance, nCmdShow);
-	//Init directX
-	directx.InitDirectX(wnd.GetHandleWindow());
+
 }
 
 
@@ -50,7 +53,7 @@ int CGame::Run()
 		{
 			frameStart = now;
 			Update(dt);
-			directx.Render();
+			directx->Render();
 		}
 		else
 			Sleep(tickPerFrame - dt);

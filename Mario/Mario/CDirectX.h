@@ -1,10 +1,11 @@
 #ifndef CDIRECTX_H
 #define CDIRECTX_H
-#endif
 
 #include <d3dx9.h>
 #include "MarioDefines.h"
-class CDirectX
+#include "CAbstractService.h"
+
+class CDirectX : public CAbstractService
 {
 private:
 	LPDIRECT3D9 d3d;
@@ -12,8 +13,14 @@ private:
 	LPDIRECT3DSURFACE9 backBuffer;
 	LPD3DXSPRITE spriteHandler;
 	LPDIRECT3DTEXTURE9 texBrick;
+	HWND hWnd;
+	void InitDirectX();
 public:
-	void InitDirectX(HWND hWnd);
+	CDirectX(HWND hwnd);
+	void Init();
 	void Render();
+	LPDIRECT3DDEVICE9 Device();
+	LPD3DXSPRITE SpriteHandler();
 };
+#endif
 

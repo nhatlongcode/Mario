@@ -10,3 +10,5 @@
 #define BRICK_TEXTURE_PATH L"brick.png"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
+
+#define PATH_TEX_MARIO L"Textures\\mario.png"

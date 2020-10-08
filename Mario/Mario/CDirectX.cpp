@@ -1,6 +1,18 @@
 #include "CDirectX.h"
 
-void CDirectX::InitDirectX(HWND hWnd)
+
+
+CDirectX::CDirectX(HWND hwnd)
+{
+	hWnd = hwnd;
+}
+
+void CDirectX::Init()
+{
+	InitDirectX();
+}
+
+void CDirectX::InitDirectX()
 {
 	d3d = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -60,4 +72,14 @@ void CDirectX::Render()
 	}
 
 	d3ddv->Present(NULL, NULL, NULL, NULL);
+}
+
+LPDIRECT3DDEVICE9 CDirectX::Device()
+{
+	return d3ddv;
+}
+
+LPD3DXSPRITE CDirectX::SpriteHandler()
+{
+	return spriteHandler;
 }
