@@ -12,3 +12,4 @@
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
 
 #define PATH_TEX_MARIO L"Textures\\mario.png"
+#define ID_TEX_MARIO "TEX_MARIO"

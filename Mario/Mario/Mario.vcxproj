@@ -149,12 +149,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CAbstractService.cpp" />
+    <ClCompile Include="CAnimationFrame.cpp" />
     <ClCompile Include="CDebug.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CLocator.cpp" />
     <ClCompile Include="CSprite.cpp" />
+    <ClCompile Include="CSpritesManager.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="main.cpp" />
@@ -162,12 +164,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAbstractService.h" />
+    <ClInclude Include="CAnimationFrame.h" />
     <ClInclude Include="CDebug.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CLocator.h" />
     <ClInclude Include="CSprite.h" />
+    <ClInclude Include="CSpritesManager.h" />
     <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="MarioDefines.h" />

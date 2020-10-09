@@ -62,10 +62,10 @@ void CDirectX::Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		D3DXVECTOR3 p(1.0f, 100.0f, 0);
+		
+		//CSprite* sprite = new CSprite(1, 246, 154, 260, 181, ID_TEX_MARIO);
+		//sprite->Draw(0, 0);
 
-		//D3DXVECTOR3 p(100.0f,10.0f, 0);
-		spriteHandler->Draw(texBrick, NULL, NULL, &p, D3DCOLOR_XRGB(255, 255, 255));
 
 		spriteHandler->End();
 		d3ddv->EndScene();

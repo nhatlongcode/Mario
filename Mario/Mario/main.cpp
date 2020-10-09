@@ -5,6 +5,7 @@
 #include "CLocator.h"
 #include "CTexturesManager.h"
 #include "MarioDefines.h"
+#include "CSprite.h"
 
 void InitLocator(HINSTANCE hInstance, int nCmdShow)
 {
@@ -30,6 +31,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	InitLocator(hInstance, nCmdShow);
 
 	CGame* Mario = new CGame();
+
 	Mario->Run();
 
 

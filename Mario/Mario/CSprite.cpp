@@ -21,5 +21,4 @@ void CSprite::Draw(float x, float y, int alpha)
 	D3DXVECTOR3 p(x,y,0);
 
 	CLocator::Instance()->Get<CDirectX>()->SpriteHandler()->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
-
 }

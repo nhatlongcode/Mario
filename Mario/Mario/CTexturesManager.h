@@ -1,6 +1,5 @@
 #ifndef CTEXTURESMANAGER_H
 #define CTEXTURESMANAGER_H
-#endif // !CTEXTURESMANAGER_H
 
 #include "CAbstractService.h"
 #include "CLocator.h"
@@ -21,4 +20,5 @@ public:
     void Add(std::string id, LPCWSTR path, D3DCOLOR transColor);
     LPDIRECT3DTEXTURE9 Get(std::string id);
 };
+#endif // !CTEXTURESMANAGER_H
 
