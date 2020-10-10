@@ -1,6 +1,6 @@
 #ifndef UTILS_H
 #define UTILS_H
-#endif // !UTILS_H
+
 
 #include <Windows.h>
 
@@ -22,4 +22,5 @@ wstring ToWSTR(string st);
 
 LPCWSTR ToLPCWSTR(string st);
 
+#endif // !UTILS_H
 

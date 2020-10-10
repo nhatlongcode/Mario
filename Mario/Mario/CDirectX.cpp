@@ -55,6 +55,7 @@ void CDirectX::InitDirectX()
 
 void CDirectX::Render()
 {
+
 	if (d3ddv->BeginScene())
 	{
 		// Clear screen (back buffer) with a color
@@ -65,7 +66,6 @@ void CDirectX::Render()
 		
 		CSprite* sprite = new CSprite(1, 246, 154, 260, 181, CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO));
 		sprite->Draw(0, 0);
-
 
 		spriteHandler->End();
 		d3ddv->EndScene();

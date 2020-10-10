@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimationFrame.cpp" />
+    <ClCompile Include="CAnimationsManager.cpp" />
     <ClCompile Include="CDebug.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CGame.cpp" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimationFrame.h" />
+    <ClInclude Include="CAnimationsManager.h" />
     <ClInclude Include="CDebug.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CGame.h" />
