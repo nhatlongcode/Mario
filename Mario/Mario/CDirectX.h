@@ -3,11 +3,10 @@
 
 #include <d3dx9.h>
 #include "MarioDefines.h"
-#include "CAbstractService.h"
 #include "CSprite.h"
 #include "CTexturesManager.h"
 
-class CDirectX : public CAbstractService
+class CDirectX
 {
 private:
 	LPDIRECT3D9 d3d;

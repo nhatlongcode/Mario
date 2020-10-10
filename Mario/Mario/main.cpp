@@ -9,16 +9,18 @@
 
 void InitLocator(HINSTANCE hInstance, int nCmdShow)
 {
-	CLocator* locator = CLocator::Instance();
-	LPService window = new CWindow(hInstance, nCmdShow);
+	CWindow* window = new CWindow(hInstance, nCmdShow);
 	window->Init();
-	locator->Add(window);
+	CLocator<CWindow>().Add(window);
 
-	LPService directx = new CDirectX(locator->Get<CWindow>()->GetHandleWindow());
-	LPService textures = new CTexturesManager();
+	CDirectX* directx = new CDirectX(CLocator<CWindow>().Get()->GetHandleWindow());
+	CTexturesManager* textures = new CTexturesManager();
 
-	locator->Add(directx); directx->Init();
-	locator->Add(textures); textures->Init();
+	//locator->Add(directx); directx->Init();
+	//locator->Add(textures); textures->Init();
+
+	CLocator<CDirectX>().Add(directx); directx->Init();
+	CLocator<CTexturesManager>().Add(textures); textures->Init();
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

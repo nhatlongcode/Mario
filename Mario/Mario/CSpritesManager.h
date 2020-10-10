@@ -1,12 +1,11 @@
 #ifndef CSPRITEMANAGER_H
 #define CSPRITEMANAGER_H
 
-#include "CAbstractService.h"
 #include "CSprite.h"
 #include <d3dx9.h>
 #include <unordered_map>
 
-class CSpritesManager : public CAbstractService
+class CSpritesManager
 {
 private:
 	std::unordered_map<int, LPSPRITE> sprites;

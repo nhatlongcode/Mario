@@ -1,31 +1,28 @@
 #ifndef CLOCATOR_H
 #define CLOCATOR_H
-
-#include <vector>
-#include "CAbstractService.h"
-
-using namespace std;
+template<typename T>
 class CLocator
 {
 private:
-	static CLocator* instance;
-	vector<CAbstractService*> services;
+	static T* instance;
 public:
-	static CLocator* Instance();
-	void Add(CAbstractService*);
-	template<typename T>
-	T* Get();
+	static T* Get();
+
+	static void Add(T* ins);
 };
 
+template <typename T>
+T* CLocator<T>::instance;
+
 template<typename T>
-inline T* CLocator::Get()
+inline T* CLocator<T>::Get()
 {
-	for (auto service : services)
-	{
-		T* cast = dynamic_cast<T*>(service);
-		if (cast != nullptr) return cast;
-	}
-	return nullptr;
+	return instance;
 }
 
+template<typename T>
+inline void CLocator<T>::Add(T* ins)
+{
+	instance = ins;
+}
 #endif

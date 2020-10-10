@@ -2,9 +2,8 @@
 #define CWINDOW_H
 
 #include <Windows.h>
-#include "CAbstractService.h"
 
-class CWindow : public CAbstractService
+class CWindow
 {
 private:
 	HINSTANCE hInstance;

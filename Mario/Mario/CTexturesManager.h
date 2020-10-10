@@ -1,7 +1,6 @@
 #ifndef CTEXTURESMANAGER_H
 #define CTEXTURESMANAGER_H
 
-#include "CAbstractService.h"
 #include "CLocator.h"
 #include "CDirectX.h"
 #include "MarioDefines.h"
@@ -10,7 +9,7 @@
 #include <d3dx9.h>
 #include "Utils.h"
 
-class CTexturesManager : public CAbstractService
+class CTexturesManager
 {
 private:
     std::unordered_map<std::string, LPDIRECT3DTEXTURE9> textures;
@@ -20,5 +19,7 @@ public:
     void Add(std::string id, LPCWSTR path, D3DCOLOR transColor);
     LPDIRECT3DTEXTURE9 Get(std::string id);
 };
+
+typedef CTexturesManager* LPTEXTURES;
 #endif // !CTEXTURESMANAGER_H
 

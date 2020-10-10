@@ -63,8 +63,8 @@ void CDirectX::Render()
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 		
-		//CSprite* sprite = new CSprite(1, 246, 154, 260, 181, ID_TEX_MARIO);
-		//sprite->Draw(0, 0);
+		CSprite* sprite = new CSprite(1, 246, 154, 260, 181, CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO));
+		sprite->Draw(0, 0);
 
 
 		spriteHandler->End();

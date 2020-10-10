@@ -22,7 +22,7 @@ void CTexturesManager::Add(std::string id, LPCWSTR path, D3DCOLOR transColor)
 		return;
 	}
 
-	LPDIRECT3DDEVICE9 d3ddv = CLocator::Instance()->Get<CDirectX>()->Device();
+	LPDIRECT3DDEVICE9 d3ddv = CLocator<CDirectX>().Get()->Device();
 
 	result = D3DXCreateTextureFromFileEx(
 		d3ddv,								// Pointer to Direct3D device object

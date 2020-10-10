@@ -9,8 +9,10 @@ void CGame::Update(DWORD dt)
 
 CGame::CGame()
 {
-	wnd = CLocator::Instance()->Get<CWindow>();
-	directx = CLocator::Instance()->Get<CDirectX>();
+	//wnd = CLocator::Instance()->Get<CWindow>();
+	//directx = CLocator::Instance()->Get<CDirectX>();
+	wnd = CLocator<CWindow>().Get();
+	directx = CLocator<CDirectX>().Get();
 }
 
 CGame::~CGame()

@@ -1,7 +1,7 @@
 #ifndef MARIODEFINES_H
 #define MARIODEFINES_H
-#endif
-
+#include <d3dx9.h>
+typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 #define WINDOW_CLASS_NAME L"MARIO"
 #define MAIN_WINDOW_TITLE L"MARIO BROS 3"
@@ -13,3 +13,5 @@
 
 #define PATH_TEX_MARIO L"Textures\\mario.png"
 #define ID_TEX_MARIO "TEX_MARIO"
+
+#endif;

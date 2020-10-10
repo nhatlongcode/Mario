@@ -148,7 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CAbstractService.cpp" />
+    <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimationFrame.cpp" />
     <ClCompile Include="CDebug.cpp" />
     <ClCompile Include="CDirectX.cpp" />
@@ -163,7 +163,7 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CAbstractService.h" />
+    <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimationFrame.h" />
     <ClInclude Include="CDebug.h" />
     <ClInclude Include="CDirectX.h" />

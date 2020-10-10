@@ -12,5 +12,6 @@ public:
 	DWORD GetTime();
 	LPSPRITE GetSprite();
 };
+typedef CAnimationFrame* LPFRAME;
 #endif
 
