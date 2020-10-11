@@ -6,6 +6,26 @@ void CGame::Update(DWORD dt)
 
 }
 
+void CGame::Render()
+{
+	if (d3ddv->BeginScene())
+	{
+		// Clear screen (back buffer) with a color
+		d3ddv->ColorFill(backBuffer, NULL, BACKGROUND_COLOR);
+
+		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+
+
+		CSprite* sprite = new CSprite(1, 246, 154, 260, 181, CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO));
+		sprite->Draw(0, 0);
+
+		spriteHandler->End();
+		d3ddv->EndScene();
+	}
+
+	d3ddv->Present(NULL, NULL, NULL, NULL);
+}
+
 
 CGame::CGame()
 {
@@ -24,7 +44,9 @@ CGame::~CGame()
 
 void CGame::InitGame()
 {
-
+	backBuffer = CLocator<CDirectX>().Get()->BackBuffer();
+	d3ddv = CLocator<CDirectX>().Get()->Device();
+	spriteHandler = CLocator<CDirectX>().Get()->SpriteHandler();
 }
 
 
@@ -34,7 +56,6 @@ int CGame::Run()
 	int done = 0;
 	DWORD frameStart = GetTickCount();
 	DWORD tickPerFrame = 1000 / 60;
-
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -55,7 +76,7 @@ int CGame::Run()
 		{
 			frameStart = now;
 			Update(dt);
-			directx->Render();
+			Render();
 		}
 		else
 			Sleep(tickPerFrame - dt);

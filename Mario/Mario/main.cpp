@@ -39,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	InitLocator(hInstance, nCmdShow);
 
 	CGame* Mario = new CGame();
-
+	Mario->InitGame();
 	Mario->Run();
 
 

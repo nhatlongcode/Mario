@@ -16,8 +16,8 @@ private:
 public:
 	CDirectX(HWND hwnd);
 	void Init();
-	void Render();
 	LPDIRECT3DDEVICE9 Device();
+	LPDIRECT3DSURFACE9 BackBuffer();
 	LPD3DXSPRITE SpriteHandler();
 };
 

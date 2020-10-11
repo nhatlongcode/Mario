@@ -13,7 +13,7 @@ private:
 	float x;
 	float y;
 	float vx;
-
+	
 	int currentState;
 
 	//static vector<LPANIMATION> animations; 

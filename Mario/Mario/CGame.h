@@ -1,8 +1,7 @@
 #pragma once
-#include "CWindow.h"
-#include <d3d9.h>
 #include <d3dx9.h>
 #include "MarioDefines.h"
+#include "CWindow.h"
 #include "CDirectX.h"
 #include "CLocator.h"
 #include "CGameObject.h"
@@ -12,7 +11,11 @@ class CGame
 private:
 	CWindow* wnd;
 	CDirectX* directx;
+	LPDIRECT3DDEVICE9 d3ddv;
+	LPDIRECT3DSURFACE9 backBuffer;
+	LPD3DXSPRITE spriteHandler;
 	void Update(DWORD dt);
+	void Render();
 public:
 	CGame();
 	~CGame();

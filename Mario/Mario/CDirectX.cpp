@@ -53,30 +53,15 @@ void CDirectX::InitDirectX()
 	OutputDebugString(L"[INFO] InitGame is done\n");
 }
 
-void CDirectX::Render()
-{
-
-	if (d3ddv->BeginScene())
-	{
-		// Clear screen (back buffer) with a color
-		d3ddv->ColorFill(backBuffer, NULL, BACKGROUND_COLOR);
-
-		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-
-		
-		CSprite* sprite = new CSprite(1, 246, 154, 260, 181, CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO));
-		sprite->Draw(0, 0);
-
-		spriteHandler->End();
-		d3ddv->EndScene();
-	}
-
-	d3ddv->Present(NULL, NULL, NULL, NULL);
-}
 
 LPDIRECT3DDEVICE9 CDirectX::Device()
 {
 	return d3ddv;
+}
+
+LPDIRECT3DSURFACE9 CDirectX::BackBuffer()
+{
+	return backBuffer;
 }
 
 LPD3DXSPRITE CDirectX::SpriteHandler()
