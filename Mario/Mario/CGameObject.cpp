@@ -13,13 +13,7 @@ void CGameObject::Update(DWORD dt)
 
 void CGameObject::Render()
 {
-	LPANIMATION ani;
-	//if (vx>0) ani = animations[0]; else ani = animations[1];
 
-	if (vx > 0) ani = CLocator<CAnimationsManager>().Get()->Get(500);
-	else ani = CLocator<CAnimationsManager>().Get()->Get(501);
-
-	//ani = animations[0];
 	ani->Render(x, y);
 }
 

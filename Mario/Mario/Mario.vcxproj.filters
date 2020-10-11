@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Locator">
+      <UniqueIdentifier>{8d3bf9f1-4295-461f-b98c-b159a6422976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sprite">
+      <UniqueIdentifier>{01c508dd-5dba-48d7-99a9-d90a0a2f0965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{469e2c3e-4721-432e-a54f-072e5903b6b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{838c3b4d-a23b-4ddf-88cc-fb23a6bb65d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,35 +39,32 @@
     <ClCompile Include="CDirectX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CDebug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CTexturesManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CSpritesManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Sprite</Filter>
     </ClCompile>
-    <ClCompile Include="CAnimationFrame.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CSprite.cpp">
+      <Filter>Sprite</Filter>
     </ClCompile>
-    <ClCompile Include="CAnimationsManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CTexturesManager.cpp">
+      <Filter>Texture</Filter>
     </ClCompile>
     <ClCompile Include="CAnimation.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimationFrame.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimationsManager.cpp">
+      <Filter>Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,35 +80,32 @@
     <ClInclude Include="CDirectX.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CDebug.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLocator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CTexturesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CSprite.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CLocator.h">
+      <Filter>Locator</Filter>
     </ClInclude>
     <ClInclude Include="CSpritesManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Sprite</Filter>
     </ClInclude>
-    <ClInclude Include="CAnimationFrame.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CSprite.h">
+      <Filter>Sprite</Filter>
     </ClInclude>
-    <ClInclude Include="CAnimationsManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CTexturesManager.h">
+      <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="CAnimation.h">
-      <Filter>Header Files</Filter>
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimationFrame.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimationsManager.h">
+      <Filter>Animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
