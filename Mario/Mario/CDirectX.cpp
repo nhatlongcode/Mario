@@ -5,15 +5,6 @@
 CDirectX::CDirectX(HWND hwnd)
 {
 	hWnd = hwnd;
-}
-
-void CDirectX::Init()
-{
-	InitDirectX();
-}
-
-void CDirectX::InitDirectX()
-{
 	d3d = Direct3DCreate9(D3D_SDK_VERSION);
 
 	D3DPRESENT_PARAMETERS d3dpp;
@@ -52,6 +43,7 @@ void CDirectX::InitDirectX()
 
 	OutputDebugString(L"[INFO] InitGame is done\n");
 }
+
 
 
 LPDIRECT3DDEVICE9 CDirectX::Device()

@@ -1,5 +1,6 @@
 #pragma once
 #include "CSprite.h"
+#include "CTexturesManager.h"
 #include <d3dx9.h>
 #include <unordered_map>
 

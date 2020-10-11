@@ -25,12 +25,9 @@ CWindow::CWindow(HINSTANCE hinstance, int ncmdwindow)
 {
 	hInstance = hinstance;
 	nCmdWindow = ncmdwindow;
-}
-
-void CWindow::Init()
-{
 	CreateGameWindow();
 }
+
 
 void CWindow::CreateGameWindow()
 {

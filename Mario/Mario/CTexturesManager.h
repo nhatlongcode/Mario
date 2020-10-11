@@ -13,7 +13,7 @@ private:
     std::unordered_map<std::string, LPDIRECT3DTEXTURE9> textures;
     LPDIRECT3DTEXTURE9 CreateTexture(LPCWSTR path);
 public: 
-    void Init();
+    void LoadResources();
     void Add(std::string id, LPCWSTR path, D3DCOLOR transColor);
     LPDIRECT3DTEXTURE9 Get(std::string id);
 };

@@ -5,6 +5,7 @@
 #include "CDirectX.h"
 #include "CLocator.h"
 #include "CGameObject.h"
+#include "CTexturesManager.h"
 
 class CGame
 {

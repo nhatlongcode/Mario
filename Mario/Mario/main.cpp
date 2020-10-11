@@ -11,15 +11,14 @@
 void InitLocator(HINSTANCE hInstance, int nCmdShow)
 {
 	CWindow* window = new CWindow(hInstance, nCmdShow);
-	window->Init();
-	CLocator<CWindow>().Add(window);
 
-	CDirectX* directx = new CDirectX(CLocator<CWindow>().Get()->GetHandleWindow());
+	CDirectX* directx = new CDirectX(window->GetHandleWindow());
 	CTexturesManager* textures = new CTexturesManager();
 	CAnimationsManager* animations = new CAnimationsManager();
 
-	CLocator<CDirectX>().Add(directx); directx->Init();
-	CLocator<CTexturesManager>().Add(textures); textures->Init();
+	CLocator<CWindow>().Add(window);
+	CLocator<CDirectX>().Add(directx);
+	CLocator<CTexturesManager>().Add(textures); textures->LoadResources();
 	CLocator<CAnimationsManager>().Add(animations);
 
 }
