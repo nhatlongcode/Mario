@@ -1,5 +1,4 @@
-#ifndef CLOCATOR_H
-#define CLOCATOR_H
+#pragma once
 template<typename T>
 class CLocator
 {
@@ -25,4 +24,3 @@ inline void CLocator<T>::Add(T* ins)
 {
 	instance = ins;
 }
-#endif

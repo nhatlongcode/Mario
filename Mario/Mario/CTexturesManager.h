@@ -1,6 +1,4 @@
-#ifndef CTEXTURESMANAGER_H
-#define CTEXTURESMANAGER_H
-
+#pragma once
 #include "CLocator.h"
 #include "CDirectX.h"
 #include "MarioDefines.h"
@@ -21,5 +19,4 @@ public:
 };
 
 typedef CTexturesManager* LPTEXTURES;
-#endif // !CTEXTURESMANAGER_H
 

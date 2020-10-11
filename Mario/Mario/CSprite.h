@@ -1,6 +1,4 @@
-#ifndef CSPRITE_H
-#define CSPRITE_H
-
+#pragma once
 #include <d3dx9.h>
 #include <unordered_map>
 #include "CLocator.h"
@@ -21,5 +19,4 @@ public:
 	void Draw(float x, float y, int alpha = 255);
 };
 typedef CSprite* LPSPRITE;
-#endif
 

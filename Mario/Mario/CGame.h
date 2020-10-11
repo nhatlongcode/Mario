@@ -1,12 +1,11 @@
-#ifndef CGAME_H
-#define CGAME_H
-
+#pragma once
 #include "CWindow.h"
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "MarioDefines.h"
 #include "CDirectX.h"
 #include "CLocator.h"
+#include "CGameObject.h"
 
 class CGame
 {
@@ -21,5 +20,4 @@ public:
 	int Run();
 
 };
-#endif
 

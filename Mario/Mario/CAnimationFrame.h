@@ -1,6 +1,4 @@
-#ifndef CANIMATIONFRAME_H
-#define CANIMATIONFRAME_H
-
+#pragma once
 #include "CSprite.h"
 class CAnimationFrame
 {
@@ -13,5 +11,5 @@ public:
 	LPSPRITE GetSprite();
 };
 typedef CAnimationFrame* LPFRAME;
-#endif
+
 

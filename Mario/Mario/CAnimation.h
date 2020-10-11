@@ -1,5 +1,4 @@
-#ifndef CANIMATION_H
-#define CANIMATION_H
+#pragma once
 #include "CAnimationFrame.h"
 #include "CSpritesManager.h"
 #include "CLocator.h"
@@ -16,4 +15,4 @@ public:
 	void Render(float x, float y, int alpha = 255);
 };
 typedef CAnimation* LPANIMATION;
-#endif
+

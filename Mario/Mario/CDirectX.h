@@ -1,6 +1,4 @@
-#ifndef CDIRECTX_H
-#define CDIRECTX_H
-
+#pragma once
 #include <d3dx9.h>
 #include "MarioDefines.h"
 #include "CSprite.h"
@@ -22,5 +20,4 @@ public:
 	LPDIRECT3DDEVICE9 Device();
 	LPD3DXSPRITE SpriteHandler();
 };
-#endif
 

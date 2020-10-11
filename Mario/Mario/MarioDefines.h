@@ -1,5 +1,4 @@
-#ifndef MARIODEFINES_H
-#define MARIODEFINES_H
+#pragma once
 #include <d3dx9.h>
 typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
@@ -13,5 +12,3 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 #define PATH_TEX_MARIO L"Textures\\mario.png"
 #define ID_TEX_MARIO "TEX_MARIO"
-
-#endif;

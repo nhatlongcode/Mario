@@ -1,6 +1,4 @@
-#ifndef CWINDOW_H
-#define CWINDOW_H
-
+#pragma once
 #include <Windows.h>
 
 class CWindow
@@ -16,5 +14,4 @@ public:
 	static LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	HWND GetHandleWindow();
 };
-#endif
 

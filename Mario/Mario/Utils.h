@@ -1,7 +1,4 @@
-#ifndef UTILS_H
-#define UTILS_H
-
-
+#pragma once
 #include <Windows.h>
 
 #include <signal.h>
@@ -22,5 +19,4 @@ wstring ToWSTR(string st);
 
 LPCWSTR ToLPCWSTR(string st);
 
-#endif // !UTILS_H
 
