@@ -5,6 +5,7 @@
 #include "CLocator.h"
 #include "CTexturesManager.h"
 #include "CAnimationsManager.h"
+#include "CSpritesManager.h"
 #include "MarioDefines.h"
 #include "CSprite.h"
 
@@ -14,12 +15,17 @@ void InitLocator(HINSTANCE hInstance, int nCmdShow)
 
 	CDirectX* directx = new CDirectX(window->GetHandleWindow());
 	CTexturesManager* textures = new CTexturesManager();
+	CSpritesManager* sprites = new CSpritesManager();
 	CAnimationsManager* animations = new CAnimationsManager();
-
-	CLocator<CWindow>().Add(window);
+	
 	CLocator<CDirectX>().Add(directx);
-	CLocator<CTexturesManager>().Add(textures); textures->LoadResources();
+	CLocator<CTexturesManager>().Add(textures); 
+	CLocator<CSpritesManager>().Add(sprites);
 	CLocator<CAnimationsManager>().Add(animations);
+
+	textures->LoadResources();
+	sprites->LoadResources();
+	animations->LoadResources();
 
 }
 

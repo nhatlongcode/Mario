@@ -6,7 +6,7 @@ class CAnimationsManager
 private:
 	std::unordered_map<int, LPANIMATION> animations;
 public:
-	void Init();
+	void LoadResources();
 	void Add(int id, LPANIMATION ani);
 	LPANIMATION Get(int id);
 };

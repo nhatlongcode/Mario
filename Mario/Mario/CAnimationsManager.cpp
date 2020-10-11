@@ -1,6 +1,6 @@
 #include "CAnimationsManager.h"
 
-void CAnimationsManager::Init()
+void CAnimationsManager::LoadResources()
 {
 	LPANIMATION ani = new CAnimation(100);
 	ani->Add(10001);

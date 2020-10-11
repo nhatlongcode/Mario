@@ -21,7 +21,7 @@ private:
 public:
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void SetState(int state) { this->currentState = state; }
-
+	LPANIMATION ani;
 	CGameObject();
 
 	void Update(DWORD dt);

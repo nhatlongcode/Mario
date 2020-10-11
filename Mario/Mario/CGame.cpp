@@ -3,7 +3,7 @@
 
 void CGame::Update(DWORD dt)
 {
-
+	mario->Update(dt);
 }
 
 void CGame::Render()
@@ -18,7 +18,7 @@ void CGame::Render()
 
 		CSprite* sprite = new CSprite(1, 246, 154, 260, 181, CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO));
 		sprite->Draw(0, 0);
-
+		mario->Render();
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}
@@ -33,6 +33,10 @@ CGame::CGame()
 	//directx = CLocator::Instance()->Get<CDirectX>();
 	wnd = CLocator<CWindow>().Get();
 	directx = CLocator<CDirectX>().Get();
+	mario = new CGameObject();
+	mario->SetPosition(10.0f, 100.0f);
+	LPANIMATION ani = CLocator<CAnimationsManager>().Get()->Get(500);
+	mario->ani = ani;
 }
 
 CGame::~CGame()

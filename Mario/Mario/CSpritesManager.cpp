@@ -1,6 +1,6 @@
 #include "CSpritesManager.h"
 
-void CSpritesManager::Init()
+void CSpritesManager::LoadResources()
 {
 	LPTEXTURE texMario = CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO);
 	Add(10001, 246, 154, 259, 181, texMario);

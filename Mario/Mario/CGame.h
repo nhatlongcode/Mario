@@ -6,6 +6,7 @@
 #include "CLocator.h"
 #include "CGameObject.h"
 #include "CTexturesManager.h"
+#include "CAnimationsManager.h"
 
 class CGame
 {
@@ -17,6 +18,7 @@ private:
 	LPD3DXSPRITE spriteHandler;
 	void Update(DWORD dt);
 	void Render();
+	CGameObject* mario;
 public:
 	CGame();
 	~CGame();
