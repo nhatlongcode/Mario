@@ -154,6 +154,7 @@
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CLocator.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpritesManager.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CInput.h" />
     <ClInclude Include="CLocator.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpritesManager.h" />

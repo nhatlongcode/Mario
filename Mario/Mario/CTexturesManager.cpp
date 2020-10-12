@@ -5,11 +5,6 @@ LPDIRECT3DTEXTURE9 CTexturesManager::CreateTexture(LPCWSTR path)
 	return LPDIRECT3DTEXTURE9();
 }
 
-void CTexturesManager::LoadResources()
-{
-	Add("TEX_MARIO", PATH_TEX_MARIO, D3DCOLOR_XRGB(255, 255, 255));
-}
-
 void CTexturesManager::Add(std::string id, LPCWSTR path, D3DCOLOR transColor)
 {
 	D3DXIMAGE_INFO info;

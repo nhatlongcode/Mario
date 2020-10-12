@@ -11,13 +11,9 @@
 class CGame
 {
 private:
-	CWindow* wnd;
-	CDirectX* directx;
-	LPDIRECT3DDEVICE9 d3ddv;
-	LPDIRECT3DSURFACE9 backBuffer;
-	LPD3DXSPRITE spriteHandler;
 	void Update(DWORD dt);
 	void Render();
+	void LoadResources();
 	CGameObject* mario;
 public:
 	CGame();

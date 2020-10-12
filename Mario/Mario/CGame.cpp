@@ -8,6 +8,10 @@ void CGame::Update(DWORD dt)
 
 void CGame::Render()
 {
+	LPDIRECT3DSURFACE9 backBuffer = CLocator<CDirectX>().Get()->BackBuffer();
+	LPDIRECT3DDEVICE9 d3ddv = CLocator<CDirectX>().Get()->Device();
+	LPD3DXSPRITE spriteHandler = CLocator<CDirectX>().Get()->SpriteHandler();
+
 	if (d3ddv->BeginScene())
 	{
 		// Clear screen (back buffer) with a color
@@ -15,9 +19,6 @@ void CGame::Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-
-		CSprite* sprite = new CSprite(1, 246, 154, 260, 181, CLocator<CTexturesManager>().Get()->Get(ID_TEX_MARIO));
-		sprite->Draw(0, 0);
 		mario->Render();
 		spriteHandler->End();
 		d3ddv->EndScene();
@@ -26,17 +27,41 @@ void CGame::Render()
 	d3ddv->Present(NULL, NULL, NULL, NULL);
 }
 
+void CGame::LoadResources()
+{
+	LPTEXTURES texs = CLocator<CTexturesManager>().Get();
+	LPSPRITES sprites = CLocator<CSpritesManager>().Get();
+	LPANIMATIONS anis = CLocator<CAnimationsManager>().Get();
+
+	texs->Add("TEX_MARIO", PATH_TEX_MARIO, D3DCOLOR_XRGB(255, 255, 255));
+	auto texMario = texs->Get("TEX_MARIO");
+
+	sprites->Add(10001, 246, 154, 259, 181, texMario);
+	sprites->Add(10002, 275, 154, 290, 181, texMario);
+	sprites->Add(10003, 304, 154, 321, 181, texMario);
+
+	sprites->Add(10011, 186, 154, 199, 181, texMario);
+	sprites->Add(10012, 155, 154, 170, 181, texMario);
+	sprites->Add(10013, 125, 154, 140, 181, texMario);
+
+	LPANIMATION ani = new CAnimation(100);
+	ani->Add(10001);
+	ani->Add(10002);
+	ani->Add(10003);
+	anis->Add(500, ani);
+
+	ani = new CAnimation(100);
+	ani->Add(10011);
+	ani->Add(10012);
+	ani->Add(10013);
+	anis->Add(501, ani);
+
+}
+
 
 CGame::CGame()
 {
-	//wnd = CLocator::Instance()->Get<CWindow>();
-	//directx = CLocator::Instance()->Get<CDirectX>();
-	wnd = CLocator<CWindow>().Get();
-	directx = CLocator<CDirectX>().Get();
-	mario = new CGameObject();
-	mario->SetPosition(10.0f, 100.0f);
-	LPANIMATION ani = CLocator<CAnimationsManager>().Get()->Get(500);
-	mario->ani = ani;
+
 }
 
 CGame::~CGame()
@@ -48,9 +73,11 @@ CGame::~CGame()
 
 void CGame::InitGame()
 {
-	backBuffer = CLocator<CDirectX>().Get()->BackBuffer();
-	d3ddv = CLocator<CDirectX>().Get()->Device();
-	spriteHandler = CLocator<CDirectX>().Get()->SpriteHandler();
+	LoadResources();
+	mario = new CGameObject();
+	mario->SetPosition(10.0f, 100.0f);
+	LPANIMATION ani = CLocator<CAnimationsManager>().Get()->Get(500);
+	mario->ani = ani;
 }
 
 

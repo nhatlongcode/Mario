@@ -1,111 +1,135 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Locator">
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Framework\Locator">
       <UniqueIdentifier>{8d3bf9f1-4295-461f-b98c-b159a6422976}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sprite">
-      <UniqueIdentifier>{01c508dd-5dba-48d7-99a9-d90a0a2f0965}</UniqueIdentifier>
+    <Filter Include="Framework\Animation">
+      <UniqueIdentifier>{838c3b4d-a23b-4ddf-88cc-fb23a6bb65d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Texture">
+    <Filter Include="Framework\GameObject">
+      <UniqueIdentifier>{e6b8d7c7-2f40-4140-9571-0117c807e1cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\DirectX">
+      <UniqueIdentifier>{55ed63de-6aaf-4771-95a2-737666aac9e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game">
+      <UniqueIdentifier>{01f77581-0f2f-41d0-b45f-96d77af74546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Other">
+      <UniqueIdentifier>{45117da6-d66b-4102-acbc-b17337fd1dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Window">
+      <UniqueIdentifier>{76067ca8-3d8e-4e95-af90-ef25162e6fa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Texture">
       <UniqueIdentifier>{469e2c3e-4721-432e-a54f-072e5903b6b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Animation">
-      <UniqueIdentifier>{838c3b4d-a23b-4ddf-88cc-fb23a6bb65d6}</UniqueIdentifier>
+    <Filter Include="Framework\Sprite">
+      <UniqueIdentifier>{01c508dd-5dba-48d7-99a9-d90a0a2f0965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Input">
+      <UniqueIdentifier>{fe9cb3b3-4f9c-4153-82b5-64426afc0f9d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CDirectX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CGameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLocator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="CSpritesManager.cpp">
-      <Filter>Sprite</Filter>
+      <Filter>Framework\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="CSprite.cpp">
-      <Filter>Sprite</Filter>
+      <Filter>Framework\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="CTexturesManager.cpp">
-      <Filter>Texture</Filter>
+      <Filter>Framework\Texture</Filter>
     </ClCompile>
     <ClCompile Include="CAnimation.cpp">
-      <Filter>Animation</Filter>
+      <Filter>Framework\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CAnimationFrame.cpp">
-      <Filter>Animation</Filter>
+      <Filter>Framework\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CAnimationsManager.cpp">
-      <Filter>Animation</Filter>
+      <Filter>Framework\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CWindow.cpp">
+      <Filter>Framework\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameObject.cpp">
+      <Filter>Framework\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CLocator.cpp">
+      <Filter>Framework\Locator</Filter>
+    </ClCompile>
+    <ClCompile Include="CDirectX.cpp">
+      <Filter>Framework\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Framework\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>Framework\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MarioDefines.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CDirectX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLocator.h">
-      <Filter>Locator</Filter>
+      <Filter>Framework\Locator</Filter>
     </ClInclude>
     <ClInclude Include="CSpritesManager.h">
-      <Filter>Sprite</Filter>
+      <Filter>Framework\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="CSprite.h">
-      <Filter>Sprite</Filter>
+      <Filter>Framework\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="CTexturesManager.h">
-      <Filter>Texture</Filter>
+      <Filter>Framework\Texture</Filter>
     </ClInclude>
     <ClInclude Include="CAnimation.h">
-      <Filter>Animation</Filter>
+      <Filter>Framework\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CAnimationFrame.h">
-      <Filter>Animation</Filter>
+      <Filter>Framework\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CAnimationsManager.h">
-      <Filter>Animation</Filter>
+      <Filter>Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CWindow.h">
+      <Filter>Framework\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameObject.h">
+      <Filter>Framework\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioDefines.h">
+      <Filter>Framework\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Framework\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="CDirectX.h">
+      <Filter>Framework\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>Framework\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

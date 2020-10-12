@@ -9,6 +9,7 @@
 #include "MarioDefines.h"
 #include "CSprite.h"
 
+
 void InitLocator(HINSTANCE hInstance, int nCmdShow)
 {
 	CWindow* window = new CWindow(hInstance, nCmdShow);
@@ -23,15 +24,16 @@ void InitLocator(HINSTANCE hInstance, int nCmdShow)
 	CLocator<CSpritesManager>().Add(sprites);
 	CLocator<CAnimationsManager>().Add(animations);
 
-	textures->LoadResources();
-	sprites->LoadResources();
-	animations->LoadResources();
 
 }
 
 void Clear()
 {
-
+	delete CLocator<CWindow>().Get();
+	delete CLocator<CDirectX>().Get();
+	delete CLocator<CTexturesManager>().Get();
+	delete CLocator<CSpritesManager>().Get();
+	delete CLocator<CAnimationsManager>().Get();
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -47,7 +49,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	Mario->InitGame();
 	Mario->Run();
 
-
+	Clear();
 	//locator->Get<CTexturesManager>()->Init();
 	return 0;
 }
