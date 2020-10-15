@@ -6,6 +6,11 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define DIRECTINPUT_VERSION 0x0800
 #define KEYBOARD_BUFFER_SIZE 1024
 
+// KEYBOAAAARD ----------------------------------------------------
+
+#define DIRECTINPUT_VERSION 0x0800
+#define KEYBOARD_BUFFER_SIZE 1024
+
 // WINDOW ----------------------------------------------------
 
 #define WINDOW_CLASS_NAME L"MARIO"

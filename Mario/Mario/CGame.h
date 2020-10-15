@@ -7,6 +7,7 @@
 #include "CGameObject.h"
 #include "CTexturesManager.h"
 #include "CAnimationsManager.h"
+#include "CInput.h"
 
 class CGame
 {
@@ -15,6 +16,7 @@ private:
 	void Render();
 	void LoadResources();
 	CGameObject* mario;
+	CInput* input;
 public:
 	CGame();
 	~CGame();

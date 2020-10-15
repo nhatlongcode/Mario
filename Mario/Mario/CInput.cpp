@@ -1,24 +1,35 @@
 #include "CInput.h"
 
-void CInput::KeyState(BYTE* states)
+void CInput::KeyState(BYTE* states) //Hold key down
 {
-
+	if (IsKeyDown(DIK_RIGHT)) DebugOut(L"RIGHT");
+	else if (IsKeyDown(DIK_LEFT)) DebugOut(L"LEFT");
+	else if (IsKeyDown(DIK_DOWN)) DebugOut(L"DOWN");
+	else if (IsKeyDown(DIK_Z)) DebugOut(L"Z");
+	else if (IsKeyDown(DIK_A)) DebugOut(L"A");
+	else if (IsKeyDown(DIK_S)) DebugOut(L"S");
+	//else DebugOut(L"IDLE");
 }
 
 void CInput::OnKeyDown(int KeyCode)
 {
-	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
+	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	switch (KeyCode)
 	{
-	case DIK_SPACE:
-
+	case DIK_X:
+		DebugOut(L"X");
 		break;
 	}
 }
 
 void CInput::OnKeyUp(int KeyCode)
 {
-	DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
+	//DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
+}
+
+bool CInput::IsKeyDown(int KeyCode)
+{
+	return (keyStates[KeyCode] & 0x80) > 0;
 }
 
 CInput::CInput(HWND hWnd)

@@ -18,7 +18,8 @@ void InitLocator(HINSTANCE hInstance, int nCmdShow)
 	CTexturesManager* textures = new CTexturesManager();
 	CSpritesManager* sprites = new CSpritesManager();
 	CAnimationsManager* animations = new CAnimationsManager();
-	
+
+	CLocator<CWindow>().Add(window);
 	CLocator<CDirectX>().Add(directx);
 	CLocator<CTexturesManager>().Add(textures); 
 	CLocator<CSpritesManager>().Add(sprites);

@@ -15,6 +15,7 @@ private:
 	void KeyState(BYTE* states);
 	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);
+	bool IsKeyDown(int KeyCode);
 public:
 	CInput(HWND hWnd);
 	void ProcessKeyboard();

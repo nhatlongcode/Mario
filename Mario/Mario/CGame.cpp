@@ -78,6 +78,7 @@ void CGame::InitGame()
 	mario->SetPosition(10.0f, 100.0f);
 	LPANIMATION ani = CLocator<CAnimationsManager>().Get()->Get(500);
 	mario->ani = ani;
+	input = new CInput(CLocator<CWindow>().Get()->GetHandleWindow());
 }
 
 
@@ -106,6 +107,7 @@ int CGame::Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
+			input->ProcessKeyboard();
 			Update(dt);
 			Render();
 		}
