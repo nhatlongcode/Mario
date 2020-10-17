@@ -1,6 +1,7 @@
 #pragma once
 #include "Utils.h"
 #include "MarioDefines.h"
+#include "CGameObject.h"
 #include <dinput.h>
 
 class CInput
@@ -15,10 +16,11 @@ private:
 	void KeyState(BYTE* states);
 	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);
-	bool IsKeyDown(int KeyCode);
+	CGameObject* mario;
 public:
-	CInput(HWND hWnd);
+	CInput(HWND hWnd, CGameObject* mario);
 	void ProcessKeyboard();
+	bool IsKeyDown(int KeyCode);
 };
 
 typedef CInput* LPINPUTHANDLER;

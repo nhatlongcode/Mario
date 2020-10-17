@@ -2,12 +2,10 @@
 
 void CInput::KeyState(BYTE* states) //Hold key down
 {
-	if (IsKeyDown(DIK_RIGHT)) DebugOut(L"RIGHT");
-	else if (IsKeyDown(DIK_LEFT)) DebugOut(L"LEFT");
-	else if (IsKeyDown(DIK_DOWN)) DebugOut(L"DOWN");
-	else if (IsKeyDown(DIK_Z)) DebugOut(L"Z");
-	else if (IsKeyDown(DIK_A)) DebugOut(L"A");
-	else if (IsKeyDown(DIK_S)) DebugOut(L"S");
+	if (IsKeyDown(DIK_RIGHT)) mario->SetState(MARIO_STATE_WALKING_RIGHT);
+	else if (IsKeyDown(DIK_LEFT)) mario->SetState(MARIO_STATE_WALKING_LEFT);
+	else mario->SetState(MARIO_STATE_IDLE);
+	//if (IsKeyDown(DIK_SPACE)) mario->SetState(MARIO_ANI_JUMP);
 	//else DebugOut(L"IDLE");
 }
 
@@ -32,8 +30,9 @@ bool CInput::IsKeyDown(int KeyCode)
 	return (keyStates[KeyCode] & 0x80) > 0;
 }
 
-CInput::CInput(HWND hWnd)
+CInput::CInput(HWND hWnd, CGameObject* mario)
 {
+	this->mario = mario;
 	HRESULT hr = DirectInput8Create
 		(
 			(HINSTANCE)GetWindowLong(hWnd, GWL_HINSTANCE),
