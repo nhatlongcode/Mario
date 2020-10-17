@@ -161,6 +161,7 @@
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CMario.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="CSpritesManager.h" />
     <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CWindow.h" />
+    <ClInclude Include="CMario.h" />
     <ClInclude Include="MarioDefines.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

@@ -43,6 +43,9 @@
     <Filter Include="Framework\Input">
       <UniqueIdentifier>{fe9cb3b3-4f9c-4153-82b5-64426afc0f9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Mario">
+      <UniqueIdentifier>{2502110c-a11f-4af9-8437-fc8cc6abd055}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +90,9 @@
     <ClCompile Include="CInput.cpp">
       <Filter>Framework\Input</Filter>
     </ClCompile>
+    <ClCompile Include="CMario.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -130,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="CInput.h">
       <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CMario.h">
+      <Filter>Framework\Mario</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

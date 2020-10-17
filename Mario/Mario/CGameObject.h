@@ -10,26 +10,35 @@
 
 class CGameObject
 {
-private:
+protected:
 	float x;
 	float y;
 
 	float vx;
 	float vy;
+
+	float dx;
+	float dy;
 	
 	int nx;
 	int currentState;
 
-	vector<LPANIMATION> animations; 
+	vector<LPANIMATION> animations;
 
 public:
-	void SetPosition(float x, float y);
-	void SetState(int state);
 	CGameObject();
-	void AddAnimation(int aniId);
-	void Update(DWORD dt);
-	void Render();
 	~CGameObject();
+
+	void SetPosition(float x, float y);
+	void SetSpeed(Vector2 vel);
+
+	void AddAnimation(int aniId);
+	
+	int GetState();
+
+	virtual void Update(DWORD dt);
+	virtual void Render() = 0;
+	virtual void SetState(int state);
 };
 
 typedef CGameObject* LPGAMEOBJECT;

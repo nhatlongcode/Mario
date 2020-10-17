@@ -2,6 +2,7 @@
 #include "Utils.h"
 #include "MarioDefines.h"
 #include "CGameObject.h"
+#include "CMario.h"
 #include <dinput.h>
 
 class CInput
@@ -18,7 +19,7 @@ private:
 	void OnKeyUp(int KeyCode);
 	CGameObject* mario;
 public:
-	CInput(HWND hWnd, CGameObject* mario);
+	CInput(HWND hWnd, LPGAMEOBJECT mario);
 	void ProcessKeyboard();
 	bool IsKeyDown(int KeyCode);
 };

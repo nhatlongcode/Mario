@@ -96,7 +96,7 @@ CGame::~CGame()
 
 void CGame::InitGame()
 {
-	mario = new CGameObject();
+	mario = new CMario();
 	mario->SetPosition(10.0f, 100.0f);
 	LoadResources();
 	input = new CInput(CLocator<CWindow>().Get()->GetHandleWindow(), mario);

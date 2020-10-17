@@ -8,6 +8,7 @@
 #include "CTexturesManager.h"
 #include "CAnimationsManager.h"
 #include "CInput.h"
+#include "CMario.h"
 
 class CGame
 {
