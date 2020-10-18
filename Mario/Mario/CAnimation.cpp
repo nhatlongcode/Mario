@@ -5,7 +5,7 @@ void CAnimation::Add(int spriteId, DWORD time)
 	int t = time;
 	if (time == 0) t = this->defaultTime;
 
-	LPSPRITE sprite = CLocator<CSpritesManager>().Get()->Get(spriteId);
+	LPSPRITE sprite = CLocator<ISpritesManager>().Get()->Get(spriteId);
 
 	if (sprite == NULL)
 	{

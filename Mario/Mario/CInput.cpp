@@ -2,9 +2,11 @@
 
 void CInput::KeyState(BYTE* states) //Hold key down
 {
+	if (IsKeyDown(DIK_S)) mario->SetState(MARIO_STATE_JUMPING);
 	if (IsKeyDown(DIK_RIGHT)) mario->SetState(MARIO_STATE_WALKING_RIGHT);
 	else if (IsKeyDown(DIK_LEFT)) mario->SetState(MARIO_STATE_WALKING_LEFT);
 	else mario->SetState(MARIO_STATE_IDLE);
+	
 }
 
 void CInput::OnKeyDown(int KeyCode)
@@ -13,7 +15,7 @@ void CInput::OnKeyDown(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_X:
-		mario->SetState(MARIO_STATE_JUMP);
+		mario->SetState(MARIO_STATE_JUMPING);
 		break;
 	}
 }

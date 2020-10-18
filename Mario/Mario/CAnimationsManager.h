@@ -1,12 +1,13 @@
 #pragma once
 #include "CAnimation.h"
+#include "IAnimsManager.h"
 #include <unordered_map>
-class CAnimationsManager
+class CAnimationsManager : public IAnimsManager
 {
 private:
 	std::unordered_map<int, LPANIMATION> animations;
 public:
-	void Add(int id, LPANIMATION ani);
-	LPANIMATION Get(int id);
+	virtual void Add(int id, LPANIMATION ani);
+	virtual LPANIMATION Get(int id);
 };
-typedef CAnimationsManager* LPANIMATIONS;
+

@@ -1,11 +1,6 @@
 #include "CTexturesManager.h"
 
-LPDIRECT3DTEXTURE9 CTexturesManager::CreateTexture(LPCWSTR path)
-{
-	return LPDIRECT3DTEXTURE9();
-}
-
-void CTexturesManager::Add(std::string id, LPCWSTR path, D3DCOLOR transColor)
+void CTexturesManager::Add(int id, LPCWSTR path, D3DCOLOR transColor)
 {
 	D3DXIMAGE_INFO info;
 	LPDIRECT3DTEXTURE9 texture;
@@ -17,7 +12,7 @@ void CTexturesManager::Add(std::string id, LPCWSTR path, D3DCOLOR transColor)
 		return;
 	}
 
-	LPDIRECT3DDEVICE9 d3ddv = CLocator<CDirectX>().Get()->Device();
+	LPDIRECT3DDEVICE9 d3ddv = CLocator<IDirectX>().Get()->Device();
 
 	result = D3DXCreateTextureFromFileEx(
 		d3ddv,								// Pointer to Direct3D device object
@@ -45,7 +40,7 @@ void CTexturesManager::Add(std::string id, LPCWSTR path, D3DCOLOR transColor)
 	textures[id] = texture;
 }
 
-LPDIRECT3DTEXTURE9 CTexturesManager::Get(std::string id)
+LPDIRECT3DTEXTURE9 CTexturesManager::Get(int id)
 {
 	return textures[id];
 }

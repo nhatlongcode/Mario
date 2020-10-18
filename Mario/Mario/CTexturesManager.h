@@ -2,20 +2,19 @@
 #include "CLocator.h"
 #include "CDirectX.h"
 #include "MarioDefines.h"
+#include "ITexsManager.h"
 #include <unordered_map>
-#include <d3d9.h>
 #include <d3dx9.h>
 #include "Utils.h"
 
-class CTexturesManager
+class CTexturesManager : public ITexsManager
 {
 private:
-    std::unordered_map<std::string, LPDIRECT3DTEXTURE9> textures;
-    LPDIRECT3DTEXTURE9 CreateTexture(LPCWSTR path);
+    std::unordered_map<int, LPDIRECT3DTEXTURE9> textures;
 public: 
-    void Add(std::string id, LPCWSTR path, D3DCOLOR transColor);
-    LPDIRECT3DTEXTURE9 Get(std::string id);
+    void Add(int id, LPCWSTR path, D3DCOLOR transColor);
+    LPDIRECT3DTEXTURE9 Get(int id);
 };
 
-typedef CTexturesManager* LPTEXTURES;
+
 

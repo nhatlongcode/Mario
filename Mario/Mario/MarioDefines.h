@@ -4,8 +4,6 @@
 typedef D3DXVECTOR2 Vector2;
 typedef D3DXVECTOR3 Vector3;
 typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
-#define DIRECTINPUT_VERSION 0x0800
-#define KEYBOARD_BUFFER_SIZE 1024
 
 // KEYBOAAAARD ----------------------------------------------------
 
@@ -18,7 +16,6 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MAIN_WINDOW_TITLE L"MARIO BROS 3"
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
-#define BRICK_TEXTURE_PATH L"brick.png"
 
 // COLOR -----------------------------------------------------
 
@@ -26,18 +23,28 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 // TEXTURES ----------------------------------------------------
 
-#define PATH_TEX_MARIO L"Textures\\mario2.png"
-#define ID_TEX_MARIO "TEX_MARIO"
+#define TEX_MARIO_ID 0
+#define TEX_MARIO_PATH L"Textures\\mario2.png"
 
 // MARIO -------------------------------------------------------
-#define MARIO_WALKING_SPEED		0.1f
-#define MARIO_JUMP_SPEED_Y		0.3f
-#define MARIO_GRAVITY			0.1f
+#define MARIO_WALKING_SPEED			0.1f
+#define MARIO_JUMP_SPEED_Y			0.105f
+#define MARIO_GRAVITY				0.1f
 
 #define MARIO_STATE_IDLE			0
-#define MARIO_STATE_WALKING_RIGHT	100
-#define MARIO_STATE_WALKING_LEFT	200
-#define MARIO_STATE_JUMP			300
+#define MARIO_STATE_WALKING_RIGHT	1
+#define MARIO_STATE_WALKING_LEFT	2
+#define MARIO_STATE_JUMPING			3
+#define MARIO_STATE_RUNNING			4
+#define MARIO_STATE_ATACKING		5
+
+
+#define MARIO_TYPE_SMALL			0
+#define MARIO_TYPE_SUPER			1
+#define MARIO_TYPE_FIRE				2
+#define MARIO_TYPE_RACOON			3
+#define MARIO_TYPE_HAMMER			4
+#define MARIO_TYPE_FROG				5
 
 
 #define MARIO_ANI_IDLE_RIGHT		0

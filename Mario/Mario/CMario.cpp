@@ -10,6 +10,7 @@ void CMario::Update(DWORD dt)
 	{
 		vy = 0; y = 100.0f;
 	}
+
 }
 
 void CMario::Render()
@@ -40,8 +41,8 @@ void CMario::SetState(int state)
 		vx = -MARIO_WALKING_SPEED;
 		nx = -1;
 		break;
-	case MARIO_STATE_JUMP:
-		if (y == 100) vy = -MARIO_JUMP_SPEED_Y;
+	case MARIO_STATE_JUMPING:
+		vy += -MARIO_JUMP_SPEED_Y;
 		break;
 	case MARIO_STATE_IDLE:
 		vx = 0;

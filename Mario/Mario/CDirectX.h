@@ -1,8 +1,9 @@
 #pragma once
 #include <d3dx9.h>
 #include "MarioDefines.h"
+#include "IDirectX.h"
 
-class CDirectX
+class CDirectX : public IDirectX
 {
 private:
 	LPDIRECT3D9 d3d;

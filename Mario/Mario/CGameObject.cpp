@@ -27,7 +27,7 @@ CGameObject::CGameObject()
 
 void CGameObject::AddAnimation(int aniId)
 {
-	LPANIMATION anim = CLocator<CAnimationsManager>().Get()->Get(aniId);
+	LPANIMATION anim = CLocator<IAnimsManager>().Get()->Get(aniId);
 	animations.push_back(anim);
 }
 

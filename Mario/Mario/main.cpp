@@ -12,29 +12,29 @@
 
 void InitLocator(HINSTANCE hInstance, int nCmdShow)
 {
-	CWindow* window = new CWindow(hInstance, nCmdShow);
+	IWindow* window = new CWindow(hInstance, nCmdShow);
 
-	CDirectX* directx = new CDirectX(window->GetHandleWindow());
-	CTexturesManager* textures = new CTexturesManager();
-	CSpritesManager* sprites = new CSpritesManager();
-	CAnimationsManager* animations = new CAnimationsManager();
+	IDirectX* directx = new CDirectX(window->GetHandleWindow());
+	ITexsManager* textures = new CTexturesManager();
+	ISpritesManager* sprites = new CSpritesManager();
+	IAnimsManager* animations = new CAnimationsManager();
 
-	CLocator<CWindow>().Add(window);
-	CLocator<CDirectX>().Add(directx);
-	CLocator<CTexturesManager>().Add(textures); 
-	CLocator<CSpritesManager>().Add(sprites);
-	CLocator<CAnimationsManager>().Add(animations);
+	CLocator<IWindow>().Add(window);
+	CLocator<IDirectX>().Add(directx);
+	CLocator<ITexsManager>().Add(textures); 
+	CLocator<ISpritesManager>().Add(sprites);
+	CLocator<IAnimsManager>().Add(animations);
 
 
 }
 
 void Clear()
 {
-	delete CLocator<CWindow>().Get();
-	delete CLocator<CDirectX>().Get();
-	delete CLocator<CTexturesManager>().Get();
-	delete CLocator<CSpritesManager>().Get();
-	delete CLocator<CAnimationsManager>().Get();
+	delete CLocator<IWindow>().Get();
+	delete CLocator<IDirectX>().Get();
+	delete CLocator<ITexsManager>().Get();
+	delete CLocator<ISpritesManager>().Get();
+	delete CLocator<IAnimsManager>().Get();
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

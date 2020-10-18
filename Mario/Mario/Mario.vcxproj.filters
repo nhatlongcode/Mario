@@ -140,5 +140,20 @@
     <ClInclude Include="CMario.h">
       <Filter>Framework\Mario</Filter>
     </ClInclude>
+    <ClInclude Include="IAnimsManager.h">
+      <Filter>Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpritesManager.h">
+      <Filter>Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="ITexsManager.h">
+      <Filter>Framework\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirectX.h">
+      <Filter>Framework\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="IWindow.h">
+      <Filter>Framework\Window</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

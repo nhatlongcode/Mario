@@ -178,6 +178,11 @@
     <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
+    <ClInclude Include="IAnimsManager.h" />
+    <ClInclude Include="IDirectX.h" />
+    <ClInclude Include="ISpritesManager.h" />
+    <ClInclude Include="ITexsManager.h" />
+    <ClInclude Include="IWindow.h" />
     <ClInclude Include="MarioDefines.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

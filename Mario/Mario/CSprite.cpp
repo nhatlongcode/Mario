@@ -13,7 +13,7 @@ CSprite::CSprite(int id, int left, int top, int width, int height, Vector2 scale
 
 void CSprite::Draw(float x, float y, int alpha)
 {
-	LPD3DXSPRITE spriteHandler = CLocator<CDirectX>().Get()->SpriteHandler();
+	LPD3DXSPRITE spriteHandler = CLocator<IDirectX>().Get()->SpriteHandler();
 	RECT r;
 	r.left = left;
 	r.top = top;

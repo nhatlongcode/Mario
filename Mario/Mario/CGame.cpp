@@ -8,9 +8,9 @@ void CGame::Update(DWORD dt)
 
 void CGame::Render()
 {
-	LPDIRECT3DSURFACE9 backBuffer = CLocator<CDirectX>().Get()->BackBuffer();
-	LPDIRECT3DDEVICE9 d3ddv = CLocator<CDirectX>().Get()->Device();
-	LPD3DXSPRITE spriteHandler = CLocator<CDirectX>().Get()->SpriteHandler();
+	LPDIRECT3DSURFACE9 backBuffer = CLocator<IDirectX>().Get()->BackBuffer();
+	LPDIRECT3DDEVICE9 d3ddv = CLocator<IDirectX>().Get()->Device();
+	LPD3DXSPRITE spriteHandler = CLocator<IDirectX>().Get()->SpriteHandler();
 
 	if (d3ddv->BeginScene())
 	{
@@ -29,15 +29,15 @@ void CGame::Render()
 
 void CGame::LoadResources()
 {
-	LPTEXTURES texs = CLocator<CTexturesManager>().Get();
-	LPSPRITES sprites = CLocator<CSpritesManager>().Get();
-	LPANIMATIONS anims = CLocator<CAnimationsManager>().Get();
+	LPTEXTURES texs = CLocator<ITexsManager>().Get();
+	LPSPRITES sprites = CLocator<ISpritesManager>().Get();
+	LPANIMATIONS anims = CLocator<IAnimsManager>().Get();
 	Vector2 right(1,1);
 	Vector2 left(-1, 1);
 
 
-	texs->Add("TEX_MARIO", PATH_TEX_MARIO, D3DCOLOR_XRGB(255, 255, 255));
-	auto texMario = texs->Get("TEX_MARIO");
+	texs->Add(TEX_MARIO_ID, TEX_MARIO_PATH, D3DCOLOR_XRGB(255, 255, 255));
+	auto texMario = texs->Get(TEX_MARIO_ID);
 	LPANIMATION anim;
 	// BIG MARIO
 	// IDLE		
@@ -99,7 +99,7 @@ void CGame::InitGame()
 	mario = new CMario();
 	mario->SetPosition(10.0f, 100.0f);
 	LoadResources();
-	input = new CInput(CLocator<CWindow>().Get()->GetHandleWindow(), mario);
+	input = new CInput(CLocator<IWindow>().Get()->GetHandleWindow(), mario);
 }
 
 
