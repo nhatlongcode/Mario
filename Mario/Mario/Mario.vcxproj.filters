@@ -46,6 +46,12 @@
     <Filter Include="Framework\Mario">
       <UniqueIdentifier>{2502110c-a11f-4af9-8437-fc8cc6abd055}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Scene">
+      <UniqueIdentifier>{bcdfd4d5-1817-4e79-a4c4-2c5bff0bfb8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene\CScenePlay">
+      <UniqueIdentifier>{e56cb6e1-6871-484c-b3df-cf04a17920b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,14 +99,17 @@
     <ClCompile Include="CMario.cpp">
       <Filter>Framework\Mario</Filter>
     </ClCompile>
-    <ClCompile Include="CMarioState.cpp">
-      <Filter>Framework\Mario</Filter>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Framework\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="CStandingState.cpp">
-      <Filter>Framework\Mario</Filter>
+    <ClCompile Include="CScenePlay.cpp">
+      <Filter>Framework\Scene\CScenePlay</Filter>
     </ClCompile>
-    <ClCompile Include="CWalkingState.cpp">
-      <Filter>Framework\Mario</Filter>
+    <ClCompile Include="CScenePlayKeyHandler.cpp">
+      <Filter>Framework\Scene\CScenePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyEventHandler.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,14 +173,20 @@
     <ClInclude Include="IWindow.h">
       <Filter>Framework\Window</Filter>
     </ClInclude>
-    <ClInclude Include="CMarioState.h">
-      <Filter>Framework\Mario</Filter>
+    <ClInclude Include="CScene.h">
+      <Filter>Framework\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="CStandingState.h">
-      <Filter>Framework\Mario</Filter>
+    <ClInclude Include="CScenePlay.h">
+      <Filter>Framework\Scene\CScenePlay</Filter>
     </ClInclude>
-    <ClInclude Include="CWalkingState.h">
-      <Filter>Framework\Mario</Filter>
+    <ClInclude Include="CSceneKeyHandler.h">
+      <Filter>Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyEventHandler.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CScenePlayKeyHandler.h">
+      <Filter>Framework\Scene\CScenePlay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

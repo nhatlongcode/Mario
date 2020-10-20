@@ -50,14 +50,16 @@ void CMario::SetState(int state)
 	}
 }
 
-void CMario::SetMarioState(CMarioState* state)
+void CMario::SetLevel(int level)
 {
-	if (state != NULL) delete this->state;
-	this->state = state;
+	this->level = level;
 }
 
-CMarioState* CMario::GetMarioState()
+void CMario::Reset()
 {
-	return state;
+	SetState(MARIO_STATE_IDLE);
+	SetLevel(MARIO_LEVEL_BIG);
+	SetPosition(start_x, start_y);
+	SetSpeed(0, 0);
 }
 

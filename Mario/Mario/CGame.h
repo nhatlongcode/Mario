@@ -13,16 +13,33 @@
 class CGame
 {
 private:
+	static CGame* instance;
 	void Update(DWORD dt);
 	void Render();
 	void LoadResources();
+
 	CMario* mario;
 	CInput* input;
+
+	float cam_x = 0.0f;
+	float cam_y = 0.0f;
+
+	int screen_width;
+	int screen_height;
+	LPKEYEVENTHANDLER keyHandler;
+
 public:
-	CGame();
+	static CGame* Instance();
 	~CGame();
 	void InitGame();
-	int Run();
+	void SetCamPos(float x, float y) { cam_x = x; cam_y = y; }
 
+	int Run();
+	int GetScreenWidth() { return screen_width; }
+	int GetScreenHeight() { return screen_height; }
+
+	void SetKeyHandler(LPKEYEVENTHANDLER keyHandler);
+
+	bool IsKeyDown(int keyCode);
 };
 

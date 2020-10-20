@@ -1,15 +1,16 @@
 #pragma once
 #include "CGameObject.h"
-#include "CMarioState.h"
 class CMario : public CGameObject
 {
 private:
-	CMarioState* state;
+	int level;
+	float start_x;			// initial position of Mario at scene
+	float start_y;
 public:
 	void Update(DWORD dt);
 	void Render();
 	void SetState(int state);
-	void SetMarioState(CMarioState* state);
-	CMarioState* GetMarioState();
+	void SetLevel(int level);
+	void Reset();
 };
 

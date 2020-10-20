@@ -3,6 +3,7 @@
 #include "MarioDefines.h"
 #include "CGameObject.h"
 #include "CMario.h"
+#include "CKeyEventHandler.h"
 #include <dinput.h>
 
 class CInput
@@ -14,12 +15,11 @@ private:
 	BYTE  keyStates[256];			// DirectInput keyboard state buffer 
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE];		// Buffered keyboard data
 	
-	void KeyState(BYTE* states);
-	void OnKeyDown(int KeyCode);
-	void OnKeyUp(int KeyCode);
+	LPKEYEVENTHANDLER keyHandler;
+
 	CMario* mario;
 public:
-	CInput(HWND hWnd, CMario* mario);
+	CInput(HWND hWnd, LPKEYEVENTHANDLER keyHandler);
 	void ProcessKeyboard();
 	bool IsKeyDown(int KeyCode);
 };

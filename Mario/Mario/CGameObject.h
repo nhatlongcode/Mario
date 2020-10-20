@@ -30,7 +30,10 @@ public:
 	~CGameObject();
 
 	void SetPosition(float x, float y);
-	void SetSpeed(Vector2 vel);
+	void GetPosition(float& x, float& y) { x = this->x; y = this->y; }
+
+	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
+	void GetSpeed(float& vx, float& vy) { vx = this->vx; vy = this->vy; }
 
 	void AddAnimation(int aniId);
 	

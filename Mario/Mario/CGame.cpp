@@ -1,5 +1,5 @@
-#include "CGame.h"
-
+#include "CGame.h" 
+CGame* CGame::instance = NULL;
 
 void CGame::Update(DWORD dt)
 {
@@ -82,9 +82,13 @@ void CGame::LoadResources()
 }
 
 
-CGame::CGame()
+CGame* CGame::Instance()
 {
-
+	if (instance == NULL)
+	{
+		instance = new CGame();
+	}
+	return instance;
 }
 
 CGame::~CGame()
@@ -99,7 +103,7 @@ void CGame::InitGame()
 	mario = new CMario();
 	mario->SetPosition(10.0f, 100.0f);
 	LoadResources();
-	input = new CInput(CLocator<IWindow>().Get()->GetHandleWindow(), mario);
+	input = new CInput(CLocator<IWindow>().Get()->GetHandleWindow(),keyHandler);
 }
 
 
@@ -138,5 +142,15 @@ int CGame::Run()
 
 	return 1;
 
+}
+
+void CGame::SetKeyHandler(LPKEYEVENTHANDLER keyHandler)
+{
+	this->keyHandler = keyHandler;
+}
+
+bool CGame::IsKeyDown(int keyCode)
+{
+	return input->IsKeyDown(keyCode);
 }
 

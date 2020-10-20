@@ -1,38 +1,14 @@
 #include "CInput.h"
 
-void CInput::KeyState(BYTE* states) //Hold key down
-{
-	if (IsKeyDown(DIK_S)) mario->SetState(MARIO_STATE_JUMPING);
-	if (IsKeyDown(DIK_RIGHT)) mario->SetState(MARIO_STATE_WALKING_RIGHT);
-	else if (IsKeyDown(DIK_LEFT)) mario->SetState(MARIO_STATE_WALKING_LEFT);
-	else mario->SetState(MARIO_STATE_IDLE);
-	
-}
-
-void CInput::OnKeyDown(int KeyCode)
-{
-	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
-	switch (KeyCode)
-	{
-	case DIK_X:
-		mario->SetState(MARIO_STATE_JUMPING);
-		break;
-	}
-}
-
-void CInput::OnKeyUp(int KeyCode)
-{
-	//DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
-}
 
 bool CInput::IsKeyDown(int KeyCode)
 {
 	return (keyStates[KeyCode] & 0x80) > 0;
 }
 
-CInput::CInput(HWND hWnd, CMario* mario)
+CInput::CInput(HWND hWnd, LPKEYEVENTHANDLER keyHandler)
 {
-	this->mario = mario;
+	this->keyHandler = keyHandler;
 	HRESULT hr = DirectInput8Create
 		(
 			(HINSTANCE)GetWindowLong(hWnd, GWL_HINSTANCE),
@@ -123,8 +99,7 @@ void CInput::ProcessKeyboard()
 		}
 	}
 
-	KeyState((BYTE*)&keyStates);
-	mario->GetMarioState()->KeyState((BYTE*)&keyStates);
+	keyHandler->KeyState((BYTE*)&keyStates);
 
 	// Collect all buffered events
 	DWORD dwElements = KEYBOARD_BUFFER_SIZE;
@@ -141,8 +116,8 @@ void CInput::ProcessKeyboard()
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
 		if ((KeyState & 0x80) > 0)
-			mario->GetMarioState()->OnKeyDown(KeyCode);
+			keyHandler->OnKeyDown(KeyCode);
 		else
-			mario->GetMarioState()->OnKeyUp(KeyCode);
+		    keyHandler->OnKeyUp(KeyCode);
 	}
 }

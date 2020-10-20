@@ -12,11 +12,6 @@ void CGameObject::SetState(int state)
 	this->currentState = state;
 }
 
-void CGameObject::SetSpeed(Vector2 vel)
-{
-	vx = vel.x;
-	vy = vel.y;
-}
 
 CGameObject::CGameObject()
 {
