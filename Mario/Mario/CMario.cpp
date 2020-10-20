@@ -49,3 +49,15 @@ void CMario::SetState(int state)
 		break;
 	}
 }
+
+void CMario::SetMarioState(CMarioState* state)
+{
+	if (state != NULL) delete this->state;
+	this->state = state;
+}
+
+CMarioState* CMario::GetMarioState()
+{
+	return state;
+}
+

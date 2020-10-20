@@ -17,9 +17,9 @@ private:
 	void KeyState(BYTE* states);
 	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);
-	CGameObject* mario;
+	CMario* mario;
 public:
-	CInput(HWND hWnd, LPGAMEOBJECT mario);
+	CInput(HWND hWnd, CMario* mario);
 	void ProcessKeyboard();
 	bool IsKeyDown(int KeyCode);
 };

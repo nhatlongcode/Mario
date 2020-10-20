@@ -156,9 +156,12 @@
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CLocator.cpp" />
+    <ClCompile Include="CMarioState.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpritesManager.cpp" />
+    <ClCompile Include="CStandingState.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
+    <ClCompile Include="CWalkingState.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CMario.cpp" />
@@ -173,9 +176,12 @@
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CLocator.h" />
+    <ClInclude Include="CMarioState.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpritesManager.h" />
+    <ClInclude Include="CStandingState.h" />
     <ClInclude Include="CTexturesManager.h" />
+    <ClInclude Include="CWalkingState.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="IAnimsManager.h" />

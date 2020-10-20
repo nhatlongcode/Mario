@@ -16,7 +16,7 @@ private:
 	void Update(DWORD dt);
 	void Render();
 	void LoadResources();
-	CGameObject* mario;
+	CMario* mario;
 	CInput* input;
 public:
 	CGame();

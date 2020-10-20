@@ -93,6 +93,15 @@
     <ClCompile Include="CMario.cpp">
       <Filter>Framework\Mario</Filter>
     </ClCompile>
+    <ClCompile Include="CMarioState.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CStandingState.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CWalkingState.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -154,6 +163,15 @@
     </ClInclude>
     <ClInclude Include="IWindow.h">
       <Filter>Framework\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarioState.h">
+      <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CStandingState.h">
+      <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CWalkingState.h">
+      <Filter>Framework\Mario</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -30,7 +30,7 @@ bool CInput::IsKeyDown(int KeyCode)
 	return (keyStates[KeyCode] & 0x80) > 0;
 }
 
-CInput::CInput(HWND hWnd, LPGAMEOBJECT mario)
+CInput::CInput(HWND hWnd, CMario* mario)
 {
 	this->mario = mario;
 	HRESULT hr = DirectInput8Create
@@ -124,8 +124,7 @@ void CInput::ProcessKeyboard()
 	}
 
 	KeyState((BYTE*)&keyStates);
-
-
+	mario->GetMarioState()->KeyState((BYTE*)&keyStates);
 
 	// Collect all buffered events
 	DWORD dwElements = KEYBOARD_BUFFER_SIZE;
@@ -142,8 +141,8 @@ void CInput::ProcessKeyboard()
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
 		if ((KeyState & 0x80) > 0)
-			OnKeyDown(KeyCode);
+			mario->GetMarioState()->OnKeyDown(KeyCode);
 		else
-			OnKeyUp(KeyCode);
+			mario->GetMarioState()->OnKeyUp(KeyCode);
 	}
 }
