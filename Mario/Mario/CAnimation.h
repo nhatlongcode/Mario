@@ -15,4 +15,5 @@ public:
 	void Render(float x, float y, int direction = DIRECTION_RIGHT, int alpha = 255);
 };
 typedef CAnimation* LPANIMATION;
-
+typedef unordered_map<int, LPANIMATION> CAnimSet;
+typedef CAnimSet* LPANIM_SET;

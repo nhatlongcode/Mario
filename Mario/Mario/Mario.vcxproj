@@ -188,6 +188,7 @@
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="IAnimsManager.h" />
+    <ClInclude Include="IAnimationSetsManager.h" />
     <ClInclude Include="IDirectX.h" />
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />

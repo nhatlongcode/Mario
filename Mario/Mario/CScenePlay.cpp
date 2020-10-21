@@ -44,6 +44,23 @@ void CScenePlay::_ParseSection_SPRITES(string line)
 
 void CScenePlay::_ParseSection_ANIMATIONS(string line)
 {
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 3) return; // skip invalid lines - an animation must at least has 1 frame and 1 frame time
+
+	//DebugOut(L"--> %s\n",ToWSTR(line).c_str());
+
+	LPANIMATION ani = new CAnimation();
+
+	int ani_id = atoi(tokens[0].c_str());
+	for (int i = 1; i < tokens.size(); i += 2)	// why i+=2 ?  sprite_id | frame_time  
+	{
+		int sprite_id = atoi(tokens[i].c_str());
+		int frame_time = atoi(tokens[i + 1].c_str());
+		ani->Add(sprite_id, frame_time);
+	}
+
+	CLocator<IAnimsManager>().Get()->Add(ani_id, ani);
 }
 
 void CScenePlay::_ParseSection_ANIMATION_SETS(string line)
