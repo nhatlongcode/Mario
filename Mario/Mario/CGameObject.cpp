@@ -36,6 +36,8 @@ void CGameObject::Update(DWORD dt)
 	dx = vx * dt;
 	dy = vy * dt;
 
+	x += dx;
+	y += dy;
 }
 
 

@@ -1,4 +1,9 @@
 #include "CGame.h" 
+#include "CScenePlay.h"
+#include "CLocator.h"
+#include "CAnimationsManager.h"
+#include <iostream>
+#include <fstream>
 CGame* CGame::instance = NULL;
 
 void CGame::Update(DWORD dt)
@@ -35,7 +40,7 @@ void CGame::LoadResources()
 	Vector2 right(1,1);
 	Vector2 left(-1, 1);
 
-
+	/*
 	texs->Add(TEX_MARIO_ID, TEX_MARIO_PATH, D3DCOLOR_XRGB(255, 255, 255));
 	auto texMario = texs->Get(TEX_MARIO_ID);
 	LPANIMATION anim;
@@ -78,7 +83,82 @@ void CGame::LoadResources()
 	mario->AddAnimation(MARIO_ANI_WALKING_RIGHT);
 	mario->AddAnimation(MARIO_ANI_WALKING_LEFT);
 
+	*/
+}
 
+void CGame::Load(LPCWSTR filePath)
+{
+	DebugOut(L"[INFO] Start loading game file : %s\n", filePath);
+
+	ifstream f;
+	f.open(filePath);
+	char str[MAX_GAME_LINE];
+
+	// current resource section flag
+	int section = GAME_FILE_SECTION_UNKNOWN;
+
+	while (f.getline(str, MAX_GAME_LINE))
+	{
+		string line(str);
+
+		if (line[0] == '#') continue;	// skip comment lines	
+
+		if (line == "[SETTINGS]") { section = GAME_FILE_SECTION_SETTINGS; continue; }
+		if (line == "[SCENES]") { section = GAME_FILE_SECTION_SCENES; continue; }
+
+		//
+		// data section
+		//
+		switch (section)
+		{
+		case GAME_FILE_SECTION_SETTINGS: _ParseSection_SETTINGS(line); break;
+		case GAME_FILE_SECTION_SCENES: _ParseSection_SCENES(line); break;
+		}
+	}
+	f.close();
+
+	DebugOut(L"[INFO] Loading game file : %s has been loaded successfully\n", filePath);
+
+	SwitchScene(current_scene);
+}
+
+void CGame::_ParseSection_SETTINGS(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return;
+	if (tokens[0] == "start")
+		current_scene = atoi(tokens[1].c_str());
+	else
+		DebugOut(L"[ERROR] Unknown game setting %s\n", ToWSTR(tokens[0]).c_str());
+}
+
+void CGame::_ParseSection_SCENES(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return;
+	int id = atoi(tokens[0].c_str());
+	LPCWSTR path = ToLPCWSTR(tokens[1]);
+
+	LPSCENE scene = new CScenePlay(id, path);
+	scenes[id] = scene;
+}
+
+void CGame::SwitchScene(int scene_id)
+{
+	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
+
+	scenes[current_scene]->Unload();;
+
+	CLocator<ITexsManager>().Get()->Clear();
+	CLocator<ISpritesManager>().Get()->Clear();
+	CLocator<IAnimsManager>().Get()->Clear();
+
+	current_scene = scene_id;
+	LPSCENE s = scenes[scene_id];
+	CGame::Instance()->SetKeyHandler(s->GetKeyEventHandler());
+	s->Load();
 }
 
 
@@ -112,7 +192,7 @@ int CGame::Run()
 	MSG msg;
 	int done = 0;
 	DWORD frameStart = GetTickCount();
-	DWORD tickPerFrame = 1000 / 60;
+	DWORD tickPerFrame = 1000 / MAX_FRAME_RATE;
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))

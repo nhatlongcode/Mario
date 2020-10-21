@@ -9,5 +9,6 @@ private:
 public:
 	virtual void Add(int id, LPANIMATION ani);
 	virtual LPANIMATION Get(int id);
+	virtual void Clear();
 };
 

@@ -1,13 +1,45 @@
 #include "CScenePlay.h"
+#include "CScenePlayKeyHandler.h"
 #include <iostream>
 #include <fstream>
 
 void CScenePlay::_ParseSection_TEXTURES(string line)
 {
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 5) return; // skip invalid lines
+
+	int texID = atoi(tokens[0].c_str());
+	wstring path = ToWSTR(tokens[1]);
+	int R = atoi(tokens[2].c_str());
+	int G = atoi(tokens[3].c_str());
+	int B = atoi(tokens[4].c_str());
+	CLocator<ITexsManager>().Get()->Add(texID, path.c_str(), D3DCOLOR_XRGB(R, G, B));
 }
 
 void CScenePlay::_ParseSection_SPRITES(string line)
 {
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 8) return; // skip invalid lines
+
+	int ID = atoi(tokens[0].c_str());
+	int left = atoi(tokens[1].c_str());
+	int top = atoi(tokens[2].c_str());
+	int width = atoi(tokens[3].c_str());
+	int height = atoi(tokens[4].c_str());
+	int scaleX = atoi(tokens[5].c_str());
+	int scaleY = atoi(tokens[6].c_str());
+	int texID = atoi(tokens[7].c_str());
+
+	LPDIRECT3DTEXTURE9 tex = CLocator<ITexsManager>().Get()->Get(texID);
+	if (tex == NULL)
+	{
+		DebugOut(L"[ERROR] Texture ID %d not found!\n", texID);
+		return;
+	}
+
+	CLocator<ISpritesManager>().Get()->Add(ID, left, top, width, height, scaleX, scaleY, tex);
 }
 
 void CScenePlay::_ParseSection_ANIMATIONS(string line)
@@ -24,7 +56,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
-	
+	keyHandler = new CScenePlayKeyHandler(this);
 }
 
 void CScenePlay::Load()

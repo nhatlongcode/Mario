@@ -14,6 +14,7 @@ private:
 public: 
     void Add(int id, LPCWSTR path, D3DCOLOR transColor);
     LPDIRECT3DTEXTURE9 Get(int id);
+    void Clear();
 };
 
 

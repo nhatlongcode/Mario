@@ -9,6 +9,7 @@
 #include "CAnimationsManager.h"
 #include "CInput.h"
 #include "CMario.h"
+#include "CScene.h"
 
 class CGame
 {
@@ -17,6 +18,14 @@ private:
 	void Update(DWORD dt);
 	void Render();
 	void LoadResources();
+	void Load(LPCWSTR filePath);
+	void _ParseSection_SETTINGS(string line);
+	void _ParseSection_SCENES(string line);
+
+	void SwitchScene(int scene_id);
+
+	unordered_map<int, LPSCENE> scenes;
+	int current_scene;
 
 	CMario* mario;
 	CInput* input;

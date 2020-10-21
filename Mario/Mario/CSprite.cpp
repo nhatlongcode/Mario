@@ -1,17 +1,18 @@
 #include "CSprite.h"
 
-CSprite::CSprite(int id, int left, int top, int width, int height, Vector2 scale, LPDIRECT3DTEXTURE9 tex)
+CSprite::CSprite(int id, int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 tex)
 {
 	this->id = id;
 	this->left = left;
 	this->top = top;
 	this->width = width;
 	this->height = height;
-	this->scale = scale;
+	this->scaleX = scaleX;
+	this->scaleY = scaleY;
 	this->texture = tex;
 }
 
-void CSprite::Draw(float x, float y, int alpha)
+void CSprite::Draw(float x, float y, int direction, int alpha)
 {
 	LPD3DXSPRITE spriteHandler = CLocator<IDirectX>().Get()->SpriteHandler();
 	RECT r;
@@ -20,6 +21,7 @@ void CSprite::Draw(float x, float y, int alpha)
 	r.right = left + width;
 	r.bottom = top + height;
 	
+	Vector2 scale = Vector2(scaleX * direction, scaleY);
 
 	D3DXMATRIX oldMatrix, newMatrix;
 	spriteHandler->GetTransform(&oldMatrix);

@@ -17,9 +17,17 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 
+#define MAX_FRAME_RATE 120
+
+
 // COLOR -----------------------------------------------------
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
+
+// GAME FILE --------------------------------------------------
+#define GAME_FILE_SECTION_UNKNOWN		-1
+#define GAME_FILE_SECTION_SETTINGS		1
+#define GAME_FILE_SECTION_SCENES		2
 
 // SCENE-------------------------------------------------------
 #define SCENE_SECTION_UNKNOWN			-1
@@ -29,12 +37,27 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define SCENE_SECTION_ANIMATION_SETS	5
 #define SCENE_SECTION_OBJECTS			6
 
-#define MAX_SCENE_LINE 1024
+#define MAX_SCENE_LINE	1024
+#define MAX_GAME_LINE	1024
 
 // TEXTURES ----------------------------------------------------
 
 #define TEX_MARIO_ID 0
 #define TEX_MARIO_PATH L"Textures\\mario2.png"
+
+// DIRECTION ---------------------------------------------------
+
+#define DIRECTION_RIGHT 1
+#define DIRECTION_LEFT	-1
+
+// OBJECT TYPE ------------------------------------------------
+
+#define OBJECT_TYPE_MARIO	0
+#define OBJECT_TYPE_BRICK	1
+#define OBJECT_TYPE_GOOMBA	2
+#define OBJECT_TYPE_KOOPAS	3
+
+#define OBJECT_TYPE_PORTAL	50
 
 // MARIO -------------------------------------------------------
 #define MARIO_LEVEL_SMALL 0

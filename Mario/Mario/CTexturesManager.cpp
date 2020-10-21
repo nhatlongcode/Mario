@@ -44,3 +44,14 @@ LPDIRECT3DTEXTURE9 CTexturesManager::Get(int id)
 {
 	return textures[id];
 }
+
+void CTexturesManager::Clear()
+{
+	for (auto x : textures)
+	{
+		LPDIRECT3DTEXTURE9 tex = x.second;
+		if (tex != NULL) tex->Release();
+	}
+
+	textures.clear();
+}

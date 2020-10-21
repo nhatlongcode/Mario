@@ -2,14 +2,12 @@
 
 void CMario::Update(DWORD dt)
 {
-	CGameObject::Update(dt);
-	x += dx;
-	y += dy;
 	vy += MARIO_GRAVITY;
 	if (y > 100)
 	{
 		vy = 0; y = 100.0f;
 	}
+	CGameObject::Update(dt);
 
 }
 
