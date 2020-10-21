@@ -3,6 +3,8 @@
 
 class CAnimationSetsManager : IAnimSetsManager
 {
-	virtual void Add(int id, LPANIM_SET ani);
-	virtual LPANIM_SET Get(unsigned int id);
+	unordered_map<int, LPANIM_SET> animation_sets;
+
+	void Add(int id, LPANIM_SET ani);
+	LPANIM_SET Get(unsigned int id);
 };

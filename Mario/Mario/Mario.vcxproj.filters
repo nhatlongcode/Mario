@@ -52,6 +52,9 @@
     <Filter Include="Framework\Scene\CScenePlay">
       <UniqueIdentifier>{e56cb6e1-6871-484c-b3df-cf04a17920b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Goomba">
+      <UniqueIdentifier>{95330f9c-0c02-43d9-9d39-2a109eeba799}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="CKeyEventHandler.cpp">
       <Filter>Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimationSetsManager.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +194,14 @@
     <ClInclude Include="CScenePlayKeyHandler.h">
       <Filter>Framework\Scene\CScenePlay</Filter>
     </ClInclude>
-    <ClInclude Include="IAnimationSetsManager.h">
+    <ClInclude Include="CAnimationSetsManager.h">
       <Filter>Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimSetsManager.h">
+      <Filter>Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CGoomba.h">
+      <Filter>Framework\Goomba</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

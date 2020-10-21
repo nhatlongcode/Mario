@@ -89,3 +89,16 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MARIO_ANI_IDLE_LEFT			1
 #define MARIO_ANI_WALKING_RIGHT		2
 #define MARIO_ANI_WALKING_LEFT		3
+
+// GOOMBA ---------------------------------------------------
+#define GOOMBA_WALKING_SPEED 0.05f;
+
+#define GOOMBA_BBOX_WIDTH 16
+#define GOOMBA_BBOX_HEIGHT 15
+#define GOOMBA_BBOX_HEIGHT_DIE 9
+
+#define GOOMBA_STATE_WALKING 100
+#define GOOMBA_STATE_DIE 200
+
+#define GOOMBA_ANI_WALKING 0
+#define GOOMBA_ANI_DIE 1

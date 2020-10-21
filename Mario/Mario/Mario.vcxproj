@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimationFrame.cpp" />
+    <ClCompile Include="CAnimationSetsManager.cpp" />
     <ClCompile Include="CAnimationsManager.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CGame.cpp" />
@@ -171,10 +172,12 @@
   <ItemGroup>
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimationFrame.h" />
+    <ClInclude Include="CAnimationSetsManager.h" />
     <ClInclude Include="CAnimationsManager.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CGoomba.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CKeyEventHandler.h" />
     <ClInclude Include="CLocator.h" />
@@ -187,8 +190,8 @@
     <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
+    <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
-    <ClInclude Include="IAnimationSetsManager.h" />
     <ClInclude Include="IDirectX.h" />
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />

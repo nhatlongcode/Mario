@@ -1,5 +1,6 @@
 #include "CScenePlay.h"
 #include "CScenePlayKeyHandler.h"
+#include "CAnimationSetsManager.h"
 #include <iostream>
 #include <fstream>
 
@@ -65,10 +66,81 @@ void CScenePlay::_ParseSection_ANIMATIONS(string line)
 
 void CScenePlay::_ParseSection_ANIMATION_SETS(string line)
 {
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return; // skip invalid lines - an animation set must at least id and one animation id
+
+	int ani_set_id = atoi(tokens[0].c_str());
+
+	LPANIM_SET set = new CAnimSet();
+
+	LPANIMATIONS anim = CLocator<IAnimsManager>().Get();
+
+	for (int i = 1; i < tokens.size(); i++)
+	{
+		int ani_id = atoi(tokens[i].c_str());
+
+		LPANIMATION ani = anim->Get(ani_id);
+		set->push_back(ani);
+	}
+
+	CLocator<IAnimSetsManager>().Get()->Add(ani_set_id, set);
 }
 
 void CScenePlay::_ParseSection_OBJECTS(string line)
 {
+	vector<string> tokens = split(line);
+
+	//DebugOut(L"--> %s\n",ToWSTR(line).c_str());
+
+	if (tokens.size() < 3) return; // skip invalid lines - an object set must have at least id, x, y
+
+	int object_type = atoi(tokens[0].c_str());
+	float x = atof(tokens[1].c_str());
+	float y = atof(tokens[2].c_str());
+
+	int ani_set_id = atoi(tokens[3].c_str());
+
+	CAnimationSets* animation_sets = CAnimationSets::GetInstance();
+
+	CGameObject* obj = NULL;
+
+	switch (object_type)
+	{
+	case OBJECT_TYPE_MARIO:
+		if (player != NULL)
+		{
+			DebugOut(L"[ERROR] MARIO object was created before!\n");
+			return;
+		}
+		obj = new CMario(x, y);
+		player = (CMario*)obj;
+
+		DebugOut(L"[INFO] Player object created!\n");
+		break;
+	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
+	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
+	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
+	case OBJECT_TYPE_PORTAL:
+	{
+		float r = atof(tokens[4].c_str());
+		float b = atof(tokens[5].c_str());
+		int scene_id = atoi(tokens[6].c_str());
+		obj = new CPortal(x, y, r, b, scene_id);
+	}
+	break;
+	default:
+		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
+		return;
+	}
+
+	// General object setup
+	obj->SetPosition(x, y);
+
+	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
+
+	obj->SetAnimationSet(ani_set);
+	objects.push_back(obj);
 }
 
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
