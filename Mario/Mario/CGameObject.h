@@ -7,6 +7,8 @@
 #include "Utils.h"
 #include "CLocator.h"
 
+class CGameObject;
+typedef CGameObject* LPGAMEOBJECT;
 
 class CGameObject
 {
@@ -23,7 +25,7 @@ protected:
 	int nx;
 	int currentState;
 
-	vector<LPANIMATION> animations;
+	LPANIMSET animSet;
 
 public:
 	CGameObject();
@@ -36,13 +38,13 @@ public:
 	void GetSpeed(float& vx, float& vy) { vx = this->vx; vy = this->vy; }
 
 	void AddAnimation(int aniId);
-	
+	void SetAnimationSet(LPANIMSET animSet);
+
 	int GetState();
 
-	virtual void Update(DWORD dt);
+	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render() = 0;
 	virtual void SetState(int state);
 };
 
-typedef CGameObject* LPGAMEOBJECT;
 

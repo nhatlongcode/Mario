@@ -5,6 +5,7 @@
 #include "CLocator.h"
 #include "CTexturesManager.h"
 #include "CAnimationsManager.h"
+#include "CAnimationSetsManager.h"
 #include "CSpritesManager.h"
 #include "MarioDefines.h"
 #include "CSprite.h"
@@ -18,13 +19,14 @@ void InitLocator(HINSTANCE hInstance, int nCmdShow)
 	ITexsManager* textures = new CTexturesManager();
 	ISpritesManager* sprites = new CSpritesManager();
 	IAnimsManager* animations = new CAnimationsManager();
+	IAnimSetsManager* animationSets = new CAnimationSetsManager();
 
 	CLocator<IWindow>().Add(window);
 	CLocator<IDirectX>().Add(directx);
 	CLocator<ITexsManager>().Add(textures); 
 	CLocator<ISpritesManager>().Add(sprites);
 	CLocator<IAnimsManager>().Add(animations);
-
+	CLocator<IAnimSetsManager>().Add(animationSets);
 
 }
 
@@ -46,9 +48,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	InitLocator(hInstance, nCmdShow);
 
-	CGame* Mario = new CGame();
-	Mario->InitGame();
-	Mario->Run();
+	CGame* Game = CGame::Instance();
+	Game->InitGame();
+	Game->Run();
 
 	Clear();
 	//locator->Get<CTexturesManager>()->Init();

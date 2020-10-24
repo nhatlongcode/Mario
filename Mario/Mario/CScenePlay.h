@@ -1,6 +1,7 @@
 #pragma once
 #include "CGame.h"
 #include "CScene.h"
+#include "CMario.h"
 
 class CScenePlay : public CScene
 {

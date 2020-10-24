@@ -152,9 +152,11 @@
     <ClCompile Include="CAnimationFrame.cpp" />
     <ClCompile Include="CAnimationSetsManager.cpp" />
     <ClCompile Include="CAnimationsManager.cpp" />
+    <ClCompile Include="CBrick.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CGoomba.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CKeyEventHandler.cpp" />
     <ClCompile Include="CLocator.cpp" />
@@ -174,6 +176,7 @@
     <ClInclude Include="CAnimationFrame.h" />
     <ClInclude Include="CAnimationSetsManager.h" />
     <ClInclude Include="CAnimationsManager.h" />
+    <ClInclude Include="CBrick.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />

@@ -157,7 +157,7 @@ void CGame::SwitchScene(int scene_id)
 
 	current_scene = scene_id;
 	LPSCENE s = scenes[scene_id];
-	CGame::Instance()->SetKeyHandler(s->GetKeyEventHandler());
+	SetKeyHandler(s->GetKeyEventHandler());
 	s->Load();
 }
 
@@ -180,10 +180,11 @@ CGame::~CGame()
 
 void CGame::InitGame()
 {
-	mario = new CMario();
+	mario = new CMario(100,100);
 	mario->SetPosition(10.0f, 100.0f);
-	LoadResources();
+	Load(L"mario-sample.txt");
 	input = new CInput(CLocator<IWindow>().Get()->GetHandleWindow(),keyHandler);
+	//LoadResources();
 }
 
 

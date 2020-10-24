@@ -4,9 +4,10 @@ class CMario : public CGameObject
 {
 private:
 	int level;
-	float start_x;			// initial position of Mario at scene
-	float start_y;
+	float startX;			// initial position of Mario at scene
+	float startY;
 public:
+	CMario(float startX, float startY);
 	void Update(DWORD dt);
 	void Render();
 	void SetState(int state);

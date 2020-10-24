@@ -102,3 +102,7 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 #define GOOMBA_ANI_WALKING 0
 #define GOOMBA_ANI_DIE 1
+
+// BRICK -----------------------------------------------------
+#define BRICK_BBOX_WIDTH  16
+#define BRICK_BBOX_HEIGHT 16

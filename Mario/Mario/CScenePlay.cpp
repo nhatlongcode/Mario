@@ -1,6 +1,8 @@
 #include "CScenePlay.h"
 #include "CScenePlayKeyHandler.h"
 #include "CAnimationSetsManager.h"
+#include "CGoomba.h"
+#include "CBrick.h"
 #include <iostream>
 #include <fstream>
 
@@ -56,11 +58,11 @@ void CScenePlay::_ParseSection_ANIMATIONS(string line)
 	int ani_id = atoi(tokens[0].c_str());
 	for (int i = 1; i < tokens.size(); i += 2)	// why i+=2 ?  sprite_id | frame_time  
 	{
+		//DebugOut(L"i: %d\n", tokens.size());
 		int sprite_id = atoi(tokens[i].c_str());
 		int frame_time = atoi(tokens[i + 1].c_str());
 		ani->Add(sprite_id, frame_time);
 	}
-
 	CLocator<IAnimsManager>().Get()->Add(ani_id, ani);
 }
 
@@ -72,7 +74,7 @@ void CScenePlay::_ParseSection_ANIMATION_SETS(string line)
 
 	int ani_set_id = atoi(tokens[0].c_str());
 
-	LPANIM_SET set = new CAnimSet();
+	LPANIMSET set = new CAnimSet();
 
 	LPANIMATIONS anim = CLocator<IAnimsManager>().Get();
 
@@ -101,7 +103,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 
 	int ani_set_id = atoi(tokens[3].c_str());
 
-	CAnimationSets* animation_sets = CAnimationSets::GetInstance();
+	LPANIMATIONSETS animSets = CLocator<IAnimSetsManager>().Get();
 
 	CGameObject* obj = NULL;
 
@@ -120,15 +122,15 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 		break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
-	case OBJECT_TYPE_PORTAL:
+	//case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
+	/*case OBJECT_TYPE_PORTAL:
 	{
 		float r = atof(tokens[4].c_str());
 		float b = atof(tokens[5].c_str());
 		int scene_id = atoi(tokens[6].c_str());
 		obj = new CPortal(x, y, r, b, scene_id);
 	}
-	break;
+	break;*/
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
@@ -137,7 +139,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 	// General object setup
 	obj->SetPosition(x, y);
 
-	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
+	LPANIMSET ani_set = animSets->Get(ani_set_id);
 
 	obj->SetAnimationSet(ani_set);
 	objects.push_back(obj);
@@ -202,9 +204,16 @@ void CScenePlay::Load()
 
 void CScenePlay::Update(DWORD dt)
 {
+	vector<LPGAMEOBJECT> coObjects;
+	for (size_t i = 1; i < objects.size(); i++)
+	{
+		coObjects.push_back(objects[i]);
+	}
+
+
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		objects[i]->Update(dt);
+		objects[i]->Update(dt, &coObjects);
 	}
 	if (player == NULL) return;
 

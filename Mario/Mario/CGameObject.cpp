@@ -1,6 +1,5 @@
 #include "CGameObject.h"
 
-
 void CGameObject::SetPosition(float x, float y)
 {
 	this->x = x;
@@ -23,7 +22,12 @@ CGameObject::CGameObject()
 void CGameObject::AddAnimation(int aniId)
 {
 	LPANIMATION anim = CLocator<IAnimsManager>().Get()->Get(aniId);
-	animations.push_back(anim);
+	animSet->push_back(anim);
+}
+
+void CGameObject::SetAnimationSet(LPANIMSET animSet)
+{
+	this->animSet = animSet;
 }
 
 int CGameObject::GetState()
@@ -31,7 +35,7 @@ int CGameObject::GetState()
 	return currentState;
 }
 
-void CGameObject::Update(DWORD dt)
+void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	dx = vx * dt;
 	dy = vy * dt;
@@ -39,6 +43,8 @@ void CGameObject::Update(DWORD dt)
 	x += dx;
 	y += dy;
 }
+
+
 
 
 CGameObject::~CGameObject()

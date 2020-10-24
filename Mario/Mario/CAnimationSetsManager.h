@@ -1,10 +1,10 @@
 #pragma once
 #include "IAnimSetsManager.h"
 
-class CAnimationSetsManager : IAnimSetsManager
+class CAnimationSetsManager : public IAnimSetsManager
 {
-	unordered_map<int, LPANIM_SET> animation_sets;
+	unordered_map<int, LPANIMSET> animation_sets;
 
-	void Add(int id, LPANIM_SET ani);
-	LPANIM_SET Get(unsigned int id);
+	void Add(int id, LPANIMSET ani);
+	LPANIMSET Get(unsigned int id);
 };

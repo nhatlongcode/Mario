@@ -3,8 +3,8 @@
 class IAnimSetsManager 
 {
 public:
-	virtual void Add(int id, LPANIM_SET ani) = 0;
-	virtual LPANIM_SET Get(unsigned int id) = 0;
+	virtual void Add(int id, LPANIMSET ani) = 0;
+	virtual LPANIMSET Get(unsigned int id) = 0;
 };
 
 typedef IAnimSetsManager* LPANIMATIONSETS;

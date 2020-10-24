@@ -16,4 +16,4 @@ public:
 };
 typedef CAnimation* LPANIMATION;
 typedef vector<LPANIMATION> CAnimSet;
-typedef CAnimSet* LPANIM_SET;
+typedef CAnimSet* LPANIMSET;

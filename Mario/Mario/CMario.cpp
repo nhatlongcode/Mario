@@ -1,5 +1,11 @@
 #include "CMario.h"
 
+CMario::CMario(float startX, float startY)
+{
+	this->startX = startX;
+	this->startY = startY;
+}
+
 void CMario::Update(DWORD dt)
 {
 	vy += MARIO_GRAVITY;
@@ -23,7 +29,7 @@ void CMario::Render()
 		ani = MARIO_ANI_WALKING_RIGHT;
 	else ani = MARIO_ANI_WALKING_LEFT;
 
-	animations.at(ani)->Render(x, y);
+	animSet->at(ani)->Render(x, y);
 }
 
 void CMario::SetState(int state)
@@ -57,7 +63,7 @@ void CMario::Reset()
 {
 	SetState(MARIO_STATE_IDLE);
 	SetLevel(MARIO_LEVEL_BIG);
-	SetPosition(start_x, start_y);
+	SetPosition(startX, startY);
 	SetSpeed(0, 0);
 }
 

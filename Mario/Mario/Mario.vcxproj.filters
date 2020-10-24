@@ -55,6 +55,12 @@
     <Filter Include="Framework\Goomba">
       <UniqueIdentifier>{95330f9c-0c02-43d9-9d39-2a109eeba799}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Brick">
+      <UniqueIdentifier>{aeacb753-5b79-4c69-b9f5-b9efab0e7245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\NewFilter1">
+      <UniqueIdentifier>{cc6c48c3-16a9-4718-9849-26920187c340}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -114,8 +120,14 @@
     <ClCompile Include="CKeyEventHandler.cpp">
       <Filter>Framework\Input</Filter>
     </ClCompile>
+    <ClCompile Include="CGoomba.cpp">
+      <Filter>Framework\Goomba</Filter>
+    </ClCompile>
     <ClCompile Include="CAnimationSetsManager.cpp">
-      <Filter>Main</Filter>
+      <Filter>Framework\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CBrick.cpp">
+      <Filter>Framework\Brick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="CGoomba.h">
       <Filter>Framework\Goomba</Filter>
+    </ClInclude>
+    <ClInclude Include="CBrick.h">
+      <Filter>Framework\Brick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
