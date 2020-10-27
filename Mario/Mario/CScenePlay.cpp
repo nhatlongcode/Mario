@@ -210,7 +210,6 @@ void CScenePlay::Update(DWORD dt)
 		coObjects.push_back(objects[i]);
 	}
 
-
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);
@@ -220,11 +219,9 @@ void CScenePlay::Update(DWORD dt)
 	// Update camera to follow mario
 	float cx, cy;
 	player->GetPosition(cx, cy);
-
 	CGame* game = CGame::Instance();
 	cx -= game->GetScreenWidth() / 2;
 	cy -= game->GetScreenHeight() / 2;
-
 	CGame::Instance()->SetCamPos(cx, 0.0f /*cy*/);
 }
 

@@ -8,7 +8,7 @@ private:
 	float startY;
 public:
 	CMario(float startX, float startY);
-	void Update(DWORD dt);
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	void Render();
 	void SetState(int state);
 	void SetLevel(int level);

@@ -1,4 +1,6 @@
 #include "CMario.h"
+#include "IHandleInput.h"
+#include "CInput.h"
 
 CMario::CMario(float startX, float startY)
 {
@@ -7,16 +9,23 @@ CMario::CMario(float startX, float startY)
 	SetState(0);
 }
 
-void CMario::Update(DWORD dt)
+void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 {
-	vy += MARIO_GRAVITY;
-	if (y > 100)
+	auto input = CLocator<IHandleInput>().Get();
+	if (input->IsKeyDown(DIK_RIGHT))
 	{
-		vy = 0; y = 100.0f;
+		SetState(MARIO_ANI_WALK);
+	}
+
+	vy += MARIO_GRAVITY;
+	
+	if (y > 300)
+	{
+		vy = 0; y = 300.0f;
 	}
 	CGameObject::Update(dt);
-
 }
+
 
 void CMario::Render()
 {
@@ -32,13 +41,16 @@ void CMario::Render()
 	else ani = MARIO_ANI_WALKING_LEFT;
 
 	//*/
-	animSet->at(5)->Render(x, y);
-	CLocator<IAnimsManager>().Get()->Get(MARIO_TYPE_FIRE + MARIO_ANI_CLIMB)->Render(300, 300);
+	animSet->at(currentState)->Render(x, y);
+	//CLocator<IAnimsManager>().Get()->Get(MARIO_TYPE_FIRE + MARIO_ANI_CLIMB)->Render(300, 300);
 }
 
 void CMario::SetState(int state)
 {
 	CGameObject::SetState(state);
+	
+	
+	/*
 	switch (state)
 	{
 	case MARIO_STATE_WALKING_RIGHT:
@@ -56,6 +68,7 @@ void CMario::SetState(int state)
 		vx = 0;
 		break;
 	}
+	*/
 }
 
 void CMario::SetLevel(int level)
@@ -65,7 +78,7 @@ void CMario::SetLevel(int level)
 
 void CMario::Reset()
 {
-	SetState(MARIO_STATE_IDLE);
+	SetState(MARIO_ANI_IDLE);
 	SetLevel(MARIO_LEVEL_BIG);
 	SetPosition(startX, startY);
 	SetSpeed(0, 0);

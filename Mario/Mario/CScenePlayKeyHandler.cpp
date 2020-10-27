@@ -9,7 +9,7 @@ bool CScenePlayKeyHandler::IsKeyDown(int keyCode, BYTE* keyStates)
 
 void CScenePlayKeyHandler::KeyState(BYTE* states)
 {
-	if (IsKeyDown(DIK_A, states)) DebugOut(L"HOLD A\n");
+	
 	/*//
 	CGame* game = CGame::Instance();
 	CMario* mario = ((CScenePlay*)scence)->GetPlayer();
@@ -44,4 +44,8 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 
 void CScenePlayKeyHandler::OnKeyUp(int KeyCode)
 {
+	CScenePlay* scenePlay = (CScenePlay*)scene;
+	CMario* mario = scenePlay->GetPlayer();
+
+	mario->SetSpeed(0, 0);
 }
