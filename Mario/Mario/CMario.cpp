@@ -4,6 +4,7 @@ CMario::CMario(float startX, float startY)
 {
 	this->startX = startX;
 	this->startY = startY;
+	SetState(0);
 }
 
 void CMario::Update(DWORD dt)
@@ -19,6 +20,7 @@ void CMario::Update(DWORD dt)
 
 void CMario::Render()
 {
+	/*//
 	int ani = -1;
 	if (vx == 0)
 	{
@@ -29,7 +31,9 @@ void CMario::Render()
 		ani = MARIO_ANI_WALKING_RIGHT;
 	else ani = MARIO_ANI_WALKING_LEFT;
 
-	animSet->at(ani)->Render(x, y);
+	//*/
+	animSet->at(5)->Render(x, y);
+	CLocator<IAnimsManager>().Get()->Get(MARIO_TYPE_FIRE + MARIO_ANI_CLIMB)->Render(300, 300);
 }
 
 void CMario::SetState(int state)

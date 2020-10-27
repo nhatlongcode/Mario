@@ -218,5 +218,8 @@
     <ClInclude Include="CBrick.h">
       <Filter>Framework\Brick</Filter>
     </ClInclude>
+    <ClInclude Include="IHandleInput.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

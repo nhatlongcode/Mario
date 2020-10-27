@@ -196,6 +196,7 @@
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />
+    <ClInclude Include="IHandleInput.h" />
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />
     <ClInclude Include="IWindow.h" />

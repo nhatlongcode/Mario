@@ -2,13 +2,15 @@
 #include "CScenePlay.h"
 #include "CLocator.h"
 #include "CAnimationsManager.h"
+#include "CInput.h"
 #include <iostream>
 #include <fstream>
 CGame* CGame::instance = NULL;
 
 void CGame::Update(DWORD dt)
 {
-	mario->Update(dt);
+	//mario->Update(dt);
+	scenes[currentScene]->Update(dt);
 }
 
 void CGame::Render()
@@ -24,7 +26,8 @@ void CGame::Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		mario->Render();
+		//mario->Render();
+		scenes[currentScene]->Render();
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}
@@ -119,7 +122,7 @@ void CGame::Load(LPCWSTR filePath)
 
 	DebugOut(L"[INFO] Loading game file : %s has been loaded successfully\n", filePath);
 
-	SwitchScene(current_scene);
+	SwitchScene(currentScene);
 }
 
 void CGame::_ParseSection_SETTINGS(string line)
@@ -128,7 +131,7 @@ void CGame::_ParseSection_SETTINGS(string line)
 
 	if (tokens.size() < 2) return;
 	if (tokens[0] == "start")
-		current_scene = atoi(tokens[1].c_str());
+		currentScene = atoi(tokens[1].c_str());
 	else
 		DebugOut(L"[ERROR] Unknown game setting %s\n", ToWSTR(tokens[0]).c_str());
 }
@@ -149,15 +152,16 @@ void CGame::SwitchScene(int scene_id)
 {
 	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
 
-	scenes[current_scene]->Unload();;
+	scenes[currentScene]->Unload();;
 
 	CLocator<ITexsManager>().Get()->Clear();
 	CLocator<ISpritesManager>().Get()->Clear();
 	CLocator<IAnimsManager>().Get()->Clear();
 
-	current_scene = scene_id;
+	currentScene = scene_id;
 	LPSCENE s = scenes[scene_id];
-	SetKeyHandler(s->GetKeyEventHandler());
+	//SetKeyHandler(s->GetKeyEventHandler());
+	CLocator<IHandleInput>().Get()->SetKeyHandler(s->GetKeyEventHandler());
 	s->Load();
 }
 
@@ -183,8 +187,12 @@ void CGame::InitGame()
 	mario = new CMario(100,100);
 	mario->SetPosition(10.0f, 100.0f);
 	Load(L"mario-sample.txt");
-	input = new CInput(CLocator<IWindow>().Get()->GetHandleWindow(),keyHandler);
 	//LoadResources();
+}
+
+int CGame::GetCurrentScene()
+{
+	return currentScene;
 }
 
 
@@ -213,7 +221,7 @@ int CGame::Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			input->ProcessKeyboard();
+			CLocator<IHandleInput>().Get()->ProcessKeyboard();
 			Update(dt);
 			Render();
 		}
@@ -225,13 +233,5 @@ int CGame::Run()
 
 }
 
-void CGame::SetKeyHandler(LPKEYEVENTHANDLER keyHandler)
-{
-	this->keyHandler = keyHandler;
-}
 
-bool CGame::IsKeyDown(int keyCode)
-{
-	return input->IsKeyDown(keyCode);
-}
 

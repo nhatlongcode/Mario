@@ -3,6 +3,7 @@
 CAnimationFrame::CAnimationFrame(LPSPRITE sprite, int time)
 {
 	this->sprite = sprite;
+	this->time = time;
 }
 
 DWORD CAnimationFrame::GetTime()

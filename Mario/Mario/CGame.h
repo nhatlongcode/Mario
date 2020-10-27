@@ -25,10 +25,9 @@ private:
 	void SwitchScene(int scene_id);
 
 	unordered_map<int, LPSCENE> scenes;
-	int current_scene;
+	int currentScene;
 
 	CMario* mario;
-	CInput* input;
 
 	float cam_x = 0.0f;
 	float cam_y = 0.0f;
@@ -42,13 +41,10 @@ public:
 	~CGame();
 	void InitGame();
 	void SetCamPos(float x, float y) { cam_x = x; cam_y = y; }
+	int GetCurrentScene();
 
 	int Run();
 	int GetScreenWidth() { return screen_width; }
 	int GetScreenHeight() { return screen_height; }
-
-	void SetKeyHandler(LPKEYEVENTHANDLER keyHandler);
-
-	bool IsKeyDown(int keyCode);
 };
 

@@ -6,9 +6,8 @@ bool CInput::IsKeyDown(int KeyCode)
 	return (keyStates[KeyCode] & 0x80) > 0;
 }
 
-CInput::CInput(HWND hWnd, LPKEYEVENTHANDLER keyHandler)
+CInput::CInput(HWND hWnd)
 {
-	this->keyHandler = keyHandler;
 	HRESULT hr = DirectInput8Create
 		(
 			(HINSTANCE)GetWindowLong(hWnd, GWL_HINSTANCE),
@@ -72,6 +71,11 @@ CInput::CInput(HWND hWnd, LPKEYEVENTHANDLER keyHandler)
 
 
 	DebugOut(L"[INFO] Keyboard has been initialized successfully\n");
+}
+
+void CInput::SetKeyHandler(LPKEYEVENTHANDLER keyHandler)
+{
+	this->keyHandler = keyHandler;
 }
 
 void CInput::ProcessKeyboard()

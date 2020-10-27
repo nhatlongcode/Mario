@@ -3,10 +3,10 @@
 #include "MarioDefines.h"
 #include "CGameObject.h"
 #include "CMario.h"
-#include "CKeyEventHandler.h"
+#include "IHandleInput.h"
 #include <dinput.h>
 
-class CInput
+class CInput : public IHandleInput
 {
 private:
 	LPDIRECTINPUT8       di;		// The DirectInput object         
@@ -19,7 +19,8 @@ private:
 
 	CMario* mario;
 public:
-	CInput(HWND hWnd, LPKEYEVENTHANDLER keyHandler);
+	CInput(HWND hWnd);
+	void SetKeyHandler(LPKEYEVENTHANDLER keyHandler);
 	void ProcessKeyboard();
 	bool IsKeyDown(int KeyCode);
 };

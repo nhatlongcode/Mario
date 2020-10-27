@@ -17,7 +17,7 @@ void CAnimation::Add(int spriteId, DWORD time)
 	frames.push_back(frame);
 }
 
-void CAnimation::Render(float x, float y, int direction, int alpha)
+void CAnimation::Render(float x, float y, int direction, float speed, int alpha)
 {
 	DWORD now = GetTickCount();
 	if (currentFrame == -1)
@@ -28,6 +28,8 @@ void CAnimation::Render(float x, float y, int direction, int alpha)
 	else
 	{
 		DWORD t = frames[currentFrame]->GetTime();
+		t = t / speed;
+		//DebugOut(L"%ld",t);
 		if (now - lastFrameTime > t)
 		{
 			currentFrame++;

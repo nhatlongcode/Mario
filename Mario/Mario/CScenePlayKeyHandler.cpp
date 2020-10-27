@@ -2,8 +2,15 @@
 #include "CMario.h"
 #include "CScenePlay.h"
 
+bool CScenePlayKeyHandler::IsKeyDown(int keyCode, BYTE* keyStates)
+{
+	return (keyStates[keyCode] & 0x80) > 0;
+}
+
 void CScenePlayKeyHandler::KeyState(BYTE* states)
 {
+	if (IsKeyDown(DIK_A, states)) DebugOut(L"HOLD A\n");
+	/*//
 	CGame* game = CGame::Instance();
 	CMario* mario = ((CScenePlay*)scence)->GetPlayer();
 
@@ -15,10 +22,13 @@ void CScenePlayKeyHandler::KeyState(BYTE* states)
 		mario->SetState(MARIO_STATE_WALKING_LEFT);
 	else
 		mario->SetState(MARIO_STATE_IDLE);
+	//*/
 }
 
 void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 {
+	if (KeyCode == DIK_X) DebugOut(L"PUSH A\n");
+	/*//
 	CMario* mario = ((CScenePlay*)scence)->GetPlayer();
 	switch (KeyCode)
 	{
@@ -29,4 +39,9 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 		mario->Reset();
 		break;
 	}
+	//*/
+}
+
+void CScenePlayKeyHandler::OnKeyUp(int KeyCode)
+{
 }

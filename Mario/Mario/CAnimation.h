@@ -4,6 +4,7 @@
 #include "CLocator.h"
 class CAnimation
 {
+private:
 	DWORD lastFrameTime;
 	int currentFrame;
 	int defaultTime;
@@ -12,7 +13,7 @@ public:
 	CAnimation(int defaultTime = 100) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(int spriteId, DWORD time = 0);
 
-	void Render(float x, float y, int direction = DIRECTION_RIGHT, int alpha = 255);
+	void Render(float x, float y, int direction = DIRECTION_RIGHT, float speed = 1.0f, int alpha = 255);
 };
 typedef CAnimation* LPANIMATION;
 typedef vector<LPANIMATION> CAnimSet;
