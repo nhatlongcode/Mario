@@ -40,6 +40,8 @@ public:
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetSpeed(float& vx, float& vy) { vx = this->vx; vy = this->vy; }
 	void AddSpeed(float vx, float vy) { this->vx += vx; this->vy += vy; }
+	void SetSpeedX(float vx);
+	void SetSpeedY(float vy);
 
 	void AddAnimation(int aniId);
 	void SetAnimationSet(int animSetID);

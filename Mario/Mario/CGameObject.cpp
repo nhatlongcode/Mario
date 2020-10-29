@@ -27,6 +27,16 @@ CGameObject::CGameObject()
 	x = y = 0;
 }
 
+void CGameObject::SetSpeedX(float vx)
+{
+	this->vx = vx;
+}
+
+void CGameObject::SetSpeedY(float vy)
+{
+	this->vy = vy;
+}
+
 void CGameObject::AddAnimation(int aniId)
 {
 	LPANIMATION anim = CLocator<IAnimsManager>().Get()->Get(aniId);
@@ -43,7 +53,7 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	dx = vx * dt;
 	dy = vy * dt;
-
+	//DebugOut(L"%f")
 	x += dx;
 	y += dy;
 }

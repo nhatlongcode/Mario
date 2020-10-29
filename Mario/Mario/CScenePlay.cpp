@@ -198,7 +198,7 @@ void CScenePlay::Load()
 	//CTextures::GetInstance()->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
 
 	marioController.Init();
-	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 300.0f);
+	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
 	//objects.push_back(player);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 
