@@ -120,8 +120,14 @@ void CInput::ProcessKeyboard()
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
 		if ((KeyState & 0x80) > 0)
+		{
 			keyHandler->OnKeyDown(KeyCode);
+
+		}
 		else
+		{
 		    keyHandler->OnKeyUp(KeyCode);
+
+		}
 	}
 }

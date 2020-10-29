@@ -6,7 +6,7 @@ void CGoomba::GetBoundingBox(float& left, float& top, float& right, float& botto
 	top = y;
 	right = x + GOOMBA_BBOX_WIDTH;
 
-	if (currentState == GOOMBA_STATE_DIE)
+	if (state == GOOMBA_STATE_DIE)
 		bottom = y + GOOMBA_BBOX_HEIGHT_DIE;
 	else
 		bottom = y + GOOMBA_BBOX_HEIGHT;
@@ -35,7 +35,7 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void CGoomba::Render()
 {
 	int ani = GOOMBA_ANI_WALKING;
-	if (currentState == GOOMBA_STATE_DIE) {
+	if (state == GOOMBA_STATE_DIE) {
 		ani = GOOMBA_ANI_DIE;
 	}
 
@@ -43,6 +43,7 @@ void CGoomba::Render()
 
 	//RenderBoundingBox();
 }
+
 
 CGoomba::CGoomba()
 {

@@ -152,23 +152,28 @@
     <ClCompile Include="CAnimationFrame.cpp" />
     <ClCompile Include="CAnimationSetsManager.cpp" />
     <ClCompile Include="CAnimationsManager.cpp" />
+    <ClCompile Include="CBigMario.cpp" />
     <ClCompile Include="CBrick.cpp" />
     <ClCompile Include="CDirectX.cpp" />
+    <ClCompile Include="CFireMario.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGoomba.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CKeyEventHandler.cpp" />
     <ClCompile Include="CLocator.cpp" />
+    <ClCompile Include="CRaccoonMario.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CScenePlay.cpp" />
     <ClCompile Include="CScenePlayKeyHandler.cpp" />
+    <ClCompile Include="CSmallMario.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpritesManager.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CMario.cpp" />
+    <ClCompile Include="MarioController.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,18 +181,22 @@
     <ClInclude Include="CAnimationFrame.h" />
     <ClInclude Include="CAnimationSetsManager.h" />
     <ClInclude Include="CAnimationsManager.h" />
+    <ClInclude Include="CBigMario.h" />
     <ClInclude Include="CBrick.h" />
     <ClInclude Include="CDirectX.h" />
+    <ClInclude Include="CFireMario.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGoomba.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CKeyEventHandler.h" />
     <ClInclude Include="CLocator.h" />
+    <ClInclude Include="CRaccoonMario.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneKeyHandler.h" />
     <ClInclude Include="CScenePlay.h" />
     <ClInclude Include="CScenePlayKeyHandler.h" />
+    <ClInclude Include="CSmallMario.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpritesManager.h" />
     <ClInclude Include="CTexturesManager.h" />
@@ -200,6 +209,7 @@
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />
     <ClInclude Include="IWindow.h" />
+    <ClInclude Include="MarioController.h" />
     <ClInclude Include="MarioDefines.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

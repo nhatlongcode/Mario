@@ -2,16 +2,21 @@
 #include "CGameObject.h"
 class CMario : public CGameObject
 {
-private:
+protected:
 	int level;
 	float startX;			// initial position of Mario at scene
 	float startY;
 public:
-	CMario(float startX, float startY);
-	void Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects = NULL);
-	void Render();
+	CMario();
 	void SetState(int state);
 	void SetLevel(int level);
+
+	virtual void Init();
+	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects = NULL);
+	virtual void Render();
+	virtual void OnKeyDown(int keyCode);
+	virtual void OnKeyUp(int keyCode);
+
 	void Reset();
 };
 

@@ -2,11 +2,11 @@
 #include "CGame.h"
 #include "CScene.h"
 #include "CMario.h"
+#include "MarioController.h"
 
 class CScenePlay : public CScene
 {
-protected:
-	CMario* player;					// A play scene has to have player, right? 
+protected:				// A play scene has to have player, right? 
 
 	vector<LPGAMEOBJECT> objects;
 
@@ -24,8 +24,6 @@ public:
 	void Update(DWORD dt);
 	void Render();
 	void Unload();
-
-	CMario* GetPlayer() { return player; }
 
 	//friend class CPlayScenceKeyHandler;
 };

@@ -23,7 +23,7 @@ protected:
 	float dy;
 	
 	int nx;
-	int currentState;
+	int state;
 
 	LPANIMSET animSet;
 
@@ -34,13 +34,17 @@ public:
 	void SetPosition(float x, float y);
 	void GetPosition(float& x, float& y) { x = this->x; y = this->y; }
 
+	void SetDirection(int nx);
+	void GetDirection(int& nx) { nx = this->nx; }
+
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetSpeed(float& vx, float& vy) { vx = this->vx; vy = this->vy; }
+	void AddSpeed(float vx, float vy) { this->vx += vx; this->vy += vy; }
 
 	void AddAnimation(int aniId);
-	void SetAnimationSet(LPANIMSET animSet);
+	void SetAnimationSet(int animSetID);
 
-	int GetState();
+	void GetState(int& state) { state = this->state; }
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render() = 0;

@@ -76,14 +76,14 @@ void CScenePlay::_ParseSection_ANIMATION_SETS(string line)
 
 	LPANIMSET set = new CAnimSet();
 
-	LPANIMATIONS anim = CLocator<IAnimsManager>().Get();
+	LPANIMATIONS anims = CLocator<IAnimsManager>().Get();
 
 	for (int i = 1; i < tokens.size(); i++)
 	{
 		int ani_id = atoi(tokens[i].c_str());
 
-		LPANIMATION ani = anim->Get(ani_id);
-		set->push_back(ani);
+		LPANIMATION anim = anims->Get(ani_id);
+		set->push_back(anim);
 	}
 
 	CLocator<IAnimSetsManager>().Get()->Add(ani_set_id, set);
@@ -115,7 +115,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 			DebugOut(L"[ERROR] MARIO object was created before!\n");
 			return;
 		}
-		obj = new CMario(x, y);
+		obj = new CMario();
 		player = (CMario*)obj;
 
 		DebugOut(L"[INFO] Player object created!\n");
@@ -139,9 +139,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 	// General object setup
 	obj->SetPosition(x, y);
 
-	LPANIMSET ani_set = animSets->Get(ani_set_id);
-
-	obj->SetAnimationSet(ani_set);
+	obj->SetAnimationSet(ani_set_id);
 	objects.push_back(obj);
 }
 
@@ -199,6 +197,11 @@ void CScenePlay::Load()
 	//CLocator
 	//CTextures::GetInstance()->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
 
+	marioController.Init();
+	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 300.0f);
+	//objects.push_back(player);
+	if (player == NULL) DebugOut(L"PLAYER NULL");
+
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 }
 
@@ -216,6 +219,8 @@ void CScenePlay::Update(DWORD dt)
 	}
 	if (player == NULL) return;
 
+	player->Update(dt, &coObjects);
+
 	// Update camera to follow mario
 	float cx, cy;
 	player->GetPosition(cx, cy);
@@ -229,6 +234,7 @@ void CScenePlay::Render()
 {
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	player->Render();
 }
 
 void CScenePlay::Unload()

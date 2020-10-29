@@ -129,6 +129,21 @@
     <ClCompile Include="CBrick.cpp">
       <Filter>Framework\Brick</Filter>
     </ClCompile>
+    <ClCompile Include="CSmallMario.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioController.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CBigMario.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CFireMario.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CRaccoonMario.cpp">
+      <Filter>Framework\Mario</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -220,6 +235,21 @@
     </ClInclude>
     <ClInclude Include="IHandleInput.h">
       <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmallMario.h">
+      <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioController.h">
+      <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CBigMario.h">
+      <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CFireMario.h">
+      <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CRaccoonMario.h">
+      <Filter>Framework\Mario</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

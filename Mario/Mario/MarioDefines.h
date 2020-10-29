@@ -71,28 +71,28 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MARIO_TYPE_SMALL			10000
 #define MARIO_TYPE_SUPER			11000
 #define MARIO_TYPE_FIRE				12000
-#define MARIO_TYPE_RACOON			13000
+#define MARIO_TYPE_RACCOON			13000
 #define MARIO_TYPE_HAMMER			14000
 #define MARIO_TYPE_FROG				15000
 
 
-#define MARIO_ANI_ICON		0
-#define MARIO_ANI_IDLE		1
-#define MARIO_ANI_WALK		2
-#define MARIO_ANI_SKID		3
-#define MARIO_ANI_ATK		4
-#define MARIO_ANI_JUMP		5
-#define MARIO_ANI_FALL		6
-#define MARIO_ANI_RUN		7
-#define MARIO_ANI_FLY		8
-#define MARIO_ANI_CRUNCH	9
-#define MARIO_ANI_SLIDE		10
-#define MARIO_ANI_PIPE		11
-#define MARIO_ANI_BRING		12
-#define MARIO_ANI_KICK		13
-#define MARIO_ANI_DIVE		14
-#define MARIO_ANI_SWIM		15
-#define MARIO_ANI_CLIMB		16
+#define MARIO_STATE_ICON		0
+#define MARIO_STATE_IDLE		1
+#define MARIO_STATE_WALK		2
+#define MARIO_STATE_SKID		3
+#define MARIO_STATE_ATK			4
+#define MARIO_STATE_JUMP		5
+#define MARIO_STATE_FALL		6
+#define MARIO_STATE_RUN			7
+#define MARIO_STATE_FLY			8
+#define MARIO_STATE_CRUNCH		9
+#define MARIO_STATE_SLIDE		10
+#define MARIO_STATE_PIPE		11
+#define MARIO_STATE_BRING		12
+#define MARIO_STATE_KICK		13
+#define MARIO_STATE_DIVE		14
+#define MARIO_STATE_SWIM		15
+#define MARIO_STATE_CLIMB		16
 
 
 // GOOMBA ---------------------------------------------------

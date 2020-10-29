@@ -1,4 +1,7 @@
 #include "CGameObject.h"
+#include "CLocator.h"
+#include "IAnimSetsManager.h"
+
 
 void CGameObject::SetPosition(float x, float y)
 {
@@ -6,9 +9,14 @@ void CGameObject::SetPosition(float x, float y)
 	this->y = y;
 }
 
+void CGameObject::SetDirection(int nx)
+{
+	this->nx = nx;
+}
+
 void CGameObject::SetState(int state)
 {
-	this->currentState = state;
+	this->state = state;
 }
 
 
@@ -25,15 +33,11 @@ void CGameObject::AddAnimation(int aniId)
 	animSet->push_back(anim);
 }
 
-void CGameObject::SetAnimationSet(LPANIMSET animSet)
+void CGameObject::SetAnimationSet(int animSetID)
 {
-	this->animSet = animSet;
+	this->animSet = CLocator<IAnimSetsManager>().Get()->Get(animSetID);
 }
 
-int CGameObject::GetState()
-{
-	return currentState;
-}
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {

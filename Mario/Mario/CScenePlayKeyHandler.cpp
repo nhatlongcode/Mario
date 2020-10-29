@@ -27,7 +27,34 @@ void CScenePlayKeyHandler::KeyState(BYTE* states)
 
 void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 {
-	if (KeyCode == DIK_X) DebugOut(L"PUSH A\n");
+	DebugOut(L"SCENE KEY DOWN: %d\n", KeyCode);
+	scene->GetPlayer()->OnKeyDown(KeyCode);
+
+	switch (KeyCode)
+	{
+		case DIK_1:
+		{
+			scene->SetPlayer(MARIO_TYPE_SMALL, 300.0f, 300.0f);
+			break;
+		}
+		case DIK_2:
+		{
+			scene->SetPlayer(MARIO_TYPE_SUPER, 300.0f, 300.0f);
+			break;
+		}
+		case DIK_3:
+		{
+			scene->SetPlayer(MARIO_TYPE_FIRE, 300.0f, 300.0f);
+			break;
+		}
+		case DIK_4:
+		{
+			scene->SetPlayer(MARIO_TYPE_RACCOON, 300.0f, 300.0f);
+			break;
+		}
+	}
+
+
 	/*//
 	CMario* mario = ((CScenePlay*)scence)->GetPlayer();
 	switch (KeyCode)
@@ -44,8 +71,6 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 
 void CScenePlayKeyHandler::OnKeyUp(int KeyCode)
 {
-	CScenePlay* scenePlay = (CScenePlay*)scene;
-	CMario* mario = scenePlay->GetPlayer();
-
-	mario->SetSpeed(0, 0);
+	DebugOut(L"SCENE KEY UP: %d\n", KeyCode);
+	scene->GetPlayer()->OnKeyUp(KeyCode);
 }
