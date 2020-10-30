@@ -9,6 +9,7 @@ protected:
 	bool isFalling;
 	bool isRunning;
 	bool isHighJump;
+	bool isFinishHighJump;
 	float startX;			// initial position of Mario at scene
 	float startY;
 	float force;

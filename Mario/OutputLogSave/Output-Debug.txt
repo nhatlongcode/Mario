@@ -1,0 +1,878 @@
+﻿[INFO] Init window complete
+[INFO] InitGame is done
+[INFO] Keyboard has been initialized successfully
+[INFO] Start loading game file : mario-sample.txt
+[INFO] Loading game file : mario-sample.txt has been loaded successfully
+[INFO] Switching to scene 1
+[INFO] Scene myScene.txt unloaded! 
+[INFO] Switching to scene KeyEventHandler
+[INFO] Start loading scene resources from : myScene.txt 
+[INFO] Texture loaded Ok: textures\mario3.png 
+[INFO] Texture loaded Ok: textures\misc.png 
+[INFO] Texture loaded Ok: textures\enemies.png 
+[INFO] Texture loaded Ok: textures\map.png 
+SPRITES ID: 10000 ADDED 
+SPRITES ID: 10001 ADDED 
+SPRITES ID: 10002 ADDED 
+SPRITES ID: 10003 ADDED 
+SPRITES ID: 10004 ADDED 
+SPRITES ID: 10005 ADDED 
+SPRITES ID: 10006 ADDED 
+SPRITES ID: 10007 ADDED 
+SPRITES ID: 10008 ADDED 
+SPRITES ID: 10009 ADDED 
+SPRITES ID: 10010 ADDED 
+SPRITES ID: 10011 ADDED 
+SPRITES ID: 10012 ADDED 
+SPRITES ID: 10013 ADDED 
+SPRITES ID: 10014 ADDED 
+SPRITES ID: 10015 ADDED 
+SPRITES ID: 10016 ADDED 
+SPRITES ID: 10017 ADDED 
+SPRITES ID: 10018 ADDED 
+SPRITES ID: 10019 ADDED 
+SPRITES ID: 10020 ADDED 
+SPRITES ID: 10021 ADDED 
+SPRITES ID: 10022 ADDED 
+SPRITES ID: 10023 ADDED 
+SPRITES ID: 10024 ADDED 
+SPRITES ID: 10025 ADDED 
+SPRITES ID: 10026 ADDED 
+SPRITES ID: 10027 ADDED 
+SPRITES ID: 10028 ADDED 
+SPRITES ID: 10029 ADDED 
+SPRITES ID: 10030 ADDED 
+SPRITES ID: 10031 ADDED 
+SPRITES ID: 10032 ADDED 
+SPRITES ID: 10033 ADDED 
+SPRITES ID: 10034 ADDED 
+SPRITES ID: 10035 ADDED 
+SPRITES ID: 10036 ADDED 
+SPRITES ID: 10037 ADDED 
+SPRITES ID: 10038 ADDED 
+SPRITES ID: 10039 ADDED 
+SPRITES ID: 10040 ADDED 
+SPRITES ID: 10041 ADDED 
+SPRITES ID: 10042 ADDED 
+SPRITES ID: 10043 ADDED 
+SPRITES ID: 10044 ADDED 
+SPRITES ID: 10045 ADDED 
+SPRITES ID: 10046 ADDED 
+SPRITES ID: 10047 ADDED 
+SPRITES ID: 10048 ADDED 
+SPRITES ID: 10049 ADDED 
+SPRITES ID: 10050 ADDED 
+SPRITES ID: 10051 ADDED 
+SPRITES ID: 10052 ADDED 
+SPRITES ID: 10053 ADDED 
+SPRITES ID: 10054 ADDED 
+SPRITES ID: 10055 ADDED 
+SPRITES ID: 10056 ADDED 
+SPRITES ID: 10057 ADDED 
+SPRITES ID: 10058 ADDED 
+SPRITES ID: 10059 ADDED 
+SPRITES ID: 10060 ADDED 
+SPRITES ID: 10061 ADDED 
+SPRITES ID: 10062 ADDED 
+SPRITES ID: 10063 ADDED 
+SPRITES ID: 10064 ADDED 
+SPRITES ID: 10065 ADDED 
+SPRITES ID: 10066 ADDED 
+SPRITES ID: 10067 ADDED 
+SPRITES ID: 10068 ADDED 
+SPRITES ID: 10069 ADDED 
+SPRITES ID: 10070 ADDED 
+SPRITES ID: 10071 ADDED 
+SPRITES ID: 10072 ADDED 
+SPRITES ID: 10073 ADDED 
+SPRITES ID: 10074 ADDED 
+SPRITES ID: 10075 ADDED 
+SPRITES ID: 10076 ADDED 
+SPRITES ID: 10077 ADDED 
+SPRITES ID: 10078 ADDED 
+SPRITES ID: 10079 ADDED 
+SPRITES ID: 10080 ADDED 
+SPRITES ID: 10081 ADDED 
+SPRITES ID: 10082 ADDED 
+SPRITES ID: 10083 ADDED 
+SPRITES ID: 10084 ADDED 
+SPRITES ID: 10085 ADDED 
+SPRITES ID: 10086 ADDED 
+SPRITES ID: 10087 ADDED 
+SPRITES ID: 10088 ADDED 
+SPRITES ID: 10089 ADDED 
+SPRITES ID: 10090 ADDED 
+SPRITES ID: 10091 ADDED 
+SPRITES ID: 10092 ADDED 
+SPRITES ID: 10093 ADDED 
+SPRITES ID: 10094 ADDED 
+SPRITES ID: 10095 ADDED 
+SPRITES ID: 10096 ADDED 
+SPRITES ID: 10097 ADDED 
+SPRITES ID: 10098 ADDED 
+SPRITES ID: 10099 ADDED 
+SPRITES ID: 10100 ADDED 
+SPRITES ID: 10101 ADDED 
+SPRITES ID: 10102 ADDED 
+SPRITES ID: 10103 ADDED 
+SPRITES ID: 10104 ADDED 
+SPRITES ID: 10105 ADDED 
+SPRITES ID: 10106 ADDED 
+SPRITES ID: 10107 ADDED 
+SPRITES ID: 10108 ADDED 
+SPRITES ID: 10109 ADDED 
+SPRITES ID: 10110 ADDED 
+SPRITES ID: 10111 ADDED 
+ANIM ID: 10000 ADDED 
+ANIM ID: 10001 ADDED 
+ANIM ID: 10002 ADDED 
+ANIM ID: 10003 ADDED 
+ANIM ID: 10005 ADDED 
+ANIM ID: 10006 ADDED 
+ANIM ID: 10007 ADDED 
+ANIM ID: 10008 ADDED 
+ANIM ID: 10010 ADDED 
+ANIM ID: 10011 ADDED 
+ANIM ID: 10017 ADDED 
+ANIM ID: 10012 ADDED 
+ANIM ID: 10013 ADDED 
+ANIM ID: 10014 ADDED 
+ANIM ID: 10015 ADDED 
+ANIM ID: 10016 ADDED 
+ANIM ID: 11000 ADDED 
+ANIM ID: 11001 ADDED 
+ANIM ID: 11002 ADDED 
+ANIM ID: 11003 ADDED 
+ANIM ID: 11005 ADDED 
+ANIM ID: 11006 ADDED 
+ANIM ID: 11007 ADDED 
+ANIM ID: 11008 ADDED 
+ANIM ID: 11009 ADDED 
+ANIM ID: 11010 ADDED 
+ANIM ID: 11011 ADDED 
+ANIM ID: 11012 ADDED 
+ANIM ID: 11013 ADDED 
+ANIM ID: 11014 ADDED 
+ANIM ID: 11015 ADDED 
+ANIM ID: 11016 ADDED 
+ANIM ID: 12000 ADDED 
+ANIM ID: 12001 ADDED 
+ANIM ID: 12002 ADDED 
+ANIM ID: 12003 ADDED 
+ANIM ID: 12004 ADDED 
+ANIM ID: 12005 ADDED 
+ANIM ID: 12006 ADDED 
+ANIM ID: 12007 ADDED 
+ANIM ID: 12008 ADDED 
+ANIM ID: 12009 ADDED 
+ANIM ID: 12010 ADDED 
+ANIM ID: 12011 ADDED 
+ANIM ID: 12012 ADDED 
+ANIM ID: 12013 ADDED 
+ANIM ID: 12014 ADDED 
+ANIM ID: 12015 ADDED 
+ANIM ID: 12016 ADDED 
+ANIM ID: 13000 ADDED 
+ANIM ID: 13001 ADDED 
+ANIM ID: 13002 ADDED 
+ANIM ID: 13003 ADDED 
+ANIM ID: 13004 ADDED 
+ANIM ID: 13005 ADDED 
+ANIM ID: 13006 ADDED 
+ANIM ID: 13007 ADDED 
+ANIM ID: 13008 ADDED 
+ANIM ID: 13009 ADDED 
+ANIM ID: 13010 ADDED 
+ANIM ID: 13011 ADDED 
+ANIM ID: 13012 ADDED 
+ANIM ID: 13013 ADDED 
+ANIM ID: 13014 ADDED 
+ANIM ID: 13015 ADDED 
+ANIM ID: 13016 ADDED 
+Set to new mario ID: 10000
+[INFO] Done loading scene resources myScene.txt
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce -0.50
+LOLOLOLOLforce -1.00
+LOLOLOLOLforce -1.50
+LOLOLOLOLforce -2.00
+LOLOLOLOLforce -2.50
+LOLOLOLOLforce -3.00
+LOLOLOLOLforce -3.50
+LOLOLOLOLforce -4.00
+LOLOLOLOLforce -4.50
+LOLOLOLOLforce -5.00
+LOLOLOLOLforce -5.50
+LOLOLOLOLforce -6.00
+LOLOLOLOLforce -6.50
+LOLOLOLOLforce -7.00
+LOLOLOLOLforce -7.50
+LOLOLOLOLforce -8.00
+LOLOLOLOLforce -8.50
+force -8.50
+force -8.50
+force -8.50
+force -8.50
+force -8.50
+force -8.50
+force -8.50
+force -8.50
+force -8.50
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce -0.50
+LOLOLOLOLforce -1.00
+LOLOLOLOLforce -1.50
+LOLOLOLOLforce -2.00
+LOLOLOLOLforce -2.50
+LOLOLOLOLforce -3.00
+LOLOLOLOLforce -3.50
+LOLOLOLOLforce -4.00
+LOLOLOLOLforce -4.50
+LOLOLOLOLforce -5.00
+LOLOLOLOLforce -5.50
+LOLOLOLOLforce -6.00
+LOLOLOLOLforce -6.50
+LOLOLOLOLforce -7.00
+LOLOLOLOLforce -7.50
+LOLOLOLOLforce -8.00
+LOLOLOLOLforce -8.50
+LOLOLOLOLforce -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce -0.50
+LOLOLOLOLforce -1.00
+LOLOLOLOLforce -1.50
+LOLOLOLOLforce -2.00
+LOLOLOLOLforce -2.50
+LOLOLOLOLforce -3.00
+LOLOLOLOLforce -3.50
+LOLOLOLOLforce -4.00
+LOLOLOLOLforce -4.50
+LOLOLOLOLforce -5.00
+LOLOLOLOLforce -5.50
+LOLOLOLOLforce -6.00
+LOLOLOLOLforce -6.50
+LOLOLOLOLforce -7.00
+LOLOLOLOLforce -7.50
+LOLOLOLOLforce -8.00
+LOLOLOLOLforce -8.50
+LOLOLOLOLforce -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce -0.50
+LOLOLOLOLforce -1.00
+LOLOLOLOLforce -1.50
+LOLOLOLOLforce -2.00
+LOLOLOLOLforce -2.50
+LOLOLOLOLforce -3.00
+LOLOLOLOLforce -3.50
+LOLOLOLOLforce -4.00
+LOLOLOLOLforce -4.50
+LOLOLOLOLforce -5.00
+LOLOLOLOLforce -5.50
+LOLOLOLOLforce -6.00
+LOLOLOLOLforce -6.50
+LOLOLOLOLforce -7.00
+LOLOLOLOLforce -7.50
+LOLOLOLOLforce -8.00
+LOLOLOLOLforce -8.50
+LOLOLOLOLforce -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force -9.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+LOLOLOLOLforce 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00
+force 0.00

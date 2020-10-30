@@ -8,6 +8,7 @@ CMario::CMario()
 	state = MARIO_STATE_ATK;
 	isGrounded = false;
 	isHighJump = false;
+	isFinishHighJump = true;
 	force = 0.0f;
 }
 
@@ -36,7 +37,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 		SetSpeedX(0);
 		if (isGrounded && !isJumping && !isFalling) SetState(MARIO_STATE_IDLE);
 	}
-//-----------------------------------------------------------------------------------------------
+
 	if (input->IsKeyDown(DIK_X) && !isFalling && isGrounded)
 	{
 		SetSpeedY(-0.8f); //jump short
@@ -44,7 +45,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 		isJumping = true;
 		SetState(MARIO_STATE_JUMP);
 	}
-	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -9.0f && (isGrounded || isHighJump))
+	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -9.0f && (isGrounded || isHighJump) && isFinishHighJump)
 	{
 		SetSpeedY(-0.5f);
 		force += vy;
@@ -52,8 +53,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 		isGrounded = false;
 		isHighJump = true;
 		SetState(MARIO_STATE_JUMP);
+		DebugOut(L"LOLOLOLOL");
 	}
-// --------------------------------------------------------------------------------------------------
+
+
+
 	if (!isGrounded)
 	{
 		if (vy > 0)
@@ -63,18 +67,31 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 			SetState(MARIO_STATE_FALL);
 		}
 	}
+	else
+	{
+		if (!input->IsKeyDown(DIK_S)) isFinishHighJump = true;
+		else isFinishHighJump = false;
+	}
+
+
 
 	vy += MARIO_GRAVITY;
 	
-	if (y > 300)
+	if (y > 300) // fall down to ground
 	{
+
 		isGrounded = true;
 		isFalling = false;
 		isJumping = false;
+		force = 0.0f;
+		isHighJump = false;
 		vy = 0; y = 300.0f;
 	}
 	CGameObject::Update(dt);
-	DebugOut(L"%d\n", isGrounded);
+	//DebugOut(L"isFinishHighJump %d\n", isFinishHighJump);
+	//DebugOut(L"isHighJump %d\n", isHighJump);
+	//DebugOut(L"isGrounded %d\n", isGrounded);
+	DebugOut(L"force %.2f\n", force);
 }
 
 
@@ -96,16 +113,16 @@ void CMario::SetLevel(int level)
 
 void CMario::OnKeyDown(int keyCode)
 {
-	
+	if (keyCode == DIK_S)
+	{
+		isHighJump = false;
+	}
+
 }
 
 void CMario::OnKeyUp(int keyCode)
 {
-	if (keyCode == DIK_S)
-	{
-		force = 0.0f;
-		isHighJump = false;
-	}
+
 }
 
 void CMario::Reset()
