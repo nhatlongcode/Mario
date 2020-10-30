@@ -19,64 +19,6 @@ void CMario::Init()
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	auto input = CLocator<IHandleInput>().Get();
-
-	if (input->IsKeyDown(DIK_RIGHT))
-	{
-		nx = DIRECTION_RIGHT;
-		SetSpeedX(0.5f);
-		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
-	}
-	else if (input->IsKeyDown(DIK_LEFT))
-	{
-		nx = DIRECTION_LEFT;
-		SetSpeedX(-0.5f);
-		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
-	}
-	else
-	{
-		SetSpeedX(0);
-		if (isGrounded && !isJumping && !isFalling) SetState(MARIO_STATE_IDLE);
-	}
-
-	if (input->IsKeyDown(DIK_X) && !isFalling && isGrounded)
-	{
-		SetSpeedY(-0.8f); //jump short
-		isGrounded = false;
-		isJumping = true;
-		SetState(MARIO_STATE_JUMP);
-	}
-	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -9.0f && (isGrounded || isHighJump) && isFinishHighJump)
-	{
-		SetSpeedY(-0.5f);
-		force += vy;
-		isJumping = true;
-		isGrounded = false;
-		isHighJump = true;
-		SetState(MARIO_STATE_JUMP);
-		DebugOut(L"LOLOLOLOL");
-	}
-
-
-
-	if (!isGrounded)
-	{
-		if (vy > 0)
-		{
-			isFalling = true;
-			force = 0;
-			SetState(MARIO_STATE_FALL);
-		}
-	}
-	else
-	{
-		if (!input->IsKeyDown(DIK_S)) isFinishHighJump = true;
-		else isFinishHighJump = false;
-	}
-
-
-
-	vy += MARIO_GRAVITY;
-	
 	if (y > 300) // fall down to ground
 	{
 
@@ -87,6 +29,30 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 		isHighJump = false;
 		vy = 0; y = 300.0f;
 	}
+
+	HandleMovement();
+	HandleJump();
+
+	if (!isGrounded)
+	{
+		if (vy > 0)
+		{
+			isFalling = true;
+			isJumping = false;
+			force = 0;
+			SetState(MARIO_STATE_FALL);
+		}
+	}
+	else
+	{
+		if (!input->IsKeyDown(DIK_S)) isFinishHighJump = true;
+	}
+
+
+
+	vy += MARIO_GRAVITY;
+	
+
 	CGameObject::Update(dt);
 	//DebugOut(L"isFinishHighJump %d\n", isFinishHighJump);
 	//DebugOut(L"isHighJump %d\n", isHighJump);
@@ -113,16 +79,61 @@ void CMario::SetLevel(int level)
 
 void CMario::OnKeyDown(int keyCode)
 {
-	if (keyCode == DIK_S)
-	{
-		isHighJump = false;
-	}
+
 
 }
 
 void CMario::OnKeyUp(int keyCode)
 {
+	if (keyCode == DIK_S)
+	{
+		isFinishHighJump = true;
+	}
+}
 
+void CMario::HandleMovement()
+{
+	auto input = CLocator<IHandleInput>().Get();
+	if (input->IsKeyDown(DIK_RIGHT))
+	{
+		nx = DIRECTION_RIGHT;
+		SetSpeedX(0.19f);
+		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
+	}
+	else if (input->IsKeyDown(DIK_LEFT))
+	{
+		nx = DIRECTION_LEFT;
+		SetSpeedX(-0.19f);
+		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
+	}
+	else
+	{
+		SetSpeedX(0);
+		if (isGrounded && !isJumping && !isFalling) SetState(MARIO_STATE_IDLE);
+	}
+}
+
+void CMario::HandleJump()
+{
+	auto input = CLocator<IHandleInput>().Get();
+	if (input->IsKeyDown(DIK_X) && !isFalling && isGrounded)
+	{
+		SetSpeedY(-0.8f); //jump short
+		isGrounded = false;
+		isJumping = true;
+		SetState(MARIO_STATE_JUMP);
+	}
+	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -9.0f && (isGrounded || isHighJump) && (isFinishHighJump ^ isHighJump))
+	{
+		SetSpeedY(-0.5f);
+		force += vy;
+		isJumping = true;
+		isGrounded = false;
+		isFinishHighJump = false;
+		isHighJump = true;
+		SetState(MARIO_STATE_JUMP);
+		DebugOut(L"LOLOLOLOL");
+	}
 }
 
 void CMario::Reset()

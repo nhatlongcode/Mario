@@ -10,6 +10,7 @@ protected:
 	bool isRunning;
 	bool isHighJump;
 	bool isFinishHighJump;
+
 	float startX;			// initial position of Mario at scene
 	float startY;
 	float force;
@@ -24,7 +25,8 @@ public:
 	virtual void Render();
 	virtual void OnKeyDown(int keyCode);
 	virtual void OnKeyUp(int keyCode);
-
+	virtual void HandleMovement();
+	virtual void HandleJump();
 	//virtual void AttackAction() = 0;
 	//virtual void CrunchAction() = 0;
 
