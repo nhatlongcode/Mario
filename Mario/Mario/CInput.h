@@ -4,6 +4,7 @@
 #include "CGameObject.h"
 #include "CMario.h"
 #include "IHandleInput.h"
+#include "ICommand.h"
 #include <dinput.h>
 
 class CInput : public IHandleInput
@@ -18,9 +19,17 @@ private:
 	LPKEYEVENTHANDLER keyHandler;
 
 	CMario* mario;
+
+	ICommand* jumpShortCommand;
+	ICommand* idleCommand;
+	ICommand* walkLeftCommand;
+	ICommand* walkRightCommand;
+
 public:
 	CInput(HWND hWnd);
 	void SetKeyHandler(LPKEYEVENTHANDLER keyHandler);
+	ICommand* HandleInput();
+	void InitCommand();
 	void ProcessKeyboard();
 	bool IsKeyDown(int KeyCode);
 };

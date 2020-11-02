@@ -27,7 +27,7 @@ void CScenePlayKeyHandler::KeyState(BYTE* states)
 
 void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 {
-	scene->GetPlayer()->OnKeyDown(KeyCode);
+	//scene->GetPlayer()->OnKeyDown(KeyCode);
 
 	switch (KeyCode)
 	{
@@ -70,5 +70,5 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 
 void CScenePlayKeyHandler::OnKeyUp(int KeyCode)
 {
-	scene->GetPlayer()->OnKeyUp(KeyCode);
+	//scene->GetPlayer()->OnKeyUp(KeyCode);
 }

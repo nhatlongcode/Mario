@@ -1,5 +1,7 @@
 #include "CInput.h"
-
+#include "JumpShortCommand.h"
+#include "IdleCommand.h"
+#include "WalkCommand.h"
 
 bool CInput::IsKeyDown(int KeyCode)
 {
@@ -69,13 +71,40 @@ CInput::CInput(HWND hWnd)
 		return;
 	}
 
-
+	InitCommand();
 	DebugOut(L"[INFO] Keyboard has been initialized successfully\n");
 }
 
 void CInput::SetKeyHandler(LPKEYEVENTHANDLER keyHandler)
 {
 	this->keyHandler = keyHandler;
+}
+
+ICommand* CInput::HandleInput()
+{
+	if (IsKeyDown(DIK_RIGHT))
+	{
+		return walkRightCommand;
+	}
+	else if (IsKeyDown(DIK_LEFT))
+	{
+		return walkLeftCommand;
+	}
+
+	if (IsKeyDown(DIK_UP))
+	{
+		return jumpShortCommand;
+	}
+	else return NULL;
+}
+
+void CInput::InitCommand()
+{
+	jumpShortCommand = new JumpShortCommand();
+	idleCommand = new IdleCommand();
+	walkRightCommand = new WalkCommand(DIRECTION_RIGHT);
+	walkLeftCommand = new WalkCommand(DIRECTION_LEFT);
+
 }
 
 void CInput::ProcessKeyboard()

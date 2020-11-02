@@ -27,6 +27,10 @@ public:
 	virtual void OnKeyUp(int keyCode);
 	virtual void HandleMovement();
 	virtual void HandleJump();
+
+	void ShortJump();
+	void Idle();
+	void Walk(int direction);
 	//virtual void AttackAction() = 0;
 	//virtual void CrunchAction() = 0;
 

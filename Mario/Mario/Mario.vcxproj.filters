@@ -9,56 +9,56 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Framework">
+    <Filter Include="MainGame">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Framework\Locator">
+    <Filter Include="MainGame\Locator">
       <UniqueIdentifier>{8d3bf9f1-4295-461f-b98c-b159a6422976}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Animation">
+    <Filter Include="MainGame\Animation">
       <UniqueIdentifier>{838c3b4d-a23b-4ddf-88cc-fb23a6bb65d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\GameObject">
+    <Filter Include="MainGame\GameObject">
       <UniqueIdentifier>{e6b8d7c7-2f40-4140-9571-0117c807e1cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\DirectX">
+    <Filter Include="MainGame\DirectX">
       <UniqueIdentifier>{55ed63de-6aaf-4771-95a2-737666aac9e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Game">
+    <Filter Include="MainGame\Game">
       <UniqueIdentifier>{01f77581-0f2f-41d0-b45f-96d77af74546}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Other">
+    <Filter Include="MainGame\Other">
       <UniqueIdentifier>{45117da6-d66b-4102-acbc-b17337fd1dc0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Window">
+    <Filter Include="MainGame\Window">
       <UniqueIdentifier>{76067ca8-3d8e-4e95-af90-ef25162e6fa2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Texture">
+    <Filter Include="MainGame\Texture">
       <UniqueIdentifier>{469e2c3e-4721-432e-a54f-072e5903b6b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Sprite">
+    <Filter Include="MainGame\Sprite">
       <UniqueIdentifier>{01c508dd-5dba-48d7-99a9-d90a0a2f0965}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Input">
+    <Filter Include="MainGame\Input">
       <UniqueIdentifier>{fe9cb3b3-4f9c-4153-82b5-64426afc0f9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Mario">
+    <Filter Include="MainGame\Mario">
       <UniqueIdentifier>{2502110c-a11f-4af9-8437-fc8cc6abd055}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scene">
+    <Filter Include="MainGame\Scene">
       <UniqueIdentifier>{bcdfd4d5-1817-4e79-a4c4-2c5bff0bfb8a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scene\CScenePlay">
+    <Filter Include="MainGame\Scene\CScenePlay">
       <UniqueIdentifier>{e56cb6e1-6871-484c-b3df-cf04a17920b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Goomba">
+    <Filter Include="MainGame\Goomba">
       <UniqueIdentifier>{95330f9c-0c02-43d9-9d39-2a109eeba799}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Brick">
+    <Filter Include="MainGame\Brick">
       <UniqueIdentifier>{aeacb753-5b79-4c69-b9f5-b9efab0e7245}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\NewFilter1">
+    <Filter Include="MainGame\Command">
       <UniqueIdentifier>{cc6c48c3-16a9-4718-9849-26920187c340}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -67,189 +67,210 @@
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="CSpritesManager.cpp">
-      <Filter>Framework\Sprite</Filter>
+      <Filter>MainGame\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="CSprite.cpp">
-      <Filter>Framework\Sprite</Filter>
+      <Filter>MainGame\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="CTexturesManager.cpp">
-      <Filter>Framework\Texture</Filter>
+      <Filter>MainGame\Texture</Filter>
     </ClCompile>
     <ClCompile Include="CAnimation.cpp">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CAnimationFrame.cpp">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CAnimationsManager.cpp">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CWindow.cpp">
-      <Filter>Framework\Window</Filter>
+      <Filter>MainGame\Window</Filter>
     </ClCompile>
     <ClCompile Include="CGameObject.cpp">
-      <Filter>Framework\GameObject</Filter>
+      <Filter>MainGame\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="CLocator.cpp">
-      <Filter>Framework\Locator</Filter>
+      <Filter>MainGame\Locator</Filter>
     </ClCompile>
     <ClCompile Include="CDirectX.cpp">
-      <Filter>Framework\DirectX</Filter>
+      <Filter>MainGame\DirectX</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp">
-      <Filter>Framework\Other</Filter>
+      <Filter>MainGame\Other</Filter>
     </ClCompile>
     <ClCompile Include="CGame.cpp">
-      <Filter>Framework\Game</Filter>
+      <Filter>MainGame\Game</Filter>
     </ClCompile>
     <ClCompile Include="CInput.cpp">
-      <Filter>Framework\Input</Filter>
+      <Filter>MainGame\Input</Filter>
     </ClCompile>
     <ClCompile Include="CMario.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClCompile>
     <ClCompile Include="CScene.cpp">
-      <Filter>Framework\Scene</Filter>
+      <Filter>MainGame\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CScenePlay.cpp">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>MainGame\Scene\CScenePlay</Filter>
     </ClCompile>
     <ClCompile Include="CScenePlayKeyHandler.cpp">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>MainGame\Scene\CScenePlay</Filter>
     </ClCompile>
     <ClCompile Include="CKeyEventHandler.cpp">
-      <Filter>Framework\Input</Filter>
+      <Filter>MainGame\Input</Filter>
     </ClCompile>
     <ClCompile Include="CGoomba.cpp">
-      <Filter>Framework\Goomba</Filter>
+      <Filter>MainGame\Goomba</Filter>
     </ClCompile>
     <ClCompile Include="CAnimationSetsManager.cpp">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CBrick.cpp">
-      <Filter>Framework\Brick</Filter>
+      <Filter>MainGame\Brick</Filter>
     </ClCompile>
     <ClCompile Include="CSmallMario.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClCompile>
     <ClCompile Include="MarioController.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClCompile>
     <ClCompile Include="CBigMario.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClCompile>
     <ClCompile Include="CFireMario.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClCompile>
     <ClCompile Include="CRaccoonMario.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpShortCommand.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleCommand.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="WalkCommand.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
-      <Filter>Framework\Locator</Filter>
+      <Filter>MainGame\Locator</Filter>
     </ClInclude>
     <ClInclude Include="CSpritesManager.h">
-      <Filter>Framework\Sprite</Filter>
+      <Filter>MainGame\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="CSprite.h">
-      <Filter>Framework\Sprite</Filter>
+      <Filter>MainGame\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="CTexturesManager.h">
-      <Filter>Framework\Texture</Filter>
+      <Filter>MainGame\Texture</Filter>
     </ClInclude>
     <ClInclude Include="CAnimation.h">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CAnimationFrame.h">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CAnimationsManager.h">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CWindow.h">
-      <Filter>Framework\Window</Filter>
+      <Filter>MainGame\Window</Filter>
     </ClInclude>
     <ClInclude Include="CGameObject.h">
-      <Filter>Framework\GameObject</Filter>
+      <Filter>MainGame\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="MarioDefines.h">
-      <Filter>Framework\Other</Filter>
+      <Filter>MainGame\Other</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
-      <Filter>Framework\Other</Filter>
+      <Filter>MainGame\Other</Filter>
     </ClInclude>
     <ClInclude Include="CDirectX.h">
-      <Filter>Framework\DirectX</Filter>
+      <Filter>MainGame\DirectX</Filter>
     </ClInclude>
     <ClInclude Include="CGame.h">
-      <Filter>Framework\Game</Filter>
+      <Filter>MainGame\Game</Filter>
     </ClInclude>
     <ClInclude Include="CInput.h">
-      <Filter>Framework\Input</Filter>
+      <Filter>MainGame\Input</Filter>
     </ClInclude>
     <ClInclude Include="CMario.h">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClInclude>
     <ClInclude Include="IAnimsManager.h">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClInclude>
     <ClInclude Include="ISpritesManager.h">
-      <Filter>Framework\Sprite</Filter>
+      <Filter>MainGame\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="ITexsManager.h">
-      <Filter>Framework\Texture</Filter>
+      <Filter>MainGame\Texture</Filter>
     </ClInclude>
     <ClInclude Include="IDirectX.h">
-      <Filter>Framework\DirectX</Filter>
+      <Filter>MainGame\DirectX</Filter>
     </ClInclude>
     <ClInclude Include="IWindow.h">
-      <Filter>Framework\Window</Filter>
+      <Filter>MainGame\Window</Filter>
     </ClInclude>
     <ClInclude Include="CScene.h">
-      <Filter>Framework\Scene</Filter>
+      <Filter>MainGame\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CScenePlay.h">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>MainGame\Scene\CScenePlay</Filter>
     </ClInclude>
     <ClInclude Include="CSceneKeyHandler.h">
-      <Filter>Framework\Scene</Filter>
+      <Filter>MainGame\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CKeyEventHandler.h">
-      <Filter>Framework\Input</Filter>
+      <Filter>MainGame\Input</Filter>
     </ClInclude>
     <ClInclude Include="CScenePlayKeyHandler.h">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>MainGame\Scene\CScenePlay</Filter>
     </ClInclude>
     <ClInclude Include="CAnimationSetsManager.h">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClInclude>
     <ClInclude Include="IAnimSetsManager.h">
-      <Filter>Framework\Animation</Filter>
+      <Filter>MainGame\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CGoomba.h">
-      <Filter>Framework\Goomba</Filter>
+      <Filter>MainGame\Goomba</Filter>
     </ClInclude>
     <ClInclude Include="CBrick.h">
-      <Filter>Framework\Brick</Filter>
+      <Filter>MainGame\Brick</Filter>
     </ClInclude>
     <ClInclude Include="IHandleInput.h">
-      <Filter>Framework\Input</Filter>
+      <Filter>MainGame\Input</Filter>
     </ClInclude>
     <ClInclude Include="CSmallMario.h">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClInclude>
     <ClInclude Include="MarioController.h">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClInclude>
     <ClInclude Include="CBigMario.h">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClInclude>
     <ClInclude Include="CFireMario.h">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
     </ClInclude>
     <ClInclude Include="CRaccoonMario.h">
-      <Filter>Framework\Mario</Filter>
+      <Filter>MainGame\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>MainGame\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpShortCommand.h">
+      <Filter>MainGame\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleCommand.h">
+      <Filter>MainGame\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkCommand.h">
+      <Filter>MainGame\Command</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

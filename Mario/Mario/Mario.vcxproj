@@ -171,10 +171,13 @@
     <ClCompile Include="CSpritesManager.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CWindow.cpp" />
+    <ClCompile Include="IdleCommand.cpp" />
+    <ClCompile Include="JumpShortCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CMario.cpp" />
     <ClCompile Include="MarioController.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WalkCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAnimation.h" />
@@ -204,14 +207,18 @@
     <ClInclude Include="CMario.h" />
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
+    <ClInclude Include="ICommand.h" />
     <ClInclude Include="IDirectX.h" />
+    <ClInclude Include="IdleCommand.h" />
     <ClInclude Include="IHandleInput.h" />
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />
     <ClInclude Include="IWindow.h" />
+    <ClInclude Include="JumpShortCommand.h" />
     <ClInclude Include="MarioController.h" />
     <ClInclude Include="MarioDefines.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="WalkCommand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
