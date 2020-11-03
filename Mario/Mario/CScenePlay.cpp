@@ -256,3 +256,18 @@ void CScenePlay::Unload()
 
 	DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }
+
+void CScenePlay::LogInfo()
+{
+	float cx, cy, px, py;
+	camera->GetCamPos(cx, cy);
+	player->GetPosition(px, py);
+	DebugOut(L"----------------------------------------\n");
+	DebugOut(L"Camera pos X: %.2f\n", cx);
+	DebugOut(L"Camera pos Y: %.2f\n", cy);
+	DebugOut(L"Player pos X: %.2f\n", px);
+	DebugOut(L"Player pos Y: %.2f\n", py);
+	DebugOut(L"Screen width: %d\n", CGame::Instance()->GetScreenWidth());
+	DebugOut(L"Screen height: %d\n", CGame::Instance()->GetScreenHeight());
+	DebugOut(L"----------------------------------------\n");
+}

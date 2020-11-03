@@ -25,6 +25,7 @@ public:
 	void Update(DWORD dt);
 	void Render();
 	void Unload();
+	void LogInfo();
 
 	//friend class CPlayScenceKeyHandler;
 };

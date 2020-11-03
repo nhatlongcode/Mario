@@ -97,18 +97,18 @@ void CMario::HandleMovement()
 	if (input->IsKeyDown(DIK_RIGHT))
 	{
 		nx = DIRECTION_RIGHT;
-		SetSpeedX(0.2f);
+		SetSpeedX(MARIO_WALKING_SPEED * nx);
 		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
 	}
 	else if (input->IsKeyDown(DIK_LEFT))
 	{
 		nx = DIRECTION_LEFT;
-		SetSpeedX(-0.2f);
+		SetSpeedX(MARIO_WALKING_SPEED * nx);
 		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
 	}
 	else
 	{
-		SetSpeedX(0);
+		SetSpeedX(MARIO_IDLE_SPEED);
 		if (isGrounded && !isJumping && !isFalling) SetState(MARIO_STATE_IDLE);
 	}
 }
@@ -123,7 +123,7 @@ void CMario::HandleJump()
 		isJumping = true;
 		SetState(MARIO_STATE_JUMP);
 	}
-	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -15.0f && (isGrounded || isHighJump) && (isFinishHighJump ^ isHighJump))
+	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -MARIO_MAX_JUMP && (isGrounded || isHighJump) && (isFinishHighJump ^ isHighJump))
 	{
 		SetSpeedY(-0.6f);
 		force += vy;

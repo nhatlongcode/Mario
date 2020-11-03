@@ -27,5 +27,6 @@ public:
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;
 	virtual void Render() = 0;
+	virtual void LogInfo() = 0;
 };
 typedef CScene* LPSCENE;

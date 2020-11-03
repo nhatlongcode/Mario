@@ -51,6 +51,11 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 			scene->SetPlayer(MARIO_TYPE_RACCOON, 300.0f, 300.0f);
 			break;
 		}
+		case DIK_L:
+		{
+			scene->LogInfo();
+			break;
+		}
 	}
 
 
