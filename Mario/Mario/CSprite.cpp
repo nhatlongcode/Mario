@@ -1,4 +1,5 @@
 #include "CSprite.h"
+#include "CGame.h"
 
 CSprite::CSprite(int id, int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 tex)
 {
@@ -21,16 +22,22 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 	r.right = left + width;
 	r.bottom = top + height;
 	
-	Vector2 scale = Vector2(scaleX * direction, scaleY);
+	float camX, camY;
+	CGame::Instance()->GetCamPos(camX, camY);
+	D3DXVECTOR3 p(x - camX, y - camY, 0);
+	
 
+	Vector2 scale = Vector2(scaleX * direction, scaleY);
+	//camX *= scale.x;
+	//camY *= scale.y;
 	D3DXMATRIX oldMatrix, newMatrix;
 	spriteHandler->GetTransform(&oldMatrix);
 
-	D3DXMatrixTransformation2D(&newMatrix, &Vector2(x,y), 0, &scale, NULL, 0.0f, NULL);
+	D3DXMatrixTransformation2D(&newMatrix, &Vector2(p.x,p.y), 0, &scale, NULL, 0.0f, NULL);
 	newMatrix = oldMatrix * newMatrix;
 
 	spriteHandler->SetTransform(&newMatrix);
-	spriteHandler->Draw(texture, &r, &Vector3((float)width/2, (float)height/2, 0), &Vector3(x, y, 0), D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	spriteHandler->Draw(texture, &r, &Vector3((float)width/2, (float)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);
 
 }

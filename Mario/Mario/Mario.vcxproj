@@ -170,9 +170,11 @@
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpritesManager.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
+    <ClCompile Include="CTileMap.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CMario.cpp" />
+    <ClCompile Include="CMap.cpp" />
     <ClCompile Include="MarioController.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
@@ -200,6 +202,7 @@
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpritesManager.h" />
     <ClInclude Include="CTexturesManager.h" />
+    <ClInclude Include="CTileMap.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="IAnimSetsManager.h" />
@@ -209,6 +212,7 @@
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />
     <ClInclude Include="IWindow.h" />
+    <ClInclude Include="CMap.h" />
     <ClInclude Include="MarioController.h" />
     <ClInclude Include="MarioDefines.h" />
     <ClInclude Include="Utils.h" />

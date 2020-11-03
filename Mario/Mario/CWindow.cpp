@@ -35,7 +35,7 @@ void CWindow::CreateGameWindow()
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
-	wc.hbrBackground = NULL;
+	wc.hbrBackground = CreateSolidBrush(RGB(181, 235, 242));
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hIcon = NULL;
 	wc.hIconSm = NULL;

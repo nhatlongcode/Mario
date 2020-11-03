@@ -1,7 +1,7 @@
 #include "CGameObject.h"
 #include "CLocator.h"
 #include "IAnimSetsManager.h"
-
+#include "CGame.h"
 
 void CGameObject::SetPosition(float x, float y)
 {
@@ -53,9 +53,16 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	dx = vx * dt;
 	dy = vy * dt;
-	//DebugOut(L"%f")
 	x += dx;
 	y += dy;
+	float camX, camY;
+	CGame::Instance()->GetCamPos(camX, camY);
+/*
+	DebugOut(L"x: %.2f", x);
+	DebugOut(L"y: %.2f\n", y);
+	DebugOut(L"camX: %.2f", camX);
+	DebugOut(L"camY: %.2f\n", camY);
+*/
 }
 
 

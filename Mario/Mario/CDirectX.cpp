@@ -1,5 +1,5 @@
 #include "CDirectX.h"
-
+#include "CGame.h"
 
 
 CDirectX::CDirectX(HWND hwnd)
@@ -21,6 +21,8 @@ CDirectX::CDirectX(HWND hwnd)
 
 	d3dpp.BackBufferHeight = r.bottom + 1;
 	d3dpp.BackBufferWidth = r.right + 1;
+
+	CGame::Instance()->SetWidthHeight(r.right + 1, r.bottom + 1);
 
 	d3d->CreateDevice(
 		D3DADAPTER_DEFAULT,

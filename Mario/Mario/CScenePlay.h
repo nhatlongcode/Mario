@@ -3,13 +3,13 @@
 #include "CScene.h"
 #include "CMario.h"
 #include "MarioController.h"
+#include "CMap.h"
 
 class CScenePlay : public CScene
 {
 protected:				// A play scene has to have player, right? 
-
+	CMap* map;
 	vector<LPGAMEOBJECT> objects;
-
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
 	void _ParseSection_ANIMATIONS(string line);

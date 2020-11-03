@@ -22,7 +22,7 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 // COLOR -----------------------------------------------------
 
-#define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
+#define BACKGROUND_COLOR D3DCOLOR_XRGB(181, 235, 242)
 
 // GAME FILE --------------------------------------------------
 #define GAME_FILE_SECTION_UNKNOWN		-1
@@ -40,10 +40,10 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MAX_SCENE_LINE	1024
 #define MAX_GAME_LINE	1024
 
-// TEXTURES ----------------------------------------------------
-
-#define TEX_MARIO_ID 0
-#define TEX_MARIO_PATH L"Textures\\mario2.png"
+// MAP----------------------------------------------------------
+#define MAP_SECTION_UNKNOWN	0
+#define MAP_SECTION_SIZE	1
+#define MAP_SECTION_DATA	2
 
 // DIRECTION ---------------------------------------------------
 

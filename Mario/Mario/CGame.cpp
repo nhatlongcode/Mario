@@ -28,6 +28,7 @@ void CGame::Render()
 
 		//mario->Render();
 		scenes[currentScene]->Render();
+		//CLocator<ISpritesManager>().Get()->Get(10023)->Draw(300.0f, 300.0f); // test sprite
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}
@@ -43,50 +44,6 @@ void CGame::LoadResources()
 	Vector2 right(1,1);
 	Vector2 left(-1, 1);
 
-	/*
-	texs->Add(TEX_MARIO_ID, TEX_MARIO_PATH, D3DCOLOR_XRGB(255, 255, 255));
-	auto texMario = texs->Get(TEX_MARIO_ID);
-	LPANIMATION anim;
-	// BIG MARIO
-	// IDLE		
-	sprites->Add(10022, 197, 48, 14, 27, right, texMario);
-
-	anim = new CAnimation();
-	anim->Add(10022);
-	anims->Add(MARIO_ANI_IDLE_RIGHT, anim);
-
-	sprites->Add(11022, 197, 48, 14, 27, left, texMario);
-
-	anim = new CAnimation();
-	anim->Add(11022);
-	anims->Add(MARIO_ANI_IDLE_LEFT, anim);
-	// WALK
-	sprites->Add(10023, 197, 48, 14, 27, right, texMario);
-	sprites->Add(10024, 214, 48, 16, 27, right, texMario);
-	sprites->Add(10025, 233, 49, 16, 26, right, texMario);
-
-	anim = new CAnimation();
-	anim->Add(10023);
-	anim->Add(10024);
-	anim->Add(10025);
-	anims->Add(MARIO_ANI_WALKING_RIGHT, anim);
-
-	sprites->Add(11023, 197, 48, 14, 27, left, texMario);
-	sprites->Add(11024, 214, 48, 16, 27, left, texMario);
-	sprites->Add(11025, 233, 49, 16, 26, left, texMario);
-
-	anim = new CAnimation();
-	anim->Add(11023);
-	anim->Add(11024);
-	anim->Add(11025);
-	anims->Add(MARIO_ANI_WALKING_LEFT, anim);
-
-	mario->AddAnimation(MARIO_ANI_IDLE_RIGHT);
-	mario->AddAnimation(MARIO_ANI_IDLE_LEFT);
-	mario->AddAnimation(MARIO_ANI_WALKING_RIGHT);
-	mario->AddAnimation(MARIO_ANI_WALKING_LEFT);
-
-	*/
 }
 
 void CGame::Load(LPCWSTR filePath)
@@ -190,6 +147,18 @@ void CGame::InitGame()
 	//LoadResources();
 }
 
+void CGame::SetCamPos(float x, float y)
+{
+	this->cam_x = x;
+	this->cam_y = y;
+}
+
+void CGame::GetCamPos(float &x, float &y)
+{
+	x = this->cam_x;
+	y = this->cam_y;
+}
+
 int CGame::GetCurrentScene()
 {
 	return currentScene;
@@ -231,6 +200,12 @@ int CGame::Run()
 
 	return 1;
 
+}
+
+void CGame::SetWidthHeight(int w, int h)
+{
+	screenWidth = w;
+	screenHeight = h;
 }
 
 

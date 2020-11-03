@@ -196,7 +196,7 @@ void CScenePlay::Load()
 	f.close();
 	//CLocator
 	//CTextures::GetInstance()->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
-
+	map = new CMap(1, L"map.txt");
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
 	//objects.push_back(player);
@@ -225,16 +225,21 @@ void CScenePlay::Update(DWORD dt)
 	float cx, cy;
 	player->GetPosition(cx, cy);
 	CGame* game = CGame::Instance();
+
 	cx -= game->GetScreenWidth() / 2;
 	cy -= game->GetScreenHeight() / 2;
-	CGame::Instance()->SetCamPos(cx, 0.0f /*cy*/);
+	
+	CGame::Instance()->SetCamPos(cx, cy);
 }
 
 void CScenePlay::Render()
 {
+	map->Render();
+	//CLocator<ISpritesManager>().Get()->Get(441)->Draw(300, 300);
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 	player->Render();
+	
 }
 
 void CScenePlay::Unload()

@@ -61,6 +61,9 @@
     <Filter Include="Framework\NewFilter1">
       <UniqueIdentifier>{cc6c48c3-16a9-4718-9849-26920187c340}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Map">
+      <UniqueIdentifier>{c1041fef-78dd-4ea6-9b54-34570cc22b76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,6 +146,12 @@
     </ClCompile>
     <ClCompile Include="CRaccoonMario.cpp">
       <Filter>Framework\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CMap.cpp">
+      <Filter>Framework\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileMap.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +259,12 @@
     </ClInclude>
     <ClInclude Include="CRaccoonMario.h">
       <Filter>Framework\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CMap.h">
+      <Filter>Framework\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="CTileMap.h">
+      <Filter>Framework\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

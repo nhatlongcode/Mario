@@ -1,8 +1,6 @@
 [TEXTURES]
 0	textures\mario3.png	255	255	255
-20	textures\misc.png	176	224	248
-10	textures\enemies.png	3	26	110
-30	textures\map.png	255	255	255
+1	textures\map.png	255	255	255
 
 [SPRITES]
 # SMALL MARIO
@@ -294,4 +292,6 @@
 # type	x	y	ani_set_id	extra_settings per object type
 # type: 0 = Mario , 1 = Brick, 2 = Goomba
 # MARIO
+
+[MAP]
 

@@ -32,19 +32,24 @@ private:
 	float cam_x = 0.0f;
 	float cam_y = 0.0f;
 
-	int screen_width;
-	int screen_height;
+	int screenWidth;
+	int screenHeight;
 	LPKEYEVENTHANDLER keyHandler;
 
 public:
 	static CGame* Instance();
 	~CGame();
 	void InitGame();
-	void SetCamPos(float x, float y) { cam_x = x; cam_y = y; }
+	
+	void SetCamPos(float x, float y);
+	void GetCamPos(float &x, float &y);
+	
 	int GetCurrentScene();
 
 	int Run();
-	int GetScreenWidth() { return screen_width; }
-	int GetScreenHeight() { return screen_height; }
+	int GetScreenWidth() { return screenWidth; }
+	int GetScreenHeight() { return screenHeight; }
+
+	void SetWidthHeight(int w, int h);
 };
 
