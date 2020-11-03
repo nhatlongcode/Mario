@@ -35,3 +35,11 @@ void CScene::SetPlayer(int typeID, float posX, float posY)
 	DebugOut(L"Set to new mario ID: %d\n", typeID);
 }
 
+void CScene::GetCamPos(float& cx, float& cy)
+{
+	float x, y;
+	camera->GetCamPos(x, y);
+	cx = x;
+	cy = y;
+}
+

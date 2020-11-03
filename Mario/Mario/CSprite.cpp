@@ -23,7 +23,7 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 	r.bottom = top + height;
 	
 	float camX, camY;
-	CGame::Instance()->GetCamPos(camX, camY);
+	CGame::Instance()->GetCurrentScene()->GetCamPos(camX, camY);
 	D3DXVECTOR3 p(x - camX, y - camY, 0);
 	
 

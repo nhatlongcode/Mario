@@ -4,11 +4,13 @@
 #include "CKeyEventHandler.h"
 #include "CMario.h"
 #include "MarioController.h"
+#include "CCamera.h"
 
 class CScene
 {
 protected:
 	int id;
+	CCamera* camera;
 	CKeyEventHandler* keyHandler;
 	MarioController marioController;
 	LPCWSTR sceneFilePath;
@@ -20,6 +22,7 @@ public:
 	CKeyEventHandler* GetKeyEventHandler() { return keyHandler; }
 	CMario* GetPlayer();
 	void SetPlayer(int typeID, float posX = 0.0f, float posY = 0.0f);
+	void GetCamPos(float& cx, float& cy);
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;

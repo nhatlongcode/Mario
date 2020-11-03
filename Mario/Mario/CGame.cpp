@@ -10,7 +10,7 @@ CGame* CGame::instance = NULL;
 void CGame::Update(DWORD dt)
 {
 	//mario->Update(dt);
-	scenes[currentScene]->Update(dt);
+	scenes[currentSceneID]->Update(dt);
 }
 
 void CGame::Render()
@@ -27,7 +27,7 @@ void CGame::Render()
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 		//mario->Render();
-		scenes[currentScene]->Render();
+		scenes[currentSceneID]->Render();
 		//CLocator<ISpritesManager>().Get()->Get(10023)->Draw(300.0f, 300.0f); // test sprite
 		spriteHandler->End();
 		d3ddv->EndScene();
@@ -79,7 +79,7 @@ void CGame::Load(LPCWSTR filePath)
 
 	DebugOut(L"[INFO] Loading game file : %s has been loaded successfully\n", filePath);
 
-	SwitchScene(currentScene);
+	SwitchScene(currentSceneID);
 }
 
 void CGame::_ParseSection_SETTINGS(string line)
@@ -88,7 +88,7 @@ void CGame::_ParseSection_SETTINGS(string line)
 
 	if (tokens.size() < 2) return;
 	if (tokens[0] == "start")
-		currentScene = atoi(tokens[1].c_str());
+		currentSceneID = atoi(tokens[1].c_str());
 	else
 		DebugOut(L"[ERROR] Unknown game setting %s\n", ToWSTR(tokens[0]).c_str());
 }
@@ -109,13 +109,13 @@ void CGame::SwitchScene(int scene_id)
 {
 	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
 
-	scenes[currentScene]->Unload();;
+	scenes[currentSceneID]->Unload();;
 
 	CLocator<ITexsManager>().Get()->Clear();
 	CLocator<ISpritesManager>().Get()->Clear();
 	CLocator<IAnimsManager>().Get()->Clear();
 
-	currentScene = scene_id;
+	currentSceneID = scene_id;
 	LPSCENE s = scenes[scene_id];
 	CLocator<IHandleInput>().Get()->SetKeyHandler(s->GetKeyEventHandler());
 	DebugOut(L"[INFO] Switching to scene KeyEventHandler\n");
@@ -147,21 +147,15 @@ void CGame::InitGame()
 	//LoadResources();
 }
 
-void CGame::SetCamPos(float x, float y)
+
+int CGame::GetCurrentSceneID()
 {
-	this->cam_x = x;
-	this->cam_y = y;
+	return currentSceneID;
 }
 
-void CGame::GetCamPos(float &x, float &y)
+LPSCENE CGame::GetCurrentScene()
 {
-	x = this->cam_x;
-	y = this->cam_y;
-}
-
-int CGame::GetCurrentScene()
-{
-	return currentScene;
+	return scenes[currentSceneID];
 }
 
 

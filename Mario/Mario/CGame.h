@@ -25,12 +25,8 @@ private:
 	void SwitchScene(int scene_id);
 
 	unordered_map<int, LPSCENE> scenes;
-	int currentScene;
-
-	CMario* mario;
-
-	float cam_x = 0.0f;
-	float cam_y = 0.0f;
+	
+	int currentSceneID;
 
 	int screenWidth;
 	int screenHeight;
@@ -41,11 +37,8 @@ public:
 	~CGame();
 	void InitGame();
 	
-	void SetCamPos(float x, float y);
-	void GetCamPos(float &x, float &y);
-	
-	int GetCurrentScene();
-
+	int GetCurrentSceneID();
+	LPSCENE GetCurrentScene();
 	int Run();
 	int GetScreenWidth() { return screenWidth; }
 	int GetScreenHeight() { return screenHeight; }

@@ -4,6 +4,7 @@
 #include "CMario.h"
 #include "MarioController.h"
 #include "CMap.h"
+#include "CCamera.h"
 
 class CScenePlay : public CScene
 {

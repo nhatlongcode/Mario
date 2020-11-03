@@ -154,6 +154,7 @@
     <ClCompile Include="CAnimationsManager.cpp" />
     <ClCompile Include="CBigMario.cpp" />
     <ClCompile Include="CBrick.cpp" />
+    <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CFireMario.cpp" />
     <ClCompile Include="CGame.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="CAnimationsManager.h" />
     <ClInclude Include="CBigMario.h" />
     <ClInclude Include="CBrick.h" />
+    <ClInclude Include="CCamera.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CFireMario.h" />
     <ClInclude Include="CGame.h" />

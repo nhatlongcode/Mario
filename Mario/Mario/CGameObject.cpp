@@ -55,8 +55,6 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	dy = vy * dt;
 	x += dx;
 	y += dy;
-	float camX, camY;
-	CGame::Instance()->GetCamPos(camX, camY);
 /*
 	DebugOut(L"x: %.2f", x);
 	DebugOut(L"y: %.2f\n", y);

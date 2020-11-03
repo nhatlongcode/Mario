@@ -3,6 +3,7 @@
 #include "CAnimationSetsManager.h"
 #include "CGoomba.h"
 #include "CBrick.h"
+#include "CGame.h"
 #include <iostream>
 #include <fstream>
 
@@ -194,11 +195,23 @@ void CScenePlay::Load()
 	}
 
 	f.close();
-	//CLocator
-	//CTextures::GetInstance()->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
+	
 	map = new CMap(1, L"map.txt");
+	
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
+	
+	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
+	camera->SetOffSet(CAMERA_OFFSET_LEFT,
+		CAMERA_OFFSET_RIGHT,
+		CAMERA_OFFSET_TOP,
+		CAMERA_OFFSET_BOT);
+	camera->SetBorder(CAMERA_BORDER_LEFT,
+		CAMERA_BORDER_RIGHT,
+		CAMERA_BORDER_TOP,
+		CAMERA_BORDER_BOT);
+	camera->SetPlayer(this->player);
+	
 	//objects.push_back(player);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 
@@ -220,16 +233,7 @@ void CScenePlay::Update(DWORD dt)
 	if (player == NULL) return;
 
 	player->Update(dt, &coObjects);
-
-	// Update camera to follow mario
-	float cx, cy;
-	player->GetPosition(cx, cy);
-	CGame* game = CGame::Instance();
-
-	cx -= game->GetScreenWidth() / 2;
-	cy -= game->GetScreenHeight() / 2;
-	
-	CGame::Instance()->SetCamPos(cx, cy);
+	camera->Update();
 }
 
 void CScenePlay::Render()

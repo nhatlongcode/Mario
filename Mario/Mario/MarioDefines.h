@@ -15,7 +15,7 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define WINDOW_CLASS_NAME L"MARIO"
 #define MAIN_WINDOW_TITLE L"MARIO BROS 3"
 #define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
+#define SCREEN_HEIGHT 320
 
 #define MAX_FRAME_RATE 120
 
@@ -44,6 +44,17 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MAP_SECTION_UNKNOWN	0
 #define MAP_SECTION_SIZE	1
 #define MAP_SECTION_DATA	2
+
+// CAMERA ------------------------------------------------------
+#define CAMERA_OFFSET_TOP	140.0f
+#define CAMERA_OFFSET_LEFT	270.0f
+#define CAMERA_OFFSET_RIGHT	270.0f
+#define CAMERA_OFFSET_BOT	140.0f
+
+#define CAMERA_BORDER_TOP	0.0f
+#define CAMERA_BORDER_LEFT	0.0f
+#define CAMERA_BORDER_RIGHT	99999.0f
+#define CAMERA_BORDER_BOT	99999.0f
 
 // DIRECTION ---------------------------------------------------
 
