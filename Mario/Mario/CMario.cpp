@@ -64,6 +64,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 void CMario::Render()
 {
 	animSet->at(state)->Render(x, y, nx);
+	CGameObject::RenderCollisionBox();
 }
 
 void CMario::SetState(int state)

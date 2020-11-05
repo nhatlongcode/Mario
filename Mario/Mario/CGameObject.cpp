@@ -2,6 +2,9 @@
 #include "CGameObject.h"
 #include "CLocator.h"
 #include "IAnimSetsManager.h"
+#include "IDirectX.h"
+#include "CLocator.h"
+#include "ITexsManager.h"
 #include "CGame.h"
 
 void CGameObject::SetPosition(float x, float y)
@@ -216,6 +219,26 @@ void CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 	{
 		OnCollisionEnter(coEvent);
 	}
+}
+
+void CGameObject::RenderCollisionBox()
+{
+	auto tex = CLocator<ITexsManager>().Get()->Get(10);
+	if (tex == NULL) DebugOut(L"NULL\n");
+	RECT bbRect;
+	bbRect.left = x;
+	bbRect.top = y;
+	bbRect.right = x + bboxWidth;
+	bbRect.bottom = y + bboxHeight;
+
+	DebugOut(L"width %.2f\n",x);
+	float cx, cy;
+	CGame::Instance()->GetCurrentScene()->GetCamPos(cx, cy);
+	Vector2 pos;
+	pos.x = trunc(x - cx);
+	pos.y = trunc(y - cy);
+	LPD3DXSPRITE spriteHandler = CLocator<IDirectX>().Get()->SpriteHandler();
+	spriteHandler->Draw(tex, &bbRect, &D3DXVECTOR3(bboxWidth * 0.5f, bboxHeight * 0.5f, 0), &D3DXVECTOR3(pos.x, pos.y, 0), D3DCOLOR_ARGB(32, 255, 255, 255));
 }
 
 void CGameObject::GetBoundingBox(float& l, float& t, float& r, float& b)

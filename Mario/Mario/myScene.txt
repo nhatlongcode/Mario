@@ -1,6 +1,7 @@
 [TEXTURES]
 0	textures\mariox3.png	255	255	255
 1	textures\map.png	255	255	255
+10	textures\bbox.png	255	255	255
 
 [SPRITES]
 # SMALL MARIO

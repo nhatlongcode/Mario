@@ -39,7 +39,7 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 
 	Vector3 p2((int)p.x, (int)p.y, 0);
 	spriteHandler->SetTransform(&newMatrix);
-	spriteHandler->Draw(texture, &r, &Vector3((float)width/2, (float)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	spriteHandler->Draw(texture, &r, &Vector3((int)width/2, (int)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);
 
 }

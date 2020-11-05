@@ -25,6 +25,7 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(181, 235, 242)
 
 // GAME FILE --------------------------------------------------
+
 #define GAME_FILE_SECTION_UNKNOWN		-1
 #define GAME_FILE_SECTION_SETTINGS		1
 #define GAME_FILE_SECTION_SCENES		2
@@ -73,6 +74,10 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 // MARIO -------------------------------------------------------
 #define MARIO_LEVEL_SMALL 0
 #define MARIO_LEVEL_BIG 1
+
+#define MARIO_SMALL_BBOX_WIDTH		36
+#define MARIO_SMALL_BBOX_HEIGHT		45
+
 
 #define MARIO_WALKING_SPEED			0.19f
 #define MARIO_IDLE_SPEED			0.0f

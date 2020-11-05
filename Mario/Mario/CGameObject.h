@@ -59,6 +59,8 @@ public:
 
 	void GetState(int& state) { state = this->state; }
 
+	void RenderCollisionBox();
+
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
