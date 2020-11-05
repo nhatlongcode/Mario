@@ -158,6 +158,11 @@ LPSCENE CGame::GetCurrentScene()
 	return scenes[currentSceneID];
 }
 
+DWORD CGame::GetDeltaTime()
+{
+	return this->dt;
+}
+
 
 int CGame::Run()
 {
@@ -180,7 +185,7 @@ int CGame::Run()
 		// dt: the time between (beginning of last frame) and now
 		// this frame: the frame we are about to render
 		DWORD dt = now - frameStart;
-
+		this->dt = dt;
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;

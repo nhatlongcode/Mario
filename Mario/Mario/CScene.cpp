@@ -32,6 +32,7 @@ void CScene::SetPlayer(int typeID, float posX, float posY)
 
 
 	player = newPlayer;
+	if (camera != NULL) camera->SetPlayer(newPlayer);
 	DebugOut(L"Set to new mario ID: %d\n", typeID);
 }
 

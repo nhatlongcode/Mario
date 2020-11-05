@@ -58,14 +58,14 @@
     <Filter Include="Framework\Brick">
       <UniqueIdentifier>{aeacb753-5b79-4c69-b9f5-b9efab0e7245}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\NewFilter1">
-      <UniqueIdentifier>{cc6c48c3-16a9-4718-9849-26920187c340}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Map">
       <UniqueIdentifier>{c1041fef-78dd-4ea6-9b54-34570cc22b76}</UniqueIdentifier>
     </Filter>
     <Filter Include="Framework\Camera">
       <UniqueIdentifier>{81c4b84c-743d-437f-9d9d-df709ae4ac71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Collision">
+      <UniqueIdentifier>{cc6c48c3-16a9-4718-9849-26920187c340}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="CTileMap.cpp">
       <Filter>Framework\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionEvent.cpp">
+      <Filter>Framework\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="CCamera.h">
       <Filter>Framework\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionEvent.h">
+      <Filter>Framework\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

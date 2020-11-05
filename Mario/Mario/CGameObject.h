@@ -3,6 +3,7 @@
 #include <d3dx9.h>
 #include <vector>
 
+#include "CCollisionEvent.h"
 #include "CAnimationsManager.h"
 #include "Utils.h"
 #include "CLocator.h"
@@ -12,6 +13,8 @@ typedef CGameObject* LPGAMEOBJECT;
 
 class CGameObject
 {
+private:
+	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT other);
 protected:
 	float x;
 	float y;
@@ -25,11 +28,16 @@ protected:
 	int nx;
 	int state;
 
+	float bboxWidth;
+	float bboxHeight;
+
 	LPANIMSET animSet;
 
 public:
 	CGameObject();
 	~CGameObject();
+
+	bool IsCollisionEnabled;
 
 	void SetPosition(float x, float y);
 	void GetPosition(float& x, float& y) { x = this->x; y = this->y; }
@@ -43,11 +51,16 @@ public:
 	void SetSpeedX(float vx);
 	void SetSpeedY(float vy);
 
+	void CheckCollision(vector<LPGAMEOBJECT>* coObjects);
+	void SetBoundingBox(float width, float height);
+
 	void AddAnimation(int aniId);
 	void SetAnimationSet(int animSetID);
 
 	void GetState(int& state) { state = this->state; }
 
+	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render() = 0;
 	virtual void SetState(int state);

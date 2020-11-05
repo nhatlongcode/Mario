@@ -27,7 +27,7 @@ private:
 	unordered_map<int, LPSCENE> scenes;
 	
 	int currentSceneID;
-
+	DWORD dt;
 	int screenWidth;
 	int screenHeight;
 	LPKEYEVENTHANDLER keyHandler;
@@ -39,6 +39,9 @@ public:
 	
 	int GetCurrentSceneID();
 	LPSCENE GetCurrentScene();
+
+	DWORD GetDeltaTime();
+
 	int Run();
 	int GetScreenWidth() { return screenWidth; }
 	int GetScreenHeight() { return screenHeight; }

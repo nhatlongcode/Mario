@@ -24,8 +24,9 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 	
 	float camX, camY;
 	CGame::Instance()->GetCurrentScene()->GetCamPos(camX, camY);
-	D3DXVECTOR3 p(x - camX, y - camY, 0);
-	
+	//if (x - camX < 0 - 100.0f) return;
+	//Vector3 p(x - camX,y - camY, 0);
+	Vector3 p((int)(x - camX),(int)(y - camY), 0);
 
 	Vector2 scale = Vector2(scaleX * direction, scaleY);
 	//camX *= scale.x;
@@ -36,6 +37,7 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 	D3DXMatrixTransformation2D(&newMatrix, &Vector2(p.x,p.y), 0, &scale, NULL, 0.0f, NULL);
 	newMatrix = oldMatrix * newMatrix;
 
+	Vector3 p2((int)p.x, (int)p.y, 0);
 	spriteHandler->SetTransform(&newMatrix);
 	spriteHandler->Draw(texture, &r, &Vector3((float)width/2, (float)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);

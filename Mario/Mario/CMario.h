@@ -27,6 +27,7 @@ public:
 	virtual void OnKeyUp(int keyCode);
 	virtual void HandleMovement();
 	virtual void HandleJump();
+	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
 	//virtual void AttackAction() = 0;
 	//virtual void CrunchAction() = 0;
 

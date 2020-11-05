@@ -147,6 +147,15 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CScenePlayKeyHandler(this);
+	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
+	camera->SetOffSet(CAMERA_OFFSET_LEFT,
+		CAMERA_OFFSET_RIGHT,
+		CAMERA_OFFSET_TOP,
+		CAMERA_OFFSET_BOT);
+	camera->SetBorder(CAMERA_BORDER_LEFT,
+		CAMERA_BORDER_RIGHT,
+		CAMERA_BORDER_TOP,
+		CAMERA_BORDER_BOT);
 }
 
 void CScenePlay::Load()
@@ -200,18 +209,7 @@ void CScenePlay::Load()
 	
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
-	
-	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
-	camera->SetOffSet(CAMERA_OFFSET_LEFT,
-		CAMERA_OFFSET_RIGHT,
-		CAMERA_OFFSET_TOP,
-		CAMERA_OFFSET_BOT);
-	camera->SetBorder(CAMERA_BORDER_LEFT,
-		CAMERA_BORDER_RIGHT,
-		CAMERA_BORDER_TOP,
-		CAMERA_BORDER_BOT);
 	camera->SetPlayer(this->player);
-	
 	//objects.push_back(player);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 

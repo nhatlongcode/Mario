@@ -136,6 +136,10 @@ void CMario::HandleJump()
 	}
 }
 
+void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
+{
+}
+
 void CMario::Reset()
 {
 	SetState(MARIO_STATE_IDLE);
