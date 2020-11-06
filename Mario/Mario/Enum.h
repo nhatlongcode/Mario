@@ -3,6 +3,7 @@ enum class ObjectTag
 {
 	None,
 	GhostPlatform,
+	Solid,
 	Player,
 	Pipe,
 	Ground,

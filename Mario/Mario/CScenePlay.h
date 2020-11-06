@@ -16,6 +16,7 @@ protected:				// A play scene has to have player, right?
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ANIMATION_SETS(string line);
 	void _ParseSection_OBJECTS(string line);
+	void _ParseSection_GROUNDS(string line);
 
 
 public:

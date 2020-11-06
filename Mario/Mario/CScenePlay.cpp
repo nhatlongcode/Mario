@@ -3,6 +3,7 @@
 #include "CAnimationSetsManager.h"
 #include "CGoomba.h"
 #include "CBrick.h"
+#include "CGround.h"
 #include "CGhostPlatform.h"
 #include "CGame.h"
 #include <iostream>
@@ -145,6 +146,26 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 }
 
+void CScenePlay::_ParseSection_GROUNDS(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 4) return;
+
+	float x, y, w, h;
+	x = atoi(tokens[0].c_str());
+	y = atoi(tokens[1].c_str());
+	w = atoi(tokens[2].c_str());
+	h = atoi(tokens[3].c_str());
+
+	CGameObject* ground = new CGround();
+	ground->SetPosition(x, y);
+	ground->SetBoundingBox(w, h);
+
+
+	objects.push_back(ground);
+}
+
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CScenePlayKeyHandler(this);
@@ -189,6 +210,9 @@ void CScenePlay::Load()
 		if (line == "[OBJECTS]") {
 			section = SCENE_SECTION_OBJECTS; continue;
 		}
+		if (line == "[GROUNDS]") {
+			section = SCENE_SECTION_GROUNDS; continue;
+		}
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
 
 		//
@@ -201,6 +225,7 @@ void CScenePlay::Load()
 		case SCENE_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
 		case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
 		case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
+		case SCENE_SECTION_GROUNDS: _ParseSection_GROUNDS(line); break;
 		}
 	}
 

@@ -128,11 +128,11 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	if (tx_entry > ty_entry)
 	{
 		ny = 0.0f;
-		if (dynamic_cast<CGhostPlatform*>(other))
+		if (other->GetTag() == ObjectTag::GhostPlatform)
 		{
-
+			nx = 0.0f;
 		}
-		rdx > 0 ? nx = -1.0f : nx = 1.0f;
+		else rdx > 0 ? nx = -1.0f : nx = 1.0f;
 	}
 	else
 	{

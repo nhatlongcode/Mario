@@ -162,6 +162,7 @@
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGhostPlatform.cpp" />
     <ClCompile Include="CGoomba.cpp" />
+    <ClCompile Include="CGround.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CKeyEventHandler.cpp" />
     <ClCompile Include="CLocator.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGhostPlatform.h" />
     <ClInclude Include="CGoomba.h" />
+    <ClInclude Include="CGround.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CKeyEventHandler.h" />
     <ClInclude Include="CLocator.h" />

@@ -7,7 +7,9 @@
 void CMario::StandingOnGround()
 {
 	isGrounded = true;
+	isFalling = false;
 	isJumping = false;
+	force = 0.0f;
 	isHighJump = false;
 }
 
@@ -30,16 +32,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 
 	auto input = CLocator<IHandleInput>().Get();
-	if (y > 1200) // fall down to ground
-	{
 
-		isGrounded = true;
-		isFalling = false;
-		isJumping = false;
-		force = 0.0f;
-		isHighJump = false;
-		vy = 0; y = 1200.0f;
-	}
 
 	HandleMovement();
 	HandleJump();
@@ -151,10 +144,12 @@ void CMario::HandleJump()
 void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
 	LPGAMEOBJECT go = other->obj;
-	if (dynamic_cast<CBrick*>(go))
+	//DebugOut(L"asdasd\n");
+	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Solid || go->GetTag() == ObjectTag::Ground)
 	{
 		if (other->ny == -1.0f)
 		{
+			
 			StandingOnGround();
 		}
 

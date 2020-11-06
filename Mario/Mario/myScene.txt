@@ -293,11 +293,16 @@
 #RacoonMario																		
 13000	13000	13001	13002	13003	13004	13005	13006	13007	13008	13009	13010	13011	13012	13013	13014	13015	13016
 
-
-
+[GROUNDS]
+912	1248	1872	48
+2544	1224	1392	96
+3961	1248	1058	48
+4702	1248	240	48
+5831	1248	1721	48
+7432	1248	1372	48
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Mario , 1 = Brick, 2 = Goomba
+# type: 0 = Mario , 1 = Ground, 2 = Goomba
 # MARIO
 
 [MAP]

@@ -88,6 +88,9 @@
     <Filter Include="Game\Objects\GhostPlatform">
       <UniqueIdentifier>{3e1d390d-1bda-4b4b-b2d9-d7a1474c8b75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Ground">
+      <UniqueIdentifier>{b4d7887e-1f1f-4d60-bd49-de30fc673c2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -184,7 +187,10 @@
       <Filter>Game\Mario</Filter>
     </ClCompile>
     <ClCompile Include="CGhostPlatform.cpp">
-      <Filter>Main</Filter>
+      <Filter>Game\Objects\GhostPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="CGround.cpp">
+      <Filter>Game\Objects\Ground</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +316,9 @@
     </ClInclude>
     <ClInclude Include="Enum.h">
       <Filter>Framework\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="CGround.h">
+      <Filter>Game\Objects\Ground</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

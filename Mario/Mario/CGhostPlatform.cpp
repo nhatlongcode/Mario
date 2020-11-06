@@ -6,7 +6,7 @@ CGhostPlatform::CGhostPlatform()
 	IsCollisionEnabled = true;
 	SetBoundingBox(144, 144);
 	x = 500.0f;
-	y = 1100.75f;
+	y = 1150;
 }
 
 void CGhostPlatform::Render()
