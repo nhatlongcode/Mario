@@ -49,15 +49,6 @@
     <Filter Include="Framework\Scene">
       <UniqueIdentifier>{bcdfd4d5-1817-4e79-a4c4-2c5bff0bfb8a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scene\CScenePlay">
-      <UniqueIdentifier>{e56cb6e1-6871-484c-b3df-cf04a17920b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Framework\Goomba">
-      <UniqueIdentifier>{95330f9c-0c02-43d9-9d39-2a109eeba799}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Framework\Brick">
-      <UniqueIdentifier>{aeacb753-5b79-4c69-b9f5-b9efab0e7245}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Map">
       <UniqueIdentifier>{c1041fef-78dd-4ea6-9b54-34570cc22b76}</UniqueIdentifier>
     </Filter>
@@ -66,6 +57,36 @@
     </Filter>
     <Filter Include="Framework\Collision">
       <UniqueIdentifier>{cc6c48c3-16a9-4718-9849-26920187c340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{e88296fd-f262-4f19-b478-cd9cf2b7c498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Mario">
+      <UniqueIdentifier>{61c261af-b5d4-4c35-8b28-561a3ebd14ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects">
+      <UniqueIdentifier>{b44eff99-0d36-4dfa-b2c4-436a35f834fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemies">
+      <UniqueIdentifier>{1593ff9f-4ee7-439e-a962-13d9103fc4cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemies\Goomba">
+      <UniqueIdentifier>{95330f9c-0c02-43d9-9d39-2a109eeba799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemies\Koopas">
+      <UniqueIdentifier>{7795a828-12c5-4dd5-b87f-0f9fd8ca38a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Brick">
+      <UniqueIdentifier>{aeacb753-5b79-4c69-b9f5-b9efab0e7245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes">
+      <UniqueIdentifier>{c32eac81-4009-4100-afc9-e910a2d5355f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes\CScenePlay">
+      <UniqueIdentifier>{e56cb6e1-6871-484c-b3df-cf04a17920b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\GhostPlatform">
+      <UniqueIdentifier>{3e1d390d-1bda-4b4b-b2d9-d7a1474c8b75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -118,36 +139,24 @@
       <Filter>Framework\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CScenePlay.cpp">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>Game\Scenes\CScenePlay</Filter>
     </ClCompile>
     <ClCompile Include="CScenePlayKeyHandler.cpp">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>Game\Scenes\CScenePlay</Filter>
     </ClCompile>
     <ClCompile Include="CKeyEventHandler.cpp">
       <Filter>Framework\Input</Filter>
     </ClCompile>
     <ClCompile Include="CGoomba.cpp">
-      <Filter>Framework\Goomba</Filter>
+      <Filter>Game\Enemies\Goomba</Filter>
     </ClCompile>
     <ClCompile Include="CAnimationSetsManager.cpp">
       <Filter>Framework\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CBrick.cpp">
-      <Filter>Framework\Brick</Filter>
-    </ClCompile>
-    <ClCompile Include="CSmallMario.cpp">
-      <Filter>Framework\Mario</Filter>
+      <Filter>Game\Objects\Brick</Filter>
     </ClCompile>
     <ClCompile Include="MarioController.cpp">
-      <Filter>Framework\Mario</Filter>
-    </ClCompile>
-    <ClCompile Include="CBigMario.cpp">
-      <Filter>Framework\Mario</Filter>
-    </ClCompile>
-    <ClCompile Include="CFireMario.cpp">
-      <Filter>Framework\Mario</Filter>
-    </ClCompile>
-    <ClCompile Include="CRaccoonMario.cpp">
       <Filter>Framework\Mario</Filter>
     </ClCompile>
     <ClCompile Include="CMap.cpp">
@@ -161,6 +170,21 @@
     </ClCompile>
     <ClCompile Include="CCollisionEvent.cpp">
       <Filter>Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CBigMario.cpp">
+      <Filter>Game\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CFireMario.cpp">
+      <Filter>Game\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CRaccoonMario.cpp">
+      <Filter>Game\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CSmallMario.cpp">
+      <Filter>Game\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CGhostPlatform.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,7 +252,7 @@
       <Filter>Framework\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CScenePlay.h">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>Game\Scenes\CScenePlay</Filter>
     </ClInclude>
     <ClInclude Include="CSceneKeyHandler.h">
       <Filter>Framework\Scene</Filter>
@@ -237,7 +261,7 @@
       <Filter>Framework\Input</Filter>
     </ClInclude>
     <ClInclude Include="CScenePlayKeyHandler.h">
-      <Filter>Framework\Scene\CScenePlay</Filter>
+      <Filter>Game\Scenes\CScenePlay</Filter>
     </ClInclude>
     <ClInclude Include="CAnimationSetsManager.h">
       <Filter>Framework\Animation</Filter>
@@ -246,27 +270,15 @@
       <Filter>Framework\Animation</Filter>
     </ClInclude>
     <ClInclude Include="CGoomba.h">
-      <Filter>Framework\Goomba</Filter>
+      <Filter>Game\Enemies\Goomba</Filter>
     </ClInclude>
     <ClInclude Include="CBrick.h">
-      <Filter>Framework\Brick</Filter>
+      <Filter>Game\Objects\Brick</Filter>
     </ClInclude>
     <ClInclude Include="IHandleInput.h">
       <Filter>Framework\Input</Filter>
     </ClInclude>
-    <ClInclude Include="CSmallMario.h">
-      <Filter>Framework\Mario</Filter>
-    </ClInclude>
     <ClInclude Include="MarioController.h">
-      <Filter>Framework\Mario</Filter>
-    </ClInclude>
-    <ClInclude Include="CBigMario.h">
-      <Filter>Framework\Mario</Filter>
-    </ClInclude>
-    <ClInclude Include="CFireMario.h">
-      <Filter>Framework\Mario</Filter>
-    </ClInclude>
-    <ClInclude Include="CRaccoonMario.h">
       <Filter>Framework\Mario</Filter>
     </ClInclude>
     <ClInclude Include="CMap.h">
@@ -280,6 +292,24 @@
     </ClInclude>
     <ClInclude Include="CCollisionEvent.h">
       <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CBigMario.h">
+      <Filter>Game\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CFireMario.h">
+      <Filter>Game\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CRaccoonMario.h">
+      <Filter>Game\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmallMario.h">
+      <Filter>Game\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CGhostPlatform.h">
+      <Filter>Game\Objects\GhostPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Framework\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

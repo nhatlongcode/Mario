@@ -1,6 +1,7 @@
 [TEXTURES]
 0	textures\mariox3.png	255	255	255
 1	textures\map.png	255	255	255
+2	textures\misc.png	255	255	255
 10	textures\bbox.png	255	255	255
 
 [SPRITES]
@@ -131,6 +132,7 @@
 10110	2400	426	48	84	1	1	0
 10111	2457	426	48	84	1	1	0
 
+#MISC
 
 
 [ANIMATIONS]

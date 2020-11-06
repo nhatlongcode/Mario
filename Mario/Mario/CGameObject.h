@@ -6,6 +6,7 @@
 #include "CCollisionEvent.h"
 #include "CAnimationsManager.h"
 #include "Utils.h"
+#include "Enum.h"
 #include "CLocator.h"
 
 class CGameObject;
@@ -15,6 +16,17 @@ class CGameObject
 {
 private:
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT other);
+
+	void FilterCollision(
+		vector<LPCOLLISIONEVENT>& coEvents,
+		vector<LPCOLLISIONEVENT>& coEventsResult,
+		float& min_tx,
+		float& min_ty,
+		float& nx,
+		float& ny,
+		float& rdx,
+		float& rdy);
+
 protected:
 	float x;
 	float y;
@@ -30,6 +42,8 @@ protected:
 
 	float bboxWidth;
 	float bboxHeight;
+
+	ObjectTag tag;
 
 	LPANIMSET animSet;
 
@@ -51,13 +65,15 @@ public:
 	void SetSpeedX(float vx);
 	void SetSpeedY(float vy);
 
-	void CheckCollision(vector<LPGAMEOBJECT>* coObjects);
+	bool CheckCollision(vector<LPGAMEOBJECT>* coObjects);
 	void SetBoundingBox(float width, float height);
 
 	void AddAnimation(int aniId);
 	void SetAnimationSet(int animSetID);
 
 	void GetState(int& state) { state = this->state; }
+
+	ObjectTag GetTag();
 
 	void RenderCollisionBox();
 

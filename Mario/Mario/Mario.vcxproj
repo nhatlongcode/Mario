@@ -160,6 +160,7 @@
     <ClCompile Include="CFireMario.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CGhostPlatform.cpp" />
     <ClCompile Include="CGoomba.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CKeyEventHandler.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="CFireMario.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CGhostPlatform.h" />
     <ClInclude Include="CGoomba.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CKeyEventHandler.h" />
@@ -209,6 +211,7 @@
     <ClInclude Include="CTileMap.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
+    <ClInclude Include="Enum.h" />
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />

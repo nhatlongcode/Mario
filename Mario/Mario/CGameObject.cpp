@@ -4,6 +4,7 @@
 #include "IAnimSetsManager.h"
 #include "IDirectX.h"
 #include "CLocator.h"
+#include "CGhostPlatform.h"
 #include "ITexsManager.h"
 #include "CGame.h"
 
@@ -31,8 +32,8 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	float t, nx, ny;
 	DWORD dt = CGame::Instance()->GetDeltaTime();
 
-	this->GetBoundingBox(sl, st, sr, sb);
-	other->GetBoundingBox(ml, mt, mr, mb);
+	other->GetBoundingBox(sl, st, sr, sb);
+	this->GetBoundingBox(ml, mt, mr, mb);
 
 	float svx, svy;
 	other->GetSpeed(svx, svy);
@@ -84,7 +85,7 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 		dy_entry = st - mb;
 		dy_exit = sb - mt;
 	}
-	else if (dy < 0)
+	else if (rdy < 0)
 	{
 		dy_entry = sb - mt;
 		dy_exit = st - mb;
@@ -122,9 +123,15 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 
 	t = t_entry;
 
+
+	// decide diretion of collision
 	if (tx_entry > ty_entry)
 	{
 		ny = 0.0f;
+		if (dynamic_cast<CGhostPlatform*>(other))
+		{
+
+		}
 		rdx > 0 ? nx = -1.0f : nx = 1.0f;
 	}
 	else
@@ -137,9 +144,15 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	return e;
 }
 
+void CGameObject::FilterCollision(vector<LPCOLLISIONEVENT>& coEvents, vector<LPCOLLISIONEVENT>& coEventsResult, float& min_tx, float& min_ty, float& nx, float& ny, float& rdx, float& rdy)
+{
+
+}
+
 CGameObject::CGameObject()
 {
 	IsCollisionEnabled = true;
+	tag = ObjectTag::None;
 	nx = 1;
 	vx = vy = 0;
 	x = y = 0;
@@ -155,9 +168,9 @@ void CGameObject::SetSpeedY(float vy)
 	this->vy = vy;
 }
 
-void CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
+bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 {
-	if (!IsCollisionEnabled) return;
+	if (!IsCollisionEnabled) return false;
 
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
@@ -166,14 +179,18 @@ void CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 	{
 		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
 
-		if (e->t > 0 && e->t <= 1.0f && e != nullptr) // co va cham
+		if (e != nullptr && e->t > 0 && e->t <= 1.0f) // co va cham
 			coEvents.push_back(e);
 		else
 			delete e;
 	}
 
-	std::sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
 
+	std::sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
+	
+	if (coEvents.size() == 0) return false;
+
+	//DebugOut(L"COLLISIN DETECTED\n");
 	float min_tx, min_ty, nx = 0, ny;
 	float rdx = 0;
 	float rdy = 0;
@@ -205,8 +222,8 @@ void CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 	if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
 
 	// how to push back Mario if collides with a moving objects, what if Mario is pushed this way into another object?
-	if (rdx != 0 && rdx != dx)
-		x += nx * abs(rdx);
+	//if (rdx != 0 && rdx != dx)
+		//x += nx * abs(rdx);
 
 	// block every object first!
 	x += min_tx * dx + nx * 0.4f;
@@ -219,34 +236,37 @@ void CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 	{
 		OnCollisionEnter(coEvent);
 	}
+	
+	return true;
+}
+
+ObjectTag CGameObject::GetTag()
+{
+	return tag;
 }
 
 void CGameObject::RenderCollisionBox()
 {
 	auto tex = CLocator<ITexsManager>().Get()->Get(10);
-	if (tex == NULL) DebugOut(L"NULL\n");
 	RECT bbRect;
-	bbRect.left = x;
-	bbRect.top = y;
-	bbRect.right = x + bboxWidth;
-	bbRect.bottom = y + bboxHeight;
+	bbRect.left = 0;
+	bbRect.top = 0;
+	bbRect.right = bboxWidth;
+	bbRect.bottom = bboxHeight;
 
-	DebugOut(L"width %.2f\n",x);
 	float cx, cy;
 	CGame::Instance()->GetCurrentScene()->GetCamPos(cx, cy);
-	Vector2 pos;
-	pos.x = trunc(x - cx);
-	pos.y = trunc(y - cy);
+	Vector3 p((int)(x - cx), (int)(y - cy), 0);
 	LPD3DXSPRITE spriteHandler = CLocator<IDirectX>().Get()->SpriteHandler();
-	spriteHandler->Draw(tex, &bbRect, &D3DXVECTOR3(bboxWidth * 0.5f, bboxHeight * 0.5f, 0), &D3DXVECTOR3(pos.x, pos.y, 0), D3DCOLOR_ARGB(32, 255, 255, 255));
+	spriteHandler->Draw(tex, &bbRect, &Vector3((int)bboxWidth / 2, (int)bboxHeight / 2, 0), &p , D3DCOLOR_ARGB(64, 255, 255, 255));
 }
 
 void CGameObject::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x;
-	t = y;
-	r = x + bboxWidth;
-	b = y + bboxHeight;
+	l = x - bboxWidth / 2;
+	t = y - bboxHeight / 2;
+	r = x + bboxWidth / 2;
+	b = y + bboxHeight / 2;
 }
 
 void CGameObject::OnCollisionEnter(LPCOLLISIONEVENT other)
@@ -277,8 +297,12 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	dx = vx * dt;
 	dy = vy * dt;
-	x += dx;
-	y += dy;
+	if (!CheckCollision(coObjects))
+	{
+		x += dx;
+		y += dy;
+	}
+
 /*
 	DebugOut(L"x: %.2f", x);
 	DebugOut(L"y: %.2f\n", y);

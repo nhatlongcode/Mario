@@ -14,6 +14,10 @@ protected:
 	float startX;			// initial position of Mario at scene
 	float startY;
 	float force;
+
+	void StandingOnGround();
+
+
 public:
 	CMario();
 	void SetState(int state);
@@ -21,7 +25,7 @@ public:
 	//void BasicActionHandle();
 
 	virtual void Init();
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects = NULL);
+	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render();
 	virtual void OnKeyDown(int keyCode);
 	virtual void OnKeyUp(int keyCode);

@@ -3,6 +3,7 @@
 #include "CAnimationSetsManager.h"
 #include "CGoomba.h"
 #include "CBrick.h"
+#include "CGhostPlatform.h"
 #include "CGame.h"
 #include <iostream>
 #include <fstream>
@@ -204,11 +205,14 @@ void CScenePlay::Load()
 	}
 
 	f.close();
-	
+	CBrick* brick = new CBrick();
+	CGhostPlatform* ghost = new CGhostPlatform();
 	map = new CMap(1, L"map.txt");
-	
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
+	objects.push_back(brick);
+	objects.push_back(ghost);
+	//objects.push_back(this->player);
 	camera->SetPlayer(this->player);
 	//objects.push_back(player);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
@@ -219,7 +223,7 @@ void CScenePlay::Load()
 void CScenePlay::Update(DWORD dt)
 {
 	vector<LPGAMEOBJECT> coObjects;
-	for (size_t i = 1; i < objects.size(); i++)
+	for (size_t i = 0; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}

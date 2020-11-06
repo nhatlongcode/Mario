@@ -1,15 +1,23 @@
 #include "CBrick.h"
 
+CBrick::CBrick()
+{
+	SetBoundingBox(BRICK_BBOX_WIDTH, BRICK_BBOX_HEIGHT);
+	IsCollisionEnabled = true;
+	x = 300.0f;
+	y = 1100.75f;
+}
+
 void CBrick::Render()
 {
-	animSet->at(0)->Render(x, y);
+	CGameObject::RenderCollisionBox();
+	//animSet->at(0)->Render(x, y);
 	//RenderBoundingBox();
 }
 
-void CBrick::GetBoundingBox(float& l, float& t, float& r, float& b)
+void CBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	l = x;
-	t = y;
-	r = x + BRICK_BBOX_WIDTH;
-	b = y + BRICK_BBOX_HEIGHT;
+	//CGameObject::CheckCollision(coObjects);
 }
+
+
