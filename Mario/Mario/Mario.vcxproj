@@ -165,6 +165,7 @@
     <ClCompile Include="CGround.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CKeyEventHandler.cpp" />
+    <ClCompile Include="CKoopas.cpp" />
     <ClCompile Include="CLocator.cpp" />
     <ClCompile Include="CRaccoonMario.cpp" />
     <ClCompile Include="CScene.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="CGround.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CKeyEventHandler.h" />
+    <ClInclude Include="CKoopas.h" />
     <ClInclude Include="CLocator.h" />
     <ClInclude Include="CRaccoonMario.h" />
     <ClInclude Include="CScene.h" />

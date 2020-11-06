@@ -7,7 +7,9 @@ protected:
 	bool isGrounded;
 	bool isJumping;
 	bool isFalling;
+	bool isFlying;
 	bool isRunning;
+	bool isMaxSpeed;
 	bool isHighJump;
 	bool isFinishHighJump;
 
@@ -31,6 +33,11 @@ public:
 	virtual void OnKeyUp(int keyCode);
 	virtual void HandleMovement();
 	virtual void HandleJump();
+
+	virtual void HandleFly();
+	virtual void HandleFall();
+	virtual void HandleRun();
+
 	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
 	//virtual void AttackAction() = 0;
 	//virtual void CrunchAction() = 0;

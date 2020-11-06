@@ -5,5 +5,6 @@ class CRaccoonMario :
 {
 public:
     CRaccoonMario();
+    void HandleFall();
 };
 

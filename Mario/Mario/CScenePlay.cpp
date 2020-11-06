@@ -167,6 +167,26 @@ void CScenePlay::_ParseSection_GROUNDS(string line)
 	objects.push_back(ground);
 }
 
+void CScenePlay::_ParseSection_GHOSTPLATFORM(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 4) return;
+
+	float x, y, w, h;
+	x = atoi(tokens[0].c_str());
+	y = atoi(tokens[1].c_str());
+	w = atoi(tokens[2].c_str());
+	h = atoi(tokens[3].c_str());
+
+	CGameObject* ghost = new CGhostPlatform();
+	ghost->SetPosition(x, y);
+	ghost->SetBoundingBox(w, h);
+
+
+	objects.push_back(ghost);
+}
+
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CScenePlayKeyHandler(this);
@@ -214,6 +234,9 @@ void CScenePlay::Load()
 		if (line == "[GROUNDS]") {
 			section = SCENE_SECTION_GROUNDS; continue;
 		}
+		if (line == "[GHOSTPLATFORM]") {
+			section = SCENE_SECTION_GHOSTPLATFORM; continue;
+		}
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
 
 		//
@@ -227,17 +250,15 @@ void CScenePlay::Load()
 		case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
 		case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 		case SCENE_SECTION_GROUNDS: _ParseSection_GROUNDS(line); break;
+		case SCENE_SECTION_GHOSTPLATFORM: _ParseSection_GHOSTPLATFORM(line); break;
 		}
 	}
 
 	f.close();
-	CBrick* brick = new CBrick();
-	CGhostPlatform* ghost = new CGhostPlatform();
 	map = new CMap(1, L"map.txt");
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
-	objects.push_back(brick);
-	objects.push_back(ghost);
+
 	//objects.push_back(this->player);
 	camera->SetPlayer(this->player);
 	//objects.push_back(player);

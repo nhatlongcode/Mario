@@ -17,20 +17,13 @@ void CBigMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 	if (input->IsKeyDown(DIK_DOWN))
 	{
 		SetState(MARIO_STATE_CRUNCH);
+		SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_CRUNCH_BBOX_HEIGHT);
+		
 	}
+	else SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);
 	
-	if (input->IsKeyDown(DIK_RIGHT))
-	{
-		nx = DIRECTION_RIGHT;
-		SetSpeedX(0.19f);
-		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
-	}
-	else if (input->IsKeyDown(DIK_LEFT))
-	{
-		nx = DIRECTION_LEFT;
-		SetSpeedX(-0.19f);
-		if (isGrounded && !isJumping) SetState(MARIO_STATE_WALK);
-	}
+
 	
 }
+
 

@@ -7,3 +7,9 @@ CRaccoonMario::CRaccoonMario()
 	IsCollisionEnabled = true;
 	SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);
 }
+
+void CRaccoonMario::HandleFall()
+{
+	CMario::HandleFall();
+	vy -= 0.01f;
+}

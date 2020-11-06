@@ -144,15 +144,13 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	return e;
 }
 
-void CGameObject::FilterCollision(vector<LPCOLLISIONEVENT>& coEvents, vector<LPCOLLISIONEVENT>& coEventsResult, float& min_tx, float& min_ty, float& nx, float& ny, float& rdx, float& rdy)
-{
-
-}
 
 CGameObject::CGameObject()
 {
 	IsCollisionEnabled = true;
 	tag = ObjectTag::None;
+	a.x = 0;
+	a.y = 0;
 	nx = 1;
 	vx = vy = 0;
 	x = y = 0;
@@ -167,6 +165,19 @@ void CGameObject::SetSpeedY(float vy)
 {
 	this->vy = vy;
 }
+
+void CGameObject::SetAcceleration(float ax, float ay)
+{
+	a.x = ax;
+	a.y = ay;
+}
+
+Vector2 CGameObject::GetAcceleration()
+{
+	return a;
+}
+
+
 
 bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 {
@@ -295,8 +306,12 @@ void CGameObject::SetAnimationSet(int animSetID)
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	vx += a.x * dt;
 	dx = vx * dt;
 	dy = vy * dt;
+
+	DebugOut(L"ax: %.2f\n", a.x);
+
 	if (!CheckCollision(coObjects))
 	{
 		x += dx;

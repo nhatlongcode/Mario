@@ -192,6 +192,9 @@
     <ClCompile Include="CGround.cpp">
       <Filter>Game\Objects\Ground</Filter>
     </ClCompile>
+    <ClCompile Include="CKoopas.cpp">
+      <Filter>Game\Enemies\Koopas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -319,6 +322,9 @@
     </ClInclude>
     <ClInclude Include="CGround.h">
       <Filter>Game\Objects\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="CKoopas.h">
+      <Filter>Game\Enemies\Koopas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
