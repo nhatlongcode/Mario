@@ -26,7 +26,7 @@ void CMap::Load(int texID, LPCWSTR path)
 		{
 			//LPSPRITE sprite = new CSprite(id, left, top, 48, 48, 1, 1, tex);
 			//sprites[id] = sprite;
-			CLocator<ISpritesManager>().Get()->Add(id, left, top, 48, 48, 1, 1, tex);
+			CLocator<ISpritesManager>().Get()->Add(id, left, top, 48, 48, 1, 1, 0, tex);
 			left += 48;
 			id++;
 		}

@@ -1,7 +1,7 @@
 #include "CSprite.h"
 #include "CGame.h"
 
-CSprite::CSprite(int id, int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 tex)
+CSprite::CSprite(int id, int left, int top, int width, int height, int scaleX, int scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex)
 {
 	this->id = id;
 	this->left = left;
@@ -10,6 +10,7 @@ CSprite::CSprite(int id, int left, int top, int width, int height, int scaleX, i
 	this->height = height;
 	this->scaleX = scaleX;
 	this->scaleY = scaleY;
+	this->xPivot = xPivot;
 	this->texture = tex;
 }
 
@@ -39,7 +40,7 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 
 	Vector3 p2((int)p.x, (int)p.y, 0);
 	spriteHandler->SetTransform(&newMatrix);
-	spriteHandler->Draw(texture, &r, &Vector3((int)width/2, (int)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	spriteHandler->Draw(texture, &r, &Vector3((int)width/2 + xPivot, (int)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);
 
 }

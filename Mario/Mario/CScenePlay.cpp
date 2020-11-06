@@ -27,7 +27,7 @@ void CScenePlay::_ParseSection_SPRITES(string line)
 {
 	vector<string> tokens = split(line);
 
-	if (tokens.size() < 8) return; // skip invalid lines
+	if (tokens.size() < 9) return; // skip invalid lines
 
 	int ID = atoi(tokens[0].c_str());
 	int left = atoi(tokens[1].c_str());
@@ -36,7 +36,8 @@ void CScenePlay::_ParseSection_SPRITES(string line)
 	int height = atoi(tokens[4].c_str());
 	int scaleX = atoi(tokens[5].c_str());
 	int scaleY = atoi(tokens[6].c_str());
-	int texID = atoi(tokens[7].c_str());
+	int xPivot = atoi(tokens[7].c_str());
+	int texID = atoi(tokens[8].c_str());
 
 	LPDIRECT3DTEXTURE9 tex = CLocator<ITexsManager>().Get()->Get(texID);
 	if (tex == NULL)
@@ -45,7 +46,7 @@ void CScenePlay::_ParseSection_SPRITES(string line)
 		return;
 	}
 
-	CLocator<ISpritesManager>().Get()->Add(ID, left, top, width, height, scaleX, scaleY, tex);
+	CLocator<ISpritesManager>().Get()->Add(ID, left, top, width, height, scaleX, scaleY, xPivot, tex);
 }
 
 void CScenePlay::_ParseSection_ANIMATIONS(string line)

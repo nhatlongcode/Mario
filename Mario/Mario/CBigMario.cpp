@@ -5,6 +5,8 @@
 CBigMario::CBigMario()
 {
 	SetAnimationSet(MARIO_TYPE_SUPER);
+	IsCollisionEnabled = true;
+	SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);
 	state = MARIO_STATE_IDLE;
 }
 
