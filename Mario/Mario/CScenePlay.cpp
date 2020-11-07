@@ -258,10 +258,11 @@ void CScenePlay::Load()
 	map = new CMap(1, L"map.txt");
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
-
-	//objects.push_back(this->player);
 	camera->SetPlayer(this->player);
-	//objects.push_back(player);
+
+	CGameObject* brickTest = new CBrick();
+	brickTest->SetPosition(300, 1200);
+	objects.push_back(brickTest);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);

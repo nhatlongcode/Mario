@@ -17,13 +17,13 @@ void CRaccoonMario::HandleFall()
 void CRaccoonMario::HandleAtk()
 {
 	auto dt = CGame::Instance()->GetDeltaTime();
-	if (attackStart == -1)
+	if (attackBegin == -1)
 	{
 		// atk
-		attackStart = dt;
+		attackBegin = dt;
 		isAttacking = true;
 		SetState(MARIO_STATE_ATK);
-		animSet->at(MARIO_STATE_ATK)->Render(x, y, nx, attackStart, marioAttackTime);
+		animSet->at(MARIO_STATE_ATK)->Render(x, y, nx, attackBegin, attackTime);
 	}
 
 }
@@ -31,15 +31,14 @@ void CRaccoonMario::HandleAtk()
 void CRaccoonMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CMario::Update(dt, coObjects);
-	if (attackStart > 0)
+	if (attackBegin > 0)
 	{
-		attackStart += dt;
-		if (attackStart > marioAttackTime)
+		attackBegin += dt;
+		if (attackBegin > attackTime)
 		{
-			attackStart = -1;
+			attackBegin = -1;
 			isAttacking = false;
 		}
 	
 	}
-	DebugOut(L"at %d", attackStart);
 }

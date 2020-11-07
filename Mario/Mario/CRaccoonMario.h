@@ -10,9 +10,8 @@ public:
     void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 
 protected:
-    long attackStart = -1;
-
-    long marioAttackTime = 250;
+    long attackBegin = -1;
+    long attackTime = 250;
 
 };
 

@@ -47,7 +47,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 
 	HandleMovement();
-	if (input->IsKeyDown(DIK_A) || input->IsKeyDown(DIK_Z))
+	if (input->IsKeyDown(DIK_Z))
 	{
 		HandleAtk();
 	}
@@ -102,6 +102,11 @@ void CMario::OnKeyUp(int keyCode)
 	{
 		isFinishHighJump = true;
 	}
+
+	if (keyCode == DIK_A)
+	{
+		isFlying = false;
+	}
 }
 
 void CMario::HandleMovement()
@@ -117,7 +122,7 @@ void CMario::HandleMovement()
 		{
 			if (input->IsKeyDown((DIK_A)))
 			{
-				SetState(MARIO_STATE_WALK);
+				if (!isAttacking) SetState(MARIO_STATE_WALK);
 				a.x = MARIO_ACCELERATION * nx;
 				isRunning = true;
 				DebugOut(L"RUNNNN\n");
@@ -130,7 +135,7 @@ void CMario::HandleMovement()
 			}
 			else
 			{
-				SetState(MARIO_STATE_WALK);
+				if (!isAttacking) SetState(MARIO_STATE_WALK);
 				SetSpeedX(MARIO_WALKING_SPEED * nx);
 				isMaxSpeed = false;
 				isRunning = false;
@@ -212,6 +217,11 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 			StandingOnGround();
 		}
 
+	}
+	else if (go->GetTag() == ObjectTag::Goomba && other->ny == -1.0f)
+	{
+		go->SetState(GOOMBA_STATE_DIE);
+		vy = -0.5f;
 	}
 }
 

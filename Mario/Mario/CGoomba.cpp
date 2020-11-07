@@ -1,16 +1,5 @@
 #include "CGoomba.h"
 
-void CGoomba::GetBoundingBox(float& left, float& top, float& right, float& bottom)
-{
-	left = x;
-	top = y;
-	right = x + GOOMBA_BBOX_WIDTH;
-
-	if (state == GOOMBA_STATE_DIE)
-		bottom = y + GOOMBA_BBOX_HEIGHT_DIE;
-	else
-		bottom = y + GOOMBA_BBOX_HEIGHT;
-}
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -30,6 +19,7 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (vx > 0 && x > 290) {
 		x = 290; vx = -vx;
 	}
+	//vy += MARIO_GRAVITY;
 }
 
 void CGoomba::Render()
@@ -48,6 +38,9 @@ void CGoomba::Render()
 CGoomba::CGoomba()
 {
 	SetState(GOOMBA_STATE_WALKING);
+	SetBoundingBox(GOOMBA_BBOX_WIDTH, GOOMBA_BBOX_HEIGHT);
+	IsCollisionEnabled = true;
+	tag = ObjectTag::Goomba;
 }
 
 void CGoomba::SetState(int state)
@@ -56,7 +49,7 @@ void CGoomba::SetState(int state)
 	switch (state)
 	{
 	case GOOMBA_STATE_DIE:
-		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE + 1;
+		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE - 1.0f;
 		vx = 0;
 		vy = 0;
 		break;
