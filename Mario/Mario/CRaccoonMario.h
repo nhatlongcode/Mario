@@ -6,5 +6,13 @@ class CRaccoonMario :
 public:
     CRaccoonMario();
     void HandleFall();
+    void HandleAtk();
+    void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
+
+protected:
+    long attackStart = -1;
+
+    long marioAttackTime = 250;
+
 };
 

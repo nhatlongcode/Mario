@@ -47,6 +47,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 
 	HandleMovement();
+	if (input->IsKeyDown(DIK_A) || input->IsKeyDown(DIK_Z))
+	{
+		HandleAtk();
+	}
 	if (!isMaxSpeed) HandleJump();
 
 	else
@@ -137,7 +141,7 @@ void CMario::HandleMovement()
 	{
 		SetSpeedX(MARIO_IDLE_SPEED);
 		a.x = 0;
-		if (isGrounded && !isJumping && !isFalling) SetState(MARIO_STATE_IDLE);
+		if (isGrounded && !isJumping && !isFalling && !isAttacking) SetState(MARIO_STATE_IDLE);
 	}
 }
 
@@ -177,6 +181,10 @@ void CMario::HandleFall()
 	force = 0;
 	DebugOut(L"FALL\n");
 	SetState(MARIO_STATE_FALL);
+}
+
+void CMario::HandleAtk()
+{
 }
 
 void CMario::HandleRun()

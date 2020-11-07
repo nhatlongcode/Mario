@@ -310,7 +310,7 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	dx = vx * dt;
 	dy = vy * dt;
 
-	DebugOut(L"ax: %.2f\n", a.x);
+	//DebugOut(L"ax: %.2f\n", a.x);
 
 	if (!CheckCollision(coObjects))
 	{

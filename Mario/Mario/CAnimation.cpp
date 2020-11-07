@@ -40,3 +40,10 @@ void CAnimation::Render(float x, float y, int direction, float speed, int alpha)
 
 	frames[currentFrame]->GetSprite()->Draw(x, y, direction, alpha);
 }
+
+void CAnimation::Render(float x, float y, int direction, int runTime, int totalTime, D3DXCOLOR overlay)
+{
+	int frameIndex = max(0, min(trunc(runTime / (totalTime / frames.size())), frames.size() - 1));
+
+	frames[frameIndex]->GetSprite()->Draw(x, y, direction);
+}

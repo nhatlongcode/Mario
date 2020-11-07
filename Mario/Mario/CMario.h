@@ -10,6 +10,7 @@ protected:
 	bool isFlying;
 	bool isRunning;
 	bool isMaxSpeed;
+	bool isAttacking;
 	bool isHighJump;
 	bool isFinishHighJump;
 
@@ -36,6 +37,7 @@ public:
 
 	virtual void HandleFly();
 	virtual void HandleFall();
+	virtual void HandleAtk();
 	virtual void HandleRun();
 
 	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
