@@ -306,7 +306,10 @@ void CGameObject::SetAnimationSet(int animSetID)
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	vx += a.x * dt;
+	vx += (a.x * dt)/2;
+
+	DebugOut(L"vx: %.2f\n", vx);
+	DebugOut(L"ax: %.5f\n", a.x);
 	dx = vx * dt;
 	dy = vy * dt;
 

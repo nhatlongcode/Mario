@@ -19,8 +19,15 @@ protected:
 	float force;
 
 	void StandingOnGround();
-
-
+	virtual void HandleMovement();
+	virtual void HandleJump();
+	virtual void HandleChangeDirection(int direction);
+	virtual void HandleFly();
+	virtual void HandleFall();
+	virtual void HandleAtk();
+	virtual void HandleWalk();
+	virtual void HandleRun();
+	virtual void HandleInput();
 public:
 	CMario();
 	void SetState(int state);
@@ -32,13 +39,7 @@ public:
 	virtual void Render();
 	virtual void OnKeyDown(int keyCode);
 	virtual void OnKeyUp(int keyCode);
-	virtual void HandleMovement();
-	virtual void HandleJump();
 
-	virtual void HandleFly();
-	virtual void HandleFall();
-	virtual void HandleAtk();
-	virtual void HandleRun();
 
 	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
 	//virtual void AttackAction() = 0;

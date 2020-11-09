@@ -34,36 +34,55 @@ void CMario::Init()
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	vy += MARIO_GRAVITY;
+
+	if (!isGrounded)
+	{
+	}
+	
 
 
 	auto input = CLocator<IHandleInput>().Get();
 
-	if (!isGrounded)
+	if (input->IsKeyDown(DIK_LEFT) || input->IsKeyDown(DIK_RIGHT))
 	{
-		if (vy > 0)
+		if (input->IsKeyDown(DIK_LEFT)) HandleChangeDirection(DIRECTION_LEFT);
+		if (input->IsKeyDown(DIK_RIGHT)) HandleChangeDirection(DIRECTION_RIGHT);
+
+
+		if (input->IsKeyDown(DIK_A))
 		{
-			HandleFall();
+			//a.x = 0.003f * nx; // tai sao no chi tang 1 luc ma ko tang nua hay la no tang cham qua
+			a.x = 0.0005f * nx;
+		}
+		else HandleWalk();
+	}
+	else 
+	{
+		
+		if (nx * vx <= 0)
+		{
+			vx = 0;
+			a.x = 0;
+			SetState(MARIO_STATE_IDLE);
+		}
+		else
+		{
+			a.x = MARIO_ACCELERATION * 3 * -nx;
+
 		}
 	}
 
-	HandleMovement();
-	if (input->IsKeyDown(DIK_Z))
+	if (input->IsKeyDown(DIK_S))
 	{
-		HandleAtk();
-	}
-	if (!isMaxSpeed) HandleJump();
-
-	else
-	{
-		if (!input->IsKeyDown(DIK_S)) isFinishHighJump = true;
+		//HandleJump();
+		vy = MARIO_JUMP_HIGH_SPEED;
 	}
 
 
+	if (vx != 0) SetState(MARIO_STATE_WALK);
 
-	vy += MARIO_GRAVITY;
 	
-
-
 
 	CGameObject::Update(dt, coObjects);
 	//DebugOut(L"isFinishHighJump %d\n", isFinishHighJump);
@@ -111,98 +130,51 @@ void CMario::OnKeyUp(int keyCode)
 
 void CMario::HandleMovement()
 {
-	DWORD dt = CGame::Instance()->GetDeltaTime();
-	auto input = CLocator<IHandleInput>().Get();
-	if (input->IsKeyDown(DIK_RIGHT) || input->IsKeyDown(DIK_LEFT))
-	{
-		if (input->IsKeyDown(DIK_RIGHT)) nx = DIRECTION_RIGHT;
-		else nx = DIRECTION_LEFT;
-		
-		if (isGrounded && !isJumping)
-		{
-			if (input->IsKeyDown((DIK_A)))
-			{
-				if (!isAttacking) SetState(MARIO_STATE_WALK);
-				a.x = MARIO_ACCELERATION * nx;
-				isRunning = true;
-				DebugOut(L"RUNNNN\n");
 
-				if (abs(vx) > MARIO_RUNNING_SPEED)
-				{
-					isMaxSpeed = true;
-					HandleRun();
-				}
-			}
-			else
-			{
-				if (!isAttacking) SetState(MARIO_STATE_WALK);
-				SetSpeedX(MARIO_WALKING_SPEED * nx);
-				isMaxSpeed = false;
-				isRunning = false;
-			}
-		}
-	}
-	else
-	{
-		SetSpeedX(MARIO_IDLE_SPEED);
-		a.x = 0;
-		if (isGrounded && !isJumping && !isFalling && !isAttacking) SetState(MARIO_STATE_IDLE);
-	}
 }
 
 void CMario::HandleJump()
 {
-	auto input = CLocator<IHandleInput>().Get();
-	if (input->IsKeyDown(DIK_X) && !isFalling && isGrounded)
-	{
-		SetSpeedY(MARIO_JUMP_SHORT_SPEED); //jump short
-		isGrounded = false;
-		isJumping = true;
-		SetState(MARIO_STATE_JUMP);
-	}
-	else if (input->IsKeyDown(DIK_S) && !isFalling && force > -MARIO_MAX_JUMP && (isGrounded || isHighJump) && (isFinishHighJump ^ isHighJump))
-	{
-		SetSpeedY(MARIO_JUMP_HIGH_SPEED);
-		force += vy;
-		isJumping = true;
-		isGrounded = false;
-		isFinishHighJump = false;
-		isHighJump = true;
-		SetState(MARIO_STATE_JUMP);
-		//DebugOut(L"LOLOLOLOL");
-	}
+
+
+}
+
+void CMario::HandleChangeDirection(int direction)
+{
+	nx = direction;
 }
 
 void CMario::HandleFly()
 {
 
-	SetSpeedY(MARIO_FLY_SPEED);
 }
 
 void CMario::HandleFall()
 {
-	isFalling = true;
-	isJumping = false;
-	force = 0;
-	DebugOut(L"FALL\n");
-	SetState(MARIO_STATE_FALL);
+
 }
 
 void CMario::HandleAtk()
 {
 }
 
+void CMario::HandleWalk()
+{
+	vx = MARIO_WALKING_SPEED * nx;
+	SetState(MARIO_STATE_WALK);
+}
+
 void CMario::HandleRun()
 {
-	auto input = CLocator<IHandleInput>().Get();
-	vx = MARIO_RUNNING_SPEED * nx;
-	SetState(MARIO_STATE_RUN);
-	if (input->IsKeyDown(DIK_S))
-	{
-		SetState(MARIO_STATE_FLY);
-		isFlying = true;
-		HandleFly();
-	}
+
+}
+
+void CMario::HandleInput()
+{
+
+	
+
+
 }
 
 void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
