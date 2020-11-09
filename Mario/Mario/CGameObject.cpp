@@ -149,8 +149,6 @@ CGameObject::CGameObject()
 {
 	IsCollisionEnabled = true;
 	tag = ObjectTag::None;
-	a.x = 0;
-	a.y = 0;
 	nx = 1;
 	vx = vy = 0;
 	x = y = 0;
@@ -166,16 +164,6 @@ void CGameObject::SetSpeedY(float vy)
 	this->vy = vy;
 }
 
-void CGameObject::SetAcceleration(float ax, float ay)
-{
-	a.x = ax;
-	a.y = ay;
-}
-
-Vector2 CGameObject::GetAcceleration()
-{
-	return a;
-}
 
 
 
@@ -306,10 +294,9 @@ void CGameObject::SetAnimationSet(int animSetID)
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	vx += (a.x * dt)/2;
+	//vx += (a.x * dt)/2;
 
 	DebugOut(L"vx: %.2f\n", vx);
-	DebugOut(L"ax: %.5f\n", a.x);
 	dx = vx * dt;
 	dy = vy * dt;
 

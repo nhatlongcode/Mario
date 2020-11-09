@@ -20,6 +20,8 @@ CMario::CMario()
 {
 	level = MARIO_TYPE_FIRE;
 	state = MARIO_STATE_ATK;
+	ax = 0.0f;
+	animSpeed = 1.0f;
 	isGrounded = false;
 	isMaxSpeed = false;
 	isFlying = true;
@@ -35,60 +37,80 @@ void CMario::Init()
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += MARIO_GRAVITY;
-
-	if (!isGrounded)
-	{
-	}
-	
-
-
+	float currentSpeed = vx;
+	float maxWalk = 0.2f;
+	float maxRun = 0.5f;
 	auto input = CLocator<IHandleInput>().Get();
+	
 
 	if (input->IsKeyDown(DIK_LEFT) || input->IsKeyDown(DIK_RIGHT))
 	{
 		if (input->IsKeyDown(DIK_LEFT)) HandleChangeDirection(DIRECTION_LEFT);
 		if (input->IsKeyDown(DIK_RIGHT)) HandleChangeDirection(DIRECTION_RIGHT);
-
-
-		if (input->IsKeyDown(DIK_A))
-		{
-			//a.x = 0.003f * nx; // tai sao no chi tang 1 luc ma ko tang nua hay la no tang cham qua
-			a.x = 0.0005f * nx;
-		}
-		else HandleWalk();
-	}
-	else 
-	{
 		
-		if (nx * vx <= 0)
+		SetState(MARIO_STATE_WALK);
+
+		if (input->IsKeyDown(DIK_A) && isGrounded)
 		{
-			vx = 0;
-			a.x = 0;
-			SetState(MARIO_STATE_IDLE);
+			ax = 0.0003f;
+			if (abs(vx) > maxRun && !(currentSpeed * nx < 0))
+			{
+				vx = maxRun * nx;
+			}
+			else  vx = currentSpeed + ax * nx * dt;
 		}
 		else
 		{
-			a.x = MARIO_ACCELERATION * 3 * -nx;
-
+			ax = 0.001f; 
+			if (abs(currentSpeed) > maxWalk)
+			{
+				if ( currentSpeed + 0.0001f * -nx * dt > maxWalk && !(currentSpeed*nx < 0))
+				{
+					vx = currentSpeed + 0.0001f * -nx * dt;
+				}
+				else vx = maxWalk * nx;
+			}
+			else vx = currentSpeed + ax * nx * dt;
 		}
+
+	}
+	else if (isGrounded)
+	{ //chuyen dong cham dan cung huong
+		ax = 0.001f * -nx;
+		if (abs(vx) > 0)
+		{
+
+			if (nx == DIRECTION_RIGHT && currentSpeed + 0.001f * -nx * dt > 0)
+			{
+				vx = currentSpeed + 0.001f * -nx * dt;
+			}
+			else if (nx == DIRECTION_LEFT && currentSpeed + 0.001f * -nx * dt < 0)
+			{
+				vx = currentSpeed + 0.001f * -nx * dt;
+			}
+			else
+			{
+				vx = 0;
+				SetState(MARIO_STATE_IDLE);
+			}
+		}
+
+
 	}
 
-	if (input->IsKeyDown(DIK_S))
+	if (input->IsKeyDown(DIK_S) && isGrounded)
 	{
-		//HandleJump();
-		vy = MARIO_JUMP_HIGH_SPEED;
+		vy = MARIO_JUMP_SHORT_SPEED;
+		isGrounded = false;
 	}
 
+	//DebugOut(L"ax %.7f\n", ax);
 
-	if (vx != 0) SetState(MARIO_STATE_WALK);
-
-	
 
 	CGameObject::Update(dt, coObjects);
-	//DebugOut(L"isFinishHighJump %d\n", isFinishHighJump);
-	//DebugOut(L"isHighJump %d\n", isHighJump);
-	//DebugOut(L"isGrounded %d\n", isGrounded);
-	//DebugOut(L"force %.2f\n", force);
+
+
+
 }
 
 
@@ -141,6 +163,7 @@ void CMario::HandleJump()
 
 void CMario::HandleChangeDirection(int direction)
 {
+	//if (nx != direction) SetState(MARIO_STATE_SKID);
 	nx = direction;
 }
 
@@ -160,13 +183,13 @@ void CMario::HandleAtk()
 
 void CMario::HandleWalk()
 {
-	vx = MARIO_WALKING_SPEED * nx;
+	vx = 0.105f * nx;
 	SetState(MARIO_STATE_WALK);
 }
 
-void CMario::HandleRun()
+void CMario::HandleRun(float currentSpeed, DWORD dt)
 {
-
+	vx = currentSpeed + 0.0005f * dt * nx;
 }
 
 void CMario::HandleInput()
@@ -181,7 +204,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
 	LPGAMEOBJECT go = other->obj;
 	//DebugOut(L"asdasd\n");
-	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Solid || go->GetTag() == ObjectTag::Ground)
+	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Ground || go->GetTag() == ObjectTag::Ground)
 	{
 		if (other->ny == -1.0f)
 		{

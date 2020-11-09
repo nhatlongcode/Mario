@@ -14,9 +14,11 @@ protected:
 	bool isHighJump;
 	bool isFinishHighJump;
 
+	float ax;
 	float startX;			// initial position of Mario at scene
 	float startY;
 	float force;
+	float animSpeed;
 
 	void StandingOnGround();
 	virtual void HandleMovement();
@@ -26,7 +28,7 @@ protected:
 	virtual void HandleFall();
 	virtual void HandleAtk();
 	virtual void HandleWalk();
-	virtual void HandleRun();
+	virtual void HandleRun(float currentSpeed, DWORD dt);
 	virtual void HandleInput();
 public:
 	CMario();

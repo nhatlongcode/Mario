@@ -24,7 +24,6 @@ protected:
 	float vx;
 	float vy;
 
-	Vector2 a;
 
 	float dx;
 	float dy;
@@ -56,10 +55,6 @@ public:
 	void AddSpeed(float vx, float vy) { this->vx += vx; this->vy += vy; }
 	void SetSpeedX(float vx);
 	void SetSpeedY(float vy);
-
-	void SetAcceleration(float ax, float ay);
-	Vector2 GetAcceleration();
-
 
 	bool CheckCollision(vector<LPGAMEOBJECT>* coObjects);
 	void SetBoundingBox(float width, float height);
