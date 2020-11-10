@@ -5,14 +5,7 @@ class CMario : public CGameObject
 protected:
 	int level;
 	bool isGrounded;
-	bool isJumping;
-	bool isFalling;
-	bool isFlying;
-	bool isRunning;
-	bool isMaxSpeed;
 	bool isAttacking;
-	bool isHighJump;
-	bool isFinishHighJump;
 
 	float ax;
 	float startX;			// initial position of Mario at scene

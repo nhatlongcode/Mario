@@ -8,25 +8,18 @@
 void CMario::StandingOnGround()
 {
 	isGrounded = true;
-	isFalling = false;
-	isJumping = false;
-	isFlying = false;
 	force = 0.0f;
-	isHighJump = false;
-
+	if (abs(vx) <= 0.0001f) SetState(MARIO_STATE_IDLE);
 }
 
 CMario::CMario()
 {
-	level = MARIO_TYPE_FIRE;
-	state = MARIO_STATE_ATK;
+	level = MARIO_TYPE_SMALL;
+	state = MARIO_STATE_IDLE;
 	ax = 0.0f;
 	animSpeed = 1.0f;
 	isGrounded = false;
-	isMaxSpeed = false;
-	isFlying = true;
-	isHighJump = false;
-	isFinishHighJump = true;
+
 	force = 0.0f;
 }
 
@@ -42,12 +35,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	auto input = CLocator<IHandleInput>().Get();
 	
 
+
 	if (input->IsKeyDown(DIK_LEFT) || input->IsKeyDown(DIK_RIGHT))
 	{
 		if (input->IsKeyDown(DIK_LEFT)) HandleChangeDirection(DIRECTION_LEFT);
 		if (input->IsKeyDown(DIK_RIGHT)) HandleChangeDirection(DIRECTION_RIGHT);
 		
-		SetState(MARIO_STATE_WALK);
+		if (isGrounded) SetState(MARIO_STATE_WALK);
 
 		if (input->IsKeyDown(DIK_A))
 		{
@@ -63,21 +57,23 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		HandleSlowDown();
 	}
 
+
 	if (input->IsKeyDown(DIK_S) && isGrounded)
 	{
 		HandleJump();
+		SetState(MARIO_STATE_JUMP);
 	}
 
-	if (input->IsKeyDown(DIK_Z))
+	if (vy > 0 && !isGrounded)
 	{
-		HandleAtk();
+		SetState(MARIO_STATE_FALL);
 	}
 
-
+	if (currentSpeedX * nx < 0 && isGrounded)
+	{
+		SetState(MARIO_STATE_SKID);
+	}
 	CGameObject::Update(dt, coObjects);
-
-
-
 }
 
 
@@ -108,12 +104,12 @@ void CMario::OnKeyUp(int keyCode)
 	DWORD dt = CGame::Instance()->GetDeltaTime();
 	if (keyCode == DIK_S)
 	{
-		isFinishHighJump = true;
+		//isFinishHighJump = true;
 	}
 
 	if (keyCode == DIK_A)
 	{
-		isFlying = false;
+		//isFlying = false;
 	}
 }
 
@@ -124,7 +120,7 @@ void CMario::HandleMovement()
 
 void CMario::HandleJump()
 {
-	vy = MARIO_JUMP_SHORT_SPEED;
+	vy = -1.0f;
 	isGrounded = false;
 }
 
@@ -188,7 +184,7 @@ void CMario::HandleSlowDown()
 			else
 			{
 				vx = 0;
-				SetState(MARIO_STATE_IDLE);
+				if (!isAttacking) SetState(MARIO_STATE_IDLE);
 			}
 		}
 		else // slow down when change direction
@@ -201,7 +197,7 @@ void CMario::HandleSlowDown()
 			else
 			{
 				vx = 0;
-				SetState(MARIO_STATE_IDLE);
+				if (!isAttacking) SetState(MARIO_STATE_IDLE);
 			}
 
 		}
