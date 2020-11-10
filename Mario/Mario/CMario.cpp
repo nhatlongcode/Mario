@@ -50,7 +50,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		
 		SetState(MARIO_STATE_WALK);
 
-		if (input->IsKeyDown(DIK_A) && isGrounded)
+		if (input->IsKeyDown(DIK_A))
 		{
 			ax = 0.0003f;
 			if (abs(vx) > maxRun && !(currentSpeed * nx < 0))
@@ -61,37 +61,56 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 		else
 		{
-			ax = 0.001f; 
-			if (abs(currentSpeed) > maxWalk)
+			ax = 0.0003f; 
+			if (abs(vx) > maxWalk && !(currentSpeed * nx < 0))
 			{
-				if ( currentSpeed + 0.0001f * -nx * dt > maxWalk && !(currentSpeed*nx < 0))
+				if (currentSpeed + ax * -nx * dt > maxWalk) // chuyen dong cham dan khi ko speed up
 				{
-					vx = currentSpeed + 0.0001f * -nx * dt;
+					vx = currentSpeed + ax * -nx * dt;
 				}
 				else vx = maxWalk * nx;
 			}
-			else vx = currentSpeed + ax * nx * dt;
+			else  vx = currentSpeed + ax * nx * dt;
 		}
 
 	}
 	else if (isGrounded)
-	{ //chuyen dong cham dan cung huong
-		ax = 0.001f * -nx;
+	{
+		ax = 0.0005f ;
 		if (abs(vx) > 0)
 		{
-
-			if (nx == DIRECTION_RIGHT && currentSpeed + 0.001f * -nx * dt > 0)
+			if (!(currentSpeed * nx < 0))
 			{
-				vx = currentSpeed + 0.001f * -nx * dt;
-			}
-			else if (nx == DIRECTION_LEFT && currentSpeed + 0.001f * -nx * dt < 0)
-			{
-				vx = currentSpeed + 0.001f * -nx * dt;
+				if (nx * (currentSpeed - ax * nx * dt) > 0)
+				{
+					vx = currentSpeed - ax* nx * dt;
+				}
+				else
+				{
+					vx = 0;
+					SetState(MARIO_STATE_IDLE);
+				}
 			}
 			else
 			{
-				vx = 0;
-				SetState(MARIO_STATE_IDLE);
+				if (nx == 1)
+				{
+					if (currentSpeed + 0.0005f * nx * dt < 0) vx = currentSpeed + 0.0005f * nx * dt;
+					else
+					{
+						vx = 0;
+						SetState(MARIO_STATE_IDLE);
+					}
+				}
+				else if (nx == -1)
+				{
+					if (currentSpeed + 0.0005f * nx * dt > 0) vx = currentSpeed + 0.0005f * nx * dt;
+					else
+					{
+						vx = 0;
+						SetState(MARIO_STATE_IDLE);
+					}
+				}
 			}
 		}
 
@@ -104,7 +123,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		isGrounded = false;
 	}
 
-	//DebugOut(L"ax %.7f\n", ax);
 
 
 	CGameObject::Update(dt, coObjects);
