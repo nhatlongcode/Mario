@@ -18,7 +18,9 @@ protected:
 	float startX;			// initial position of Mario at scene
 	float startY;
 	float force;
+	float currentSpeedX;
 	float animSpeed;
+	DWORD dt;
 
 	void StandingOnGround();
 	virtual void HandleMovement();
@@ -27,8 +29,9 @@ protected:
 	virtual void HandleFly();
 	virtual void HandleFall();
 	virtual void HandleAtk();
-	virtual void HandleWalk();
-	virtual void HandleRun(float currentSpeed, DWORD dt);
+	void HandleWalk();
+	void HandleRun();
+	void HandleSlowDown();
 	virtual void HandleInput();
 public:
 	CMario();

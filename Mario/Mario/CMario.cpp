@@ -37,9 +37,8 @@ void CMario::Init()
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += MARIO_GRAVITY;
-	float currentSpeed = vx;
-	float maxWalk = 0.2f;
-	float maxRun = 0.5f;
+	this->dt = dt;
+	this->currentSpeedX = vx;
 	auto input = CLocator<IHandleInput>().Get();
 	
 
@@ -52,77 +51,27 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		if (input->IsKeyDown(DIK_A))
 		{
-			ax = 0.0003f;
-			if (abs(vx) > maxRun && !(currentSpeed * nx < 0))
-			{
-				vx = maxRun * nx;
-			}
-			else  vx = currentSpeed + ax * nx * dt;
+			HandleRun();
 		}
 		else
 		{
-			ax = 0.0003f; 
-			if (abs(vx) > maxWalk && !(currentSpeed * nx < 0))
-			{
-				if (currentSpeed + ax * -nx * dt > maxWalk) // chuyen dong cham dan khi ko speed up
-				{
-					vx = currentSpeed + ax * -nx * dt;
-				}
-				else vx = maxWalk * nx;
-			}
-			else  vx = currentSpeed + ax * nx * dt;
+			HandleWalk();
 		}
-
 	}
-	else if (isGrounded)
+	else
 	{
-		ax = 0.0005f ;
-		if (abs(vx) > 0)
-		{
-			if (!(currentSpeed * nx < 0))
-			{
-				if (nx * (currentSpeed - ax * nx * dt) > 0)
-				{
-					vx = currentSpeed - ax* nx * dt;
-				}
-				else
-				{
-					vx = 0;
-					SetState(MARIO_STATE_IDLE);
-				}
-			}
-			else
-			{
-				if (nx == 1)
-				{
-					if (currentSpeed + 0.0005f * nx * dt < 0) vx = currentSpeed + 0.0005f * nx * dt;
-					else
-					{
-						vx = 0;
-						SetState(MARIO_STATE_IDLE);
-					}
-				}
-				else if (nx == -1)
-				{
-					if (currentSpeed + 0.0005f * nx * dt > 0) vx = currentSpeed + 0.0005f * nx * dt;
-					else
-					{
-						vx = 0;
-						SetState(MARIO_STATE_IDLE);
-					}
-				}
-			}
-		}
-
-
+		HandleSlowDown();
 	}
 
 	if (input->IsKeyDown(DIK_S) && isGrounded)
 	{
-		vy = MARIO_JUMP_SHORT_SPEED;
-		isGrounded = false;
+		HandleJump();
 	}
 
+	if (input->IsKeyDown(DIK_Z))
+	{
+		HandleAtk();
+	}
 
 
 	CGameObject::Update(dt, coObjects);
@@ -175,8 +124,8 @@ void CMario::HandleMovement()
 
 void CMario::HandleJump()
 {
-
-
+	vy = MARIO_JUMP_SHORT_SPEED;
+	isGrounded = false;
 }
 
 void CMario::HandleChangeDirection(int direction)
@@ -201,13 +150,62 @@ void CMario::HandleAtk()
 
 void CMario::HandleWalk()
 {
-	vx = 0.105f * nx;
-	SetState(MARIO_STATE_WALK);
+	float maxWalk = 0.2f;
+	ax = MARIO_ACCELERATION * nx;
+	if (abs(vx) > maxWalk && !(currentSpeedX * nx < 0))
+	{
+		if (currentSpeedX - ax * dt > maxWalk) // chuyen dong cham dan khi ko speed up
+		{
+			vx = currentSpeedX - ax * dt;
+		}
+		else vx = maxWalk * nx;
+	}
+	else  vx = currentSpeedX + ax * dt;
 }
 
-void CMario::HandleRun(float currentSpeed, DWORD dt)
+void CMario::HandleRun()
 {
-	vx = currentSpeed + 0.0005f * dt * nx;
+	float maxRun = 0.5f;
+	ax = MARIO_ACCELERATION * nx;
+	if (abs(vx) > maxRun && !(currentSpeedX * nx < 0))
+	{
+		vx = maxRun * nx;
+	}
+	else  vx = currentSpeedX + ax * dt;
+}
+
+void CMario::HandleSlowDown()
+{
+	ax = MARIO_ACCELERATION * nx;
+	if (abs(vx) > 0)
+	{
+		if (!(currentSpeedX * nx < 0)) //slow down with same direction with vx
+		{
+			if (nx * (currentSpeedX - ax * dt) > 0)
+			{
+				vx = currentSpeedX - ax * dt;
+			}
+			else
+			{
+				vx = 0;
+				SetState(MARIO_STATE_IDLE);
+			}
+		}
+		else // slow down when change direction
+		{
+			if (nx * (currentSpeedX + ax * dt) < 0)
+			{
+				vx = currentSpeedX + ax * dt;
+				//skid
+			}
+			else
+			{
+				vx = 0;
+				SetState(MARIO_STATE_IDLE);
+			}
+
+		}
+	}
 }
 
 void CMario::HandleInput()
