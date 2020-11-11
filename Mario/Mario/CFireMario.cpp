@@ -1,5 +1,11 @@
 #include "CFireMario.h"
 
+void CFireMario::HandleAtk()
+{
+	SetState(MARIO_STATE_ATK);
+	DebugOut(L"fire atk\n");
+}
+
 CFireMario::CFireMario()
 {
 	SetAnimationSet(MARIO_TYPE_FIRE);

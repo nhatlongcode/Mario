@@ -10,8 +10,14 @@ CRaccoonMario::CRaccoonMario()
 
 void CRaccoonMario::HandleFall()
 {
-	CMario::HandleFall();
-	vy -= 0.01f;
+	//CMario::HandleFall();
+	auto input = CLocator<IHandleInput>().Get();
+	if (input->IsKeyDown(DIK_X))
+	{
+		vy += - 0.045f;
+
+	}
+	SetState(MARIO_STATE_FALL);
 }
 
 void CRaccoonMario::HandleAtk()

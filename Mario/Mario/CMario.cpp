@@ -9,7 +9,7 @@ void CMario::StandingOnGround()
 {
 	isGrounded = true;
 	force = 0.0f;
-	if (abs(vx) <= 0.0001f) SetState(MARIO_STATE_IDLE);
+	if (abs(vx) <= 0.0001f && !isAttacking) SetState(MARIO_STATE_IDLE);
 }
 
 CMario::CMario()
@@ -41,7 +41,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (input->IsKeyDown(DIK_LEFT)) HandleChangeDirection(DIRECTION_LEFT);
 		if (input->IsKeyDown(DIK_RIGHT)) HandleChangeDirection(DIRECTION_RIGHT);
 		
-		if (isGrounded) SetState(MARIO_STATE_WALK);
+		if (isGrounded && !isAttacking) SetState(MARIO_STATE_WALK);
 
 		if (input->IsKeyDown(DIK_A))
 		{
@@ -74,11 +74,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (vy > 0 && !isGrounded)
 	{
 		//handle fall, overide for raccon slow fall
-		
-		SetState(MARIO_STATE_FALL);
+		HandleFall();
 	}
 
-
+	if (input->IsKeyDown(DIK_Z))
+	{
+		HandleAtk();
+	}
 	CGameObject::Update(dt, coObjects);
 }
 
@@ -126,7 +128,7 @@ void CMario::HandleMovement()
 
 void CMario::HandleJump()
 {
-	if (isFlying) vy = -1.5f;
+	if (isFlying && !isAttacking) HandleFly();
 	else vy = -1.0f;
 	isGrounded = false;
 }
@@ -140,13 +142,17 @@ void CMario::HandleChangeDirection(int direction)
 void CMario::HandleFly()
 {
 	auto input = CLocator<IHandleInput>().Get();
+	vy = -1.5f;
 	SetState(MARIO_STATE_FLY); // set threshold
+	DebugOut(L"fly\n");
 	isFlying = true;
 }
 
 void CMario::HandleFall()
 {
-
+	if (isAttacking) return;
+	if (isFlying) SetState(MARIO_STATE_FLY);
+	else SetState(MARIO_STATE_FALL);
 }
 
 void CMario::HandleAtk()
@@ -179,7 +185,11 @@ void CMario::HandleRun()
 	}
 	else  vx = currentSpeedX + ax * dt;
 
-	if (abs(vx - maxRun * nx) < 0.01f) HandleFly();
+	if (abs(vx - maxRun * nx) < 0.01f)
+	{
+		isFlying = true;
+		if (!isAttacking) SetState(MARIO_STATE_FLY);
+	}
 	else isFlying = false;
 }
 

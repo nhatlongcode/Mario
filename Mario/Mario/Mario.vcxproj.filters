@@ -91,6 +91,9 @@
     <Filter Include="Game\Objects\Ground">
       <UniqueIdentifier>{b4d7887e-1f1f-4d60-bd49-de30fc673c2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Mario\Fireball">
+      <UniqueIdentifier>{9ff77c2e-7520-4cd6-990b-3526a6a45021}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
