@@ -296,7 +296,7 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	//vx += (a.x * dt)/2;
 
-	DebugOut(L"vx: %.2f\n", vx);
+	//DebugOut(L"vx: %.2f\n", vx);
 	dx = vx * dt;
 	dy = vy * dt;
 
@@ -308,12 +308,6 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		y += dy;
 	}
 
-/*
-	DebugOut(L"x: %.2f", x);
-	DebugOut(L"y: %.2f\n", y);
-	DebugOut(L"camX: %.2f", camX);
-	DebugOut(L"camY: %.2f\n", camY);
-*/
 }
 
 
