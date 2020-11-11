@@ -264,17 +264,15 @@ void CScenePlay::Load()
 	brickTest->SetPosition(300, 1200);
 	objects.push_back(brickTest);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
-
+	for (size_t i = 0; i < objects.size(); i++)
+	{
+		coObjects.push_back(objects[i]);
+	}
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 }
 
 void CScenePlay::Update(DWORD dt)
 {
-	vector<LPGAMEOBJECT> coObjects;
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		coObjects.push_back(objects[i]);
-	}
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
@@ -291,8 +289,13 @@ void CScenePlay::Render()
 	map->Render();
 	//CLocator<ISpritesManager>().Get()->Get(441)->Draw(300, 300);
 	for (int i = 0; i < objects.size(); i++)
+	{
 		objects[i]->Render();
+		if (debugMode) objects[i]->RenderCollisionBox();
+
+	}
 	player->Render();
+	if (debugMode) player->RenderCollisionBox();
 	
 }
 

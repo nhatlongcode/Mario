@@ -53,6 +53,7 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 		}
 		case DIK_L:
 		{
+			scene->debugMode = !scene->debugMode;
 			scene->LogInfo();
 			break;
 		}

@@ -6,6 +6,7 @@ protected:
 	int level;
 	bool isGrounded;
 	bool isAttacking;
+	bool isFlying;
 
 	float ax;
 	float startX;			// initial position of Mario at scene

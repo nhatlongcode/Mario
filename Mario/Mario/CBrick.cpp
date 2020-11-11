@@ -9,7 +9,7 @@ CBrick::CBrick()
 
 void CBrick::Render()
 {
-	CGameObject::RenderCollisionBox();
+
 }
 
 

@@ -8,5 +8,5 @@ CGhostPlatform::CGhostPlatform()
 
 void CGhostPlatform::Render()
 {
-	CGameObject::RenderCollisionBox();
+
 }

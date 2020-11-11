@@ -9,6 +9,7 @@
 class CScene
 {
 protected:
+	
 	int id;
 	CCamera* camera;
 	CKeyEventHandler* keyHandler;
@@ -18,7 +19,7 @@ protected:
 
 public:
 	CScene(int id, LPCWSTR filePath);
-
+	bool debugMode;
 	CKeyEventHandler* GetKeyEventHandler() { return keyHandler; }
 	CMario* GetPlayer();
 	void SetPlayer(int typeID, float posX = 0.0f, float posY = 0.0f);

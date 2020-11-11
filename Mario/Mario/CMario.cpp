@@ -49,6 +49,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 		else
 		{
+			
 			HandleWalk();
 		}
 	}
@@ -57,22 +58,27 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		HandleSlowDown();
 	}
 
+	if (currentSpeedX * nx < 0 && isGrounded)
+	{
+		//Handle skid
+		SetState(MARIO_STATE_SKID);
+	}
 
 	if (input->IsKeyDown(DIK_S) && isGrounded)
 	{
+		//handle jump short
 		HandleJump();
 		SetState(MARIO_STATE_JUMP);
 	}
 
 	if (vy > 0 && !isGrounded)
 	{
+		//handle fall, overide for raccon slow fall
+		
 		SetState(MARIO_STATE_FALL);
 	}
 
-	if (currentSpeedX * nx < 0 && isGrounded)
-	{
-		SetState(MARIO_STATE_SKID);
-	}
+
 	CGameObject::Update(dt, coObjects);
 }
 
@@ -80,7 +86,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void CMario::Render()
 {
 	animSet->at(state)->Render(x, y, nx);
-	CGameObject::RenderCollisionBox();
+
 }
 
 void CMario::SetState(int state)
@@ -120,7 +126,8 @@ void CMario::HandleMovement()
 
 void CMario::HandleJump()
 {
-	vy = -1.0f;
+	if (isFlying) vy = -1.5f;
+	else vy = -1.0f;
 	isGrounded = false;
 }
 
@@ -132,7 +139,9 @@ void CMario::HandleChangeDirection(int direction)
 
 void CMario::HandleFly()
 {
-
+	auto input = CLocator<IHandleInput>().Get();
+	SetState(MARIO_STATE_FLY); // set threshold
+	isFlying = true;
 }
 
 void CMario::HandleFall()
@@ -146,6 +155,7 @@ void CMario::HandleAtk()
 
 void CMario::HandleWalk()
 {
+	isFlying = false;
 	float maxWalk = 0.2f;
 	ax = MARIO_ACCELERATION * nx;
 	if (abs(vx) > maxWalk && !(currentSpeedX * nx < 0))
@@ -165,9 +175,12 @@ void CMario::HandleRun()
 	ax = MARIO_ACCELERATION * nx;
 	if (abs(vx) > maxRun && !(currentSpeedX * nx < 0))
 	{
-		vx = maxRun * nx;
+		vx = maxRun * nx; // handle fly	
 	}
 	else  vx = currentSpeedX + ax * dt;
+
+	if (abs(vx - maxRun * nx) < 0.01f) HandleFly();
+	else isFlying = false;
 }
 
 void CMario::HandleSlowDown()
@@ -216,7 +229,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
 	LPGAMEOBJECT go = other->obj;
 	//DebugOut(L"asdasd\n");
-	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Ground || go->GetTag() == ObjectTag::Ground)
+	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Ground || go->GetTag() == ObjectTag::Solid)
 	{
 		if (other->ny == -1.0f)
 		{

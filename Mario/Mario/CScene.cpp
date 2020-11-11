@@ -3,6 +3,7 @@
 CScene::CScene(int id, LPCWSTR filePath)
 {
 	this->id = id;
+	debugMode = false;
 	this->sceneFilePath = filePath;
 }
 

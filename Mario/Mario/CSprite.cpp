@@ -23,9 +23,12 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 	r.right = left + width;
 	r.bottom = top + height;
 	
-	float camX, camY;
+	float camX, camY, w, h;
+	w = CGame::Instance()->GetScreenWidth();
+	h = CGame::Instance()->GetScreenHeight();
+
 	CGame::Instance()->GetCurrentScene()->GetCamPos(camX, camY);
-	//if (x - camX < 0 - 100.0f) return;
+	if (x - camX < - 20.0f || y - camY < -20.0f || x - camX > w + 20.0f || y - camY > h + 20.0f ) return;
 	//Vector3 p(x - camX,y - camY, 0);
 	Vector3 p((int)(x - camX),(int)(y - camY), 0);
 

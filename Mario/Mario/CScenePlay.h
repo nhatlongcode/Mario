@@ -8,6 +8,8 @@
 
 class CScenePlay : public CScene
 {
+private:
+	vector<LPGAMEOBJECT> coObjects;
 protected:				// A play scene has to have player, right? 
 	CMap* map;
 	vector<LPGAMEOBJECT> objects;

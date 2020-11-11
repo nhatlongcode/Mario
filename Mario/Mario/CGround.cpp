@@ -8,5 +8,5 @@ CGround::CGround()
 
 void CGround::Render()
 {
-	CGameObject::RenderCollisionBox();
+
 }
