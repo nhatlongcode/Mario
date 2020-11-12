@@ -8,7 +8,6 @@
 void CMario::StandingOnGround()
 {
 	isGrounded = true;
-	force = 0.0f;
 	if (abs(vx) <= 0.0001f && !isAttacking) SetState(MARIO_STATE_IDLE);
 }
 
@@ -30,6 +29,7 @@ void CMario::Init()
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += MARIO_GRAVITY;
+	if (vy > 0.1f) isGrounded = false;
 	this->dt = dt;
 	this->currentSpeedX = vx;
 	auto input = CLocator<IHandleInput>().Get();
@@ -81,6 +81,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		HandleAtk();
 	}
+	DebugOut(L"%.5f\n", vy);
 	CGameObject::Update(dt, coObjects);
 }
 
@@ -88,11 +89,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void CMario::Render()
 {
 	animSet->at(state)->Render(x, y, nx);
-
 }
 
 void CMario::SetState(int state)
 {
+	if (this->state == MARIO_STATE_ATK && isAttacking) return;
 	CGameObject::SetState(state);
 }
 
@@ -164,9 +165,9 @@ void CMario::HandleWalk()
 	isFlying = false;
 	float maxWalk = 0.2f;
 	ax = MARIO_ACCELERATION * nx;
-	if (abs(vx) > maxWalk && !(currentSpeedX * nx < 0))
+	if (abs(vx) > maxWalk && (currentSpeedX * nx > 0))
 	{
-		if (currentSpeedX - ax * dt > maxWalk) // chuyen dong cham dan khi ko speed up
+		if (abs(currentSpeedX - ax * dt) > maxWalk) // chuyen dong cham dan khi ko speed up
 		{
 			vx = currentSpeedX - ax * dt;
 		}
@@ -198,6 +199,7 @@ void CMario::HandleSlowDown()
 	ax = MARIO_ACCELERATION * nx;
 	if (abs(vx) > 0)
 	{
+		SetState(MARIO_STATE_WALK);
 		if (!(currentSpeedX * nx < 0)) //slow down with same direction with vx
 		{
 			if (nx * (currentSpeedX - ax * dt) > 0)
@@ -243,12 +245,12 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		if (other->ny == -1.0f)
 		{
-			
 			StandingOnGround();
 		}
 
 	}
-	else if (go->GetTag() == ObjectTag::Goomba && other->ny == -1.0f)
+	
+	if (go->GetTag() == ObjectTag::Goomba && other->ny == -1.0f)
 	{
 		go->SetState(GOOMBA_STATE_DIE);
 		vy = -0.5f;

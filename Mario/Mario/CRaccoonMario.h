@@ -7,7 +7,6 @@ public:
     CRaccoonMario();
     void HandleAtk();
     void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
-
 protected:
     void HandleFall();
     long attackBegin = -1;

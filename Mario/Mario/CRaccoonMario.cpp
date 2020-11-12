@@ -48,3 +48,4 @@ void CRaccoonMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	
 	}
 }
+
