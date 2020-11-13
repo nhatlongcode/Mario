@@ -9,8 +9,11 @@ void CFireMario::HandleAtk()
 		// atk
 		attackBegin = dt;
 		isAttacking = true;
-		SetState(MARIO_STATE_ATK);
-		animSet->at(MARIO_STATE_ATK)->Render(x, y, nx, attackBegin, attackTime);
+		int atkState;
+		if (isGrounded) atkState = MARIO_STATE_ATK;
+		else atkState = MARIO_STATE_FLY_ATK;
+		SetState(atkState);
+		animSet->at(atkState)->Render(x, y, nx, attackBegin, attackTime);
 	}
 }
 

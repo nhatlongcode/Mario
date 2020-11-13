@@ -8,6 +8,15 @@
 void CMario::StandingOnGround()
 {
 	isGrounded = true;
+	isFlying = false;
+	auto input = CLocator<IHandleInput>().Get();
+	if (!input->IsKeyDown(DIK_S))
+	{
+		canHighJump = true;
+		canHighFly = true;
+		forceJump = 0.0f;
+		forceFly = 0.0f;
+	}
 	if (abs(vx) <= 0.0001f && !isAttacking) SetState(MARIO_STATE_IDLE);
 }
 
@@ -18,8 +27,8 @@ CMario::CMario()
 	ax = 0.0f;
 	animSpeed = 1.0f;
 	isGrounded = false;
-
-	force = 0.0f;
+	canHighJump = true;
+	forceJump = 0.0f;
 }
 
 void CMario::Init()
@@ -60,15 +69,44 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (currentSpeedX * nx < 0 && isGrounded)
 	{
-		//Handle skid
 		SetState(MARIO_STATE_SKID);
 	}
 
-	if (input->IsKeyDown(DIK_S) && isGrounded)
+	if (input->IsKeyDown(DIK_S))
 	{
-		//handle jump short
-		HandleJump();
-		SetState(MARIO_STATE_JUMP);
+		if (isMaxSpeed)
+		{
+			if (canHighFly)
+			{
+				HandleFly(-0.5f);
+			}
+		}
+		else
+		{
+			if (canHighJump)
+			{
+				HandleJump(-0.5f); // high but one time jump
+				forceJump += -0.5f;
+			}
+			if (abs(forceJump) > 10.0f) canHighJump = false;
+		}
+
+	}
+
+
+	if (input->IsKeyDown(DIK_X))
+	{
+		canHighJump = false;
+		if (isMaxSpeed)
+		{
+			HandleFly(-0.8f);
+			canHighFly = false;
+		}
+		else if(isGrounded)
+		{
+			 HandleJump(-0.8f);
+			 canHighJump = false;
+		}
 	}
 
 	if (vy > 0 && !isGrounded)
@@ -80,8 +118,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (input->IsKeyDown(DIK_Z))
 	{
 		HandleAtk();
+		
 	}
-	DebugOut(L"%.5f\n", vy);
 	CGameObject::Update(dt, coObjects);
 }
 
@@ -105,20 +143,16 @@ void CMario::SetLevel(int level)
 void CMario::OnKeyDown(int keyCode)
 {
 
-
 }
 
 void CMario::OnKeyUp(int keyCode)
 {
 	DWORD dt = CGame::Instance()->GetDeltaTime();
-	if (keyCode == DIK_S)
+	auto input = CLocator<IHandleInput>().Get();
+	if (keyCode == DIK_S && !isGrounded)
 	{
-		//isFinishHighJump = true;
-	}
-
-	if (keyCode == DIK_A)
-	{
-		//isFlying = false;
+		canHighJump = false;
+		canHighFly = false;
 	}
 }
 
@@ -127,26 +161,39 @@ void CMario::HandleMovement()
 
 }
 
-void CMario::HandleJump()
+void CMario::HandleJump(float jumpForce)
 {
-	if (isFlying && !isAttacking) HandleFly();
-	else vy = -1.0f;
+	SetState(MARIO_STATE_JUMP);
+	vy = jumpForce;
 	isGrounded = false;
 }
 
 void CMario::HandleChangeDirection(int direction)
 {
-	//if (nx != direction) SetState(MARIO_STATE_SKID);
 	nx = direction;
 }
 
-void CMario::HandleFly()
+void CMario::HandleFly(float flyForce)
 {
+	SetState(MARIO_STATE_FLY);
 	auto input = CLocator<IHandleInput>().Get();
-	vy = -1.5f;
-	SetState(MARIO_STATE_FLY); // set threshold
-	DebugOut(L"fly\n");
-	isFlying = true;
+	
+
+	if (input->IsKeyDown(DIK_X) && isGrounded)
+	{
+		vy = flyForce;
+		isFlying = true;
+		isGrounded = false;
+	}
+	else if (input->IsKeyDown(DIK_S) && canHighFly)
+	{
+		vy = flyForce;
+		forceFly += flyForce;
+		isFlying = true;
+		isGrounded = false;
+		if (abs(forceFly) > 15.0f) canHighFly = false;
+	}
+
 }
 
 void CMario::HandleFall()
@@ -162,7 +209,7 @@ void CMario::HandleAtk()
 
 void CMario::HandleWalk()
 {
-	isFlying = false;
+	isMaxSpeed = false;
 	float maxWalk = 0.2f;
 	ax = MARIO_ACCELERATION * nx;
 	if (abs(vx) > maxWalk && (currentSpeedX * nx > 0))
@@ -178,25 +225,26 @@ void CMario::HandleWalk()
 
 void CMario::HandleRun()
 {
-	float maxRun = 0.5f;
+	float maxRun = 0.7f;
 	ax = MARIO_ACCELERATION * nx;
-	if (abs(vx) > maxRun && !(currentSpeedX * nx < 0))
+	if (abs(vx) > maxRun && (currentSpeedX * nx > 0))
 	{
 		vx = maxRun * nx; // handle fly	
 	}
+	else if (currentSpeedX * nx < 0) vx = currentSpeedX + ax * 3.0f * dt;
 	else  vx = currentSpeedX + ax * dt;
 
 	if (abs(vx - maxRun * nx) < 0.01f)
 	{
-		isFlying = true;
-		if (!isAttacking) SetState(MARIO_STATE_FLY);
+		isMaxSpeed = true;
+		if (!isAttacking && isGrounded) SetState(MARIO_STATE_RUN);
 	}
-	else isFlying = false;
+	else isMaxSpeed = false;
 }
 
 void CMario::HandleSlowDown()
 {
-	ax = MARIO_ACCELERATION * nx;
+	ax = MARIO_ACCELERATION * 2.0f * nx;
 	if (abs(vx) > 0)
 	{
 		SetState(MARIO_STATE_WALK);
@@ -231,9 +279,6 @@ void CMario::HandleSlowDown()
 
 void CMario::HandleInput()
 {
-
-	
-
 
 }
 

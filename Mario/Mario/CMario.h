@@ -6,23 +6,28 @@ protected:
 	int level;
 	bool isGrounded;
 	bool isAttacking;
+	bool isMaxSpeed;
 	bool isFlying;
+	bool canHighFly;
+	bool canHighJump;
 
+	
 	float ax;
 	float startX;			// initial position of Mario at scene
 	float startY;
-	float force;
+	float forceJump;
+	float forceFly;
 	float currentSpeedX;
 	float animSpeed;
 	DWORD dt;
 
 	void StandingOnGround();
 	virtual void HandleMovement();
-	virtual void HandleJump();
 	virtual void HandleChangeDirection(int direction);
-	virtual void HandleFly();
+	virtual void HandleFly(float flyForce);
 	virtual void HandleFall();
 	virtual void HandleAtk();
+	void HandleJump(float jumpForce);
 	void HandleWalk();
 	void HandleRun();
 	void HandleSlowDown();
