@@ -44,4 +44,9 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		go->SetState(GOOMBA_STATE_DIE_INSTANT);
 	}
+
+	if (tag == ObjectTag::Koopas)
+	{
+		go->SetState(KOOPAS_STATE_DIE);
+	}
 }

@@ -4,9 +4,9 @@
 class CGoomba : public CGameObject
 {
 public:
-	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
-	void Render();
 
 	CGoomba();
-	virtual void SetState(int state);
+	void Render();
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+	void SetState(int state);
 };

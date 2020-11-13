@@ -126,6 +126,8 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 
 // GOOMBA ---------------------------------------------------
+#define GOOMBA_ANIMSET	20000
+
 #define GOOMBA_WALKING_SPEED 0.05f;
 
 #define GOOMBA_BBOX_WIDTH 48
@@ -136,10 +138,22 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define GOOMBA_STATE_DIE			1
 #define GOOMBA_STATE_DIE_INSTANT	2
 
-#define GOOMBA_ANI_WALKING 0
-#define GOOMBA_ANI_DIE 1
 
+// KOOPAS ----------------------------------------------------
+#define KOOPAS_ANIMSET	21000
 
+#define KOOPAS_WALKING_SPEED	0.05f;
+
+#define KOOPAS_BBOX_WIDTH	48
+#define KOOPAS_BBOX_HEIGHT	78
+
+#define KOOPAS_SHELL_BBOX_WIDTH		48
+#define KOOPAS_SHELL_BBOX_HEIGHT	48
+
+#define KOOPAS_STATE_WALKING	0
+#define KOOPAS_STATE_SHELL		1
+#define KOOPAS_STATE_SPIN		2
+#define KOOPAS_STATE_DIE		3
 
 // BRICK -----------------------------------------------------
 #define BRICK_BBOX_WIDTH  48

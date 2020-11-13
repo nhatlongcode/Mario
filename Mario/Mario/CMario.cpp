@@ -301,6 +301,25 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		go->SetState(GOOMBA_STATE_DIE);
 		vy = -0.5f;
 	}
+
+	if (go->GetTag() == ObjectTag::Koopas)
+	{
+		int koopasState;
+		go->GetState(koopasState);
+		if (koopasState == KOOPAS_STATE_WALKING && other->ny == -1.0f)
+		{
+			go->SetState(KOOPAS_STATE_SHELL);
+			vy = -0.5f;
+		}
+		
+		if (koopasState == KOOPAS_STATE_SHELL && (nx != 0))
+		{
+			this->SetState(MARIO_STATE_KICK);
+			go->SetState(KOOPAS_STATE_SPIN);
+			vy = -0.5f;
+		}
+		
+	}
 }
 
 void CMario::Reset()

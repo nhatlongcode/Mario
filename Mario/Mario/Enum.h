@@ -5,6 +5,7 @@ enum class ObjectTag
 	GhostPlatform,
 	Solid,
 	Player,
+	Koopas,
 	Pipe,
 	Ground,
 	Goomba

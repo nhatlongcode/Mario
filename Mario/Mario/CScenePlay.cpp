@@ -2,6 +2,7 @@
 #include "CScenePlayKeyHandler.h"
 #include "CAnimationSetsManager.h"
 #include "CGoomba.h"
+#include "CKoopas.h"
 #include "CBrick.h"
 #include "CGround.h"
 #include "CGhostPlatform.h"
@@ -104,7 +105,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 	float x = atof(tokens[1].c_str());
 	float y = atof(tokens[2].c_str());
 
-	int ani_set_id = atoi(tokens[3].c_str());
+	int animSetID = atoi(tokens[3].c_str());
 
 	LPANIMATIONSETS animSets = CLocator<IAnimSetsManager>().Get();
 
@@ -125,7 +126,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 		break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	//case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
+	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
 
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
@@ -134,8 +135,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 
 	// General object setup
 	obj->SetPosition(x, y);
-
-	obj->SetAnimationSet(ani_set_id);
+	obj->SetAnimationSet(animSetID);
 	objects.push_back(obj);
 }
 

@@ -36,7 +36,6 @@ public:
 	CMario();
 	void SetState(int state);
 	void SetLevel(int level);
-	//void BasicActionHandle();
 
 	virtual void Init();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);

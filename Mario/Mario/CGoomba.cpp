@@ -23,10 +23,9 @@ void CGoomba::Render()
 
 CGoomba::CGoomba()
 {
-	SetState(GOOMBA_STATE_WALKING);
 	SetBoundingBox(GOOMBA_BBOX_WIDTH, GOOMBA_BBOX_HEIGHT);
-	SetAnimationSet(20000);
-	state = GOOMBA_STATE_WALKING;
+	SetAnimationSet(GOOMBA_ANIMSET);
+	SetState(GOOMBA_STATE_WALKING);
 	IsCollisionEnabled = true;
 	tag = ObjectTag::Goomba;
 }
@@ -46,8 +45,9 @@ void CGoomba::SetState(int state)
 		vy = -0.8f;
 		vx = 0;
 		IsCollisionEnabled = false;
-
+		break;
 	case GOOMBA_STATE_WALKING:
 		vx = -GOOMBA_WALKING_SPEED;
+		break;
 	}
 }
