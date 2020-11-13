@@ -1,9 +1,12 @@
 #include "CFireMario.h"
 #include "CGame.h"
+#include "FireBall.h"
+#include "CGoomba.h"
 
 void CFireMario::HandleAtk()
 {
 	auto dt = CGame::Instance()->GetDeltaTime();
+	
 	if (attackBegin == -1)
 	{
 		// atk
@@ -33,6 +36,8 @@ void CFireMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		attackBegin += dt;
 		if (attackBegin > attackTime)
 		{
+			CGameObject* fireball = new FireBall(this->x + 10.0f, this->y - 10.0f, nx);
+			CGame::Instance()->GetCurrentScene()->AddGameObject(fireball, this->x, this->y);
 			attackBegin = -1;
 			isAttacking = false;
 		}

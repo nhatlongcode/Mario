@@ -1,6 +1,14 @@
 #include "CAnimation.h"
 #include "Utils.h"
 
+CAnimation::CAnimation(int defaultTime, bool isRepeat)
+{
+	this->defaultTime = defaultTime; 
+	this->isRepeat = isRepeat;
+	lastFrameTime = -1; 
+	currentFrame = -1;
+}
+
 void CAnimation::Add(int spriteId, DWORD time)
 {
 	int t = time;

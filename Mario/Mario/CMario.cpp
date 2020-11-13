@@ -24,6 +24,7 @@ CMario::CMario()
 {
 	level = MARIO_TYPE_SMALL;
 	state = MARIO_STATE_IDLE;
+	IsCollisionEnabled = true;
 	ax = 0.0f;
 	animSpeed = 1.0f;
 	isGrounded = false;

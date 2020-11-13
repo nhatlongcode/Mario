@@ -14,6 +14,8 @@ protected:
 	CCamera* camera;
 	CKeyEventHandler* keyHandler;
 	MarioController marioController;
+	vector<LPGAMEOBJECT> objects;
+	vector<LPGAMEOBJECT> coObjects;
 	LPCWSTR sceneFilePath;
 	CMario* player;
 
@@ -23,6 +25,8 @@ public:
 	CKeyEventHandler* GetKeyEventHandler() { return keyHandler; }
 	CMario* GetPlayer();
 	void SetPlayer(int typeID, float posX = 0.0f, float posY = 0.0f);
+	void AddGameObject(LPGAMEOBJECT go, float posX, float posY);
+	void RemoveGameObject(LPGAMEOBJECT go);
 	void GetCamPos(float& cx, float& cy);
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
@@ -31,3 +35,4 @@ public:
 	virtual void LogInfo() = 0;
 };
 typedef CScene* LPSCENE;
+

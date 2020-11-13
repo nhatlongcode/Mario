@@ -3,15 +3,6 @@
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	CGameObject::Update(dt, coObjects);
-
-	//
-	// TO-DO: make sure Goomba can interact with the world and to each of them too!
-	// 
-
-	x += dx;
-	y += dy;
-
 	if (vx < 0 && x < 0) {
 		x = 0; vx = -vx;
 	}
@@ -19,26 +10,23 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (vx > 0 && x > 290) {
 		x = 290; vx = -vx;
 	}
-	//vy += MARIO_GRAVITY;
+	vy += MARIO_GRAVITY;
+	CGameObject::Update(dt, coObjects);
 }
 
 void CGoomba::Render()
 {
-	int ani = GOOMBA_ANI_WALKING;
-	if (state == GOOMBA_STATE_DIE) {
-		ani = GOOMBA_ANI_DIE;
-	}
-
-	 animSet->at(ani)->Render(x, y);
-
-	//RenderBoundingBox();
+	animSet->at(state)->Render(x, y, nx);
 }
+
 
 
 CGoomba::CGoomba()
 {
 	SetState(GOOMBA_STATE_WALKING);
 	SetBoundingBox(GOOMBA_BBOX_WIDTH, GOOMBA_BBOX_HEIGHT);
+	SetAnimationSet(20000);
+	state = GOOMBA_STATE_WALKING;
 	IsCollisionEnabled = true;
 	tag = ObjectTag::Goomba;
 }
@@ -49,10 +37,16 @@ void CGoomba::SetState(int state)
 	switch (state)
 	{
 	case GOOMBA_STATE_DIE:
-		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE - 1.0f;
+		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE - 1.3f;
 		vx = 0;
 		vy = 0;
+		IsCollisionEnabled = false;
 		break;
+	case GOOMBA_STATE_DIE_INSTANT:
+		vy = -0.8f;
+		vx = 0;
+		IsCollisionEnabled = false;
+
 	case GOOMBA_STATE_WALKING:
 		vx = -GOOMBA_WALKING_SPEED;
 	}

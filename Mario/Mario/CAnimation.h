@@ -8,9 +8,10 @@ private:
 	DWORD lastFrameTime;
 	int currentFrame;
 	int defaultTime;
+	bool isRepeat;
 	vector<LPFRAME> frames;
 public:
-	CAnimation(int defaultTime = 100) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
+	CAnimation(int defaultTime = 100, bool isRepeat = false);
 	void Add(int spriteId, DWORD time = 0);
 
 	void Render(float x, float y, int direction = DIRECTION_RIGHT, float speed = 1.0f, int alpha = 255);

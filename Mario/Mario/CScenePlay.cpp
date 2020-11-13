@@ -97,7 +97,6 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 {
 	vector<string> tokens = split(line);
 
-	//DebugOut(L"--> %s\n",ToWSTR(line).c_str());
 
 	if (tokens.size() < 3) return; // skip invalid lines - an object set must have at least id, x, y
 
@@ -127,14 +126,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	//case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
-	/*case OBJECT_TYPE_PORTAL:
-	{
-		float r = atof(tokens[4].c_str());
-		float b = atof(tokens[5].c_str());
-		int scene_id = atoi(tokens[6].c_str());
-		obj = new CPortal(x, y, r, b, scene_id);
-	}
-	break;*/
+
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
@@ -264,10 +256,12 @@ void CScenePlay::Load()
 	brickTest->SetPosition(300, 1200);
 	objects.push_back(brickTest);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
+
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}
+
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 }
 
@@ -287,7 +281,6 @@ void CScenePlay::Update(DWORD dt)
 void CScenePlay::Render()
 {
 	map->Render();
-	//CLocator<ISpritesManager>().Get()->Get(441)->Draw(300, 300);
 	for (int i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Render();
@@ -320,6 +313,7 @@ void CScenePlay::LogInfo()
 	DebugOut(L"Camera pos Y: %.2f\n", cy);
 	DebugOut(L"Player pos X: %.2f\n", px);
 	DebugOut(L"Player pos Y: %.2f\n", py);
+	DebugOut(L"Player collision: %d\n", player->IsCollisionEnabled);
 	DebugOut(L"Screen width: %d\n", CGame::Instance()->GetScreenWidth());
 	DebugOut(L"Screen height: %d\n", CGame::Instance()->GetScreenHeight());
 	DebugOut(L"----------------------------------------\n");

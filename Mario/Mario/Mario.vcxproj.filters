@@ -198,6 +198,9 @@
     <ClCompile Include="CKoopas.cpp">
       <Filter>Game\Enemies\Koopas</Filter>
     </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Game\Mario\Fireball</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -329,5 +332,11 @@
     <ClInclude Include="CKoopas.h">
       <Filter>Game\Enemies\Koopas</Filter>
     </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>Game\Mario\Fireball</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

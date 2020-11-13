@@ -37,6 +37,21 @@ void CScene::SetPlayer(int typeID, float posX, float posY)
 	DebugOut(L"Set to new mario ID: %d\n", typeID);
 }
 
+void CScene::AddGameObject(LPGAMEOBJECT go, float posX, float posY)
+{
+	objects.push_back(go);
+	coObjects.push_back(go);
+}
+
+void CScene::RemoveGameObject(LPGAMEOBJECT go)
+{
+	auto pos = std::find(objects.begin(), objects.end(), go);
+	if (pos != objects.end()) objects.erase(pos);
+
+	auto pos2 = std::find(coObjects.begin(), coObjects.end(), go);
+	if (pos2 != coObjects.end()) coObjects.erase(pos2);
+}
+
 void CScene::GetCamPos(float& cx, float& cy)
 {
 	float x, y;

@@ -177,6 +177,7 @@
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CTileMap.cpp" />
     <ClCompile Include="CWindow.cpp" />
+    <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CMario.cpp" />
     <ClCompile Include="CMap.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="FireBall.h" />
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />
@@ -227,6 +229,9 @@
     <ClInclude Include="MarioController.h" />
     <ClInclude Include="MarioDefines.h" />
     <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -173,15 +173,20 @@ bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
+	coEvents.clear();
 
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
-		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
+		if (coObjects->at(i)->IsCollisionEnabled)
+		{
+			LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
 
-		if (e != nullptr && e->t > 0 && e->t <= 1.0f) // co va cham
-			coEvents.push_back(e);
-		else
-			delete e;
+			if (e != nullptr && e->t > 0 && e->t <= 1.0f) // co va cham
+				coEvents.push_back(e);
+			else
+				delete e;
+		}
+
 	}
 
 
@@ -301,12 +306,15 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	dy = vy * dt;
 
 	//DebugOut(L"ax: %.2f\n", a.x);
-
-	if (!CheckCollision(coObjects))
+	if (tag != ObjectTag::Ground)
 	{
-		x += dx;
-		y += dy;
+		if (!CheckCollision(coObjects))
+		{
+			x += dx;
+			y += dy;
+		}
 	}
+
 
 }
 
