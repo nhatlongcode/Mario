@@ -14,7 +14,7 @@ void CRaccoonMario::HandleFall()
 	auto input = CLocator<IHandleInput>().Get();
 	if (input->IsKeyDown(DIK_X))
 	{
-		vy += - 0.045f;
+		vy = MARIO_FALL_RACCOON;
 
 	}
 	SetState(MARIO_STATE_FALL);
@@ -30,6 +30,20 @@ void CRaccoonMario::HandleAtk()
 		isAttacking = true;
 		SetState(MARIO_STATE_ATK);
 		animSet->at(MARIO_STATE_ATK)->Render(x, y, nx, attackBegin, attackTime);
+	}
+
+}
+
+void CRaccoonMario::HandleFly(float flyForce)
+{
+	SetState(MARIO_STATE_FLY);
+	auto input = CLocator<IHandleInput>().Get();
+
+	if (input->IsKeyDown(DIK_X))
+	{
+		vy = flyForce;
+		isFlying = true;
+		isGrounded = false;
 	}
 
 }

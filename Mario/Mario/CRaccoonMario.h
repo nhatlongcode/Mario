@@ -6,6 +6,7 @@ class CRaccoonMario :
 public:
     CRaccoonMario();
     void HandleAtk();
+    void HandleFly(float flyForce);
     void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 protected:
     void HandleFall();

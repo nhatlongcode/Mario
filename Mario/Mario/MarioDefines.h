@@ -52,12 +52,12 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define CAMERA_OFFSET_TOP	140.0f
 #define CAMERA_OFFSET_LEFT	270.0f
 #define CAMERA_OFFSET_RIGHT	270.0f
-#define CAMERA_OFFSET_BOT	48.0f
+#define CAMERA_OFFSET_BOT	144.0f
 
 #define CAMERA_BORDER_TOP	0.0f
 #define CAMERA_BORDER_LEFT	0.0f
 #define CAMERA_BORDER_RIGHT	8118.0f
-#define CAMERA_BORDER_BOT	99999.0f
+#define CAMERA_BORDER_BOT	1250.0f
 
 // DIRECTION ---------------------------------------------------
 
@@ -74,9 +74,6 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define OBJECT_TYPE_PORTAL	50
 
 // MARIO -------------------------------------------------------
-#define MARIO_LEVEL_SMALL 0
-#define MARIO_LEVEL_BIG 1
-
 #define MARIO_SMALL_BBOX_WIDTH		36
 #define MARIO_SMALL_BBOX_HEIGHT		45
 
@@ -91,11 +88,20 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MARIO_RUNNING_SPEED			0.6f
 #define MARIO_ACCELERATION			0.0005f
 #define MARIO_IDLE_SPEED			0.0f
+#define MARIO_MAX_RUN				0.7f
+#define MARIO_MAX_WALK				0.2f
+
 #define MARIO_JUMP_SHORT_SPEED		-0.8f
-#define MARIO_JUMP_HIGH_SPEED		-0.6f
-#define MARIO_FLY_SPEED				-1.0f
+#define MARIO_JUMP_HIGH_SPEED		-0.5f
+#define MARIO_JUMP_MAX				10.0f
+
+#define MARIO_FLY_HIGH_FORCE		-0.5f
+#define MARIO_FLY_SHORT_FORCE		-0.8f
+#define MARIO_FLY_MAX				15.0f
+
 #define MARIO_MAX_JUMP				15.0f
 #define MARIO_GRAVITY				0.05f
+#define MARIO_FALL_RACCOON			0.1f
 
 
 #define MARIO_TYPE_SMALL			10000
@@ -124,15 +130,27 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define MARIO_STATE_FLY_ATK		15
 #define MARIO_STATE_CLIMB		16
 
+// FIRE BALL ------------------------------------------------
+#define FIREBALL_ANIMSET	30000
+#define FIREBALL_BBOX_WIDTH		24
+#define FIREBALL_BBOX_HEIGHT	24
+
+#define FIREBALL_SPEED_X	0.5f
+
+#define FIREBALL_STATE_FLY		0
+#define FIREBALL_STATE_EXPLO	1
+
+
+
 
 // GOOMBA ---------------------------------------------------
 #define GOOMBA_ANIMSET	20000
 
 #define GOOMBA_WALKING_SPEED 0.05f;
 
-#define GOOMBA_BBOX_WIDTH 48
-#define GOOMBA_BBOX_HEIGHT 48
-#define GOOMBA_BBOX_HEIGHT_DIE 27
+#define GOOMBA_BBOX_WIDTH		48
+#define GOOMBA_BBOX_HEIGHT		48
+#define GOOMBA_BBOX_HEIGHT_DIE	27
 
 #define GOOMBA_STATE_WALKING		0
 #define GOOMBA_STATE_DIE			1
@@ -142,7 +160,8 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 // KOOPAS ----------------------------------------------------
 #define KOOPAS_ANIMSET	21000
 
-#define KOOPAS_WALKING_SPEED	0.05f;
+#define KOOPAS_SPEED_WALK	0.05f;
+#define KOOPAS_SPEED_SPIN	0.5f;
 
 #define KOOPAS_BBOX_WIDTH	48
 #define KOOPAS_BBOX_HEIGHT	78
@@ -150,7 +169,7 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 #define KOOPAS_SHELL_BBOX_WIDTH		48
 #define KOOPAS_SHELL_BBOX_HEIGHT	48
 
-#define KOOPAS_STATE_WALKING	0
+#define KOOPAS_STATE_WALK		0
 #define KOOPAS_STATE_SHELL		1
 #define KOOPAS_STATE_SPIN		2
 #define KOOPAS_STATE_DIE		3

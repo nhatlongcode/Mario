@@ -3,13 +3,11 @@
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (vx < 0 && x < 0) {
-		x = 0; vx = -vx;
+	if (state == GOOMBA_STATE_WALKING)
+	{
+		vx = nx * GOOMBA_WALKING_SPEED;
 	}
 
-	if (vx > 0 && x > 290) {
-		x = 290; vx = -vx;
-	}
 	vy += MARIO_GRAVITY;
 	CGameObject::Update(dt, coObjects);
 }
@@ -27,6 +25,7 @@ CGoomba::CGoomba()
 	SetAnimationSet(GOOMBA_ANIMSET);
 	SetState(GOOMBA_STATE_WALKING);
 	IsCollisionEnabled = true;
+	nx = DIRECTION_LEFT;
 	tag = ObjectTag::Goomba;
 }
 
@@ -42,8 +41,6 @@ void CGoomba::SetState(int state)
 		IsCollisionEnabled = false;
 		break;
 	case GOOMBA_STATE_DIE_INSTANT:
-		vy = -0.8f;
-		vx = 0;
 		IsCollisionEnabled = false;
 		break;
 	case GOOMBA_STATE_WALKING:

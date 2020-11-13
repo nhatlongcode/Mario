@@ -79,17 +79,17 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		{
 			if (canHighFly)
 			{
-				HandleFly(-0.5f);
+				HandleFly(MARIO_FLY_HIGH_FORCE);
 			}
 		}
 		else
 		{
 			if (canHighJump)
 			{
-				HandleJump(-0.5f); // high but one time jump
-				forceJump += -0.5f;
+				HandleJump(MARIO_JUMP_HIGH_SPEED); // high but one time jump
+				forceJump += MARIO_JUMP_HIGH_SPEED;
 			}
-			if (abs(forceJump) > 10.0f) canHighJump = false;
+			if (abs(forceJump) > MARIO_JUMP_MAX) canHighJump = false;
 		}
 
 	}
@@ -100,12 +100,12 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		canHighJump = false;
 		if (isMaxSpeed)
 		{
-			HandleFly(-0.8f);
+			HandleFly(MARIO_FLY_SHORT_FORCE);
 			canHighFly = false;
 		}
 		else if(isGrounded)
 		{
-			 HandleJump(-0.8f);
+			 HandleJump(MARIO_JUMP_SHORT_SPEED);
 			 canHighJump = false;
 		}
 	}
@@ -148,8 +148,6 @@ void CMario::OnKeyDown(int keyCode)
 
 void CMario::OnKeyUp(int keyCode)
 {
-	DWORD dt = CGame::Instance()->GetDeltaTime();
-	auto input = CLocator<IHandleInput>().Get();
 	if (keyCode == DIK_S && !isGrounded)
 	{
 		canHighJump = false;
@@ -192,7 +190,7 @@ void CMario::HandleFly(float flyForce)
 		forceFly += flyForce;
 		isFlying = true;
 		isGrounded = false;
-		if (abs(forceFly) > 15.0f) canHighFly = false;
+		if (abs(forceFly) > MARIO_FLY_MAX) canHighFly = false;
 	}
 
 }
@@ -211,31 +209,29 @@ void CMario::HandleAtk()
 void CMario::HandleWalk()
 {
 	isMaxSpeed = false;
-	float maxWalk = 0.2f;
 	ax = MARIO_ACCELERATION * nx;
-	if (abs(vx) > maxWalk && (currentSpeedX * nx > 0))
+	if (abs(vx) > MARIO_MAX_WALK && (currentSpeedX * nx > 0))
 	{
-		if (abs(currentSpeedX - ax * dt) > maxWalk) // chuyen dong cham dan khi ko speed up
+		if (abs(currentSpeedX - ax * dt) > MARIO_MAX_WALK) // chuyen dong cham dan khi ko speed up
 		{
 			vx = currentSpeedX - ax * dt;
 		}
-		else vx = maxWalk * nx;
+		else vx = MARIO_MAX_WALK * nx;
 	}
 	else  vx = currentSpeedX + ax * dt;
 }
 
 void CMario::HandleRun()
 {
-	float maxRun = 0.7f;
 	ax = MARIO_ACCELERATION * nx;
-	if (abs(vx) > maxRun && (currentSpeedX * nx > 0))
+	if (abs(vx) > MARIO_MAX_RUN && (currentSpeedX * nx > 0))
 	{
-		vx = maxRun * nx; // handle fly	
+		vx = MARIO_MAX_RUN * nx; // handle fly	
 	}
 	else if (currentSpeedX * nx < 0) vx = currentSpeedX + ax * 3.0f * dt;
 	else  vx = currentSpeedX + ax * dt;
 
-	if (abs(vx - maxRun * nx) < 0.01f)
+	if (abs(vx - MARIO_MAX_RUN * nx) < 0.01f)
 	{
 		isMaxSpeed = true;
 		if (!isAttacking && isGrounded) SetState(MARIO_STATE_RUN);
@@ -306,7 +302,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		int koopasState;
 		go->GetState(koopasState);
-		if (koopasState == KOOPAS_STATE_WALKING && other->ny == -1.0f)
+		if (koopasState == KOOPAS_STATE_WALK && other->ny == -1.0f)
 		{
 			go->SetState(KOOPAS_STATE_SHELL);
 			vy = -0.5f;
@@ -316,6 +312,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		{
 			this->SetState(MARIO_STATE_KICK);
 			go->SetState(KOOPAS_STATE_SPIN);
+			go->SetDirection(this->nx);
 			vy = -0.5f;
 		}
 		
@@ -324,9 +321,6 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 void CMario::Reset()
 {
-	SetState(MARIO_STATE_IDLE);
-	SetLevel(MARIO_LEVEL_BIG);
-	//SetPosition(startX, startY);
-	SetSpeed(0, 0);
+
 }
 

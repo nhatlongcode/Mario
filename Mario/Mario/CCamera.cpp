@@ -82,6 +82,6 @@ void CCamera::Update()
 
 	if (borderBot != -1)
 	{
-		if (posY + height > borderBot) posY = borderRight - height;
+		if (posY + height > borderBot) posY = borderBot - height;
 	}
 }

@@ -6,15 +6,15 @@ FireBall::FireBall(float x, float y, int direction)
 	this->x = x;
 	this->y = y;
 	this->nx = direction;
-	this->state = 0;
-	SetBoundingBox(24.0f, 24.0f);
-	SetAnimationSet(30000);
+	this->state = FIREBALL_STATE_FLY;
+	SetBoundingBox(FIREBALL_BBOX_WIDTH, FIREBALL_BBOX_HEIGHT);
+	SetAnimationSet(FIREBALL_ANIMSET);
 }
 
 void FireBall::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	vy += 0.05f;
-	vx = 0.5f * nx;
+	vy += MARIO_GRAVITY;
+	vx = FIREBALL_SPEED_X * nx;
 	CGameObject::Update(dt, coObjects);
 }
 
@@ -34,19 +34,23 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 			this->vy = -0.8f;
 		}
 	}
-	if (tag == ObjectTag::GhostPlatform)
-	{
-		state = 1;
-		//CGame::Instance()->GetCurrentScene()->RemoveGameObject(this);
-	}
+
 
 	if (tag == ObjectTag::Goomba)
 	{
 		go->SetState(GOOMBA_STATE_DIE_INSTANT);
+		go->SetSpeedX(nx * 0.3f);
+		go->SetSpeedY(-0.8f);
+
+		state = FIREBALL_STATE_EXPLO;
 	}
 
 	if (tag == ObjectTag::Koopas)
 	{
 		go->SetState(KOOPAS_STATE_DIE);
+		go->SetSpeedX(nx * 0.3f);
+		go->SetSpeedY(-0.8f);
+
+		state = FIREBALL_STATE_EXPLO;
 	}
 }
