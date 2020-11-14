@@ -5,5 +5,5 @@ class CBrick : public CGameObject
 {
 public:
 	CBrick();
-	virtual void Render();
+	void Render();
 };

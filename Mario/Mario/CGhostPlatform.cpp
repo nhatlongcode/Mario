@@ -2,7 +2,6 @@
 
 CGhostPlatform::CGhostPlatform()
 {
-	tag = ObjectTag::GhostPlatform;
 	IsCollisionEnabled = true;
 }
 

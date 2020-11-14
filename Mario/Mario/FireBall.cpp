@@ -6,20 +6,32 @@ FireBall::FireBall(float x, float y, int direction)
 	this->x = x;
 	this->y = y;
 	this->nx = direction;
+	explodeStart = 0;
+	SetAnimationSet(FIREBALL_ANIMSET);
 	this->state = FIREBALL_STATE_FLY;
 	SetBoundingBox(FIREBALL_BBOX_WIDTH, FIREBALL_BBOX_HEIGHT);
-	SetAnimationSet(FIREBALL_ANIMSET);
 }
 
 void FireBall::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+
 	vy += MARIO_GRAVITY;
 	vx = FIREBALL_SPEED_X * nx;
+
+	if (state == FIREBALL_STATE_EXPLO || state == -1) vx = vy = 0;
+
+	if (GetTickCount() - explodeStart > 400.0f && state == FIREBALL_STATE_EXPLO) // done explod
+	{
+		state = -1;
+		explodeStart = 0;
+		IsCollisionEnabled = false;
+	}
 	CGameObject::Update(dt, coObjects);
 }
 
 void FireBall::Render()
 {
+	if (state == -1) return;
 	animSet->at(state)->Render(x, y);
 }
 
@@ -35,14 +47,17 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 		}
 	}
 
+	if (tag == ObjectTag::Solid && nx != 0)
+	{
+		StartExplode();
+	}
 
 	if (tag == ObjectTag::Goomba)
 	{
 		go->SetState(GOOMBA_STATE_DIE_INSTANT);
 		go->SetSpeedX(nx * 0.3f);
 		go->SetSpeedY(-0.8f);
-
-		state = FIREBALL_STATE_EXPLO;
+		StartExplode();
 	}
 
 	if (tag == ObjectTag::Koopas)
@@ -50,7 +65,13 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 		go->SetState(KOOPAS_STATE_DIE);
 		go->SetSpeedX(nx * 0.3f);
 		go->SetSpeedY(-0.8f);
-
-		state = FIREBALL_STATE_EXPLO;
+		StartExplode();
 	}
+}
+
+void FireBall::StartExplode()
+{
+	explodeStart = GetTickCount();
+	SetBoundingBox(0, 0);
+	state = FIREBALL_STATE_EXPLO;
 }

@@ -61,4 +61,9 @@ void CKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		nx = -nx;
 	}
+
+	if (tag == ObjectTag::Ground && other->nx != 0)
+	{
+		nx = -nx;
+	}
 }

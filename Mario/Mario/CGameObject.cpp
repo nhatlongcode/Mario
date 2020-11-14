@@ -249,6 +249,11 @@ ObjectTag CGameObject::GetTag()
 	return tag;
 }
 
+void CGameObject::SetTag(ObjectTag tag)
+{
+	this->tag = tag;
+}
+
 void CGameObject::RenderCollisionBox()
 {
 	auto tex = CLocator<ITexsManager>().Get()->Get(10);

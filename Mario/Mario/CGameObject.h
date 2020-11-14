@@ -65,6 +65,7 @@ public:
 	void GetState(int& state) { state = this->state; }
 
 	ObjectTag GetTag();
+	void SetTag(ObjectTag tag);
 
 	void RenderCollisionBox();
 

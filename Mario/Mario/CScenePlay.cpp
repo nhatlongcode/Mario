@@ -163,21 +163,33 @@ void CScenePlay::_ParseSection_GHOSTPLATFORM(string line)
 {
 	vector<string> tokens = split(line);
 
-	if (tokens.size() < 4) return;
-
+	if (tokens.size() < 5) return;
+	int type;
 	float x, y, w, h;
 	x = atoi(tokens[0].c_str());
 	y = atoi(tokens[1].c_str());
 	w = atoi(tokens[2].c_str());
 	h = atoi(tokens[3].c_str());
+	type = atoi(tokens[4].c_str());
+	
 
 	CGameObject* ghost = new CGhostPlatform();
 	ghost->SetPosition(x, y);
 	ghost->SetBoundingBox(w, h);
+	switch (type)
+	{
+		case 0: 
+			ghost->SetTag(ObjectTag::GhostPlatform);
+			break;
+		case 1: 
+			ghost->SetTag(ObjectTag::Solid);
+			break;
+	}
 
 
 	objects.push_back(ghost);
 }
+
 
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
