@@ -5,6 +5,7 @@ class CFireMario :
 {
 protected:
     void HandleAtk();
+    void Render();
 public:
     CFireMario();
     long attackBegin = -1;

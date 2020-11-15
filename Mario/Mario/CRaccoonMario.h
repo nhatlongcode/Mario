@@ -8,6 +8,7 @@ public:
     void HandleAtk();
     void HandleFly(float flyForce);
     void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
+    void Render();
 protected:
     void HandleFall();
     long attackBegin = -1;

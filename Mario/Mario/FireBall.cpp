@@ -39,7 +39,7 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
 	CGameObject* go = other->obj;
 	ObjectTag tag = go->GetTag();
-	if (tag == ObjectTag::Ground)
+	if ((tag == ObjectTag::Ground || tag == ObjectTag::GhostPlatform));
 	{
 		if (other->ny == -1.0f)
 		{

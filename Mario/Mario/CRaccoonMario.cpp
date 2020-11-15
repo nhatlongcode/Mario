@@ -29,7 +29,6 @@ void CRaccoonMario::HandleAtk()
 		attackBegin = dt;
 		isAttacking = true;
 		SetState(MARIO_STATE_ATK);
-		animSet->at(MARIO_STATE_ATK)->Render(x, y, nx, attackBegin, attackTime);
 	}
 
 }
@@ -61,5 +60,11 @@ void CRaccoonMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 	
 	}
+}
+
+void CRaccoonMario::Render()
+{
+
+	CMario::Render();
 }
 

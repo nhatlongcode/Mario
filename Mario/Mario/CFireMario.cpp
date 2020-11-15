@@ -16,9 +16,15 @@ void CFireMario::HandleAtk()
 		if (isGrounded) atkState = MARIO_STATE_ATK;
 		else atkState = MARIO_STATE_FLY_ATK;
 		SetState(atkState);
-		animSet->at(atkState)->Render(x, y, nx, attackBegin, attackTime);
+		
 	}
 }
+
+void CFireMario::Render()
+{
+	CMario::Render();
+}
+
 
 CFireMario::CFireMario()
 {
