@@ -121,6 +121,16 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		HandleAtk();
 		
 	}
+
+	if (isHoldingKoopas)
+	{
+		if (Koopas != NULL)
+		{
+			this->SetState(MARIO_STATE_BRING);
+			Koopas->SetPosition(this->x + 40 * nx, this->y + 10);
+		}
+		else DebugOut(L"NULL KOOPAS\n");
+	}
 	CGameObject::Update(dt, coObjects);
 }
 
@@ -152,6 +162,12 @@ void CMario::OnKeyUp(int keyCode)
 	{
 		canHighJump = false;
 		canHighFly = false;
+	}
+
+	if (keyCode == DIK_A)
+	{
+		isHoldingKoopas = false;
+		Koopas = NULL;
 	}
 }
 
@@ -281,6 +297,7 @@ void CMario::HandleInput()
 
 void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
+	auto input = CLocator<IHandleInput>().Get();
 	LPGAMEOBJECT go = other->obj;
 	//DebugOut(L"asdasd\n");
 	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Ground || go->GetTag() == ObjectTag::Solid)
@@ -310,10 +327,18 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		
 		if (koopasState == KOOPAS_STATE_SHELL && (nx != 0))
 		{
-			this->SetState(MARIO_STATE_KICK);
-			go->SetState(KOOPAS_STATE_SPIN);
-			go->SetDirection(this->nx);
-			vy = -0.5f;
+			if (input->IsKeyDown(DIK_A))
+			{
+				Koopas = go;
+				isHoldingKoopas = true;
+			}
+			else
+			{
+				this->SetState(MARIO_STATE_KICK);
+				go->SetState(KOOPAS_STATE_SPIN);
+				go->SetDirection(this->nx);
+				vy = -0.5f;
+			}
 		}
 		
 	}

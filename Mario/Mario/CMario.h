@@ -10,7 +10,7 @@ protected:
 	bool isFlying;
 	bool canHighFly;
 	bool canHighJump;
-
+	bool isHoldingKoopas;
 	
 	float ax;
 	float startX;			// initial position of Mario at scene
@@ -20,6 +20,8 @@ protected:
 	float currentSpeedX;
 	float animSpeed;
 	DWORD dt;
+
+	LPGAMEOBJECT Koopas;
 
 	void StandingOnGround();
 	virtual void HandleMovement();
