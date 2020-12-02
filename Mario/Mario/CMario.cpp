@@ -166,8 +166,12 @@ void CMario::OnKeyUp(int keyCode)
 
 	if (keyCode == DIK_A)
 	{
-		isHoldingKoopas = false;
-		Koopas = NULL;
+		if (Koopas != NULL)
+		{
+			Koopas->IsCollisionEnabled = true;
+			isHoldingKoopas = false;
+			Koopas = NULL;
+		}
 	}
 }
 
@@ -330,6 +334,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 			if (input->IsKeyDown(DIK_A))
 			{
 				Koopas = go;
+				Koopas->IsCollisionEnabled = false;
 				isHoldingKoopas = true;
 			}
 			else
