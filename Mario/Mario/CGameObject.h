@@ -67,8 +67,7 @@ public:
 	ObjectTag GetTag();
 	void SetTag(ObjectTag tag);
 
-	void RenderCollisionBox();
-
+	virtual void RenderCollisionBox();
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);

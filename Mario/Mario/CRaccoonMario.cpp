@@ -4,6 +4,7 @@ CRaccoonMario::CRaccoonMario()
 {
 	SetAnimationSet(MARIO_TYPE_RACCOON);
 	state = MARIO_STATE_IDLE;
+	tail = new Tail();
 	IsCollisionEnabled = true;
 	SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);
 }
@@ -60,11 +61,20 @@ void CRaccoonMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 	
 	}
+	tail->SetPosition(this->x + 34 * nx, this->y + 20);
+	tail->Update(dt, coObjects);
+}
+
+void CRaccoonMario::RenderCollisionBox()
+{
+	CGameObject::RenderCollisionBox();
+	
 }
 
 void CRaccoonMario::Render()
 {
 
 	CMario::Render();
+	tail->Render();
 }
 
