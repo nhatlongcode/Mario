@@ -37,7 +37,6 @@ void Tail::OnCollisionEnter(LPCOLLISIONEVENT other)
 	if (tag == ObjectTag::Koopas && isHiting)
 	{
 		obj->SetState(KOOPAS_STATE_DIE);
-		DebugOut(L"hit\n");
 	}
 	else if (tag == ObjectTag::Goomba && isHiting)
 	{

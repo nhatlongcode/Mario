@@ -4,6 +4,7 @@
 #include "CGoomba.h"
 #include "CKoopas.h"
 #include "CBrick.h"
+#include "CQuestionBrick.h"
 #include "CGround.h"
 #include "CGhostPlatform.h"
 #include "CGame.h"
@@ -265,7 +266,7 @@ void CScenePlay::Load()
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
 	camera->SetPlayer(this->player);
 
-	CGameObject* brickTest = new CBrick();
+	CGameObject* brickTest = new CQuestionBrick();
 	brickTest->SetPosition(300, 1200);
 	objects.push_back(brickTest);
 	if (player == NULL) DebugOut(L"PLAYER NULL");

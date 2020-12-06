@@ -210,6 +210,9 @@
     <ClCompile Include="Tail.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="CQuestionBrick.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -346,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="Tail.h">
       <Filter>Game\Mario\Tail</Filter>
+    </ClInclude>
+    <ClInclude Include="CQuestionBrick.h">
+      <Filter>Game\Objects\Brick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
