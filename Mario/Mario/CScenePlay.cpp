@@ -194,6 +194,7 @@ void CScenePlay::_ParseSection_GHOSTPLATFORM(string line)
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CScenePlayKeyHandler(this);
+	map = NULL;
 	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
 	camera->SetOffSet(CAMERA_OFFSET_LEFT,
 		CAMERA_OFFSET_RIGHT,

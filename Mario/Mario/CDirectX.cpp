@@ -6,9 +6,11 @@ CDirectX::CDirectX(HWND hwnd)
 {
 	hWnd = hwnd;
 	d3d = Direct3DCreate9(D3D_SDK_VERSION);
+	backBuffer = NULL;
+	d3ddv = NULL;
+	spriteHandler = NULL;
 
 	D3DPRESENT_PARAMETERS d3dpp;
-
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
 
 	d3dpp.Windowed = TRUE;

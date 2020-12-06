@@ -6,6 +6,13 @@ CCamera::CCamera(int width, int height)
 {
 	this->width = width;
 	this->height = height;
+	offSetBot = 0.0f;
+	offSetTop = 0.0f;
+	offSetLeft = 0.0f;
+	offSetRight = 0.0f;
+	posX = 0.0f;
+	posY = 0.0f;
+	player = NULL;
 }
 
 void CCamera::SetOffSet(float offLeft, float offRight, float offTop, float offBot)
