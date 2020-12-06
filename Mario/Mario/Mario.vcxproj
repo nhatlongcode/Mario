@@ -220,6 +220,7 @@
     <ClInclude Include="CMario.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="FireBall.h" />
+    <ClInclude Include="CCoin.h" />
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />

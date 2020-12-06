@@ -29,6 +29,7 @@ void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			dy = 0;
 			IsCollisionEnabled = true;
 			this->y = beginY;
+			SetAnimationSet(30003);
 			bounceBegin = -1;
 		}
 	}
@@ -38,10 +39,11 @@ void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CQuestionBrick::SetState(int state)
 {
-	if (state == 1)
+	if (state == 1 && this->state == 0)
 	{
 		Bounce();
 	}
+	this->state = state;
 }
 
 void CQuestionBrick::Bounce()
