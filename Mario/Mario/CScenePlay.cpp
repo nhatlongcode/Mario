@@ -267,7 +267,7 @@ void CScenePlay::Load()
 	camera->SetPlayer(this->player);
 
 	CGameObject* brickTest = new CQuestionBrick();
-	brickTest->SetPosition(300, 1200);
+	brickTest->SetPosition(300, 1050);
 	objects.push_back(brickTest);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 

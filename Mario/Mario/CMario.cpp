@@ -304,7 +304,10 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	auto input = CLocator<IHandleInput>().Get();
 	LPGAMEOBJECT go = other->obj;
 	//DebugOut(L"asdasd\n");
-	if (go->GetTag() == ObjectTag::GhostPlatform || go->GetTag() == ObjectTag::Ground || go->GetTag() == ObjectTag::Solid)
+	if (go->GetTag() == ObjectTag::GhostPlatform || 
+		go->GetTag() == ObjectTag::Ground || 
+		go->GetTag() == ObjectTag::Solid || 
+		go->GetTag() == ObjectTag::QuestionBrick)
 	{
 		if (other->ny == -1.0f)
 		{
@@ -313,6 +316,12 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 	}
 	
+	if (go->GetTag() == ObjectTag::QuestionBrick && other->ny == 1.0f)
+	{
+		go->SetState(1);
+		canHighJump = false;
+	}
+
 	if (go->GetTag() == ObjectTag::Goomba && other->ny == -1.0f)
 	{
 		go->SetState(GOOMBA_STATE_DIE);
