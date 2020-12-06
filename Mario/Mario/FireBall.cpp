@@ -55,8 +55,6 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 	if (tag == ObjectTag::Goomba)
 	{
 		go->SetState(GOOMBA_STATE_DIE_INSTANT);
-		go->SetSpeedX(nx * 0.3f);
-		go->SetSpeedY(-0.8f);
 		StartExplode();
 	}
 

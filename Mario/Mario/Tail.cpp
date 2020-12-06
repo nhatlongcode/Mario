@@ -32,10 +32,16 @@ void Tail::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void Tail::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
-	if (other->obj->GetTag() == ObjectTag::Koopas && isHiting)
+	auto obj = other->obj;
+	auto tag = obj->GetTag();
+	if (tag == ObjectTag::Koopas && isHiting)
 	{
-		other->obj->SetState(KOOPAS_STATE_DIE);
+		obj->SetState(KOOPAS_STATE_DIE);
 		DebugOut(L"hit\n");
+	}
+	else if (tag == ObjectTag::Goomba && isHiting)
+	{
+		obj->SetState(GOOMBA_STATE_DIE_INSTANT);
 	}
 }
 

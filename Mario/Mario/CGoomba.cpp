@@ -1,5 +1,5 @@
 #include "CGoomba.h"
-
+#include "CGame.h"
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -41,6 +41,10 @@ void CGoomba::SetState(int state)
 		IsCollisionEnabled = false;
 		break;
 	case GOOMBA_STATE_DIE_INSTANT:
+		int marionx;
+		CGame::Instance()->GetCurrentScene()->GetPlayer()->GetDirection(marionx);
+		SetSpeedX(marionx * 0.3f);
+		SetSpeedY(-0.8f);
 		IsCollisionEnabled = false;
 		break;
 	case GOOMBA_STATE_WALKING:
