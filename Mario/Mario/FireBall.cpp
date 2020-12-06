@@ -63,8 +63,6 @@ void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)
 	if (tag == ObjectTag::Koopas)
 	{
 		go->SetState(KOOPAS_STATE_DIE);
-		go->SetSpeedX(nx * 0.3f);
-		go->SetSpeedY(-0.8f);
 		StartExplode();
 	}
 }

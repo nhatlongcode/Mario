@@ -1,4 +1,5 @@
 #include "CKoopas.h"
+#include "CGame.h"
 #include "MarioDefines.h"
 
 CKoopas::CKoopas()
@@ -48,6 +49,10 @@ void CKoopas::SetState(int state)
 		
 		break;
 	case KOOPAS_STATE_DIE:
+		int marionx;
+		CGame::Instance()->GetCurrentScene()->GetPlayer()->GetDirection(marionx);
+		SetSpeedX(marionx * 0.3f);
+		SetSpeedY(-0.8f);
 		IsCollisionEnabled = false;
 		break;
 	}

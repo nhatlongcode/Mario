@@ -51,18 +51,26 @@ void CRaccoonMario::HandleFly(float flyForce)
 void CRaccoonMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CMario::Update(dt, coObjects);
+	tail->SetPosition(this->x + 35 * nx, this->y + 20);
+	tail->Update(dt, coObjects);
 	if (attackBegin > 0)
 	{
 		attackBegin += dt;
+
+		if (attackBegin > 100 && attackBegin < 200)
+		{
+			tail->isHiting = true;
+		}
+		else tail->isHiting = false;
+
 		if (attackBegin > attackTime)
 		{
 			attackBegin = -1;
 			isAttacking = false;
+			tail->isHiting = false;
 		}
-	
 	}
-	tail->SetPosition(this->x + 34 * nx, this->y + 20);
-	tail->Update(dt, coObjects);
+
 }
 
 void CRaccoonMario::RenderCollisionBox()
