@@ -155,6 +155,7 @@
     <ClCompile Include="CBigMario.cpp" />
     <ClCompile Include="CBrick.cpp" />
     <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CCoin.cpp" />
     <ClCompile Include="CCollisionEvent.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CFireMario.cpp" />
