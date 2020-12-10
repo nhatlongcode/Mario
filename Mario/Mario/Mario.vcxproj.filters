@@ -222,6 +222,12 @@
     <ClCompile Include="CCoin.cpp">
       <Filter>Game\Objects\Coin</Filter>
     </ClCompile>
+    <ClCompile Include="CUIElement.cpp">
+      <Filter>Framework\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="CCanvas.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -364,6 +370,12 @@
     </ClInclude>
     <ClInclude Include="CCoin.h">
       <Filter>Game\Objects\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="CCanvas.h">
+      <Filter>Framework\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIElement.h">
+      <Filter>Framework\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

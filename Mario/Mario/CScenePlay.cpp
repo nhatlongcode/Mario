@@ -1,6 +1,7 @@
 #include "CScenePlay.h"
 #include "CScenePlayKeyHandler.h"
 #include "CAnimationSetsManager.h"
+#include "CLocator.h"
 #include "CGoomba.h"
 #include "CKoopas.h"
 #include "CBrick.h"
@@ -11,7 +12,7 @@
 #include <iostream>
 #include <fstream>
 
-void CScenePlay::_ParseSection_TEXTURES(string line)
+void CScenePlay::ParseSection_TEXTURES(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -25,7 +26,7 @@ void CScenePlay::_ParseSection_TEXTURES(string line)
 	CLocator<ITexsManager>().Get()->Add(texID, path.c_str(), D3DCOLOR_XRGB(R, G, B));
 }
 
-void CScenePlay::_ParseSection_SPRITES(string line)
+void CScenePlay::ParseSection_SPRITES(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -51,7 +52,7 @@ void CScenePlay::_ParseSection_SPRITES(string line)
 	CLocator<ISpritesManager>().Get()->Add(ID, left, top, width, height, scaleX, scaleY, xPivot, tex);
 }
 
-void CScenePlay::_ParseSection_ANIMATIONS(string line)
+void CScenePlay::ParseSection_ANIMATIONS(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -72,7 +73,7 @@ void CScenePlay::_ParseSection_ANIMATIONS(string line)
 	CLocator<IAnimsManager>().Get()->Add(ani_id, ani);
 }
 
-void CScenePlay::_ParseSection_ANIMATION_SETS(string line)
+void CScenePlay::ParseSection_ANIMATION_SETS(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -95,7 +96,7 @@ void CScenePlay::_ParseSection_ANIMATION_SETS(string line)
 	CLocator<IAnimSetsManager>().Get()->Add(ani_set_id, set);
 }
 
-void CScenePlay::_ParseSection_OBJECTS(string line)
+void CScenePlay::ParseSection_OBJECTS(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -140,7 +141,7 @@ void CScenePlay::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 }
 
-void CScenePlay::_ParseSection_GROUNDS(string line)
+void CScenePlay::ParseSection_GROUNDS(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -160,7 +161,7 @@ void CScenePlay::_ParseSection_GROUNDS(string line)
 	objects.push_back(ground);
 }
 
-void CScenePlay::_ParseSection_GHOSTPLATFORM(string line)
+void CScenePlay::ParseSection_GHOSTPLATFORM(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -195,7 +196,8 @@ void CScenePlay::_ParseSection_GHOSTPLATFORM(string line)
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CScenePlayKeyHandler(this);
-	CGame::Instance()->SetWidthHeight(GAME_WIDTH, GAME_HEIGHT);
+	canvas = new CCanvas();
+	CGame::Instance()->SetWidthHeight(GAME_WIDTH, 550);
 	map = NULL;
 	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
 	camera->SetOffSet(CAMERA_OFFSET_LEFT,
@@ -251,13 +253,14 @@ void CScenePlay::Load()
 		//
 		switch (section)
 		{
-		case SCENE_SECTION_TEXTURES: _ParseSection_TEXTURES(line); break;
-		case SCENE_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
-		case SCENE_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
-		case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
-		case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
-		case SCENE_SECTION_GROUNDS: _ParseSection_GROUNDS(line); break;
-		case SCENE_SECTION_GHOSTPLATFORM: _ParseSection_GHOSTPLATFORM(line); break;
+		case SCENE_SECTION_TEXTURES: ParseSection_TEXTURES(line); break;
+		case SCENE_SECTION_SPRITES: ParseSection_SPRITES(line); break;
+		case SCENE_SECTION_ANIMATIONS: ParseSection_ANIMATIONS(line); break;
+		case SCENE_SECTION_ANIMATION_SETS: ParseSection_ANIMATION_SETS(line); break;
+		case SCENE_SECTION_OBJECTS: ParseSection_OBJECTS(line); break;
+		case SCENE_SECTION_GROUNDS: ParseSection_GROUNDS(line); break;
+		case SCENE_SECTION_GHOSTPLATFORM: ParseSection_GHOSTPLATFORM(line); break;
+		case SCENE_SECTION_UI: ParseSection_GHOSTPLATFORM(line); break;
 		}
 	}
 
@@ -276,6 +279,10 @@ void CScenePlay::Load()
 	{
 		coObjects.push_back(objects[i]);
 	}
+
+
+	auto tex = CLocator<ITexsManager>().Get()->Get(5);
+	testSprite = new CSprite(70000, 20, 375, 725, 120, 1, 1, 0, tex);
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 }
@@ -304,7 +311,9 @@ void CScenePlay::Render()
 	}
 	player->Render();
 	if (debugMode) player->RenderCollisionBox();
-	
+	float camX, camY;
+	CGame::Instance()->GetCurrentScene()->GetCamPos(camX, camY);
+	testSprite->Draw(camX + 354, camY + 625);
 }
 
 void CScenePlay::Unload()

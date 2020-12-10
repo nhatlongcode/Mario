@@ -41,7 +41,6 @@ void CSprite::Draw(float x, float y, int direction, int alpha)
 	D3DXMatrixTransformation2D(&newMatrix, &Vector2(p.x,p.y), 0, &scale, NULL, 0.0f, NULL);
 	newMatrix = oldMatrix * newMatrix;
 
-	Vector3 p2((int)p.x, (int)p.y, 0);
 	spriteHandler->SetTransform(&newMatrix);
 	spriteHandler->Draw(texture, &r, &Vector3((int)width/2 + xPivot, (int)height/2, 0), &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);

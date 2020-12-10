@@ -3,20 +3,25 @@
 #include "CScene.h"
 #include "CMario.h"
 #include "MarioController.h"
+#include "CCanvas.h"
 #include "CMap.h"
 #include "CCamera.h"
 
 class CScenePlay : public CScene
 {
+private:
+	CSprite* testSprite;
+	LPCANVAS canvas;
 protected:				// A play scene has to have player, right? 
 	CMap* map;
-	void _ParseSection_TEXTURES(string line);
-	void _ParseSection_SPRITES(string line);
-	void _ParseSection_ANIMATIONS(string line);
-	void _ParseSection_ANIMATION_SETS(string line);
-	void _ParseSection_OBJECTS(string line);
-	void _ParseSection_GROUNDS(string line);
-	void _ParseSection_GHOSTPLATFORM(string line);
+	void ParseSection_TEXTURES(string line);
+	void ParseSection_SPRITES(string line);
+	void ParseSection_ANIMATIONS(string line);
+	void ParseSection_ANIMATION_SETS(string line);
+	void ParseSection_OBJECTS(string line);
+	void ParseSection_GROUNDS(string line);
+	void ParseSection_GHOSTPLATFORM(string line);
+	void ParseSection_UI(string line);
 
 
 public:

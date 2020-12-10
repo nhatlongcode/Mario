@@ -155,6 +155,7 @@
     <ClCompile Include="CBigMario.cpp" />
     <ClCompile Include="CBrick.cpp" />
     <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CCanvas.cpp" />
     <ClCompile Include="CCoin.cpp" />
     <ClCompile Include="CCollisionEvent.cpp" />
     <ClCompile Include="CDirectX.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="CSpritesManager.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CTileMap.cpp" />
+    <ClCompile Include="CUIElement.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="main.cpp" />
@@ -195,6 +197,7 @@
     <ClInclude Include="CBigMario.h" />
     <ClInclude Include="CBrick.h" />
     <ClInclude Include="CCamera.h" />
+    <ClInclude Include="CCanvas.h" />
     <ClInclude Include="CCollisionEvent.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CFireMario.h" />
@@ -217,6 +220,7 @@
     <ClInclude Include="CSpritesManager.h" />
     <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CTileMap.h" />
+    <ClInclude Include="CUIElement.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="Enum.h" />
