@@ -9,6 +9,7 @@ class CUIElement
 {
 private:
 	float x, y;
+	int id;
 	int alpha;
 	int left;
 	int top;
@@ -19,7 +20,7 @@ private:
 	LPDIRECT3DTEXTURE9 texture;
 public:
 	bool IsEnable;
-	CUIElement(int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 texture);
+	CUIElement(int id, int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 texture);
 	
 	void SetPosition(float x, float y);
 	void GetPosition(float& x, float& y);

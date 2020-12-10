@@ -3,15 +3,12 @@
 #include "CScene.h"
 #include "CMario.h"
 #include "MarioController.h"
-#include "CCanvas.h"
 #include "CMap.h"
 #include "CCamera.h"
 
 class CScenePlay : public CScene
 {
 private:
-	CSprite* testSprite;
-	LPCANVAS canvas;
 protected:				// A play scene has to have player, right? 
 	CMap* map;
 	void ParseSection_TEXTURES(string line);

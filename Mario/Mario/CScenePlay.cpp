@@ -196,8 +196,7 @@ void CScenePlay::ParseSection_GHOSTPLATFORM(string line)
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CScenePlayKeyHandler(this);
-	canvas = new CCanvas();
-	CGame::Instance()->SetWidthHeight(GAME_WIDTH, 550);
+	CGame::Instance()->SetWidthHeight(GAME_WIDTH, GAME_HEIGHT);
 	map = NULL;
 	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
 	camera->SetOffSet(CAMERA_OFFSET_LEFT,
@@ -208,6 +207,7 @@ CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 		CAMERA_BORDER_RIGHT,
 		CAMERA_BORDER_TOP,
 		CAMERA_BORDER_BOT);
+
 }
 
 void CScenePlay::Load()
@@ -280,9 +280,11 @@ void CScenePlay::Load()
 		coObjects.push_back(objects[i]);
 	}
 
-
 	auto tex = CLocator<ITexsManager>().Get()->Get(5);
-	testSprite = new CSprite(70000, 20, 375, 725, 120, 1, 1, 0, tex);
+	LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
+	ui->SetPosition(0, 578);
+	canvas->Add(ui);
+
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 }
@@ -298,6 +300,7 @@ void CScenePlay::Update(DWORD dt)
 
 	player->Update(dt, &coObjects);
 	camera->Update();
+	canvas->Update(dt);
 }
 
 void CScenePlay::Render()
@@ -313,7 +316,7 @@ void CScenePlay::Render()
 	if (debugMode) player->RenderCollisionBox();
 	float camX, camY;
 	CGame::Instance()->GetCurrentScene()->GetCamPos(camX, camY);
-	testSprite->Draw(camX + 354, camY + 625);
+	canvas->Render();
 }
 
 void CScenePlay::Unload()

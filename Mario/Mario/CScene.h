@@ -4,6 +4,7 @@
 #include "CKeyEventHandler.h"
 #include "CMario.h"
 #include "MarioController.h"
+#include "CCanvas.h"
 #include "CCamera.h"
 
 class CScene
@@ -17,6 +18,7 @@ protected:
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> coObjects;
 	LPCWSTR sceneFilePath;
+	LPCANVAS canvas;
 	CMario* player;
 
 public:
@@ -28,6 +30,10 @@ public:
 	void AddGameObject(LPGAMEOBJECT go, float posX, float posY);
 	void RemoveGameObject(LPGAMEOBJECT go);
 	void GetCamPos(float& cx, float& cy);
+
+	void AddUI(LPUI ui);
+
+
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;

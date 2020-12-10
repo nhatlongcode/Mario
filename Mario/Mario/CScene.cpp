@@ -5,6 +5,7 @@ CScene::CScene(int id, LPCWSTR filePath)
 	this->id = id;
 	debugMode = false;
 	this->sceneFilePath = filePath;
+	canvas = new CCanvas();
 }
 
 CMario* CScene::GetPlayer()
@@ -58,5 +59,10 @@ void CScene::GetCamPos(float& cx, float& cy)
 	camera->GetCamPos(x, y);
 	cx = x;
 	cy = y;
+}
+
+void CScene::AddUI(LPUI ui)
+{
+	canvas->Add(ui);
 }
 

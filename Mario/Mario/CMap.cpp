@@ -62,14 +62,12 @@ void CMap::Load(int texID, LPCWSTR path)
 			case MAP_SECTION_SIZE:
 			{
 				ParseSectionSize(line);
-				DebugOut(L"SIZE\n");
 				break;
 			}
 			case MAP_SECTION_DATA:
 			{
 				row++;
 				ParseSectionData(line, row);
-				DebugOut(L"data\n");
 				break;
 			}
 		}
@@ -85,8 +83,6 @@ void CMap::ParseSectionSize(string line)
 	//if (tokens.size() < 2) return;
 	row = atoi(tokens[0].c_str());
 	col = atoi(tokens[1].c_str());
-	DebugOut(L"col: %d\n", col);
-	DebugOut(L"row: %d\n", row);
 }
 
 void CMap::ParseSectionData(string line, int rowCount)
@@ -101,7 +97,6 @@ void CMap::ParseSectionData(string line, int rowCount)
 		if (id != 0)
 		{
 			tile = new CTileMap(i * 48, rowCount * 48, id);
-			DebugOut(L"%d\n", id);
 			data.push_back(tile);
 		}
 	}
