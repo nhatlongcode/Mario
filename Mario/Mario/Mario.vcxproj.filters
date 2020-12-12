@@ -106,6 +106,12 @@
     <Filter Include="Framework\HUD">
       <UniqueIdentifier>{86ef2828-8e76-4134-a2e1-2ce0fc50622f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\CText">
+      <UniqueIdentifier>{42f9a3ef-6b12-4b28-84f6-663d7fa85d82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Font">
+      <UniqueIdentifier>{acf71786-e712-4f4c-8215-b6be12ef6a81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -225,8 +231,11 @@
     <ClCompile Include="CUIElement.cpp">
       <Filter>Framework\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="CChar.cpp">
+      <Filter>Framework\CText</Filter>
+    </ClCompile>
     <ClCompile Include="CCanvas.cpp">
-      <Filter>Main</Filter>
+      <Filter>Framework\HUD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="CUIElement.h">
       <Filter>Framework\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="CChar.h">
+      <Filter>Framework\CText</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

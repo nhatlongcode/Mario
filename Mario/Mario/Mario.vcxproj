@@ -156,6 +156,7 @@
     <ClCompile Include="CBrick.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCanvas.cpp" />
+    <ClCompile Include="CChar.cpp" />
     <ClCompile Include="CCoin.cpp" />
     <ClCompile Include="CCollisionEvent.cpp" />
     <ClCompile Include="CDirectX.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="CBrick.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCanvas.h" />
+    <ClInclude Include="CChar.h" />
     <ClInclude Include="CCollisionEvent.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CFireMario.h" />

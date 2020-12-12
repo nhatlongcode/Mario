@@ -192,6 +192,11 @@ void CScenePlay::ParseSection_GHOSTPLATFORM(string line)
 	objects.push_back(ghost);
 }
 
+void CScenePlay::ParseSection_FONTS(string line)
+{
+
+}
+
 
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
