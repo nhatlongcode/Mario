@@ -237,6 +237,9 @@
     <ClCompile Include="CCanvas.cpp">
       <Filter>Framework\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="CFontInfo.cpp">
+      <Filter>Framework\Font</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -388,6 +391,18 @@
     </ClInclude>
     <ClInclude Include="CChar.h">
       <Filter>Framework\CText</Filter>
+    </ClInclude>
+    <ClInclude Include="IFontManager.h">
+      <Filter>Framework\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="CFont.h">
+      <Filter>Framework\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="CFontInfo.h">
+      <Filter>Framework\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Framework\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

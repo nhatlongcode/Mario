@@ -161,6 +161,7 @@
     <ClCompile Include="CCollisionEvent.cpp" />
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CFireMario.cpp" />
+    <ClCompile Include="CFontInfo.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGhostPlatform.cpp" />
@@ -203,6 +204,8 @@
     <ClInclude Include="CCollisionEvent.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CFireMario.h" />
+    <ClInclude Include="CFont.h" />
+    <ClInclude Include="CFontInfo.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGhostPlatform.h" />
@@ -231,6 +234,8 @@
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />
+    <ClInclude Include="IDrawable.h" />
+    <ClInclude Include="IFontManager.h" />
     <ClInclude Include="IHandleInput.h" />
     <ClInclude Include="ISpritesManager.h" />
     <ClInclude Include="ITexsManager.h" />
