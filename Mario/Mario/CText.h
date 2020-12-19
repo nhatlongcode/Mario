@@ -16,4 +16,5 @@ public:
 	void Render() override;
 	void SetPosition(float x, float y) override;
 	void SetContent(std::string content);
+	void SetDistance(float distance);
 };

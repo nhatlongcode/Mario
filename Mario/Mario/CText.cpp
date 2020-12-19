@@ -2,6 +2,10 @@
 #include "Utils.h"
 #include "CLocator.h"
 #include "CFontManager.h"
+#include <iostream>
+#include <cstring>
+
+using namespace std;
 
 CText::CText(std::string content, int fontID)
 {
@@ -16,6 +20,7 @@ CText::CText(std::string content, int fontID)
 void CText::ResetString()
 {
 	float posX = x; //relative
+
 	for (int i = 0; i < listChar.size(); i++)
 	{
 		delete listChar[i];
@@ -61,4 +66,9 @@ void CText::SetContent(std::string content)
 {
 	this->content = content;
 	ResetString();
+}
+
+void CText::SetDistance(float distance)
+{
+	this->distance = distance;
 }

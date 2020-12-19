@@ -196,7 +196,17 @@ void CScenePlay::ParseSection_GHOSTPLATFORM(string line)
 
 void CScenePlay::ParseSection_FONTS(string line)
 {
+	vector<string> tokens = split(line);
 
+	if (tokens.size() < 6) return;
+	int font, ascii, t, l, w, h;
+	font = atoi(tokens[0].c_str());
+	ascii = atoi(tokens[1].c_str());
+	t = atoi(tokens[2].c_str());
+	l = atoi(tokens[3].c_str());
+	w = atoi(tokens[4].c_str());
+	h = atoi(tokens[5].c_str());
+	CLocator<IFontManager>().Get()->AddFont(font, ascii, t, l, w, h);
 }
 
 
@@ -253,6 +263,10 @@ void CScenePlay::Load()
 		if (line == "[GHOSTPLATFORM]") {
 			section = SCENE_SECTION_GHOSTPLATFORM; continue;
 		}
+		if (line == "[FONTS]") 
+		{
+			section = SCENE_SECTION_FONTS; continue;
+		}
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
 
 		//
@@ -268,6 +282,7 @@ void CScenePlay::Load()
 		case SCENE_SECTION_GROUNDS: ParseSection_GROUNDS(line); break;
 		case SCENE_SECTION_GHOSTPLATFORM: ParseSection_GHOSTPLATFORM(line); break;
 		case SCENE_SECTION_UI: ParseSection_GHOSTPLATFORM(line); break;
+		case SCENE_SECTION_FONTS: ParseSection_FONTS(line); break;
 		}
 	}
 
@@ -287,11 +302,9 @@ void CScenePlay::Load()
 		coObjects.push_back(objects[i]);
 	}
 
-	auto tex = CLocator<ITexsManager>().Get()->Get(5);
-
-	CLocator<IFontManager>().Get()->AddFont(MARIO_FONT_ID, 48, 72, 96, 24, 24);
-	CText* text = new CText("0", MARIO_FONT_ID);
 	
+	CText* text = new CText("123456789", MARIO_FONT_ID);
+	text->SetDistance(3.0f);
 	text->SetPosition(300.0f, 300.0f);
 	canvas->Add(text);
 	//LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
