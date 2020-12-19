@@ -21,6 +21,9 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 #define MAX_FRAME_RATE 120
 
+// FONT -----------------------------------------------------
+
+#define MARIO_FONT_ID 5
 
 // COLOR -----------------------------------------------------
 

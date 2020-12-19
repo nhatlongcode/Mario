@@ -1,6 +1,17 @@
 #include "CText.h"
+#include "Utils.h"
 #include "CLocator.h"
 #include "CFontManager.h"
+
+CText::CText(std::string content, int fontID)
+{
+	this->content = content;
+	this->fontID = fontID;
+	size = 1;
+	distance = 0.0f;
+	alpha = 255;
+	ResetString();
+}
 
 void CText::ResetString()
 {
@@ -11,15 +22,16 @@ void CText::ResetString()
 	}
 	listChar.clear();
 
-	if (content == "") return;
+	if (content.size() == 0) return;
 
 	for (int i = 0; i < content.size(); i++)
 	{
 		char c = content[i];
-		CChar* cc = CLocator<IFontManager>().Get()->GetFont(fontID, (int)c).GetChar(size, size);
+		CChar* cc = CLocator<IFontManager>().Get()->GetFont(fontID, (int)c)->GetChar(size, size);
+		cc->SetAlpha(this->alpha);
 		if (i == 0)
 		{
-			cc->SetPosition(this->x, this->y);
+			cc->SetPosition(posX, this->y);
 		}
 		else
 		{
@@ -36,6 +48,13 @@ void CText::Render()
 	{
 		listChar[i]->Render();
 	}
+}
+
+void CText::SetPosition(float x, float y)
+{
+	this->x = x;
+	this->y = y;
+	ResetString();
 }
 
 void CText::SetContent(std::string content)

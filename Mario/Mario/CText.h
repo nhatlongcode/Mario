@@ -11,7 +11,9 @@ private:
 	std::string content;
 	std::vector<CChar*> listChar;
 public:
+	CText(std::string content = "", int fontID = MARIO_FONT_ID);
 	void ResetString();
 	void Render() override;
+	void SetPosition(float x, float y) override;
 	void SetContent(std::string content);
 };

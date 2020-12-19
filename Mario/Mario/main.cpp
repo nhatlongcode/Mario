@@ -6,6 +6,7 @@
 #include "CTexturesManager.h"
 #include "CAnimationsManager.h"
 #include "CAnimationSetsManager.h"
+#include "CFontManager.h"
 #include "CInput.h"
 #include "CSpritesManager.h"
 #include "MarioDefines.h"
@@ -22,9 +23,11 @@ void InitLocator(HINSTANCE hInstance, int nCmdShow)
 	ISpritesManager* sprites = new CSpritesManager();
 	IAnimsManager* animations = new CAnimationsManager();
 	IAnimSetsManager* animationSets = new CAnimationSetsManager();
+	IFontManager* fonts = new CFontManager();
 
 	CLocator<IWindow>().Add(window);
 	CLocator<IDirectX>().Add(directx);
+	CLocator<IFontManager>().Add(fonts);
 	CLocator<IHandleInput>().Add(input);
 	CLocator<ITexsManager>().Add(textures); 
 	CLocator<ISpritesManager>().Add(sprites);

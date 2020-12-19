@@ -1,6 +1,8 @@
 #include "CScenePlay.h"
 #include "CScenePlayKeyHandler.h"
 #include "CAnimationSetsManager.h"
+#include "CFontManager.h"
+#include "CText.h"
 #include "CLocator.h"
 #include "CGoomba.h"
 #include "CKoopas.h"
@@ -274,7 +276,7 @@ void CScenePlay::Load()
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
 	camera->SetPlayer(this->player);
-
+	
 	CGameObject* brickTest = new CQuestionBrick();
 	brickTest->SetPosition(300, 1050);
 	objects.push_back(brickTest);
@@ -286,6 +288,12 @@ void CScenePlay::Load()
 	}
 
 	auto tex = CLocator<ITexsManager>().Get()->Get(5);
+
+	CLocator<IFontManager>().Get()->AddFont(MARIO_FONT_ID, 48, 72, 96, 24, 24);
+	CText* text = new CText("0", MARIO_FONT_ID);
+	
+	text->SetPosition(300.0f, 300.0f);
+	canvas->Add(text);
 	//LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
 	//ui->SetPosition(0, 578);
 	//canvas->Add(ui);

@@ -1,5 +1,5 @@
 #include "CCanvas.h"
-
+#include "Utils.h"
 CCanvas::CCanvas()
 {
 }
@@ -14,6 +14,10 @@ CCanvas::~CCanvas()
 
 void CCanvas::Update(DWORD dt)
 {
+	if (listUI.size() == 0)
+	{
+		DebugOut(L"empty canvas\n");
+	}
 }
 
 void CCanvas::Add(LPUI ui)

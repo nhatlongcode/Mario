@@ -10,9 +10,9 @@ protected:
 	float x, y;
 	int id, alpha;
 public:
-	bool isEnabled = false;
+	bool isEnabled = true;
 	
-	void SetPosition(float x, float y);
+	virtual void SetPosition(float x, float y);
 	void GetPosition(float& x, float& y);
 
 	void GetAlpha(int& alpha);
