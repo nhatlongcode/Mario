@@ -112,6 +112,9 @@
     <Filter Include="Framework\Font">
       <UniqueIdentifier>{acf71786-e712-4f4c-8215-b6be12ef6a81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\HUD\Image">
+      <UniqueIdentifier>{6aed3cbc-710d-45bc-ae76-9b89e3eb9361}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -241,10 +244,13 @@
       <Filter>Framework\HUD</Filter>
     </ClCompile>
     <ClCompile Include="CFontManager.cpp">
-      <Filter>Main</Filter>
+      <Filter>Framework\Font</Filter>
     </ClCompile>
     <ClCompile Include="CText.cpp">
-      <Filter>Main</Filter>
+      <Filter>Framework\CText</Filter>
+    </ClCompile>
+    <ClCompile Include="CImage.cpp">
+      <Filter>Framework\HUD\Image</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -407,14 +413,14 @@
     <ClInclude Include="CUIImage.h">
       <Filter>Framework\HUD</Filter>
     </ClInclude>
-    <ClInclude Include="CImage.h">
-      <Filter>Framework\HUD</Filter>
-    </ClInclude>
     <ClInclude Include="CFontManager.h">
       <Filter>Framework\Font</Filter>
     </ClInclude>
     <ClInclude Include="CText.h">
       <Filter>Framework\CText</Filter>
+    </ClInclude>
+    <ClInclude Include="CImage.h">
+      <Filter>Framework\HUD\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

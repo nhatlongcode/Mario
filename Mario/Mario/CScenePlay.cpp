@@ -6,6 +6,7 @@
 #include "CLocator.h"
 #include "CGoomba.h"
 #include "CKoopas.h"
+#include "CImage.h"
 #include "CBrick.h"
 #include "CQuestionBrick.h"
 #include "CGround.h"
@@ -303,10 +304,14 @@ void CScenePlay::Load()
 	}
 
 	
-	CText* text = new CText("123456789", MARIO_FONT_ID);
-	text->SetDistance(3.0f);
-	text->SetPosition(300.0f, 300.0f);
+	CText* text = new CText("DUMAMA", MARIO_FONT_ID);
+	text->SetDistance(1.0f);
+	text->SetPosition(0.0f, 300.0f);
+	auto tex = CLocator<ITexsManager>().Get()->Get(5);
+	CImage* hud = new CImage(20, 375, 725, 120, 1, 1, tex);
+	hud->SetPosition(0.0f, 578.0f);
 	canvas->Add(text);
+	canvas->Add(hud);
 	//LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
 	//ui->SetPosition(0, 578);
 	//canvas->Add(ui);

@@ -168,6 +168,7 @@
     <ClCompile Include="CGhostPlatform.cpp" />
     <ClCompile Include="CGoomba.cpp" />
     <ClCompile Include="CGround.cpp" />
+    <ClCompile Include="CImage.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CKeyEventHandler.cpp" />
     <ClCompile Include="CKoopas.cpp" />
