@@ -162,6 +162,7 @@
     <ClCompile Include="CDirectX.cpp" />
     <ClCompile Include="CFireMario.cpp" />
     <ClCompile Include="CFontInfo.cpp" />
+    <ClCompile Include="CFontManager.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGhostPlatform.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="CSmallMario.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpritesManager.cpp" />
+    <ClCompile Include="CText.cpp" />
     <ClCompile Include="CTexturesManager.cpp" />
     <ClCompile Include="CTileMap.cpp" />
     <ClCompile Include="CUIElement.cpp" />
@@ -204,13 +206,14 @@
     <ClInclude Include="CCollisionEvent.h" />
     <ClInclude Include="CDirectX.h" />
     <ClInclude Include="CFireMario.h" />
-    <ClInclude Include="CFont.h" />
     <ClInclude Include="CFontInfo.h" />
+    <ClInclude Include="CFontManager.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGhostPlatform.h" />
     <ClInclude Include="CGoomba.h" />
     <ClInclude Include="CGround.h" />
+    <ClInclude Include="CImage.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CKeyEventHandler.h" />
     <ClInclude Include="CKoopas.h" />
@@ -223,9 +226,11 @@
     <ClInclude Include="CSmallMario.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpritesManager.h" />
+    <ClInclude Include="CText.h" />
     <ClInclude Include="CTexturesManager.h" />
     <ClInclude Include="CTileMap.h" />
     <ClInclude Include="CUIElement.h" />
+    <ClInclude Include="CUIImage.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="Enum.h" />
@@ -234,7 +239,6 @@
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />
-    <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IFontManager.h" />
     <ClInclude Include="IHandleInput.h" />
     <ClInclude Include="ISpritesManager.h" />

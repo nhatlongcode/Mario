@@ -26,6 +26,6 @@ void CCanvas::Render()
 	for (int i = 0; i < listUI.size(); i++)
 	{
 		auto ui = listUI.at(i);
-		if (ui->IsEnable) ui->Render();
+		if (ui->isEnabled) ui->Render();
 	}
 }

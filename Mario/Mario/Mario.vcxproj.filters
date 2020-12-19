@@ -228,17 +228,23 @@
     <ClCompile Include="CCoin.cpp">
       <Filter>Game\Objects\Coin</Filter>
     </ClCompile>
-    <ClCompile Include="CUIElement.cpp">
-      <Filter>Framework\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="CChar.cpp">
-      <Filter>Framework\CText</Filter>
-    </ClCompile>
     <ClCompile Include="CCanvas.cpp">
       <Filter>Framework\HUD</Filter>
     </ClCompile>
     <ClCompile Include="CFontInfo.cpp">
       <Filter>Framework\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="CChar.cpp">
+      <Filter>Framework\CText</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIElement.cpp">
+      <Filter>Framework\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="CFontManager.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CText.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -389,20 +395,26 @@
     <ClInclude Include="CUIElement.h">
       <Filter>Framework\HUD</Filter>
     </ClInclude>
-    <ClInclude Include="CChar.h">
-      <Filter>Framework\CText</Filter>
-    </ClInclude>
     <ClInclude Include="IFontManager.h">
-      <Filter>Framework\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="CFont.h">
       <Filter>Framework\Font</Filter>
     </ClInclude>
     <ClInclude Include="CFontInfo.h">
       <Filter>Framework\Font</Filter>
     </ClInclude>
-    <ClInclude Include="IDrawable.h">
+    <ClInclude Include="CChar.h">
+      <Filter>Framework\CText</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIImage.h">
       <Filter>Framework\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="CImage.h">
+      <Filter>Framework\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="CFontManager.h">
+      <Filter>Framework\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="CText.h">
+      <Filter>Framework\CText</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

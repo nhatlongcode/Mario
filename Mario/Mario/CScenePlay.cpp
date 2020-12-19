@@ -286,9 +286,9 @@ void CScenePlay::Load()
 	}
 
 	auto tex = CLocator<ITexsManager>().Get()->Get(5);
-	LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
-	ui->SetPosition(0, 578);
-	canvas->Add(ui);
+	//LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
+	//ui->SetPosition(0, 578);
+	//canvas->Add(ui);
 
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);

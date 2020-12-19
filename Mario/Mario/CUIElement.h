@@ -4,35 +4,21 @@
 #include "CLocator.h"
 #include "CDirectX.h"
 
-
 class CUIElement
 {
-private:
+protected:
 	float x, y;
-	int id;
-	int alpha;
-	int left;
-	int top;
-	int width;
-	int height;
-	int scaleX;
-	int scaleY;
-	LPDIRECT3DTEXTURE9 texture;
+	int id, alpha;
 public:
-	bool IsEnable;
-	CUIElement(int id, int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 texture);
+	bool isEnabled = false;
 	
 	void SetPosition(float x, float y);
 	void GetPosition(float& x, float& y);
 
-	float GetX();
-	float GetY();
-
+	void GetAlpha(int& alpha);
 	void SetAlpha(int alpha);
-	float GetAlpha();
 
-	void Render();
-	void Update(DWORD dt);
+	virtual void Render();
 };
 
 typedef CUIElement* LPUI;

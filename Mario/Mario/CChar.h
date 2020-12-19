@@ -1,21 +1,13 @@
 #pragma once
-#include <d3dx9.h>
-#include <unordered_map>
-#include "CLocator.h"
-#include "CDirectX.h"
+#include "CUIElement.h"
 
-class CChar
+class CChar : public CUIElement
 {
 private:
-	int id, left, top, width, height, size;
+	int left, top, width, height, scaleX, scaleY;
 	LPDIRECT3DTEXTURE9 texture;
-	float x, y;
 public:
-	CChar(int id, int left, int top, int width, int height, int size, LPDIRECT3DTEXTURE9 texture);
-	void Render();
-	void SetSize(int size);
-	void SetPosition(float x, float y);
-		
+	CChar(int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 texture);
+	int GetWidth();
+	void Render() override;
 };
-
-typedef CChar* LPCHAR;
