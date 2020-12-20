@@ -5,7 +5,7 @@
 
 
 
-CChar::CChar(int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 texture)
+CChar::CChar(int left, int top, int width, int height, float scaleX, float scaleY, LPDIRECT3DTEXTURE9 texture)
 {
 	this->left = left;
 	this->top = top;

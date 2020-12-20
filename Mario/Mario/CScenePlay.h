@@ -5,11 +5,17 @@
 #include "MarioController.h"
 #include "CMap.h"
 #include "CCamera.h"
+#include "CText.h"
 
 class CScenePlay : public CScene
 {
 private:
-protected:				// A play scene has to have player, right? 
+
+	CText* timeText;
+	int gameTime;
+protected:		
+	int index, life, score, money, time;
+	int startTime;
 	CMap* map;
 	void ParseSection_TEXTURES(string line);
 	void ParseSection_SPRITES(string line);

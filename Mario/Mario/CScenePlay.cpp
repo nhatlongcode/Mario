@@ -2,7 +2,6 @@
 #include "CScenePlayKeyHandler.h"
 #include "CAnimationSetsManager.h"
 #include "CFontManager.h"
-#include "CText.h"
 #include "CLocator.h"
 #include "CGoomba.h"
 #include "CKoopas.h"
@@ -13,6 +12,7 @@
 #include "CGhostPlatform.h"
 #include "CGame.h"
 #include <iostream>
+#include <string>
 #include <fstream>
 
 void CScenePlay::ParseSection_TEXTURES(string line)
@@ -225,7 +225,6 @@ CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 		CAMERA_BORDER_RIGHT,
 		CAMERA_BORDER_TOP,
 		CAMERA_BORDER_BOT);
-
 }
 
 void CScenePlay::Load()
@@ -234,6 +233,7 @@ void CScenePlay::Load()
 
 	ifstream f;
 	f.open(sceneFilePath);
+	time = 0;
 
 	// current resource section flag
 	int section = SCENE_SECTION_UNKNOWN;
@@ -303,26 +303,30 @@ void CScenePlay::Load()
 		coObjects.push_back(objects[i]);
 	}
 
-	
-	CText* text = new CText("DUMAMA", MARIO_FONT_ID);
-	text->SetDistance(1.0f);
-	text->SetPosition(0.0f, 300.0f);
+	time = 0;
+	gameTime = 300;
+	timeText = new CText("000", MARIO_FONT_ID);
+	timeText->SetDistance(0.0f);
+	timeText->SetSize(0.9f);
+	timeText->SetPosition(391.0f, 633.0f);
 	auto tex = CLocator<ITexsManager>().Get()->Get(5);
 	CImage* hud = new CImage(20, 375, 725, 120, 1, 1, tex);
 	hud->SetPosition(0.0f, 578.0f);
-	canvas->Add(text);
 	canvas->Add(hud);
-	//LPUI ui = new CUIElement(0, 20, 375, 725, 120, 1, 1, tex);
-	//ui->SetPosition(0, 578);
-	//canvas->Add(ui);
-
+	canvas->Add(timeText);
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
+	startTime = GetTickCount();
 }
 
 void CScenePlay::Update(DWORD dt)
 {
-
+	time = GetTickCount() - startTime;
+	if (gameTime*1000 - (300*1000 - (time)) > 1000)
+	{
+		gameTime -= 1;
+		timeText->SetContent(std::to_string(int(gameTime)));
+	}
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);

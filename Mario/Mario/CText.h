@@ -7,7 +7,8 @@ class CText : public CUIElement
 {
 private:
 	float distance = 0.0f;
-	int fontID, size = 1;
+	int fontID;
+	float size = 1.0f;
 	std::string content;
 	std::vector<CChar*> listChar;
 public:
@@ -15,6 +16,7 @@ public:
 	void ResetString();
 	void Render() override;
 	void SetPosition(float x, float y) override;
+	void SetSize(float size);
 	void SetContent(std::string content);
 	void SetDistance(float distance);
 };

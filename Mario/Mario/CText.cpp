@@ -11,7 +11,7 @@ CText::CText(std::string content, int fontID)
 {
 	this->content = content;
 	this->fontID = fontID;
-	size = 1;
+	size = 1.0f;
 	distance = 0.0f;
 	alpha = 255;
 	ResetString();
@@ -59,6 +59,12 @@ void CText::SetPosition(float x, float y)
 {
 	this->x = x;
 	this->y = y;
+	ResetString();
+}
+
+void CText::SetSize(float size)
+{
+	this->size = size;
 	ResetString();
 }
 

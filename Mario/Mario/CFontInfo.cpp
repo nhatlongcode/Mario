@@ -22,7 +22,7 @@ CFontInfo::CFontInfo(int ascii, int top, int left, int width, int height, int te
 	this->texID = texID;
 }
 
-CChar* CFontInfo::GetChar(int scaleX, int scaleY)
+CChar* CFontInfo::GetChar(float scaleX, float scaleY)
 {
 	auto tex = CLocator<ITexsManager>().Get()->Get(texID);
 	return new CChar(left, top, width, height, scaleX, scaleY, tex);

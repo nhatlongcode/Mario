@@ -8,5 +8,5 @@ private:
 public:
 	CFontInfo();
 	CFontInfo(int ascii, int top, int left, int width, int height, int texID);
-	CChar* GetChar(int scaleX, int scaleY);
+	CChar* GetChar(float scaleX, float scaleY);
 };
