@@ -151,6 +151,7 @@ void CMario::SetLevel(int level)
 	this->level = level;
 }
 
+
 void CMario::OnKeyDown(int keyCode)
 {
 

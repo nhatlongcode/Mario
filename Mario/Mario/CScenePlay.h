@@ -6,17 +6,16 @@
 #include "CMap.h"
 #include "CCamera.h"
 #include "CText.h"
+#include "CGamePanel.h"
 
 class CScenePlay : public CScene
 {
 private:
 
-	CText* timeText;
-	int gameTime;
-protected:		
-	int index, life, score, money, time;
-	int startTime;
+	int time, startTime, gameTime;
+	CGamePanel* gamePanel;
 	CMap* map;
+
 	void ParseSection_TEXTURES(string line);
 	void ParseSection_SPRITES(string line);
 	void ParseSection_ANIMATIONS(string line);

@@ -294,8 +294,14 @@ void CScenePlay::Load()
 	camera->SetPlayer(this->player);
 	
 	CGameObject* brickTest = new CQuestionBrick();
+	CGameObject* brickTest2 = new CQuestionBrick();
+	CGameObject* brickTest3 = new CQuestionBrick();
 	brickTest->SetPosition(300, 1050);
+	brickTest2->SetPosition(348, 1050);
+	brickTest3->SetPosition(396, 1050);
 	objects.push_back(brickTest);
+	objects.push_back(brickTest2);
+	objects.push_back(brickTest3);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 
 	for (size_t i = 0; i < objects.size(); i++)
@@ -303,19 +309,15 @@ void CScenePlay::Load()
 		coObjects.push_back(objects[i]);
 	}
 
-	time = 0;
-	gameTime = 300;
-	timeText = new CText("000", MARIO_FONT_ID);
-	timeText->SetDistance(0.0f);
-	timeText->SetSize(0.9f);
-	timeText->SetPosition(391.0f, 633.0f);
-	auto tex = CLocator<ITexsManager>().Get()->Get(5);
-	CImage* hud = new CImage(20, 375, 725, 120, 1, 1, tex);
-	hud->SetPosition(0.0f, 578.0f);
-	canvas->Add(hud);
-	canvas->Add(timeText);
+
+	gamePanel = new CGamePanel();
+	gamePanel->SetFrame(0.0f, 578.0f, 20, 375, 725, 120, 1, 1, 5);
+
+	canvas->Add(gamePanel);
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
+	time = 0;
+	gameTime = 300;
 	startTime = GetTickCount();
 }
 
@@ -325,7 +327,7 @@ void CScenePlay::Update(DWORD dt)
 	if (gameTime*1000 - (300*1000 - (time)) > 1000)
 	{
 		gameTime -= 1;
-		timeText->SetContent(std::to_string(int(gameTime)));
+		gamePanel->SetTime(gameTime);
 	}
 	for (size_t i = 0; i < objects.size(); i++)
 	{

@@ -1,7 +1,7 @@
 #include "CImage.h"
 #include "CGame.h"
 
-CImage::CImage(int left, int top, int width, int height, int scaleX, int scaleY, LPDIRECT3DTEXTURE9 tex)
+CImage::CImage(int left, int top, int width, int height, float scaleX, float scaleY, LPDIRECT3DTEXTURE9 tex)
 {
 	this->left = left;
 	this->top = top;

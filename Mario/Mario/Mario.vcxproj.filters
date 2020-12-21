@@ -115,6 +115,9 @@
     <Filter Include="Framework\HUD\Image">
       <UniqueIdentifier>{6aed3cbc-710d-45bc-ae76-9b89e3eb9361}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\UI">
+      <UniqueIdentifier>{b664ba34-efe4-45bc-8220-5cb6420c656d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -251,6 +254,9 @@
     </ClCompile>
     <ClCompile Include="CImage.cpp">
       <Filter>Framework\HUD\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="CGamePanel.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -421,6 +427,9 @@
     </ClInclude>
     <ClInclude Include="CImage.h">
       <Filter>Framework\HUD\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="CGamePanel.h">
+      <Filter>Game\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

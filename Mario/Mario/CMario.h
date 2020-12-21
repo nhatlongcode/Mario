@@ -38,7 +38,6 @@ public:
 	CMario();
 	void SetState(int state);
 	void SetLevel(int level);
-
 	virtual void Init();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render();
@@ -47,8 +46,6 @@ public:
 
 
 	virtual void OnCollisionEnter(LPCOLLISIONEVENT other);
-	//virtual void AttackAction() = 0;
-	//virtual void CrunchAction() = 0;
 
 	void Reset();
 };

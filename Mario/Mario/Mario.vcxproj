@@ -94,6 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
+      <DisableSpecificWarnings>4005;4996;4244;4018;4305;4101;4715;4067;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -109,6 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
+      <DisableSpecificWarnings>4005;4996;4244;4018;4305;4101;4715;4067;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,6 +167,7 @@
     <ClCompile Include="CFontManager.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CGamePanel.cpp" />
     <ClCompile Include="CGhostPlatform.cpp" />
     <ClCompile Include="CGoomba.cpp" />
     <ClCompile Include="CGround.cpp" />
@@ -237,6 +240,7 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="CCoin.h" />
+    <ClInclude Include="CGamePanel.h" />
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />
