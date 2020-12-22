@@ -7,4 +7,5 @@ class IFontManager
 public:
 	virtual CFontInfo* GetFont(int fontID, int asciiID) = 0;
 	virtual void AddFont(int fontID, int asciiID, int top, int left, int width, int height) = 0;
+	virtual void Clear() = 0;
 };

@@ -50,7 +50,7 @@ void CTexturesManager::Clear()
 	for (auto x : textures)
 	{
 		LPDIRECT3DTEXTURE9 tex = x.second;
-		if (tex != NULL) tex->Release();
+		if (tex != nullptr) tex->Release();
 	}
 
 	textures.clear();

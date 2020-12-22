@@ -29,6 +29,17 @@ void CScenePlay::ParseSection_TEXTURES(string line)
 	CLocator<ITexsManager>().Get()->Add(texID, path.c_str(), D3DCOLOR_XRGB(R, G, B));
 }
 
+void CScenePlay::ParseSection_MAP(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return;
+	int texID = atoi(tokens[0].c_str());
+	wstring path = ToWSTR(tokens[1]);
+	//map = new CMap(texID, path.c_str());
+	map = new CMap(11, L"map2.txt");
+}
+
 void CScenePlay::ParseSection_SPRITES(string line)
 {
 	vector<string> tokens = split(line);
@@ -246,6 +257,9 @@ void CScenePlay::Load()
 		if (line[0] == '#') continue;	// skip comment lines	
 
 		if (line == "[TEXTURES]") { section = SCENE_SECTION_TEXTURES; continue; }
+		if (line == "[MAP]") {
+			section = SCENE_SECTION_MAP; continue;
+		}
 		if (line == "[SPRITES]") {
 			section = SCENE_SECTION_SPRITES; continue;
 		}
@@ -276,32 +290,23 @@ void CScenePlay::Load()
 		switch (section)
 		{
 		case SCENE_SECTION_TEXTURES: ParseSection_TEXTURES(line); break;
+		case SCENE_SECTION_MAP: ParseSection_MAP(line); break;
 		case SCENE_SECTION_SPRITES: ParseSection_SPRITES(line); break;
 		case SCENE_SECTION_ANIMATIONS: ParseSection_ANIMATIONS(line); break;
 		case SCENE_SECTION_ANIMATION_SETS: ParseSection_ANIMATION_SETS(line); break;
 		case SCENE_SECTION_OBJECTS: ParseSection_OBJECTS(line); break;
 		case SCENE_SECTION_GROUNDS: ParseSection_GROUNDS(line); break;
 		case SCENE_SECTION_GHOSTPLATFORM: ParseSection_GHOSTPLATFORM(line); break;
-		case SCENE_SECTION_UI: ParseSection_GHOSTPLATFORM(line); break;
 		case SCENE_SECTION_FONTS: ParseSection_FONTS(line); break;
 		}
 	}
 
 	f.close();
-	map = new CMap(1, L"map.txt");
+	
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
 	camera->SetPlayer(this->player);
 	
-	CGameObject* brickTest = new CQuestionBrick();
-	CGameObject* brickTest2 = new CQuestionBrick();
-	CGameObject* brickTest3 = new CQuestionBrick();
-	brickTest->SetPosition(300, 1050);
-	brickTest2->SetPosition(348, 1050);
-	brickTest3->SetPosition(396, 1050);
-	objects.push_back(brickTest);
-	objects.push_back(brickTest2);
-	objects.push_back(brickTest3);
 	if (player == NULL) DebugOut(L"PLAYER NULL");
 
 	for (size_t i = 0; i < objects.size(); i++)
@@ -363,7 +368,13 @@ void CScenePlay::Unload()
 
 	objects.clear();
 	player = NULL;
-
+	delete map;
+	delete gamePanel;
+	CLocator<ITexsManager>().Get()->Clear();
+	CLocator<ISpritesManager>().Get()->Clear();
+	CLocator<IAnimsManager>().Get()->Clear();
+	CLocator<IAnimSetsManager>().Get()->Clear();
+	CLocator<IFontManager>().Get()->Clear();
 	DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }
 

@@ -7,8 +7,8 @@ class CAnimationsManager : public IAnimsManager
 private:
 	std::unordered_map<int, LPANIMATION> animations;
 public:
-	virtual void Add(int id, LPANIMATION ani);
-	virtual LPANIMATION Get(int id);
-	virtual void Clear();
+	void Add(int id, LPANIMATION ani) override;
+	LPANIMATION Get(int id) override;
+	void Clear() override;
 };
 

@@ -179,6 +179,8 @@
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRaccoonMario.cpp" />
     <ClCompile Include="CScene.cpp" />
+    <ClCompile Include="CSceneMap.cpp" />
+    <ClCompile Include="CSceneMapKeyHandler.cpp" />
     <ClCompile Include="CScenePlay.cpp" />
     <ClCompile Include="CScenePlayKeyHandler.cpp" />
     <ClCompile Include="CSmallMario.cpp" />
@@ -225,6 +227,8 @@
     <ClInclude Include="CRaccoonMario.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneKeyHandler.h" />
+    <ClInclude Include="CSceneMap.h" />
+    <ClInclude Include="CSceneMapKeyHandler.h" />
     <ClInclude Include="CScenePlay.h" />
     <ClInclude Include="CScenePlayKeyHandler.h" />
     <ClInclude Include="CSmallMario.h" />

@@ -12,9 +12,9 @@ class CTexturesManager : public ITexsManager
 private:
     std::unordered_map<int, LPDIRECT3DTEXTURE9> textures;
 public: 
-    void Add(int id, LPCWSTR path, D3DCOLOR transColor);
-    LPDIRECT3DTEXTURE9 Get(int id);
-    void Clear();
+    void Add(int id, LPCWSTR path, D3DCOLOR transColor) override;
+    LPDIRECT3DTEXTURE9 Get(int id) override;
+    void Clear() override;
 };
 
 

@@ -13,3 +13,13 @@ LPANIMSET CAnimationSetsManager::Get(unsigned int id)
 
 	return ani_set;
 }
+
+void CAnimationSetsManager::Clear()
+{
+	for (auto x : animation_sets)
+	{
+		auto element = x.second;
+		if (element != nullptr) delete element;
+	}
+	animation_sets.clear();
+}

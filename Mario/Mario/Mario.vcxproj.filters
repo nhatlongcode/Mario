@@ -118,6 +118,12 @@
     <Filter Include="Game\UI">
       <UniqueIdentifier>{b664ba34-efe4-45bc-8220-5cb6420c656d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scenes\CSceneMap">
+      <UniqueIdentifier>{1b48b783-dcb2-4cfb-8d81-a461e27f2cdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Mario\MarioIcon">
+      <UniqueIdentifier>{e1cdc4eb-0783-4c7d-a3f1-27f055dd9d54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -255,8 +261,14 @@
     <ClCompile Include="CImage.cpp">
       <Filter>Framework\HUD\Image</Filter>
     </ClCompile>
+    <ClCompile Include="CSceneMap.cpp">
+      <Filter>Game\Scenes\CSceneMap</Filter>
+    </ClCompile>
     <ClCompile Include="CGamePanel.cpp">
-      <Filter>Main</Filter>
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneMapKeyHandler.cpp">
+      <Filter>Game\Scenes\CSceneMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -430,6 +442,12 @@
     </ClInclude>
     <ClInclude Include="CGamePanel.h">
       <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneMap.h">
+      <Filter>Game\Scenes\CSceneMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneMapKeyHandler.h">
+      <Filter>Game\Scenes\CSceneMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

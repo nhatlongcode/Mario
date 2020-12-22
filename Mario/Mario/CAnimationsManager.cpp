@@ -16,9 +16,8 @@ void CAnimationsManager::Clear()
 {
 	for (auto x : animations)
 	{
-		LPANIMATION ani = x.second;
-		delete ani;
+		auto element = x.second;
+		if (element != nullptr) delete element;
 	}
-
 	animations.clear();
 }

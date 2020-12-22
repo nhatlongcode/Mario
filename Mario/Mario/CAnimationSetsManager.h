@@ -3,8 +3,10 @@
 
 class CAnimationSetsManager : public IAnimSetsManager
 {
+private:
 	unordered_map<int, LPANIMSET> animation_sets;
-
-	void Add(int id, LPANIMSET ani);
-	LPANIMSET Get(unsigned int id);
+public:
+	void Add(int id, LPANIMSET ani) override;
+	LPANIMSET Get(unsigned int id) override;
+	void Clear() override;
 };

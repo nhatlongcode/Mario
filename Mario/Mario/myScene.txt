@@ -6,7 +6,10 @@
 4	textures\effect.png	255	255	255
 5	textures\hud.png	255	255	255
 10	textures\bbox.png	255	255	255
+11	textures\MapTileSet.png	255	255	255
 
+[MAP]
+1	map.txt
 
 [SPRITES]
 # SMALL MARIO
