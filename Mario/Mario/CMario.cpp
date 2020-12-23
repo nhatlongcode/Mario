@@ -87,7 +87,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			if (canHighJump)
 			{
 				HandleJump(MARIO_JUMP_HIGH_SPEED); // high but one time jump
-				forceJump += MARIO_JUMP_HIGH_SPEED;
+				forceJump += MARIO_JUMP_HIGH_SPEED * CGame::Instance()->GetTimeScale();
 			}
 			if (abs(forceJump) > MARIO_JUMP_MAX) canHighJump = false;
 		}

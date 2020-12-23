@@ -321,14 +321,14 @@ void CScenePlay::Load()
 	canvas->Add(gamePanel);
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
-	time = 0;
 	gameTime = 300;
+	time = gameTime;
 	startTime = GetTickCount();
 }
 
 void CScenePlay::Update(DWORD dt)
 {
-	time = GetTickCount() - startTime;
+	time = (int)((GetTickCount() - startTime) * CGame::Instance()->GetTimeScale());
 	if (gameTime*1000 - (300*1000 - (time)) > 1000)
 	{
 		gameTime -= 1;

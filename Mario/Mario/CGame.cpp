@@ -163,6 +163,11 @@ DWORD CGame::GetDeltaTime()
 	return this->dt;
 }
 
+float CGame::GetTimeScale()
+{
+	return 1.0f;
+}
+
 
 int CGame::Run()
 {

@@ -1,5 +1,6 @@
 #include "CAnimation.h"
 #include "Utils.h"
+#include "CGame.h"
 
 CAnimation::CAnimation(int defaultTime, bool isRepeat)
 {
@@ -36,6 +37,7 @@ void CAnimation::Render(float x, float y, int direction, float speed, int alpha)
 	else
 	{
 		DWORD t = frames[currentFrame]->GetTime();
+		speed = speed * CGame::Instance()->GetTimeScale();
 		t = t / speed;
 		//DebugOut(L"%ld",t);
 		if (now - lastFrameTime > t)

@@ -270,6 +270,9 @@
     <ClCompile Include="CSceneMapKeyHandler.cpp">
       <Filter>Game\Scenes\CSceneMap</Filter>
     </ClCompile>
+    <ClCompile Include="CMarioIcon.cpp">
+      <Filter>Game\Mario\MarioIcon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -448,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="CSceneMapKeyHandler.h">
       <Filter>Game\Scenes\CSceneMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarioIcon.h">
+      <Filter>Game\Mario\MarioIcon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

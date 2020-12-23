@@ -230,8 +230,8 @@ bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 		//x += nx * abs(rdx);
 
 	// block every object first!
-	x += min_tx * dx + nx * 0.4f;
-	y += min_ty * dy + ny * 0.4f;
+	x += (min_tx * dx + nx * 0.4f) * CGame::Instance()->GetTimeScale();
+	y += (min_ty * dy + ny * 0.4f) * CGame::Instance()->GetTimeScale();
 
 	if (nx != 0) vx = 0;
 	if (ny != 0) vy = 0;
@@ -304,23 +304,18 @@ void CGameObject::SetAnimationSet(int animSetID)
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	//vx += (a.x * dt)/2;
 
-	//DebugOut(L"vx: %.2f\n", vx);
 	dx = vx * dt;
 	dy = vy * dt;
 
-	//DebugOut(L"ax: %.2f\n", a.x);
 	if (tag != ObjectTag::Ground)
 	{
 		if (!CheckCollision(coObjects))
 		{
-			x += dx;
-			y += dy;
+			x += dx * CGame::Instance()->GetTimeScale();
+			y += dy * CGame::Instance()->GetTimeScale();
 		}
 	}
-
-
 }
 
 

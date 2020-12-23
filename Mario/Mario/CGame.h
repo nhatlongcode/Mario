@@ -28,6 +28,7 @@ private:
 	
 	int currentSceneID;
 	DWORD dt;
+	float timeScale;
 	int screenWidth;
 	int screenHeight;
 	LPKEYEVENTHANDLER keyHandler;
@@ -41,7 +42,7 @@ public:
 	LPSCENE GetCurrentScene();
 
 	DWORD GetDeltaTime();
-
+	float GetTimeScale();
 	int Run();
 	int GetScreenWidth() { return screenWidth; }
 	int GetScreenHeight() { return screenHeight; }
