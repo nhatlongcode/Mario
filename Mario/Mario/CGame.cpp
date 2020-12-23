@@ -2,6 +2,8 @@
 #include "CScenePlay.h"
 #include "CLocator.h"
 #include "CAnimationsManager.h"
+#include "CAnimationSetsManager.h"
+#include "CFontManager.h"
 #include "CInput.h"
 #include <iostream>
 #include <fstream>
@@ -110,10 +112,12 @@ void CGame::SwitchScene(int scene_id)
 	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
 
 	scenes[currentSceneID]->Unload();;
-
+	
 	CLocator<ITexsManager>().Get()->Clear();
 	CLocator<ISpritesManager>().Get()->Clear();
 	CLocator<IAnimsManager>().Get()->Clear();
+	CLocator<IAnimSetsManager>().Get()->Clear();
+	CLocator<IFontManager>().Get()->Clear();
 
 	currentSceneID = scene_id;
 	LPSCENE s = scenes[scene_id];
@@ -141,10 +145,7 @@ CGame::~CGame()
 
 void CGame::InitGame()
 {
-	//mario = new CMario(100,100);
-	//mario->SetPosition(10.0f, 100.0f);
 	Load(L"mario-sample.txt");
-	//LoadResources();
 }
 
 

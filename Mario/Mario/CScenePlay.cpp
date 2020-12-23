@@ -356,8 +356,6 @@ void CScenePlay::Render()
 	}
 	player->Render();
 	if (debugMode) player->RenderCollisionBox();
-	float camX, camY;
-	CGame::Instance()->GetCurrentScene()->GetCamPos(camX, camY);
 	canvas->Render();
 }
 
@@ -367,14 +365,11 @@ void CScenePlay::Unload()
 		delete objects[i];
 
 	objects.clear();
+	coObjects.clear();
+	canvas->Clear();
 	player = NULL;
 	delete map;
 	delete gamePanel;
-	CLocator<ITexsManager>().Get()->Clear();
-	CLocator<ISpritesManager>().Get()->Clear();
-	CLocator<IAnimsManager>().Get()->Clear();
-	CLocator<IAnimSetsManager>().Get()->Clear();
-	CLocator<IFontManager>().Get()->Clear();
 	DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }
 

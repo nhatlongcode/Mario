@@ -33,3 +33,8 @@ void CCanvas::Render()
 		if (ui->isEnabled) ui->Render();
 	}
 }
+
+void CCanvas::Clear()
+{
+	listUI.clear();
+}

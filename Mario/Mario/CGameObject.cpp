@@ -32,6 +32,8 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	float t, nx, ny;
 	DWORD dt = CGame::Instance()->GetDeltaTime();
 
+	
+	if (other == nullptr) DebugOut(L"cac");
 	other->GetBoundingBox(sl, st, sr, sb);
 	this->GetBoundingBox(ml, mt, mr, mb);
 
@@ -149,6 +151,8 @@ CGameObject::CGameObject()
 {
 	IsCollisionEnabled = true;
 	tag = ObjectTag::None;
+	bboxHeight = 0.0f;
+	bboxWidth = 0.0f;
 	nx = 1;
 	vx = vy = 0;
 	x = y = 0;

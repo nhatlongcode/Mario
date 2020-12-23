@@ -22,7 +22,7 @@ private:
 	void _ParseSection_SETTINGS(string line);
 	void _ParseSection_SCENES(string line);
 
-	void SwitchScene(int scene_id);
+
 
 	unordered_map<int, LPSCENE> scenes;
 	
@@ -37,7 +37,7 @@ public:
 	static CGame* Instance();
 	~CGame();
 	void InitGame();
-	
+	void SwitchScene(int scene_id);
 	int GetCurrentSceneID();
 	LPSCENE GetCurrentScene();
 

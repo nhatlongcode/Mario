@@ -12,5 +12,6 @@ public:
 	void Update(DWORD dt);
 	void Add(LPUI ui);
 	void Render();
+	void Clear();
 };
 typedef CCanvas* LPCANVAS;

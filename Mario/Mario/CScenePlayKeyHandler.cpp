@@ -57,6 +57,11 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 			scene->LogInfo();
 			break;
 		}
+		case DIK_P:
+		{
+			CGame::Instance()->SwitchScene(1);
+			break;
+		}
 	}
 
 

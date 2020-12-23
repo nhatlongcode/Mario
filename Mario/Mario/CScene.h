@@ -6,7 +6,6 @@
 #include "MarioController.h"
 #include "CCanvas.h"
 #include "CCamera.h"
-
 class CScene
 {
 protected:
@@ -17,6 +16,9 @@ protected:
 	MarioController marioController;
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> coObjects;
+	//shared_ptr<LPGAMEOBJECT> objects;
+	//shared_ptr<LPGAMEOBJECT> coObjects;
+	
 	LPCWSTR sceneFilePath;
 	LPCANVAS canvas;
 	CMario* player;
