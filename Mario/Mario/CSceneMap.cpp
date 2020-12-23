@@ -185,6 +185,7 @@ void CSceneMap::Load()
 			case SCENE_SECTION_FONTS: ParseSection_FONTS(line); break;
 		}
 	}
+	map = new CMap(0, L"map2.txt");
 }
 
 void CSceneMap::Unload()

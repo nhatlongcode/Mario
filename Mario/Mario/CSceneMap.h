@@ -6,6 +6,7 @@ class CSceneMap : public CScene
 {
 private:
 	CMap* map;
+	bool isMoveable;
 public:
 	CSceneMap(int id, LPCWSTR filePath);
 	void PlayerMove(int direction);

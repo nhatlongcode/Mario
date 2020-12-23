@@ -36,8 +36,8 @@ void CScenePlay::ParseSection_MAP(string line)
 	if (tokens.size() < 2) return;
 	int texID = atoi(tokens[0].c_str());
 	wstring path = ToWSTR(tokens[1]);
-	//map = new CMap(texID, path.c_str());
-	map = new CMap(11, L"map2.txt");
+	map = new CMap(texID, path.c_str());
+	//map = new CMap(11, L"map2.txt");
 }
 
 void CScenePlay::ParseSection_SPRITES(string line)

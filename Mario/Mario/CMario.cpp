@@ -38,7 +38,7 @@ void CMario::Init()
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	//vy += MARIO_GRAVITY;
+	vy += MARIO_GRAVITY;
 	if (vy > 0.1f) isGrounded = false;
 	this->dt = dt;
 	this->currentSpeedX = vx;
