@@ -7,5 +7,6 @@ private:
 
 public:
 	CMarioIcon();
+	void MoveToCell(int x, int y);
 	virtual void Render() override;
 };

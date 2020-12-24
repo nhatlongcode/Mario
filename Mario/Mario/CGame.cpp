@@ -1,5 +1,6 @@
 #include "CGame.h" 
 #include "CScenePlay.h"
+#include "CSceneMap.h"
 #include "CLocator.h"
 #include "CAnimationsManager.h"
 #include "CAnimationSetsManager.h"
@@ -103,7 +104,7 @@ void CGame::_ParseSection_SCENES(string line)
 	int id = atoi(tokens[0].c_str());
 	LPCWSTR path = ToLPCWSTR(tokens[1]);
 
-	LPSCENE scene = new CScenePlay(id, path);
+	LPSCENE scene = new CSceneMap(id, path);
 	scenes[id] = scene;
 }
 

@@ -4,6 +4,7 @@
 #include "IAnimSetsManager.h"
 #include "IAnimsManager.h"
 #include "IFontManager.h"
+#include "CGame.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -11,7 +12,19 @@
 CSceneMap::CSceneMap(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	keyHandler = new CSceneMapKeyHandler(this);
-
+	CGame::Instance()->SetWidthHeight(GAME_WIDTH, GAME_HEIGHT);
+	map = NULL;
+	camera = new CCamera(CGame::Instance()->GetScreenWidth(), CGame::Instance()->GetScreenHeight());
+	camera->SetOffSet(CAMERA_OFFSET_LEFT,
+		CAMERA_OFFSET_RIGHT,
+		CAMERA_OFFSET_TOP,
+		CAMERA_OFFSET_BOT);
+	camera->SetBorder(CAMERA_BORDER_LEFT,
+		CAMERA_BORDER_RIGHT,
+		CAMERA_BORDER_TOP,
+		CAMERA_BORDER_BOT);
+	col = 0;
+	row = 0;
 }
 
 void CSceneMap::PlayerMove(int direction)
@@ -41,6 +54,35 @@ void CSceneMap::ParseSection_MAP(string line)
 	int texID = atoi(tokens[0].c_str());
 	wstring path = ToWSTR(tokens[1]);
 	map = new CMap(texID, path.c_str());
+}
+
+void CSceneMap::ParseSection_PATH(string line, int rowIndex)
+{
+
+	dataPath[rowIndex] = new int[col];
+	vector<string> rowData = split(line);
+	if (rowData.size() < col) return;
+	for (int j = 0; j < rowData.size(); j++)
+	{
+		int id = (int)(atoi(rowData[j].c_str()));
+		dataPath[rowIndex][j] = id;
+		if (id == 1)
+		{
+			
+		}
+	}
+	
+
+
+}
+
+void CSceneMap::ParseSection_PATHINFO(string line)
+{
+	vector<string> tokens = split(line);
+	if (tokens.size() < 2) return;
+	col = atoi(tokens[0].c_str());
+	row = atoi(tokens[1].c_str());
+	dataPath = new int* [row];
 }
 
 void CSceneMap::ParseSection_SPRITES(string line)
@@ -117,6 +159,11 @@ void CSceneMap::ParseSection_OBJECTS(string line)
 {
 }
 
+void CSceneMap::ParseSection_MAPSELECTABLE(string line)
+{
+
+}
+
 void CSceneMap::ParseSection_FONTS(string line)
 {
 	{
@@ -137,11 +184,9 @@ void CSceneMap::ParseSection_FONTS(string line)
 void CSceneMap::Load()
 {
 	DebugOut(L"[INFO] Start loading scene resources from : %s \n", sceneFilePath);
-
+	int rowCount = -1;
 	ifstream f;
 	f.open(sceneFilePath);
-
-	// current resource section flag
 	int section = SCENE_SECTION_UNKNOWN;
 
 	char str[MAX_SCENE_LINE];
@@ -151,25 +196,45 @@ void CSceneMap::Load()
 
 		if (line[0] == '#') continue;	// skip comment lines	
 
-		if (line == "[TEXTURES]") { section = SCENE_SECTION_TEXTURES; continue; }
-		if (line == "[MAP]") {
-			section = SCENE_SECTION_MAP; continue;
+		if (line == "[TEXTURES]") 
+		{ 
+			section = SCENE_SECTION_TEXTURES; 
+			continue; 
 		}
-		if (line == "[SPRITES]") {
-			section = SCENE_SECTION_SPRITES; continue;
-		}
-		if (line == "[ANIMATIONS]") {
-			section = SCENE_SECTION_ANIMATIONS; continue;
-		}
-		if (line == "[ANIMATION_SETS]") {
-			section = SCENE_SECTION_ANIMATION_SETS; continue;
-		}
-		if (line == "[OBJECTS]") {
-			section = SCENE_SECTION_OBJECTS; continue;
-		}
-		if (line == "[FONTS]")
+		if (line == "[MAP]") 
 		{
-			section = SCENE_SECTION_FONTS; continue;
+			section = SCENE_SECTION_MAP; 
+			continue;
+		}
+		if (line == "[SPRITES]") 
+		{
+			section = SCENE_SECTION_SPRITES; 
+			continue;
+		}
+		if (line == "[ANIMATIONS]") 
+		{
+			section = SCENE_SECTION_ANIMATIONS; 
+			continue;
+		}
+		if (line == "[ANIMATION_SETS]") 
+		{
+			section = SCENE_SECTION_ANIMATION_SETS; 
+			continue;
+		}
+		if (line == "[OBJECTS]") 
+		{
+			section = SCENE_SECTION_OBJECTS; 
+			continue;
+		}
+		if (line == "[PATHINFO]") 
+		{
+			section = 12; 
+			continue;
+		}
+		if (line == "[PATH]")
+		{
+			section = 13; 
+			continue;
 		}
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
 
@@ -178,14 +243,31 @@ void CSceneMap::Load()
 		{
 			case SCENE_SECTION_TEXTURES: ParseSection_TEXTURES(line); break;
 			case SCENE_SECTION_MAP: ParseSection_MAP(line); break;
+			case 12: ParseSection_PATHINFO(line); break;
+			case 13:
+			{
+				rowCount++;
+				ParseSection_PATH(line, rowCount);
+				break;
+			}
 			case SCENE_SECTION_SPRITES: ParseSection_SPRITES(line); break;
 			case SCENE_SECTION_ANIMATIONS: ParseSection_ANIMATIONS(line); break;
 			case SCENE_SECTION_ANIMATION_SETS: ParseSection_ANIMATION_SETS(line); break;
 			case SCENE_SECTION_OBJECTS: ParseSection_OBJECTS(line); break;
-			case SCENE_SECTION_FONTS: ParseSection_FONTS(line); break;
 		}
 	}
-	map = new CMap(0, L"map2.txt");
+
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			DebugOut(L"%d ", dataPath[i][j]);
+		}
+		DebugOut(L"\n");
+	}
+	marioIcon = new CMarioIcon();
+	marioIcon->SetAnimationSet(11000);
+	marioIcon->MoveToCell(2,4);
 }
 
 void CSceneMap::Unload()
@@ -206,8 +288,8 @@ void CSceneMap::Render()
 	for (int i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Render();
-
 	}
+	marioIcon->Render();
 }
 
 void CSceneMap::LogInfo()
