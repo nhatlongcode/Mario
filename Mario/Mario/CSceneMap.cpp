@@ -4,6 +4,7 @@
 #include "IAnimSetsManager.h"
 #include "IAnimsManager.h"
 #include "IFontManager.h"
+#include "CMapObject.h"
 #include "CGame.h"
 #include <iostream>
 #include <string>
@@ -59,7 +60,11 @@ void CSceneMap::PlayerMove(int direction)
 void CSceneMap::PlayerScelect()
 {
 	int id = dataPath[pX][pY];
-
+	if (id == 3)
+	{
+		CGame::Instance()->SetSwitchSceneMode();
+		CGame::Instance()->SwitchScene(2);
+	}
 }
 
 void CSceneMap::ParseSection_TEXTURES(string line)
@@ -190,6 +195,18 @@ void CSceneMap::ParseSection_ANIMATION_SETS(string line)
 
 void CSceneMap::ParseSection_OBJECTS(string line)
 {
+	vector<string> tokens = split(line);
+	if (tokens.size() < 4) return;
+	int x = atoi(tokens[0].c_str());
+	int y = atoi(tokens[1].c_str());
+	int index = atoi(tokens[2].c_str());
+	int animSet = atoi(tokens[3].c_str());
+
+	CMapObject* object = new CMapObject();
+	object->MoveToCell(x, y);
+	object->SetAnimationSet(animSet);
+	object->SetIndex(index);
+	objects.push_back(object);
 }
 
 void CSceneMap::ParseSection_MAPSELECTABLE(string line)
@@ -303,15 +320,24 @@ void CSceneMap::Load()
 	marioIcon->MoveToCell(startX, startY);
 	pX = startX;
 	pY = startY;
-	DebugOut(L"x: %d y: %d data:%d \n", pX, pY, dataPath[pX][pY]);
+	//DebugOut(L"x: %d y: %d data:%d \n", pX, pY, dataPath[pX][pY]);
 }
 
 void CSceneMap::Unload()
 {
+	delete map;
+	for (int i = 0; i < objects.size(); i++)
+	{
+		delete objects[i];
+	}
+	objects.clear();
+	coObjects.clear();
+	delete marioIcon;
 }
 
 void CSceneMap::Update(DWORD dt)
 {
+	if (CGame::Instance()->GetSwitchSceneMode()) return;
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);
@@ -320,6 +346,7 @@ void CSceneMap::Update(DWORD dt)
 
 void CSceneMap::Render()
 {
+	if (CGame::Instance()->GetSwitchSceneMode()) return;
 	map->Render();
 	for (int i = 0; i < objects.size(); i++)
 	{

@@ -39,7 +39,7 @@ void CSceneMapKeyHandler::OnKeyDown(int KeyCode)
 		}
 		case DIK_X:
 		{
-			
+			scene->PlayerScelect();
 			break;
 		}
 	}

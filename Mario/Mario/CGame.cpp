@@ -13,11 +13,13 @@ CGame* CGame::instance = NULL;
 void CGame::Update(DWORD dt)
 {
 	//mario->Update(dt);
+	if (isSwitching) return;
 	scenes[currentSceneID]->Update(dt);
 }
 
 void CGame::Render()
 {
+	if (isSwitching) return;
 	LPDIRECT3DSURFACE9 backBuffer = CLocator<IDirectX>().Get()->BackBuffer();
 	LPDIRECT3DDEVICE9 d3ddv = CLocator<IDirectX>().Get()->Device();
 	LPD3DXSPRITE spriteHandler = CLocator<IDirectX>().Get()->SpriteHandler();
@@ -111,7 +113,7 @@ void CGame::_ParseSection_SCENES(string line)
 void CGame::SwitchScene(int scene_id)
 {
 	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
-
+	isSwitching = true;
 	scenes[currentSceneID]->Unload();;
 	
 	CLocator<ITexsManager>().Get()->Clear();
@@ -125,6 +127,17 @@ void CGame::SwitchScene(int scene_id)
 	CLocator<IHandleInput>().Get()->SetKeyHandler(s->GetKeyEventHandler());
 	DebugOut(L"[INFO] Switching to scene KeyEventHandler\n");
 	s->Load();
+	isSwitching = false;
+}
+
+void CGame::SetSwitchSceneMode()
+{
+	isSwitching = true;
+}
+
+bool CGame::GetSwitchSceneMode()
+{
+	return isSwitching;
 }
 
 
@@ -193,7 +206,7 @@ int CGame::Run()
 		// this frame: the frame we are about to render
 		DWORD dt = now - frameStart;
 		this->dt = dt;
-		if (dt >= tickPerFrame)
+		if (dt >= tickPerFrame && !isSwitching)
 		{
 			frameStart = now;
 			CLocator<IHandleInput>().Get()->ProcessKeyboard();

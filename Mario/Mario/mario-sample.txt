@@ -3,4 +3,4 @@ start	1
 #scene list
 [SCENES]
 1	mapScene.txt
-2	mapScene.txt
+2	myScene.txt

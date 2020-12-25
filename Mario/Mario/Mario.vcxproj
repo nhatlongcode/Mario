@@ -176,6 +176,7 @@
     <ClCompile Include="CKeyEventHandler.cpp" />
     <ClCompile Include="CKoopas.cpp" />
     <ClCompile Include="CLocator.cpp" />
+    <ClCompile Include="CMapObject.cpp" />
     <ClCompile Include="CMarioIcon.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRaccoonMario.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="CKeyEventHandler.h" />
     <ClInclude Include="CKoopas.h" />
     <ClInclude Include="CLocator.h" />
+    <ClInclude Include="CMapObject.h" />
     <ClInclude Include="CMarioIcon.h" />
     <ClInclude Include="CRaccoonMario.h" />
     <ClInclude Include="CScene.h" />
