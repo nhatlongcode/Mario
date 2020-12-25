@@ -337,7 +337,7 @@ void CSceneMap::Unload()
 
 void CSceneMap::Update(DWORD dt)
 {
-	if (CGame::Instance()->GetSwitchSceneMode()) return;
+	if (!CGame::Instance()->GetSwitchSceneMode()) DebugOut(L"asas\n");
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);

@@ -210,8 +210,8 @@ int CGame::Run()
 		{
 			frameStart = now;
 			CLocator<IHandleInput>().Get()->ProcessKeyboard();
-			Update(dt);
-			Render();
+			if (!isSwitching) Update(dt);
+			if (!isSwitching) Render();
 		}
 		else
 			Sleep(tickPerFrame - dt);
