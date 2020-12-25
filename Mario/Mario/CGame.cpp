@@ -104,10 +104,25 @@ void CGame::_ParseSection_SCENES(string line)
 
 	if (tokens.size() < 2) return;
 	int id = atoi(tokens[0].c_str());
-	LPCWSTR path = ToLPCWSTR(tokens[1]);
+	int type = atoi(tokens[1].c_str());
+	LPCWSTR path = ToLPCWSTR(tokens[2]);
+	switch (type)
+	{
+		case 1:
+		{
+			LPSCENE scene = new CSceneMap(id, path);
+			scenes[id] = scene;
+			break;
+		}
+		case 2:
+		{
+			LPSCENE scene = new CScenePlay(id, path);
+			scenes[id] = scene;
+			break;
+		}
+	}
 
-	LPSCENE scene = new CSceneMap(id, path);
-	scenes[id] = scene;
+	
 }
 
 void CGame::SwitchScene(int scene_id)
