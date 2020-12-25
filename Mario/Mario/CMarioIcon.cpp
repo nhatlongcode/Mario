@@ -11,8 +11,8 @@ CMarioIcon::CMarioIcon() : CGameObject()
 
 void CMarioIcon::MoveToCell(int x, int y)
 {
-	float posX = float(x * 48);
-	float posY = float(y * 48);
+	float posY = float(x * 48);
+	float posX = float(y * 48);
 	SetPosition(posX, posY);
 }
 

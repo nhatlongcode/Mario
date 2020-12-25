@@ -11,6 +11,8 @@ private:
 	CMarioIcon* marioIcon;
 	int** dataPath;
 	
+	int startX, startY;
+	int pX, pY;
 	int col, row;
 public:
 	CSceneMap(int id, LPCWSTR filePath);

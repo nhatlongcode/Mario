@@ -29,6 +29,37 @@ CSceneMap::CSceneMap(int id, LPCWSTR filePath) : CScene(id, filePath)
 
 void CSceneMap::PlayerMove(int direction)
 {
+	switch (direction)
+	{
+		case 1:
+		{
+			if (dataPath[pX][pY + 1] != 0) pY += 1;
+			break;
+		}
+		case 0:
+		{
+			if (dataPath[pX][pY - 1] != 0) pY -= 1;
+			break;
+		}
+		case 2:
+		{
+			if (dataPath[pX + 1][pY] != 0) pX += 1;
+			break;
+		}
+		case 3:
+		{
+			if (dataPath[pX - 1][pY] != 0) pX -= 1;
+			break;
+		}
+	}
+	 marioIcon->MoveToCell(pX, pY);
+	 //DebugOut(L"x: %d y: %d data:%d \n", pX, pY, dataPath[pX][pY]);
+}
+
+void CSceneMap::PlayerScelect()
+{
+	int id = dataPath[pX][pY];
+
 }
 
 void CSceneMap::ParseSection_TEXTURES(string line)
@@ -66,9 +97,11 @@ void CSceneMap::ParseSection_PATH(string line, int rowIndex)
 	{
 		int id = (int)(atoi(rowData[j].c_str()));
 		dataPath[rowIndex][j] = id;
-		if (id == 1)
+		if (dataPath[rowIndex][j] == 1)
 		{
-			
+			startX = rowIndex;
+			startY = j;
+
 		}
 	}
 	
@@ -267,7 +300,10 @@ void CSceneMap::Load()
 	}
 	marioIcon = new CMarioIcon();
 	marioIcon->SetAnimationSet(11000);
-	marioIcon->MoveToCell(2,4);
+	marioIcon->MoveToCell(startX, startY);
+	pX = startX;
+	pY = startY;
+	DebugOut(L"x: %d y: %d data:%d \n", pX, pY, dataPath[pX][pY]);
 }
 
 void CSceneMap::Unload()
