@@ -34,26 +34,43 @@ void CSceneMap::PlayerMove(int direction)
 	{
 		case 1:
 		{
-			if (dataPath[pX][pY + 1] != 0) pY += 1;
+			if (dataPath[pX][pY + 1] != 0)
+			{
+				if (dataPath[pX][pY + 1] == 2) pY += 2;
+				else if (dataPath[pX][pY + 1] == 3) pY += 1;
+			}
 			break;
 		}
 		case 0:
 		{
-			if (dataPath[pX][pY - 1] != 0) pY -= 1;
+			if (dataPath[pX][pY - 1] != 0)
+			{
+				if (dataPath[pX][pY - 1] == 2) pY -= 2;
+				else if (dataPath[pX][pY - 1] == 3) pY -= 1;
+			}
 			break;
 		}
 		case 2:
 		{
-			if (dataPath[pX + 1][pY] != 0) pX += 1;
+			if (dataPath[pX + 1][pY] != 0)
+			{
+				if (dataPath[pX + 1][pY] == 2) pX += 2;
+				else if (dataPath[pX + 1][pY] == 3) pX += 1;
+			}
+			
 			break;
 		}
 		case 3:
 		{
-			if (dataPath[pX - 1][pY] != 0) pX -= 1;
+			if (dataPath[pX - 1][pY] != 0)
+			{
+				if (dataPath[pX - 1][pY] == 2) pX -= 2;
+				else if (dataPath[pX - 1][pY] == 3) pX -= 1;
+			}
 			break;
 		}
 	}
-	 marioIcon->MoveToCell(pX, pY);
+	 marioIcon->MoveToCell(pX, pY, false);
 	 //DebugOut(L"x: %d y: %d data:%d \n", pX, pY, dataPath[pX][pY]);
 }
 
@@ -106,7 +123,6 @@ void CSceneMap::ParseSection_PATH(string line, int rowIndex)
 		{
 			startX = rowIndex;
 			startY = j;
-
 		}
 	}
 	
@@ -337,11 +353,11 @@ void CSceneMap::Unload()
 
 void CSceneMap::Update(DWORD dt)
 {
-	if (!CGame::Instance()->GetSwitchSceneMode()) DebugOut(L"asas\n");
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);
 	}
+	marioIcon->Update(dt);
 }
 
 void CSceneMap::Render()

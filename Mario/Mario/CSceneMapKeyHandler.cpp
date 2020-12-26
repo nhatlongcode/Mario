@@ -17,22 +17,22 @@ void CSceneMapKeyHandler::OnKeyDown(int KeyCode)
 	
 	switch (KeyCode)
 	{
-		case DIK_W:
+		case DIK_UPARROW:
 		{
 			scene->PlayerMove(3);
 			break;
 		}		
-		case DIK_A:
+		case DIK_LEFTARROW:
 		{
 			scene->PlayerMove(0);
 			break;
 		}		
-		case DIK_S:
+		case DIK_DOWNARROW:
 		{
 			scene->PlayerMove(2);
 			break;
 		}		
-		case DIK_D:
+		case DIK_RIGHTARROW:
 		{
 			scene->PlayerMove(1);
 			break;
