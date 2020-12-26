@@ -49,7 +49,7 @@ void CMarioIcon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (abs(this->x - posXGoingTo) < 5.0f)
 		{
 			this->x = posXGoingTo;
-			DebugOut(L"STOPPPP: %f %f\n", this->x, posXGoingTo);
+			//DebugOut(L"STOPPPP: %f %f\n", this->x, posXGoingTo);
 			vx = 0.0f;
 			isMoving = false;
 			posXGoingTo = -1;

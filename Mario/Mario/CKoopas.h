@@ -4,6 +4,7 @@
 class CKoopas : public CGameObject
 {
 private:
+	int startTime = -1, timeOnShell = -1;
 public:
 	CKoopas();
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
