@@ -69,15 +69,24 @@ typedef LPDIRECT3DTEXTURE9 LPTEXTURE;
 
 // DIRECTION ---------------------------------------------------
 
-#define DIRECTION_RIGHT 1
+#define DIRECTION_RIGHT	1
 #define DIRECTION_LEFT	-1
 
 // OBJECT TYPE ------------------------------------------------
 
-#define OBJECT_TYPE_MARIO	0
-#define OBJECT_TYPE_BRICK	1
-#define OBJECT_TYPE_GOOMBA	2
-#define OBJECT_TYPE_KOOPAS	3
+#define OBJECT_TYPE_MARIO			0
+#define OBJECT_TYPE_QUESTIONBRICK	1
+#define OBJECT_TYPE_GOOMBA			2
+#define OBJECT_TYPE_KOOPAS			3
+#define OBJECT_TYPE_BREAKABLEBRIK	4
+#define OBJECT_TYPE_FLYGOOMBA		5
+#define OBJECT_TYPE_FLYKOOPAS		6
+#define OBJECT_TYPE_VENUS			7
+#define OBJECT_TYPE_PIRANHA			8
+#define OBJECT_TYPE_SHROOM			9
+#define OBJECT_TYPE_LEAF			10
+#define OBJECT_TYPE_PBUTTON			11
+#define OBJECT_TYPE_PIPE			12
 
 #define OBJECT_TYPE_PORTAL	50
 

@@ -11,7 +11,7 @@ class CSpritesManager : public ISpritesManager
 private:
 	std::unordered_map<int, LPSPRITE> sprites;
 public:
-	void Add(int id, int left, int top, int width, int height, int scaleX, int scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex) override;
+	void Add(int id, int left, int top, int width, int height, float scaleX, float scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex) override;
 	LPSPRITE Get(int id) override;
 	void Clear() override;
 };

@@ -2,7 +2,7 @@
 #include "Utils.h"
 
 
-void CSpritesManager::Add(int id, int left, int top, int width, int height, int scaleX, int scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex)
+void CSpritesManager::Add(int id, int left, int top, int width, int height, float scaleX, float scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex)
 {
 	LPSPRITE sprite = new CSprite(id, left, top, width, height, scaleX, scaleY, xPivot, tex);
 	sprites[id] = sprite;

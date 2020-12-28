@@ -3,6 +3,8 @@
 
 CQuestionBrick::CQuestionBrick()
 {
+	IsCollisionEnabled = true;
+	this->reward = BrickObjectTag::Coin;
 	SetBoundingBox(48, 48);
 	SetAnimationSet(30002);
 	SetTag(ObjectTag::QuestionBrick);
@@ -18,23 +20,33 @@ void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (bounceBegin < 100)
 		{
 			dy = -0.5 * dt;
+			coin = new CCoin();
+			coin->SetPosition(this->x, this->y + 60.0f);
+			coin->Bounce();
 		}
 		else if (bounceBegin > 100)
 		{
 			dy = 0.5 * dt;
 		}
 		
-		if (bounceBegin > 200)
+		if (bounceBegin > 200) // bounce done
 		{
 			dy = 0;
 			IsCollisionEnabled = true;
 			this->y = beginY;
-			SetAnimationSet(30003);
 			bounceBegin = -1;
 		}
 	}
-
+	if (coin != nullptr)
+	{
+		coin->Update(dt, NULL);
+	}
 	y += dy;
+}
+
+void CQuestionBrick::SetBrickReward(BrickObjectTag reward)
+{
+	this->reward = reward;
 }
 
 void CQuestionBrick::SetState(int state)
@@ -60,5 +72,6 @@ void CQuestionBrick::Bounce()
 
 void CQuestionBrick::Render()
 {
+	if (coin != nullptr) coin->Render();
 	animSet->at(state)->Render(this->x, this->y);
 }

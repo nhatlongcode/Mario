@@ -14,18 +14,27 @@ CKoopas::CKoopas()
 void CKoopas::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
-	DebugOut(L"vx: %f\n", vx);
-	vy += MARIO_GRAVITY;
+	//DebugOut(L"vx: %d\n", nx);
+	vy += 0.01f;
+	if (state == KOOPAS_STATE_DIE)
+	{
+		vy += 0.04f;
+	}
 	if (startTime != -1)
 	{
 		int time = GetTickCount() - startTime;
-		if (time > 3000 && state == KOOPAS_STATE_SHELL)
+		if (time > 7000 && state == KOOPAS_STATE_SHELL)
 		{
 			SetState(KOOPAS_STATE_WALK);
-			this->y -= 80.0f;
+			this->y -= 20.0f;
 			startTime = -1;
 		}
 	}
+}
+
+void CKoopas::SetHoldByMario(bool hold)
+{
+	isBeingHold = hold;
 }
 
 void CKoopas::Render()
@@ -49,13 +58,15 @@ void CKoopas::SetState(int state)
 		break;
 	case KOOPAS_STATE_SPIN:
 		CGame::Instance()->GetCurrentScene()->GetPlayer()->GetDirection(nx);
+		startTime = -1;
 		vx = nx * KOOPAS_SPEED_SPIN;
+		vy = 0.3f;
 		break;
 	case KOOPAS_STATE_DIE:
 		
 		CGame::Instance()->GetCurrentScene()->GetPlayer()->GetDirection(nx);
 		SetSpeedX(nx * 0.3f);
-		SetSpeedY(-0.8f);
+		SetSpeedY(-0.7f);
 		IsCollisionEnabled = false;
 		break;
 	}
@@ -65,22 +76,28 @@ void CKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
 	LPGAMEOBJECT go = other->obj;
 	auto tag = go->GetTag();
-	if (tag == ObjectTag::Solid)
+	if (tag == ObjectTag::Solid || tag == ObjectTag::QuestionBrick)
 	{
 		if (state == KOOPAS_STATE_SPIN)
 		{
-			this->vx = this->nx * -1 * KOOPAS_SPEED_SPIN;
+			this->nx = -1 * this->nx;
+			this->vx = this->nx * KOOPAS_SPEED_SPIN;
 		}
 		else if (state == KOOPAS_STATE_WALK)
 		{
-			this->vx = this->nx * -1 * KOOPAS_SPEED_WALK;
+			this->nx = -1 * this->nx;
+			this->vx = this->nx * KOOPAS_SPEED_WALK;
 		}
 		
 
 	}
-
-	if (tag == ObjectTag::Ground && other->nx != 0)
+	else if (tag == ObjectTag::Ground && other->nx != 0)
 	{
 		nx = -nx;
+	}
+	else if (tag == ObjectTag::Goomba)
+	{
+		go->SetState(GOOMBA_STATE_DIE_INSTANT);
+		this->vx = nx * KOOPAS_SPEED_SPIN;
 	}
 }

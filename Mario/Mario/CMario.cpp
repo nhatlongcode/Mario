@@ -127,7 +127,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (Koopas != NULL)
 		{
 			this->SetState(MARIO_STATE_BRING);
-			Koopas->SetPosition(this->x + 40 * nx, this->y + 10);
+			Koopas->SetPosition(this->x + 40 * nx, this->y - 2);
 		}
 		else DebugOut(L"NULL KOOPAS\n");
 	}
@@ -170,6 +170,10 @@ void CMario::OnKeyUp(int keyCode)
 		if (Koopas != NULL)
 		{
 			Koopas->IsCollisionEnabled = true;
+			this->SetState(MARIO_STATE_KICK);
+			Koopas->SetState(KOOPAS_STATE_SPIN);
+			Koopas->SetDirection(this->nx);
+			//Koopas->SetPosition()
 			isHoldingKoopas = false;
 			Koopas = NULL;
 		}

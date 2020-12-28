@@ -185,6 +185,7 @@
     <ClCompile Include="CSceneMapKeyHandler.cpp" />
     <ClCompile Include="CScenePlay.cpp" />
     <ClCompile Include="CScenePlayKeyHandler.cpp" />
+    <ClCompile Include="CScoreFx.cpp" />
     <ClCompile Include="CSmallMario.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpritesManager.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="CSceneMapKeyHandler.h" />
     <ClInclude Include="CScenePlay.h" />
     <ClInclude Include="CScenePlayKeyHandler.h" />
+    <ClInclude Include="CScoreFx.h" />
     <ClInclude Include="CSmallMario.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpritesManager.h" />

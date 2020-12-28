@@ -14,12 +14,12 @@ private:
 	int top;
 	int width;
 	int height;
-	int scaleX;
-	int scaleY;
+	float scaleX;
+	float scaleY;
 	int xPivot;
 	LPDIRECT3DTEXTURE9 texture;
 public:
-	CSprite(int id, int left, int top, int width, int height, int scaleX, int scaleY, int xPivot,  LPDIRECT3DTEXTURE9 tex);
+	CSprite(int id, int left, int top, int width, int height, float scaleX, float scaleY, int xPivot,  LPDIRECT3DTEXTURE9 tex);
 
 	void Draw(float x, float y, int direction = DIRECTION_RIGHT, int alpha = 255);
 };

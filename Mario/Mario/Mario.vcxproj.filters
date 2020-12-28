@@ -124,6 +124,15 @@
     <Filter Include="Game\Mario\MarioIcon">
       <UniqueIdentifier>{e1cdc4eb-0783-4c7d-a3f1-27f055dd9d54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Enemies\FlyGoomba">
+      <UniqueIdentifier>{c89ba8fd-c827-43b0-8f62-cb6af9d46c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemies\FlyKoopas">
+      <UniqueIdentifier>{013f1709-602d-4178-a171-2de94480fd81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\ScoreFx">
+      <UniqueIdentifier>{3f568e80-32fc-447b-acca-de0be27968a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -275,6 +284,9 @@
     </ClCompile>
     <ClCompile Include="CMapObject.cpp">
       <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CScoreFx.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -460,6 +472,9 @@
     </ClInclude>
     <ClInclude Include="CMapObject.h">
       <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CScoreFx.h">
+      <Filter>Game\Objects\ScoreFx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

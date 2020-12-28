@@ -6,10 +6,10 @@
 CGamePanel::CGamePanel()
 {
 	timeText = new CText("000", MARIO_FONT_ID);
-	moneyText = new CText("000", MARIO_FONT_ID);
-	worldIndexText = new CText("000", MARIO_FONT_ID);
-	scoreText = new CText("000", MARIO_FONT_ID);
-	lifeText = new CText("000", MARIO_FONT_ID);
+	moneyText = new CText("10", MARIO_FONT_ID);
+	worldIndexText = new CText("1", MARIO_FONT_ID);
+	scoreText = new CText("0000000", MARIO_FONT_ID);
+	lifeText = new CText("3", MARIO_FONT_ID);
 	
 	timeText->SetSize(0.9f);
 	moneyText->SetSize(0.9f);
@@ -18,10 +18,10 @@ CGamePanel::CGamePanel()
 	lifeText->SetSize(0.9f);
 
 	timeText->SetPosition(391.0f, 633.0f);
-	moneyText->SetPosition(0.0f, 633.0f);
-	worldIndexText->SetPosition(0.0f, 633.0f);
-	scoreText->SetPosition(0.0f, 633.0f);
-	lifeText->SetPosition(0.0f, 633.0f);
+	moneyText->SetPosition(412.0f, 608.0f);
+	worldIndexText->SetPosition(130.0f, 610.0f);
+	scoreText->SetPosition(170.0f, 633.0f);
+	lifeText->SetPosition(100.0f, 633.0f);
 }
 
 void CGamePanel::SetFrame(float x, float y, int left, int top, int width, int height, float scaleX, float scaleY, int texID)

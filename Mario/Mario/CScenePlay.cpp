@@ -51,8 +51,8 @@ void CScenePlay::ParseSection_SPRITES(string line)
 	int top = atoi(tokens[2].c_str());
 	int width = atoi(tokens[3].c_str());
 	int height = atoi(tokens[4].c_str());
-	int scaleX = atoi(tokens[5].c_str());
-	int scaleY = atoi(tokens[6].c_str());
+	float scaleX = atof(tokens[5].c_str());
+	float scaleY = atof(tokens[6].c_str());
 	int xPivot = atoi(tokens[7].c_str());
 	int texID = atoi(tokens[8].c_str());
 
@@ -141,7 +141,7 @@ void CScenePlay::ParseSection_OBJECTS(string line)
 		DebugOut(L"[INFO] Player object created!\n");
 		break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
-	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
+	case OBJECT_TYPE_QUESTIONBRICK: obj = new CQuestionBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
 
 	default:
@@ -308,6 +308,7 @@ void CScenePlay::Load()
 	camera->SetPlayer(this->player);
 	
 	if (player == NULL) DebugOut(L"PLAYER NULL");
+
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{

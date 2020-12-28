@@ -13,3 +13,10 @@ enum class ObjectTag
 	Ground,
 	Goomba
 };
+
+enum class BrickObjectTag
+{
+	Shroom,
+	Coin,
+	Leaf
+};

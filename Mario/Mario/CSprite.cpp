@@ -1,7 +1,7 @@
 #include "CSprite.h"
 #include "CGame.h"
 
-CSprite::CSprite(int id, int left, int top, int width, int height, int scaleX, int scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex)
+CSprite::CSprite(int id, int left, int top, int width, int height, float scaleX, float scaleY, int xPivot, LPDIRECT3DTEXTURE9 tex)
 {
 	this->id = id;
 	this->left = left;
