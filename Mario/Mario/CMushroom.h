@@ -11,4 +11,5 @@ public:
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects) override;
 	void SetState(int state);
 	void Render();
+	void OnCollisionEnter(LPCOLLISIONEVENT other) override;
 };

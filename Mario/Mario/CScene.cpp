@@ -38,9 +38,14 @@ void CScene::SetPlayer(int typeID, float posX, float posY)
 	DebugOut(L"Set to new mario ID: %d\n", typeID);
 }
 
-void CScene::AddGameObject(LPGAMEOBJECT go, float posX, float posY)
+void CScene::AddGameObject(LPGAMEOBJECT go)
 {
 	objects.push_back(go);
+	coObjects.push_back(go);
+}
+
+void CScene::AddCoGameObject(LPGAMEOBJECT go)
+{
 	coObjects.push_back(go);
 }
 

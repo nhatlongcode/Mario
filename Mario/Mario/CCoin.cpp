@@ -7,7 +7,6 @@ CCoin::CCoin()
 	SetAnimationSet(30003);
 	SetState(0);
 	scoreFx = new CSCoreFx(4);
-	
 	bounceDone = false;
 }
 

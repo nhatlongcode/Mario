@@ -43,7 +43,7 @@ void CFireMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (attackBegin > attackTime)
 		{
 			CGameObject* fireball = new FireBall(this->x + 10.0f, this->y - 10.0f, nx);
-			CGame::Instance()->GetCurrentScene()->AddGameObject(fireball, this->x, this->y);
+			CGame::Instance()->GetCurrentScene()->AddGameObject(fireball);
 			attackBegin = -1;
 			isAttacking = false;
 		}

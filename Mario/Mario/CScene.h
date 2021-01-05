@@ -29,7 +29,8 @@ public:
 	CKeyEventHandler* GetKeyEventHandler() { return keyHandler; }
 	CMario* GetPlayer();
 	void SetPlayer(int typeID, float posX = 0.0f, float posY = 0.0f);
-	void AddGameObject(LPGAMEOBJECT go, float posX, float posY);
+	void AddGameObject(LPGAMEOBJECT go);
+	void AddCoGameObject(LPGAMEOBJECT go);
 	void RemoveGameObject(LPGAMEOBJECT go);
 	void GetCamPos(float& cx, float& cy);
 

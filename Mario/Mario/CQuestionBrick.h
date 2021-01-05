@@ -10,6 +10,7 @@ class CQuestionBrick : public CGameObject
 {
 private:
 	queue<BrickObjectTag> listReward;
+	BrickObjectTag rewardTag;
 	CRewardObject* reward;
 	long bounceBegin = -1;
 	float beginY;

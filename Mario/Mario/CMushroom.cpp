@@ -53,3 +53,12 @@ void CMushroom::Render()
 	if (startTime < 450 && startTime != -1) return;
 	animSet->at(this->state)->Render(this->x, this->y);
 }
+
+void CMushroom::OnCollisionEnter(LPCOLLISIONEVENT other)
+{
+	auto input = CLocator<IHandleInput>().Get();
+	LPGAMEOBJECT go = other->obj;
+	ObjectTag tag = go->GetTag();
+
+	
+}

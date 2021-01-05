@@ -24,6 +24,7 @@ CMario::CMario()
 {
 	level = MARIO_TYPE_SMALL;
 	state = MARIO_STATE_IDLE;
+	SetTag(ObjectTag::Player);
 	IsCollisionEnabled = true;
 	ax = 0.0f;
 	animSpeed = 1.0f;
@@ -306,13 +307,15 @@ void CMario::HandleInput()
 
 void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
+
 	auto input = CLocator<IHandleInput>().Get();
 	LPGAMEOBJECT go = other->obj;
+	ObjectTag tag = go->GetTag();
 	//DebugOut(L"asdasd\n");
-	if (go->GetTag() == ObjectTag::GhostPlatform || 
-		go->GetTag() == ObjectTag::Ground || 
-		go->GetTag() == ObjectTag::Solid || 
-		go->GetTag() == ObjectTag::QuestionBrick)
+	if (tag == ObjectTag::GhostPlatform || 
+		tag == ObjectTag::Ground ||
+		tag == ObjectTag::Solid ||
+		tag == ObjectTag::QuestionBrick)
 	{
 		if (other->ny == -1.0f)
 		{
@@ -321,19 +324,19 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 	}
 	
-	if (go->GetTag() == ObjectTag::QuestionBrick && other->ny == 1.0f)
+	if (tag == ObjectTag::QuestionBrick && other->ny == 1.0f)
 	{
 		go->SetState(0);
 		canHighJump = false;
 	}
 
-	if (go->GetTag() == ObjectTag::Goomba && other->ny == -1.0f)
+	if (tag == ObjectTag::Goomba && other->ny == -1.0f)
 	{
 		go->SetState(GOOMBA_STATE_DIE);
 		vy = -0.5f;
 	}
 
-	if (go->GetTag() == ObjectTag::Koopas)
+	if (tag == ObjectTag::Koopas)
 	{
 		int koopasState;
 		go->GetState(koopasState);
@@ -360,6 +363,11 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 			}
 		}
 		
+	}
+
+	if (tag == ObjectTag::Buff)
+	{
+		DebugOut(L"BUFFFFFFFFFFFFFF\n");
 	}
 }
 

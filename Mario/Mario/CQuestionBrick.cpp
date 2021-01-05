@@ -38,8 +38,9 @@ void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			dy = 0;
 			IsCollisionEnabled = true;
 			this->y = beginY;
-			//reward->TriggerReward();
 			bounceBegin = -1;
+			if (rewardTag == BrickObjectTag::Buff)
+			CGame::Instance()->GetCurrentScene()->AddCoGameObject(reward);
 		}
 	}
 	if (reward != nullptr)
@@ -70,13 +71,15 @@ void CQuestionBrick::TriggerBrick()
 		if (reward != nullptr) delete reward;
 		if (tag == BrickObjectTag::Buff)
 		{
-
 			reward = new CMushroom();
+			rewardTag = BrickObjectTag::Buff;
 			reward->SetPosition(this->x, this->y);
+
 		}
 		else
 		{
 			reward = new CCoin();
+			rewardTag = BrickObjectTag::Coin;
 			reward->SetPosition(this->x, this->y + 60.0f);
 		}
 		beginY = this->y;
