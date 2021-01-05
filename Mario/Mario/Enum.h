@@ -2,6 +2,7 @@
 enum class ObjectTag
 {
 	None,
+	Buff,
 	GhostPlatform,
 	Solid,
 	QuestionBrick,
@@ -16,7 +17,6 @@ enum class ObjectTag
 
 enum class BrickObjectTag
 {
-	Shroom,
+	Buff,
 	Coin,
-	Leaf
 };

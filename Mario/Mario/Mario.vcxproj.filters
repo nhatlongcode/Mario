@@ -100,9 +100,6 @@
     <Filter Include="Game\Mario\Tail">
       <UniqueIdentifier>{96be6290-cf9a-4d5c-81d3-33fac20a4a28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Coin">
-      <UniqueIdentifier>{4b6e69f6-1953-4d6b-84f6-350d9ac40ac0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\HUD">
       <UniqueIdentifier>{86ef2828-8e76-4134-a2e1-2ce0fc50622f}</UniqueIdentifier>
     </Filter>
@@ -132,6 +129,18 @@
     </Filter>
     <Filter Include="Game\Objects\ScoreFx">
       <UniqueIdentifier>{3f568e80-32fc-447b-acca-de0be27968a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\MapOb">
+      <UniqueIdentifier>{189cc035-04f3-429d-a118-96f55430f29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Reward">
+      <UniqueIdentifier>{c750e8eb-fcc8-4160-a21a-81398006a2b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Reward\Coin">
+      <UniqueIdentifier>{4b6e69f6-1953-4d6b-84f6-350d9ac40ac0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Reward\Mushroom">
+      <UniqueIdentifier>{c5b50179-955c-4bfd-b4fb-78109ae88cbd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -247,7 +256,7 @@
       <Filter>Game\Mario\Tail</Filter>
     </ClCompile>
     <ClCompile Include="CCoin.cpp">
-      <Filter>Game\Objects\Coin</Filter>
+      <Filter>Game\Objects\Reward\Coin</Filter>
     </ClCompile>
     <ClCompile Include="CCanvas.cpp">
       <Filter>Framework\HUD</Filter>
@@ -282,11 +291,14 @@
     <ClCompile Include="CMarioIcon.cpp">
       <Filter>Game\Mario\MarioIcon</Filter>
     </ClCompile>
-    <ClCompile Include="CMapObject.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="CScoreFx.cpp">
-      <Filter>Main</Filter>
+      <Filter>Game\Objects\ScoreFx</Filter>
+    </ClCompile>
+    <ClCompile Include="CMapObject.cpp">
+      <Filter>Game\Objects\MapOb</Filter>
+    </ClCompile>
+    <ClCompile Include="CMushroom.cpp">
+      <Filter>Game\Objects\Reward\Mushroom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -429,7 +441,7 @@
       <Filter>Game\Objects\Brick</Filter>
     </ClInclude>
     <ClInclude Include="CCoin.h">
-      <Filter>Game\Objects\Coin</Filter>
+      <Filter>Game\Objects\Reward\Coin</Filter>
     </ClInclude>
     <ClInclude Include="CCanvas.h">
       <Filter>Framework\HUD</Filter>
@@ -470,11 +482,17 @@
     <ClInclude Include="CMarioIcon.h">
       <Filter>Game\Mario\MarioIcon</Filter>
     </ClInclude>
-    <ClInclude Include="CMapObject.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="CScoreFx.h">
       <Filter>Game\Objects\ScoreFx</Filter>
+    </ClInclude>
+    <ClInclude Include="CMapObject.h">
+      <Filter>Game\Objects\MapOb</Filter>
+    </ClInclude>
+    <ClInclude Include="CRewardObject.h">
+      <Filter>Game\Objects\Reward</Filter>
+    </ClInclude>
+    <ClInclude Include="CMushroom.h">
+      <Filter>Game\Objects\Reward\Mushroom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

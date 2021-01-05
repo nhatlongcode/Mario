@@ -323,7 +323,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	
 	if (go->GetTag() == ObjectTag::QuestionBrick && other->ny == 1.0f)
 	{
-		go->SetState(1);
+		go->SetState(0);
 		canHighJump = false;
 	}
 

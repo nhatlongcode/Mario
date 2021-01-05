@@ -178,6 +178,7 @@
     <ClCompile Include="CLocator.cpp" />
     <ClCompile Include="CMapObject.cpp" />
     <ClCompile Include="CMarioIcon.cpp" />
+    <ClCompile Include="CMushroom.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRaccoonMario.cpp" />
     <ClCompile Include="CScene.cpp" />
@@ -229,7 +230,9 @@
     <ClInclude Include="CLocator.h" />
     <ClInclude Include="CMapObject.h" />
     <ClInclude Include="CMarioIcon.h" />
+    <ClInclude Include="CMushroom.h" />
     <ClInclude Include="CRaccoonMario.h" />
+    <ClInclude Include="CRewardObject.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneKeyHandler.h" />
     <ClInclude Include="CSceneMap.h" />

@@ -6,12 +6,14 @@ CCoin::CCoin()
 	SetBoundingBox(0, 0);
 	SetAnimationSet(30003);
 	SetState(0);
-	scoreFx = new CSCoreFx();
+	scoreFx = new CSCoreFx(4);
 	
 	bounceDone = false;
 }
 
-void CCoin::Bounce()
+
+
+void CCoin::TriggerReward()
 {
 	startTime = GetTickCount();
 }
@@ -47,10 +49,7 @@ void CCoin::SetState(int state)
 	this->state = state;
 }
 
-bool CCoin::GetBounceDone()
-{
-	return bounceDone;
-}
+
 
 void CCoin::Render()
 {
