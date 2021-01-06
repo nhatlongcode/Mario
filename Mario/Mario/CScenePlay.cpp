@@ -315,7 +315,7 @@ void CScenePlay::Load()
 		coObjects.push_back(objects[i]);
 	}
 
-
+	//coObjects.push_back(marioController.GetMario(10000));
 	gamePanel = new CGamePanel();
 	gamePanel->SetFrame(0.0f, 578.0f, 20, 375, 725, 120, 1, 1, 5);
 

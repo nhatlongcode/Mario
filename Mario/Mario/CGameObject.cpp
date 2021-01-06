@@ -243,6 +243,8 @@ bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 	for each (LPCOLLISIONEVENT coEvent in coEventsResult)
 	{
 		OnCollisionEnter(coEvent);
+		//LPCOLLISIONEVENT otherEvent = new CCollisionEvent(coEvent->t, -coEvent->nx, -coEvent->ny, coEvent->dx, coEvent->dy, this);
+		//coEvent->obj->OnCollisionEnter(otherEvent);
 	}
 	
 	return true;

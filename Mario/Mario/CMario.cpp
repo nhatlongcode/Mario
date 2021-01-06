@@ -367,6 +367,8 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 	if (tag == ObjectTag::Buff)
 	{
+		vy = -0.1f;
+		go->SetState(-1);
 		DebugOut(L"BUFFFFFFFFFFFFFF\n");
 	}
 }

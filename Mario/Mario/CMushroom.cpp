@@ -38,18 +38,23 @@ void CMushroom::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 	if (isOutOfBrick)
 	{
-		vy += MARIO_GRAVITY;
+		vy += 0.03f;
 	}
 	CGameObject::Update(dt, coObjects);
 }
 
 void CMushroom::SetState(int state)
 {
+	if (state == -1)
+	{
+		IsCollisionEnabled = false;
+	}
 	this->state = state;
 }
 
 void CMushroom::Render()
 {
+	if (state == -1) return;
 	if (startTime < 450 && startTime != -1) return;
 	animSet->at(this->state)->Render(this->x, this->y);
 }
