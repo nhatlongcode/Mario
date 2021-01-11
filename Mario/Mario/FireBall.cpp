@@ -32,7 +32,7 @@ void FireBall::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void FireBall::Render()
 {
 	if (state == -1) return;
-	animSet->at(state)->Render(x, y);
+	animSet->at(state)->Render(x, y, 1, 1, alpha);
 }
 
 void FireBall::OnCollisionEnter(LPCOLLISIONEVENT other)

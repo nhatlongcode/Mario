@@ -24,6 +24,7 @@ CMario::CMario()
 {
 	level = MARIO_TYPE_SMALL;
 	state = MARIO_STATE_IDLE;
+	isAlive = true;
 	SetTag(ObjectTag::Player);
 	IsCollisionEnabled = true;
 	ax = 0.0f;
@@ -39,6 +40,16 @@ void CMario::Init()
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	CGameObject::Update(dt, coObjects);
+	if (!isAlive)
+	{
+		diedTime += dt;
+		IsCollisionEnabled = false;
+		this->SetState(17);
+		if (diedTime < 270) vy += -0.05f;
+		else vy += 0.05;
+		return;
+	}
 	vy += MARIO_GRAVITY;
 	if (vy > 0.1f) isGrounded = false;
 	this->dt = dt;
@@ -132,13 +143,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 		else DebugOut(L"NULL KOOPAS\n");
 	}
-	CGameObject::Update(dt, coObjects);
+	
 }
 
 
 void CMario::Render()
 {
-	animSet->at(state)->Render(x, y, nx);
+	animSet->at(state)->Render(x, y, nx, 1, alpha);
 }
 
 void CMario::SetState(int state)
@@ -150,6 +161,43 @@ void CMario::SetState(int state)
 void CMario::SetLevel(int level)
 {
 	this->level = level;
+}
+
+void CMario::LevelUp()
+{
+	if (state == MARIO_TYPE_SMALL)
+	{
+
+	}
+	else if (state == MARIO_TYPE_SUPER)
+	{
+
+	}
+	else if (state == MARIO_TYPE_RACCOON)
+	{
+
+	}
+}
+
+void CMario::LevelDown()
+{
+	if (state == MARIO_TYPE_SMALL)
+	{
+		Die();
+	}
+	else if (state == MARIO_TYPE_SUPER)
+	{
+
+	}
+	else if (state == MARIO_TYPE_RACCOON)
+	{
+
+	}
+}
+
+void CMario::Die()
+{
+	isAlive = false;
 }
 
 
@@ -369,7 +417,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		vy = -0.1f;
 		go->SetState(-1);
-		DebugOut(L"BUFFFFFFFFFFFFFF\n");
+		
 	}
 }
 

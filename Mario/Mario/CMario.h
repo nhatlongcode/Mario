@@ -4,6 +4,7 @@ class CMario : public CGameObject
 {
 protected:
 	int level;
+	bool isAlive;
 	bool isGrounded;
 	bool isAttacking;
 	bool isMaxSpeed;
@@ -20,6 +21,8 @@ protected:
 	float currentSpeedX;
 	float animSpeed;
 	DWORD dt;
+
+	int diedTime;
 
 	LPGAMEOBJECT Koopas;
 
@@ -38,6 +41,9 @@ public:
 	CMario();
 	void SetState(int state);
 	void SetLevel(int level);
+	void LevelUp();
+	void LevelDown();
+	void Die();
 	virtual void Init();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render();

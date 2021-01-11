@@ -62,6 +62,11 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 			CGame::Instance()->SwitchScene(1);
 			break;
 		}
+		case DIK_O:
+		{
+			//CGame::Instance()->GetCurrentScene()->GetPlayer()->Die();
+			CGame::Instance()->GetCurrentScene()->SetAlpha(0);
+		}
 	}
 
 

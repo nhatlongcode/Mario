@@ -56,7 +56,7 @@ void CMushroom::Render()
 {
 	if (state == -1) return;
 	if (startTime < 450 && startTime != -1) return;
-	animSet->at(this->state)->Render(this->x, this->y);
+	animSet->at(this->state)->Render(this->x, this->y, 1, 1, alpha);
 }
 
 void CMushroom::OnCollisionEnter(LPCOLLISIONEVENT other)

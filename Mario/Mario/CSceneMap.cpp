@@ -247,6 +247,10 @@ void CSceneMap::ParseSection_FONTS(string line)
 	}
 }
 
+void CSceneMap::SetAlpha(int alpha)
+{
+}
+
 void CSceneMap::Load()
 {
 	DebugOut(L"[INFO] Start loading scene resources from : %s \n", sceneFilePath);

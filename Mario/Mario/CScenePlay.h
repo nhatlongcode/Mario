@@ -29,6 +29,7 @@ private:
 public:
 	CScenePlay(int id, LPCWSTR filePath);
 
+	void SetAlpha(int alpha);
 	void Load();
 	void Update(DWORD dt);
 	void Render();

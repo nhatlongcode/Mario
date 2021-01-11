@@ -6,6 +6,7 @@
 class CMap
 {
 private:
+	int alpha;
 	int col, row;
 	vector<CTileMap*> data;
 	void Load(int texID, LPCWSTR path);
@@ -14,5 +15,6 @@ private:
 	unordered_map<int, LPSPRITE> sprites;
 public:
 	CMap(int texID, LPCWSTR path);
+	void SetAlpha(int alpha);
 	void Render();
 };

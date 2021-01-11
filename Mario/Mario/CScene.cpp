@@ -13,6 +13,10 @@ CMario* CScene::GetPlayer()
 	return player;
 }
 
+void CScene::FadedAndSwitchScene(int id)
+{
+}
+
 void CScene::SetPlayer(int typeID, float posX, float posY)
 {
 	CMario* newPlayer = marioController.GetMario(typeID, posX, posY);

@@ -54,5 +54,5 @@ void CSCoreFx::ResetEffect()
 void CSCoreFx::Render()
 {
 	if (effectDone || startTime == -1) return;
-	animSet->at(state)->Render(x, y);
+	animSet->at(state)->Render(x, y, 1, 1, alpha);
 }

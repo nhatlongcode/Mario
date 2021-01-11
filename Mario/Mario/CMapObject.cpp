@@ -27,5 +27,5 @@ int CMapObject::GetIndex()
 void CMapObject::Render()
 {
 	if (state > animSet->size()) return;
-	animSet->at(state)->Render(x,y);
+	animSet->at(state)->Render(x,y,1,1,alpha);
 }

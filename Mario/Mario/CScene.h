@@ -11,6 +11,7 @@ class CScene
 protected:
 	
 	int id;
+	int alpha;
 	CCamera* camera;
 	CKeyEventHandler* keyHandler;
 	MarioController marioController;
@@ -28,6 +29,7 @@ public:
 	bool debugMode;
 	CKeyEventHandler* GetKeyEventHandler() { return keyHandler; }
 	CMario* GetPlayer();
+	void FadedAndSwitchScene(int id);
 	void SetPlayer(int typeID, float posX = 0.0f, float posY = 0.0f);
 	void AddGameObject(LPGAMEOBJECT go);
 	void AddCoGameObject(LPGAMEOBJECT go);
@@ -36,7 +38,7 @@ public:
 
 	void AddUI(LPUI ui);
 
-
+	virtual void SetAlpha(int alpha) = 0;
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;

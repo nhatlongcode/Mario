@@ -28,7 +28,7 @@ void CMarioIcon::MoveToCell(int x, int y, bool instant)
 
 void CMarioIcon::Render()
 {
-	animSet->at(state)->Render(x, y, DIRECTION_RIGHT);
+	animSet->at(state)->Render(x, y, DIRECTION_RIGHT, 1, alpha);
 }
 
 void CMarioIcon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)

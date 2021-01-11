@@ -30,7 +30,7 @@ public:
 	void ParseSection_MAPSELECTABLE(string line);
 	void ParseSection_FONTS(string line);
 
-
+	virtual void SetAlpha(int alpha) override;
 	virtual void Load() override;
 	virtual void Unload() override;
 	virtual void Update(DWORD dt) override;

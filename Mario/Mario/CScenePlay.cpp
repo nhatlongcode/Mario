@@ -238,6 +238,19 @@ CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 		CAMERA_BORDER_BOT);
 }
 
+void CScenePlay::SetAlpha(int alpha)
+{
+	this->alpha = alpha;
+	map->SetAlpha(alpha);
+	for (int i = 0; i < objects.size(); i++)
+	{
+		objects[i]->SetAlpha(this->alpha);
+
+	}
+	player->SetAlpha(this->alpha);
+	
+}
+
 void CScenePlay::Load()
 {
 	DebugOut(L"[INFO] Start loading scene resources from : %s \n", sceneFilePath);
@@ -305,6 +318,7 @@ void CScenePlay::Load()
 	
 	marioController.Init();
 	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
+
 	camera->SetPlayer(this->player);
 	
 	if (player == NULL) DebugOut(L"PLAYER NULL");

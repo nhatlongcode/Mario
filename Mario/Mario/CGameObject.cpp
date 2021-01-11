@@ -14,6 +14,11 @@ void CGameObject::SetPosition(float x, float y)
 	this->y = y;
 }
 
+void CGameObject::SetAlpha(int alpha)
+{
+	this->alpha = alpha;
+}
+
 void CGameObject::SetDirection(int nx)
 {
 	this->nx = nx;

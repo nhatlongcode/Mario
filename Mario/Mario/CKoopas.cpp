@@ -39,7 +39,7 @@ void CKoopas::SetHoldByMario(bool hold)
 
 void CKoopas::Render()
 {
-	animSet->at(state)->Render(x, y, nx);
+	animSet->at(state)->Render(x, y, nx,1, alpha);
 }
 
 void CKoopas::SetState(int state)

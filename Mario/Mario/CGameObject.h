@@ -28,6 +28,7 @@ protected:
 	float dx;
 	float dy;
 	
+	int alpha = 255;
 	int nx;
 	int state;
 
@@ -46,6 +47,8 @@ public:
 
 	void SetPosition(float x, float y);
 	void GetPosition(float& x, float& y) { x = this->x; y = this->y; }
+
+	void SetAlpha(int alpha);
 
 	void SetDirection(int nx);
 	void GetDirection(int& nx) { nx = this->nx; }

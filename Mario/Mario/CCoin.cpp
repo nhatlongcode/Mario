@@ -54,5 +54,5 @@ void CCoin::Render()
 {
 	if (scoreFx->IsEffectBegin()) scoreFx->Render();
 	if (bounceDone) return;
-	animSet->at(state)->Render(this->x, this->y-100);
+	animSet->at(state)->Render(this->x, this->y-100,1,1,alpha);
 }

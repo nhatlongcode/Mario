@@ -105,5 +105,5 @@ void CQuestionBrick::Bounce()
 void CQuestionBrick::Render()
 {
 	if (reward != nullptr) reward->Render();
-	animSet->at(state)->Render(this->x, this->y);
+	animSet->at(state)->Render(this->x, this->y,1, 1, alpha);
 }

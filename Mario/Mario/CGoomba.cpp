@@ -14,7 +14,7 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CGoomba::Render()
 {
-	animSet->at(state)->Render(x, y, nx);
+	animSet->at(state)->Render(x, y, nx,1,alpha);
 }
 
 

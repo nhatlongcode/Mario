@@ -105,6 +105,16 @@ void CMap::ParseSectionData(string line, int rowCount)
 CMap::CMap(int texID, LPCWSTR path)
 {
 	Load(texID, path);
+	alpha = 255;
+}
+
+void CMap::SetAlpha(int alpha)
+{
+	this->alpha = alpha;
+	for (int i = 0; i < data.size(); i++)
+	{
+		data[i]->SetAlpha(this->alpha);
+	}
 }
 
 void CMap::Render()
