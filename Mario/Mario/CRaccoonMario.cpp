@@ -4,6 +4,7 @@ CRaccoonMario::CRaccoonMario()
 {
 	SetAnimationSet(MARIO_TYPE_RACCOON);
 	state = MARIO_STATE_IDLE;
+	level = MARIO_TYPE_RACCOON;
 	tail = new Tail();
 	IsCollisionEnabled = true;
 	SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);

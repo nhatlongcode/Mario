@@ -161,19 +161,22 @@ void CMario::SetState(int state)
 void CMario::SetLevel(int level)
 {
 	this->level = level;
+	CGame::Instance()->GetCurrentScene()->SetPlayer(level, this->x, this->y-24.0f);
 }
 
 void CMario::LevelUp()
 {
-	if (state == MARIO_TYPE_SMALL)
+	DebugOut(L"%d\n", level);
+	if (level == MARIO_TYPE_SMALL)
 	{
-
+		SetLevel(MARIO_TYPE_SUPER);
 	}
-	else if (state == MARIO_TYPE_SUPER)
+	else if (level == MARIO_TYPE_SUPER)
 	{
-
+		SetLevel(MARIO_TYPE_RACCOON);
+		
 	}
-	else if (state == MARIO_TYPE_RACCOON)
+	else if (level == MARIO_TYPE_RACCOON)
 	{
 
 	}
@@ -181,17 +184,17 @@ void CMario::LevelUp()
 
 void CMario::LevelDown()
 {
-	if (state == MARIO_TYPE_SMALL)
+	if (level == MARIO_TYPE_SMALL)
 	{
 		Die();
 	}
-	else if (state == MARIO_TYPE_SUPER)
+	else if (level == MARIO_TYPE_SUPER)
 	{
-
+		SetLevel(MARIO_TYPE_SMALL);
 	}
-	else if (state == MARIO_TYPE_RACCOON)
+	else if (level == MARIO_TYPE_RACCOON)
 	{
-
+		SetLevel(MARIO_TYPE_SUPER);
 	}
 }
 
@@ -417,7 +420,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		vy = -0.1f;
 		go->SetState(-1);
-		
+		LevelUp();
 	}
 }
 

@@ -30,7 +30,7 @@ void CScene::SetPlayer(int typeID, float posX, float posY)
 		player->GetState(state);
 		player->GetSpeed(vx, vy);
 
-		newPlayer->SetPosition(x, y);
+		newPlayer->SetPosition(posX, posY);
 		newPlayer->SetDirection(nx);
 		newPlayer->SetState(state);
 		newPlayer->SetSpeed(vx, vy);
