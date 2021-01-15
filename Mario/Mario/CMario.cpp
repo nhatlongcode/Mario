@@ -84,7 +84,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 		else
 		{
-			
+			//HandleSlowDown();
 			HandleWalk();
 		}
 	}

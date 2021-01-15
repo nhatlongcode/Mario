@@ -273,7 +273,7 @@ CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 	camera->SetBorder(CAMERA_BORDER_LEFT,
 		CAMERA_BORDER_RIGHT,
 		CAMERA_BORDER_TOP,
-		5000);
+		CAMERA_BORDER_BOT);
 }
 
 void CScenePlay::SetAlpha(int alpha)
