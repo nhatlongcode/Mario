@@ -13,10 +13,11 @@ void CMario::StandingOnGround()
 	if (!input->IsKeyDown(DIK_S))
 	{
 		canHighJump = true;
-		canHighFly = true;
+		canOneTimeFly = true;
 		forceJump = 0.0f;
 		forceFly = 0.0f;
 	}
+	isFalling = false;
 	if (abs(vx) <= 0.0001f && !isAttacking) SetState(MARIO_STATE_IDLE);
 }
 
@@ -29,6 +30,7 @@ CMario::CMario()
 	IsCollisionEnabled = true;
 	ax = 0.0f;
 	animSpeed = 1.0f;
+	isCanFly = false;
 	isGrounded = false;
 	canHighJump = true;
 	forceJump = 0.0f;
@@ -70,6 +72,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	DebugOut(L"pos Y: %f.2\n", y);
 	//*/
 
+	//DebugOut(L"%d\n",canHighFly);
 
 	if (input->IsKeyDown(DIK_LEFT) || input->IsKeyDown(DIK_RIGHT))
 	{
@@ -102,7 +105,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		if (isMaxSpeed)
 		{
-			if (canHighFly)
+			if (canOneTimeFly)
 			{
 				HandleFly(MARIO_FLY_HIGH_FORCE);
 			}
@@ -123,10 +126,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (input->IsKeyDown(DIK_X))
 	{
 		canHighJump = false;
-		if (isMaxSpeed)
+		if (!isFalling && isCanFly)
 		{
-			HandleFly(MARIO_FLY_SHORT_FORCE);
-			canHighFly = false;
+			HandleFly(-0.9f);
+			isGrounded = false;
+			canOneTimeFly = false;
 		}
 		else if(isGrounded)
 		{
@@ -139,6 +143,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		//handle fall, overide for raccon slow fall
 		HandleFall();
+		isFalling = true;
 	}
 
 	if (input->IsKeyDown(DIK_Z))
@@ -227,7 +232,7 @@ void CMario::OnKeyUp(int keyCode)
 	if (keyCode == DIK_S && !isGrounded)
 	{
 		canHighJump = false;
-		canHighFly = false;
+		canOneTimeFly = false;
 	}
 
 	if (keyCode == DIK_A)
@@ -274,13 +279,13 @@ void CMario::HandleFly(float flyForce)
 		isFlying = true;
 		isGrounded = false;
 	}
-	else if (input->IsKeyDown(DIK_S) && canHighFly)
+	else if (input->IsKeyDown(DIK_S) && canOneTimeFly)
 	{
 		vy = flyForce;
 		forceFly += flyForce;
 		isFlying = true;
 		isGrounded = false;
-		if (abs(forceFly) > MARIO_FLY_MAX) canHighFly = false;
+		if (abs(forceFly) > MARIO_FLY_MAX) canOneTimeFly = false;
 	}
 
 }
@@ -313,6 +318,7 @@ void CMario::HandleWalk()
 
 void CMario::HandleRun()
 {
+	auto input = CLocator<IHandleInput>().Get();
 	ax = MARIO_ACCELERATION * nx;
 	if (abs(vx) > MARIO_MAX_RUN && (currentSpeedX * nx > 0))
 	{
@@ -324,6 +330,7 @@ void CMario::HandleRun()
 	if (abs(vx - MARIO_MAX_RUN * nx) < 0.01f)
 	{
 		isMaxSpeed = true;
+		if (input->IsKeyDown(DIK_X)) isCanFly = true;
 		if (!isAttacking && isGrounded) SetState(MARIO_STATE_RUN);
 	}
 	else isMaxSpeed = false;

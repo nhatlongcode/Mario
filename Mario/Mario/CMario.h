@@ -9,7 +9,9 @@ protected:
 	bool isAttacking;
 	bool isMaxSpeed;
 	bool isFlying;
-	bool canHighFly;
+	bool isCanFly;
+	bool isFalling;
+	bool canOneTimeFly;
 	bool canHighJump;
 	bool isHoldingKoopas;
 	

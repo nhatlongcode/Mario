@@ -37,12 +37,13 @@ void CRaccoonMario::HandleAtk()
 
 void CRaccoonMario::HandleFly(float flyForce)
 {
+	if (!isCanFly) return;
 	SetState(MARIO_STATE_FLY);
 	auto input = CLocator<IHandleInput>().Get();
 
 	if (input->IsKeyDown(DIK_X))
 	{
-		vy = flyForce;
+		vy = -0.25f;
 		isFlying = true;
 		isGrounded = false;
 	}
