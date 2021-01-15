@@ -20,3 +20,9 @@ enum class BrickObjectTag
 	Buff,
 	Coin,
 };
+
+enum class PipeType
+{
+	GoDown,
+	GoUp,
+};

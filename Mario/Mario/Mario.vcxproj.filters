@@ -142,6 +142,9 @@
     <Filter Include="Game\Objects\Reward\Mushroom">
       <UniqueIdentifier>{c5b50179-955c-4bfd-b4fb-78109ae88cbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Pipe">
+      <UniqueIdentifier>{0fe05ffc-300b-44a0-8a94-662a40d73398}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -299,6 +302,9 @@
     </ClCompile>
     <ClCompile Include="CMushroom.cpp">
       <Filter>Game\Objects\Reward\Mushroom</Filter>
+    </ClCompile>
+    <ClCompile Include="CPipe.cpp">
+      <Filter>Game\Objects\Pipe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -493,6 +499,9 @@
     </ClInclude>
     <ClInclude Include="CMushroom.h">
       <Filter>Game\Objects\Reward\Mushroom</Filter>
+    </ClInclude>
+    <ClInclude Include="CPipe.h">
+      <Filter>Game\Objects\Pipe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

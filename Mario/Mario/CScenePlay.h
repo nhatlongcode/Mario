@@ -25,6 +25,7 @@ private:
 	void ParseSection_GROUNDS(string line);
 	void ParseSection_GHOSTPLATFORM(string line);
 	void ParseSection_FONTS(string line);
+	void ParseSection_PIPE(string line);
 
 public:
 	CScenePlay(int id, LPCWSTR filePath);

@@ -17,6 +17,7 @@ protected:
 	MarioController marioController;
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> coObjects;
+	vector<LPGAMEOBJECT> onPlayerObjects;
 	//shared_ptr<LPGAMEOBJECT> objects;
 	//shared_ptr<LPGAMEOBJECT> coObjects;
 	
@@ -35,7 +36,7 @@ public:
 	void AddCoGameObject(LPGAMEOBJECT go);
 	void RemoveGameObject(LPGAMEOBJECT go);
 	void GetCamPos(float& cx, float& cy);
-
+	CCamera* GetCamera();
 	void AddUI(LPUI ui);
 
 	virtual void SetAlpha(int alpha) = 0;

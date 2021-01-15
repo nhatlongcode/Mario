@@ -56,6 +56,19 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	this->currentSpeedX = vx;
 	auto input = CLocator<IHandleInput>().Get();
 	
+	/*
+	if (input->IsKeyDown(DIK_DOWN))
+	{
+		vy = 0.3f;
+	}
+	else if (input->IsKeyDown(DIK_UP))
+	{
+		vy = -0.3f;
+	}
+	else vy = 0.0f;
+	DebugOut(L"pos X: %f.2\n", x);
+	DebugOut(L"pos Y: %f.2\n", y);
+	//*/
 
 
 	if (input->IsKeyDown(DIK_LEFT) || input->IsKeyDown(DIK_RIGHT))
@@ -366,7 +379,8 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 	if (tag == ObjectTag::GhostPlatform || 
 		tag == ObjectTag::Ground ||
 		tag == ObjectTag::Solid ||
-		tag == ObjectTag::QuestionBrick)
+		tag == ObjectTag::QuestionBrick ||
+		tag == ObjectTag::Pipe)
 	{
 		if (other->ny == -1.0f)
 		{
@@ -421,6 +435,11 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		vy = -0.1f;
 		go->SetState(-1);
 		LevelUp();
+	}
+
+	if (tag == ObjectTag::Pipe && (other->ny == -1.0f || other->ny == 1.0f))
+	{
+		go->SetState(1);
 	}
 }
 

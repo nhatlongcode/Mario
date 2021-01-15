@@ -70,6 +70,11 @@ void CScene::GetCamPos(float& cx, float& cy)
 	cy = y;
 }
 
+CCamera* CScene::GetCamera()
+{
+	return camera;
+}
+
 void CScene::AddUI(LPUI ui)
 {
 	canvas->Add(ui);

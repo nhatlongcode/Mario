@@ -11,6 +11,7 @@
 #include "CGround.h"
 #include "CGhostPlatform.h"
 #include "CGame.h"
+#include "CPipe.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -221,6 +222,43 @@ void CScenePlay::ParseSection_FONTS(string line)
 	CLocator<IFontManager>().Get()->AddFont(font, ascii, t, l, w, h);
 }
 
+void CScenePlay::ParseSection_PIPE(string line)
+{
+	vector<string> tokens = split(line);
+
+	float posInX, posInY, posOutX, posOutY;
+	int direction;
+	int idSpriteIn, idSpriteOut;
+	float borL, borR, borT, borB, offL, offR, offT, offB;
+	posInX = atoi(tokens[0].c_str());
+	posInY = atoi(tokens[1].c_str());
+	posOutX = atoi(tokens[2].c_str());
+	posOutY = atoi(tokens[3].c_str());
+	direction = atoi(tokens[4].c_str());
+	idSpriteIn = atoi(tokens[5].c_str());
+	idSpriteOut = atoi(tokens[6].c_str());
+	borL = atoi(tokens[7].c_str());
+	borR = atoi(tokens[8].c_str());
+	borT = atoi(tokens[9].c_str());
+	borB = atoi(tokens[10].c_str());
+	offL = atoi(tokens[11].c_str());
+	offR = atoi(tokens[12].c_str());
+	offT = atoi(tokens[13].c_str());
+	offB = atoi(tokens[14].c_str());
+
+	LPSPRITE spriteIn = CLocator<ISpritesManager>().Get()->Get(idSpriteIn);
+	LPSPRITE spriteOut = CLocator<ISpritesManager>().Get()->Get(idSpriteOut);
+
+	CPipe* pipe = new CPipe();
+	pipe->SetCameraPos(posInX, posInY, posOutX, posOutY);
+	if (direction == 0) pipe->SetType(PipeType::GoDown);
+	else pipe->SetType(PipeType::GoDown);
+	pipe->SetSprite(spriteIn, spriteOut);
+	pipe->SetBorder(borT, borB, borL, borR);
+	pipe->SetOffSet(offT, offB, offL, offR);
+	onPlayerObjects.push_back(pipe);
+}
+
 
 CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
@@ -235,7 +273,7 @@ CScenePlay::CScenePlay(int id, LPCWSTR filePath) : CScene(id, filePath)
 	camera->SetBorder(CAMERA_BORDER_LEFT,
 		CAMERA_BORDER_RIGHT,
 		CAMERA_BORDER_TOP,
-		CAMERA_BORDER_BOT);
+		5000);
 }
 
 void CScenePlay::SetAlpha(int alpha)
@@ -295,6 +333,10 @@ void CScenePlay::Load()
 		{
 			section = SCENE_SECTION_FONTS; continue;
 		}
+		if (line == "[PIPE]")
+		{
+			section = SCENE_SECTION_PIPE; continue;
+		}
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
 
 		//
@@ -311,13 +353,14 @@ void CScenePlay::Load()
 		case SCENE_SECTION_GROUNDS: ParseSection_GROUNDS(line); break;
 		case SCENE_SECTION_GHOSTPLATFORM: ParseSection_GHOSTPLATFORM(line); break;
 		case SCENE_SECTION_FONTS: ParseSection_FONTS(line); break;
+		case SCENE_SECTION_PIPE: ParseSection_PIPE(line); break;
 		}
 	}
 
 	f.close();
 	
 	marioController.Init();
-	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 100.0f);
+	SetPlayer(MARIO_TYPE_SMALL, 300.0f, 900.0f);
 
 	camera->SetPlayer(this->player);
 	
@@ -327,6 +370,11 @@ void CScenePlay::Load()
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
+	}
+
+	for (size_t i = 0; i < onPlayerObjects.size(); i++)
+	{
+		coObjects.push_back(onPlayerObjects[i]);
 	}
 
 	//coObjects.push_back(marioController.GetMario(10000));
@@ -362,15 +410,20 @@ void CScenePlay::Update(DWORD dt)
 
 void CScenePlay::Render()
 {
+	// this should use layer but i dont have time;
 	map->Render();
 	for (int i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Render();
 		if (debugMode) objects[i]->RenderCollisionBox();
-
 	}
 	player->Render();
 	if (debugMode) player->RenderCollisionBox();
+	for (int i = 0; i < onPlayerObjects.size(); i++)
+	{
+		onPlayerObjects[i]->Render();
+		if (debugMode) onPlayerObjects[i]->RenderCollisionBox();
+	}
 	canvas->Render();
 }
 
