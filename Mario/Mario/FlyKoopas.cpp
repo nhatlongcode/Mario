@@ -8,13 +8,13 @@ FlyKoopas::FlyKoopas()
 	isGround = false;
 	SetTag(ObjectTag::KoopasFly);
 	IsCollisionEnabled = true;
-	nx = DIRECTION_RIGHT;
+	nx = DIRECTION_LEFT;
 }
 
 void FlyKoopas::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
-	//DebugOut(L"vx: %d\n", nx);
+	
 	vy += 0.01f;
 	if (state == 4)
 	{
@@ -24,8 +24,8 @@ void FlyKoopas::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		if (isGround)
 		{
-			vy = -0.4f;
-			vx = nx * -0.07f;
+			vy = -0.3f;
+			vx = nx * 0.07f;
 			isGround = false;
 		}
 	}
@@ -124,7 +124,7 @@ void FlyKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 	}
 	else if (tag == ObjectTag::Goomba)
 	{
-		go->SetState(3);
+		go->SetState(2);
 		this->vx = nx * KOOPAS_SPEED_SPIN;
 	}
 }

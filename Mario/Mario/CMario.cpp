@@ -23,7 +23,6 @@ void CMario::StandingOnGround()
 
 CMario::CMario()
 {
-	level = MARIO_TYPE_SMALL;
 	state = MARIO_STATE_IDLE;
 	unTouchable = false;
 	isAlive = true;
@@ -57,7 +56,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (unTouchableStart > 0)
 	{
 		int time = GetTickCount() - unTouchableStart;
-		DebugOut(L"%d\n", time);
 		if (time < 5000)
 		{
 			unTouchable = true;
@@ -186,6 +184,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CMario::Render()
 {
+	DebugOut(L"%d\n", state);
 	animSet->at(state)->Render(x, y, nx, 1, alpha);
 }
 
@@ -197,13 +196,12 @@ void CMario::SetState(int state)
 
 void CMario::SetLevel(int level)
 {
-	this->level = level;
+	//this->level = level;
 	CGame::Instance()->GetCurrentScene()->SetPlayer(level, this->x, this->y-24.0f);
 }
 
 void CMario::LevelUp()
 {
-	DebugOut(L"%d\n", level);
 	if (level == MARIO_TYPE_SMALL)
 	{
 		SetLevel(MARIO_TYPE_SUPER);
@@ -422,6 +420,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		}
 
 	}
+	if (unTouchable) return;
 	
 	if (tag == ObjectTag::QuestionBrick && other->ny == 1.0f)
 	{
@@ -429,7 +428,6 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		canHighJump = false;
 	}
 
-	if (unTouchable) return;
 
 	if (tag == ObjectTag::Goomba)
 	{

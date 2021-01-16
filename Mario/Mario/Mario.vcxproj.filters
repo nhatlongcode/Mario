@@ -328,7 +328,7 @@
       <Filter>Game\Objects\BreakableBrick</Filter>
     </ClCompile>
     <ClCompile Include="BrickPiece.cpp">
-      <Filter>Main</Filter>
+      <Filter>Game\Objects\BreakableBrick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
