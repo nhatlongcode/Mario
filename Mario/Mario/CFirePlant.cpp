@@ -24,6 +24,11 @@ void CFirePlant::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
 }
 
+bool CFirePlant::GetThrought(ObjectTag tag, float nx, float ny)
+{
+	return true;
+}
+
 void CFirePlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
