@@ -134,3 +134,8 @@ void FlyKoopas::Render()
 {
 	animSet->at(state)->Render(x, y, nx, 1, alpha);
 }
+
+bool FlyKoopas::GetThrought(ObjectTag tag, float nx, float ny)
+{
+	return (ny != -1.0f);
+}

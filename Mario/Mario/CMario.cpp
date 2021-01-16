@@ -32,7 +32,7 @@ CMario::CMario()
 	animSpeed = 1.0f;
 	isCanFly = false;
 	isGrounded = false;
-	canHighJump = true;
+	canHighJump = false;
 	forceJump = 0.0f;
 }
 
@@ -43,7 +43,7 @@ void CMario::Init()
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
-	DebugOut(L"%d\n", level);
+	//DebugOut(L"%d\n", level);
 	if (!isAlive)
 	{
 		diedTime += dt;
@@ -225,13 +225,15 @@ void CMario::LevelDown()
 	}
 	else if (level == MARIO_TYPE_SUPER)
 	{
+		CGame::Instance()->GetCurrentScene()->GetPlayer(MARIO_TYPE_SMALL)->StartUntouchable();
 		SetLevel(MARIO_TYPE_SMALL);
-		CGame::Instance()->GetCurrentScene()->GetPlayer()->StartUntouchable();
+		//DebugOut(L"big to small\n");
 	}
 	else if (level == MARIO_TYPE_RACCOON)
 	{
+		CGame::Instance()->GetCurrentScene()->GetPlayer(MARIO_TYPE_SUPER)->StartUntouchable();
 		SetLevel(MARIO_TYPE_SUPER);
-		CGame::Instance()->GetCurrentScene()->GetPlayer()->StartUntouchable();
+		//DebugOut(L"rac to big\n");
 	}
 }
 
@@ -244,6 +246,7 @@ void CMario::Die()
 void CMario::StartUntouchable()
 {
 	unTouchableStart = GetTickCount();
+	unTouchable = true;
 }
 
 
@@ -403,7 +406,7 @@ void CMario::HandleInput()
 
 void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
-
+	int countDead = 0;
 	auto input = CLocator<IHandleInput>().Get();
 	LPGAMEOBJECT go = other->obj;
 	ObjectTag tag = go->GetTag();
@@ -585,24 +588,27 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 	if (tag == ObjectTag::Venus)
 	{
-		if (other->ny == -1.0f)
-		{
-			LevelDown();
-		}
-		else
-		{
-			LevelDown();
-		}
+		countDead++;
 	}
 
 	if (tag == ObjectTag::Pipe && (other->ny == -1.0f || other->ny == 1.0f))
 	{
 		go->SetState(1);
 	}
+	if (countDead > 0)
+	{
+		//DebugOut(L"level: %d\n", this->level);
+		LevelDown();
+	}
 }
 
 void CMario::Reset()
 {
-
+	isCanFly = false;
+	isGrounded = false;
+	canHighJump = false;
+	isAlive = true;
+	vx = vy = 0.0f;
+	forceJump = 0.0f;
 }
 

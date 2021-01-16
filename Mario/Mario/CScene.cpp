@@ -8,9 +8,10 @@ CScene::CScene(int id, LPCWSTR filePath)
 	canvas = new CCanvas();
 }
 
-CMario* CScene::GetPlayer()
+CMario* CScene::GetPlayer(int id)
 {
-	return player;
+	if (id == 0) return player;
+	else return marioController.GetMario(id);
 }
 
 void CScene::FadedAndSwitchScene(int id)
@@ -29,6 +30,7 @@ void CScene::SetPlayer(int typeID, float posX, float posY)
 		player->GetDirection(nx);
 		player->GetState(state);
 		player->GetSpeed(vx, vy);
+		player->Reset();
 
 		newPlayer->SetPosition(posX, posY);
 		newPlayer->SetDirection(nx);

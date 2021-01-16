@@ -9,6 +9,9 @@ CBigMario::CBigMario()
 	IsCollisionEnabled = true;
 	SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);
 	state = MARIO_STATE_IDLE;
+	isCanFly = false;
+	isGrounded = false;
+	canHighJump = false;
 }
 
 void CBigMario::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)

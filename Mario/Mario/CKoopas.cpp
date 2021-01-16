@@ -110,3 +110,8 @@ void CKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 		this->vx = nx * KOOPAS_SPEED_SPIN;
 	}
 }
+
+bool CKoopas::GetThrought(ObjectTag tag, float nx, float ny)
+{
+	return true;
+}

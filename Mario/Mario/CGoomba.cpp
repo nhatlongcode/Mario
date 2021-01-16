@@ -12,6 +12,11 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	CGameObject::Update(dt, coObjects);
 }
 
+bool CGoomba::GetThrought(ObjectTag tag, float nx, float ny)
+{
+	return true;
+}
+
 void CGoomba::Render()
 {
 	animSet->at(state)->Render(x, y, nx,1,alpha);

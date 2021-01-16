@@ -24,7 +24,7 @@ protected:
 	float currentSpeedX;
 	float animSpeed;
 	DWORD dt;
-
+	int count = 0;
 	int diedTime;
 	int unTouchableStart;
 

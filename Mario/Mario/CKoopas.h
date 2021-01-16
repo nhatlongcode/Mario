@@ -13,4 +13,5 @@ public:
 	void Render();
 	void SetState(int state);
 	void OnCollisionEnter(LPCOLLISIONEVENT other);
+	bool GetThrought(ObjectTag tag, float nx, float ny);
 };

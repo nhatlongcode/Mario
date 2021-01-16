@@ -29,7 +29,7 @@ public:
 	CScene(int id, LPCWSTR filePath);
 	bool debugMode;
 	CKeyEventHandler* GetKeyEventHandler() { return keyHandler; }
-	CMario* GetPlayer();
+	CMario* GetPlayer(int id = 0);
 	void FadedAndSwitchScene(int id);
 	void SetPlayer(int typeID, float posX = 0.0f, float posY = 0.0f);
 	void AddGameObject(LPGAMEOBJECT go);
