@@ -489,6 +489,64 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		
 	}
 
+
+	if (tag == ObjectTag::KoopasFly)
+	{
+		int koopasState;
+		go->GetState(koopasState);
+		if (koopasState == 0)
+		{
+			if (other->ny == -1.0f)
+			{
+				go->SetState(1);
+				vy = -0.5f;
+			}
+			else if (abs(other->nx) == 1)
+			{
+				LevelDown();
+			}
+		}
+
+		if (koopasState == 1)
+		{
+			if (other->ny == -1.0f)
+			{
+				go->SetState(2);
+				vy = -0.5f;
+			}
+			else if (abs(other->nx) == 1)
+			{
+				LevelDown();
+			}
+		}
+
+		if (koopasState == 2 && (nx != 0))
+		{
+			if (input->IsKeyDown(DIK_A))
+			{
+				Koopas = go;
+				Koopas->IsCollisionEnabled = false;
+				isHoldingKoopas = true;
+			}
+			else
+			{
+				this->SetState(MARIO_STATE_KICK);
+				go->SetState(3);
+				go->SetDirection(this->nx);
+				vy = -0.5f;
+			}
+		}
+
+		if (koopasState == 3)
+		{
+			if (abs(other->nx) == 1)
+			{
+				LevelDown();
+			}
+		}
+
+	}
+
 	if (tag == ObjectTag::GoombaFly)
 	{
 		int goomflyState;
