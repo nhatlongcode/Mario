@@ -124,7 +124,8 @@ void FlyKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 	}
 	else if (tag == ObjectTag::Goomba)
 	{
-		go->SetState(2);
+		if (state == 3)
+		go->SetState(GOOMBA_STATE_DIE_INSTANT);
 		this->vx = nx * KOOPAS_SPEED_SPIN;
 	}
 }

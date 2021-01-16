@@ -43,6 +43,7 @@ void CMario::Init()
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
+	DebugOut(L"%d\n", level);
 	if (!isAlive)
 	{
 		diedTime += dt;
@@ -184,7 +185,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CMario::Render()
 {
-	DebugOut(L"%d\n", state);
 	animSet->at(state)->Render(x, y, nx, 1, alpha);
 }
 
@@ -555,7 +555,6 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 			{
 				go->SetState(1);
 				vy = -0.5f;
-				DebugOut(L"asdasd\n");
 			}
 			else
 			{
@@ -564,7 +563,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		}
 		else if (goomflyState == 1) //walk state
 		{
-			if (other->ny = -1.0f)
+			if (other->ny == -1.0f)
 			{
 				go->SetState(2);
 				vy = -0.5f;
@@ -586,7 +585,14 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 	if (tag == ObjectTag::Venus)
 	{
-		LevelDown();
+		if (other->ny == -1.0f)
+		{
+			LevelDown();
+		}
+		else
+		{
+			LevelDown();
+		}
 	}
 
 	if (tag == ObjectTag::Pipe && (other->ny == -1.0f || other->ny == 1.0f))
