@@ -42,6 +42,10 @@ void Tail::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		obj->SetState(GOOMBA_STATE_DIE_INSTANT);
 	}
+	else if (tag == ObjectTag::GoombaFly && isHiting)
+	{
+		obj->SetState(3);
+	}
 }
 
 void Tail::Render()

@@ -315,6 +315,12 @@
     <ClCompile Include="CFireFromPlant.cpp">
       <Filter>Game\Enemies\Plant</Filter>
     </ClCompile>
+    <ClCompile Include="FlyGoomba.cpp">
+      <Filter>Game\Enemies\FlyGoomba</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyKoopas.cpp">
+      <Filter>Game\Enemies\FlyKoopas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLocator.h">
@@ -517,6 +523,12 @@
     </ClInclude>
     <ClInclude Include="CFireFromPlant.h">
       <Filter>Game\Enemies\Plant</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyGoomba.h">
+      <Filter>Game\Enemies\FlyGoomba</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyKoopas.h">
+      <Filter>Game\Enemies\FlyKoopas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

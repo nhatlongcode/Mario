@@ -319,7 +319,7 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	dx = vx * dt;
 	dy = vy * dt;
 
-	if (tag != ObjectTag::Ground)
+	if (tag != ObjectTag::Ground && tag != ObjectTag::GhostPlatform)
 	{
 		if (!CheckCollision(coObjects))
 		{

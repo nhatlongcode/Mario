@@ -1,5 +1,6 @@
 #include "CFirePlant.h"
 #include "CGame.h"
+#include "CFireFromPlant.h"
 
 CFirePlant::CFirePlant()
 {
@@ -7,6 +8,11 @@ CFirePlant::CFirePlant()
 	SetAnimationSet(22000);
 	SetBoundingBox(48, 96);
 	this->state = 0;
+}
+
+void CFirePlant::Fire()
+{
+	
 }
 
 void CFirePlant::Render()

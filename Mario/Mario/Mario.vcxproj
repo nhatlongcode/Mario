@@ -199,6 +199,8 @@
     <ClCompile Include="CUIElement.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="FlyGoomba.cpp" />
+    <ClCompile Include="FlyKoopas.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CMario.cpp" />
     <ClCompile Include="CMap.cpp" />
@@ -259,6 +261,8 @@
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="CCoin.h" />
     <ClInclude Include="CGamePanel.h" />
+    <ClInclude Include="FlyGoomba.h" />
+    <ClInclude Include="FlyKoopas.h" />
     <ClInclude Include="IAnimSetsManager.h" />
     <ClInclude Include="IAnimsManager.h" />
     <ClInclude Include="IDirectX.h" />

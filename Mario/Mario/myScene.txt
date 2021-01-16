@@ -239,6 +239,9 @@
 20001	20002	100
 20002	20003	100
 
+#flygoomba
+20003	20004	100	20005	100	20006	100	20007	100
+
 #SMALL MARIO
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 #icon					
@@ -429,6 +432,8 @@
 13000	13000	13001	13002	13003	13004	13005	13006	13007	13008	13009	13010	13011	13012	13013	13014	13015	13016
 #goomba
 20000	20000	20001	20002
+#flygoomba
+20001	20003	20000	20001	20002
 #koopas
 21000	21000	21001	21002	21003
 #plant
@@ -541,7 +546,7 @@
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = koopas, 7 = venus
+# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = koopas,4 = breakBrick, 5 = flygoom, 6 = flykoo, 7 = venus, 8 = piranha, 11 = pButton
 # MARIO
 1	532	1060	30002
 1	580	1060	30002
@@ -550,6 +555,7 @@
 2	528	1152	20000
 3	1824	1056	21000
 7	1080	1036	22000
+5	650	1000	20001
 
 [PIPE]
 #dir -> 0: down, 1: up

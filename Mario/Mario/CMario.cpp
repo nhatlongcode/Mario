@@ -489,6 +489,38 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		
 	}
 
+	if (tag == ObjectTag::GoombaFly)
+	{
+		int goomflyState;
+		go->GetState(goomflyState);
+		if (goomflyState == 0) //fly state
+		{
+			if (other->ny = -1.0f)
+			{
+				go->SetState(1);
+				vy = -0.5f;
+				DebugOut(L"asdasd\n");
+			}
+			else
+			{
+				LevelDown();
+			}
+		}
+		else if (goomflyState == 1) //walk state
+		{
+			if (other->ny = -1.0f)
+			{
+				go->SetState(2);
+				vy = -0.5f;
+			}
+			else
+			{
+				LevelDown();
+			}
+		}
+		
+	}
+
 	if (tag == ObjectTag::Buff)
 	{
 		vy = -0.1f;

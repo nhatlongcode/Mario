@@ -93,7 +93,16 @@ void CKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 	}
 	else if (tag == ObjectTag::Ground && other->nx != 0)
 	{
-		nx = -nx;
+		if (state == KOOPAS_STATE_SPIN)
+		{
+			this->nx = -1 * this->nx;
+			this->vx = this->nx * KOOPAS_SPEED_SPIN;
+		}
+		else if (state == KOOPAS_STATE_WALK)
+		{
+			this->nx = -1 * this->nx;
+			this->vx = this->nx * KOOPAS_SPEED_WALK;
+		}
 	}
 	else if (tag == ObjectTag::Goomba)
 	{

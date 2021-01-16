@@ -13,6 +13,7 @@ enum class ObjectTag
 	Pipe,
 	Ground,
 	Goomba,
+	GoombaFly,
 	FireFromMario,
 	FireFromEnemy,
 };
