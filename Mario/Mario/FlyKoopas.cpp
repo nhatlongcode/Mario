@@ -8,7 +8,7 @@ FlyKoopas::FlyKoopas()
 	isGround = false;
 	SetTag(ObjectTag::KoopasFly);
 	IsCollisionEnabled = true;
-	nx = DIRECTION_LEFT;
+	nx = DIRECTION_RIGHT;
 }
 
 void FlyKoopas::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)

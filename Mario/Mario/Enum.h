@@ -15,6 +15,7 @@ enum class ObjectTag
 	Goomba,
 	GoombaFly,
 	KoopasFly,
+	Venus,
 	FireFromMario,
 	FireFromEnemy,
 };

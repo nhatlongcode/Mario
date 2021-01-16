@@ -6,6 +6,7 @@ CFirePlant::CFirePlant()
 {
 	nx = DIRECTION_LEFT;
 	SetAnimationSet(22000);
+	SetTag(ObjectTag::Venus);
 	SetBoundingBox(48, 96);
 	this->state = 0;
 }

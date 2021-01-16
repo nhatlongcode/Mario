@@ -586,6 +586,11 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		LevelUp();
 	}
 
+	if (tag == ObjectTag::Venus)
+	{
+		LevelDown();
+	}
+
 	if (tag == ObjectTag::Pipe && (other->ny == -1.0f || other->ny == 1.0f))
 	{
 		go->SetState(1);
