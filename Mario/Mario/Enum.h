@@ -12,7 +12,9 @@ enum class ObjectTag
 	Koopas,
 	Pipe,
 	Ground,
-	Goomba
+	Goomba,
+	FireFromMario,
+	FireFromEnemy,
 };
 
 enum class BrickObjectTag

@@ -7,6 +7,7 @@
 #include "CKoopas.h"
 #include "CImage.h"
 #include "CBrick.h"
+#include "CFirePlant.h"
 #include "CQuestionBrick.h"
 #include "CGround.h"
 #include "CGhostPlatform.h"
@@ -144,6 +145,7 @@ void CScenePlay::ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_QUESTIONBRICK: obj = new CQuestionBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
+	case OBJECT_TYPE_VENUS: obj = new CFirePlant(); break;
 
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);

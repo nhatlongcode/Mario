@@ -162,7 +162,9 @@
     <ClCompile Include="CCoin.cpp" />
     <ClCompile Include="CCollisionEvent.cpp" />
     <ClCompile Include="CDirectX.cpp" />
+    <ClCompile Include="CFireFromPlant.cpp" />
     <ClCompile Include="CFireMario.cpp" />
+    <ClCompile Include="CFirePlant.cpp" />
     <ClCompile Include="CFontInfo.cpp" />
     <ClCompile Include="CFontManager.cpp" />
     <ClCompile Include="CGame.cpp" />
@@ -216,7 +218,9 @@
     <ClInclude Include="CChar.h" />
     <ClInclude Include="CCollisionEvent.h" />
     <ClInclude Include="CDirectX.h" />
+    <ClInclude Include="CFireFromPlant.h" />
     <ClInclude Include="CFireMario.h" />
+    <ClInclude Include="CFirePlant.h" />
     <ClInclude Include="CFontInfo.h" />
     <ClInclude Include="CFontManager.h" />
     <ClInclude Include="CGame.h" />
