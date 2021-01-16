@@ -14,6 +14,7 @@ protected:
 	bool canOneTimeFly;
 	bool canHighJump;
 	bool isHoldingKoopas;
+	bool unTouchable;
 	
 	float ax;
 	float startX;			// initial position of Mario at scene
@@ -25,6 +26,7 @@ protected:
 	DWORD dt;
 
 	int diedTime;
+	int unTouchableStart;
 
 	LPGAMEOBJECT Koopas;
 
@@ -46,6 +48,7 @@ public:
 	void LevelUp();
 	void LevelDown();
 	void Die();
+	void StartUntouchable();
 	virtual void Init();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render();

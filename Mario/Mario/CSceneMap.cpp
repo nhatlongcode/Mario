@@ -4,6 +4,7 @@
 #include "IAnimSetsManager.h"
 #include "IAnimsManager.h"
 #include "IFontManager.h"
+#include "CGamePanel.h"
 #include "CMapObject.h"
 #include "CGame.h"
 #include <iostream>
@@ -335,6 +336,8 @@ void CSceneMap::Load()
 		}
 		DebugOut(L"\n");
 	}
+
+
 	marioIcon = new CMarioIcon();
 	marioIcon->SetAnimationSet(11000);
 	marioIcon->MoveToCell(startX, startY);

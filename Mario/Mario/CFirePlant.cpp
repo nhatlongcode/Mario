@@ -11,7 +11,6 @@ CFirePlant::CFirePlant()
 
 void CFirePlant::Render()
 {
-	DebugOut(L"12313\n");
 	animSet->at(state)->Render(x,y,nx);
 }
 

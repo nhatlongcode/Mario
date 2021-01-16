@@ -145,7 +145,7 @@
     <Filter Include="Game\Objects\Pipe">
       <UniqueIdentifier>{0fe05ffc-300b-44a0-8a94-662a40d73398}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Plant">
+    <Filter Include="Game\Enemies\Plant">
       <UniqueIdentifier>{e77c7d91-ed99-4324-b518-a975dc0f077c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -310,10 +310,10 @@
       <Filter>Game\Objects\Pipe</Filter>
     </ClCompile>
     <ClCompile Include="CFirePlant.cpp">
-      <Filter>Game\Objects\Plant</Filter>
+      <Filter>Game\Enemies\Plant</Filter>
     </ClCompile>
     <ClCompile Include="CFireFromPlant.cpp">
-      <Filter>Game\Objects\Plant</Filter>
+      <Filter>Game\Enemies\Plant</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -513,10 +513,10 @@
       <Filter>Game\Objects\Pipe</Filter>
     </ClInclude>
     <ClInclude Include="CFirePlant.h">
-      <Filter>Game\Objects\Plant</Filter>
+      <Filter>Game\Enemies\Plant</Filter>
     </ClInclude>
     <ClInclude Include="CFireFromPlant.h">
-      <Filter>Game\Objects\Plant</Filter>
+      <Filter>Game\Enemies\Plant</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

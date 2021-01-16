@@ -25,6 +25,7 @@ CMario::CMario()
 {
 	level = MARIO_TYPE_SMALL;
 	state = MARIO_STATE_IDLE;
+	unTouchable = false;
 	isAlive = true;
 	SetTag(ObjectTag::Player);
 	IsCollisionEnabled = true;
@@ -52,6 +53,24 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		else vy += 0.05;
 		return;
 	}
+
+	if (unTouchableStart > 0)
+	{
+		int time = GetTickCount() - unTouchableStart;
+		DebugOut(L"%d\n", time);
+		if (time < 5000)
+		{
+			unTouchable = true;
+			alpha = 128;
+		}
+		else
+		{
+			unTouchable = false;
+			unTouchableStart = -1;
+			alpha = 255;
+		}
+	}
+
 	vy += MARIO_GRAVITY;
 	if (vy > 0.1f) isGrounded = false;
 	this->dt = dt;
@@ -209,16 +228,24 @@ void CMario::LevelDown()
 	else if (level == MARIO_TYPE_SUPER)
 	{
 		SetLevel(MARIO_TYPE_SMALL);
+		CGame::Instance()->GetCurrentScene()->GetPlayer()->StartUntouchable();
 	}
 	else if (level == MARIO_TYPE_RACCOON)
 	{
 		SetLevel(MARIO_TYPE_SUPER);
+		CGame::Instance()->GetCurrentScene()->GetPlayer()->StartUntouchable();
 	}
 }
 
 void CMario::Die()
 {
+	SetLevel(MARIO_TYPE_SMALL);
 	isAlive = false;
+}
+
+void CMario::StartUntouchable()
+{
+	unTouchableStart = GetTickCount();
 }
 
 
@@ -402,20 +429,37 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		canHighJump = false;
 	}
 
-	if (tag == ObjectTag::Goomba && other->ny == -1.0f)
+	if (unTouchable) return;
+
+	if (tag == ObjectTag::Goomba)
 	{
-		go->SetState(GOOMBA_STATE_DIE);
-		vy = -0.5f;
+		if (other->ny == -1.0f)
+		{
+			go->SetState(GOOMBA_STATE_DIE);
+			vy = -0.5f;
+		}
+		else if (abs(other->nx) == 1)
+		{
+			LevelDown();
+		}
 	}
 
 	if (tag == ObjectTag::Koopas)
 	{
 		int koopasState;
 		go->GetState(koopasState);
-		if (koopasState == KOOPAS_STATE_WALK && other->ny == -1.0f)
+
+		if (koopasState == KOOPAS_STATE_WALK)
 		{
-			go->SetState(KOOPAS_STATE_SHELL);
-			vy = -0.5f;
+			if (other->ny == -1.0f)
+			{
+				go->SetState(KOOPAS_STATE_SHELL);
+				vy = -0.5f;
+			}
+			else if (abs(other->nx) == 1)
+			{
+				LevelDown();
+			}
 		}
 		
 		if (koopasState == KOOPAS_STATE_SHELL && (nx != 0))
@@ -432,6 +476,14 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 				go->SetState(KOOPAS_STATE_SPIN);
 				go->SetDirection(this->nx);
 				vy = -0.5f;
+			}
+		}
+
+		if (koopasState == KOOPAS_STATE_SPIN)
+		{
+			if (abs(other->nx) == 1)
+			{
+				LevelDown();
 			}
 		}
 		
