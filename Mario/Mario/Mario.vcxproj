@@ -150,6 +150,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BreakableBrick.cpp" />
+    <ClCompile Include="BrickPiece.cpp" />
     <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimationFrame.cpp" />
     <ClCompile Include="CAnimationSetsManager.cpp" />
@@ -209,6 +211,8 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BreakableBrick.h" />
+    <ClInclude Include="BrickPiece.h" />
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimationFrame.h" />
     <ClInclude Include="CAnimationSetsManager.h" />

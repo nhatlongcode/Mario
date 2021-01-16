@@ -148,6 +148,9 @@
     <Filter Include="Game\Enemies\Plant">
       <UniqueIdentifier>{e77c7d91-ed99-4324-b518-a975dc0f077c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\BreakableBrick">
+      <UniqueIdentifier>{b17c8d44-cbf3-43fc-b189-8c1c102ff324}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -320,6 +323,12 @@
     </ClCompile>
     <ClCompile Include="FlyKoopas.cpp">
       <Filter>Game\Enemies\FlyKoopas</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakableBrick.cpp">
+      <Filter>Game\Objects\BreakableBrick</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickPiece.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -529,6 +538,12 @@
     </ClInclude>
     <ClInclude Include="FlyKoopas.h">
       <Filter>Game\Enemies\FlyKoopas</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakableBrick.h">
+      <Filter>Game\Objects\BreakableBrick</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickPiece.h">
+      <Filter>Game\Objects\BreakableBrick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
