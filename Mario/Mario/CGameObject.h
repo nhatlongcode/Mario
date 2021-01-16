@@ -14,8 +14,13 @@ typedef CGameObject* LPGAMEOBJECT;
 
 class CGameObject
 {
-private:
+protected:
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT other);
+
+	void SweptAABBE(float ml, float mt, float mr, float mb,
+		float dx, float dy,
+		float sl, float st, float sr, float sb,
+		float& t, float& nx, float& ny);
 
 protected:
 	float x;
@@ -76,6 +81,8 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render() = 0;
 	virtual void SetState(int state);
+
+	virtual bool GetThrought(ObjectTag tag, float nx, float ny);
 };
 
 

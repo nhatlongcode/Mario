@@ -29,6 +29,11 @@ void CGameObject::SetState(int state)
 	this->state = state;
 }
 
+bool CGameObject::GetThrought(ObjectTag tag, float nx, float ny)
+{
+	return false;
+}
+
 
 LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 {
@@ -37,8 +42,6 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	float t, nx, ny;
 	DWORD dt = CGame::Instance()->GetDeltaTime();
 
-	
-	if (other == nullptr) DebugOut(L"cac");
 	other->GetBoundingBox(sl, st, sr, sb);
 	this->GetBoundingBox(ml, mt, mr, mb);
 
@@ -52,6 +55,14 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	float rdx = this->dx - sdx;
 	float rdy = this->dy - sdy;
 
+	SweptAABBE(ml, mt, mr, mb, rdx, rdy, sl, st, sr, sb, t, nx, ny);
+
+	CCollisionEvent* e = new CCollisionEvent(t, nx, ny, rdx, rdy, other);
+	return e;
+}
+
+void CGameObject::SweptAABBE(float ml, float mt, float mr, float mb, float rdx, float rdy, float sl, float st, float sr, float sb, float& t, float& nx, float& ny)
+{
 	float dx_entry, dx_exit, tx_entry, tx_exit;
 	float dy_entry, dy_exit, ty_entry, ty_exit;
 
@@ -70,10 +81,10 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	float br = rdx > 0 ? mr + rdx : mr;
 	float bb = rdy > 0 ? mb + rdy : mb;
 
-	if (br < sl || bl > sr || bb < st || bt > sb) return nullptr;
+	if (br < sl || bl > sr || bb < st || bt > sb) return;
 
 
-	if (rdx == 0 && rdy == 0) return nullptr;		// moving object is not moving > obvious no collision
+	if (rdx == 0 && rdy == 0) return;		// moving object is not moving > obvious no collision
 
 	if (rdx > 0)
 	{
@@ -121,12 +132,12 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	}
 
 
-	if ((tx_entry < 0.0f && ty_entry < 0.0f) || tx_entry > 1.0f || ty_entry > 1.0f) return nullptr;
+	if ((tx_entry < 0.0f && ty_entry < 0.0f) || tx_entry > 1.0f || ty_entry > 1.0f) return;
 
 	t_entry = max(tx_entry, ty_entry);
 	t_exit = min(tx_exit, ty_exit);
 
-	if (t_entry > t_exit) return nullptr; //???
+	if (t_entry > t_exit) return; //???
 
 	t = t_entry;
 
@@ -135,22 +146,14 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT other)
 	if (tx_entry > ty_entry)
 	{
 		ny = 0.0f;
-		if (other->GetTag() == ObjectTag::GhostPlatform)
-		{
-			nx = 0.0f;
-		}
-		else rdx > 0 ? nx = -1.0f : nx = 1.0f;
+		rdx > 0 ? nx = -1.0f : nx = 1.0f;
 	}
 	else
 	{
 		nx = 0.0f;
 		rdy > 0 ? ny = -1.0f : ny = 1.0f;
 	}
-
-	CCollisionEvent* e = new CCollisionEvent(t, nx, ny, rdx, rdy, other);
-	return e;
 }
-
 
 CGameObject::CGameObject()
 {
@@ -216,11 +219,58 @@ bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 	nx = 0.0f;
 	ny = 0.0f;
 
-	coEventsResult.clear();
+	//coEventsResult.clear();
 
-	for (UINT i = 0; i < coEvents.size(); i++)
+	//for (UINT i = 0; i < coEvents.size(); i++)
+	//{
+	//	LPCOLLISIONEVENT c = coEvents[i];
+	//	if (c->ny != -1 && c->obj->GetTag() == ObjectTag::GhostPlatform) continue;
+
+	//	if (c->t < min_tx && c->nx != 0) {
+	//		min_tx = c->t; nx = c->nx; min_ix = i; rdx = c->dx;
+	//	}
+
+	//	if (c->t < min_ty && c->ny != 0) {
+	//		min_ty = c->t; ny = c->ny; min_iy = i; rdy = c->dy;
+	//	}
+	//}
+
+	//if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
+	//if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
+
+	float sl, st, sr, sb;		// static object bbox -> other
+	float ml, mt, mr, mb;		// moving object bbox -> this
+	float t, rnx, rny;
+	this->GetBoundingBox(ml, mt, mr, mb);
+
+	coEventsResult.clear();
+	for each (LPCOLLISIONEVENT c in coEvents)
 	{
-		LPCOLLISIONEVENT c = coEvents[i];
+		for each (LPCOLLISIONEVENT cr in coEventsResult)
+		{
+			float dx = c->dx;
+			float dy = c->dy;
+			if (c->nx != 0) {
+				dy = dy * cr->t + (c->dy > 0 ? -1 : 1) * 0.002f;
+			}
+			else {
+				dx = dx * cr->t + (c->dx > 0 ? -1 : 1) * 0.002f;
+			}
+			c->obj->GetBoundingBox(sl, st, sr, sb);
+			this->SweptAABBE(ml, mt, mr, mb, dx, dy, sl, st, sr, sb, t, rnx, rny);
+			if (t <= 0 || t > 1) {
+				c->t = t;
+			}
+		}
+		if (c->t > 0 && c->t <= 1) {
+			coEventsResult.push_back(c);
+		}
+	}
+
+	for (UINT i = 0; i < coEventsResult.size(); i++)
+	{
+		LPCOLLISIONEVENT c = coEventsResult[i];
+		if (c->obj->GetThrought(tag, c->nx, c->ny)) continue;
 
 		if (c->t < min_tx && c->nx != 0) {
 			min_tx = c->t; nx = c->nx; min_ix = i; rdx = c->dx;
@@ -231,16 +281,13 @@ bool CGameObject::CheckCollision(vector<LPGAMEOBJECT>* coObjects)
 		}
 	}
 
-	if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-	if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
-
 	// how to push back Mario if collides with a moving objects, what if Mario is pushed this way into another object?
 	//if (rdx != 0 && rdx != dx)
 		//x += nx * abs(rdx);
 
 	// block every object first!
-	x += (min_tx * dx + nx * 0.4f) * CGame::Instance()->GetTimeScale();
-	y += (min_ty * dy + ny * 0.4f) * CGame::Instance()->GetTimeScale();
+	x += (min_tx * dx + nx * 0.02f) * CGame::Instance()->GetTimeScale();
+	y += (min_ty * dy + ny * 0.02f) * CGame::Instance()->GetTimeScale();
 
 	if (nx != 0) vx = 0;
 	if (ny != 0) vy = 0;
