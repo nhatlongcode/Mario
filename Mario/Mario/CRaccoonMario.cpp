@@ -2,6 +2,7 @@
 #include "CGame.h"
 CRaccoonMario::CRaccoonMario()
 {
+	SetTag(ObjectTag::Player);
 	SetAnimationSet(MARIO_TYPE_RACCOON);
 	state = MARIO_STATE_IDLE;
 	level = MARIO_TYPE_RACCOON;

@@ -4,6 +4,7 @@
 
 CBigMario::CBigMario()
 {
+	SetTag(ObjectTag::Player);
 	SetAnimationSet(MARIO_TYPE_SUPER);
 	level = MARIO_TYPE_SUPER;
 	IsCollisionEnabled = true;

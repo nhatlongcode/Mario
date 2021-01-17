@@ -1,6 +1,6 @@
 #include "CFirePlant.h"
 #include "CGame.h"
-#include "CFireFromPlant.h"
+
 
 CFirePlant::CFirePlant()
 {
@@ -9,6 +9,7 @@ CFirePlant::CFirePlant()
 	SetTag(ObjectTag::Venus);
 	SetBoundingBox(48, 90);
 	this->state = 0;
+	fired = false;
 	steps = 0;
 	goOutDist = 0.0f;
 	startY = 1132.0f;
@@ -17,7 +18,13 @@ CFirePlant::CFirePlant()
 
 void CFirePlant::Fire()
 {
-	
+	if (fired) return;
+	fired = true;
+	CFireFromPlant* fireBall2 = new CFireFromPlant(this->x, this->y - 48.0f, -this->nx);
+	fireBall2->SetTag(ObjectTag::FireFromMario);
+	//DebugOut(L"asdad\n");
+	CGame::Instance()->GetCurrentScene()->AddGameObject(fireBall2);
+
 }
 
 void CFirePlant::Render()
@@ -71,8 +78,10 @@ void CFirePlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		vy = 0.0f;
 		startFire += dt;
-		if (startFire > 3000)
+		fired = false;
+		if (startFire > 2000)
 		{
+			Fire();
 			startFire = 0;
 			steps = 3;
 		}
@@ -89,6 +98,6 @@ void CFirePlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		}
 
 	}
-	DebugOut(L"steps: %d\n", steps);
+	//DebugOut(L"steps: %d\n", steps);
 
 }

@@ -12,4 +12,5 @@ public:
 	virtual void SetState(int state) override;
 	void OnCollisionEnter(LPCOLLISIONEVENT other);
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
+	virtual bool GetThrought(ObjectTag tag, float nx, float ny) override;
 };

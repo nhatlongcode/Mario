@@ -28,10 +28,14 @@ void CFireMario::Render()
 
 CFireMario::CFireMario()
 {
+	SetTag(ObjectTag::Player);
 	SetAnimationSet(MARIO_TYPE_FIRE);
 	state = MARIO_STATE_IDLE;
 	IsCollisionEnabled = true;
 	SetBoundingBox(MARIO_BIG_BBOX_WIDTH, MARIO_BIG_BBOX_HEIGHT);
+	isCanFly = false;
+	isGrounded = false;
+	canHighJump = false;
 }
 
 void CFireMario::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)

@@ -588,18 +588,20 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 
 	if (tag == ObjectTag::Venus)
 	{
-		countDead++;
+		LevelDown();
 	}
 
 	if (tag == ObjectTag::Pipe && (other->ny == -1.0f || other->ny == 1.0f))
 	{
 		go->SetState(1);
 	}
-	if (countDead > 0)
+	
+	if (tag == ObjectTag::FireFromEnemy)
 	{
-		//DebugOut(L"level: %d\n", this->level);
+		DebugOut(L"detect fire from venus");
 		LevelDown();
 	}
+	
 }
 
 void CMario::Reset()

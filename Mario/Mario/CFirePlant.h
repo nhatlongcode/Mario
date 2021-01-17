@@ -1,11 +1,14 @@
 #pragma once
 #include "CGameObject.h"
+#include "CFireFromPlant.h"
 
 class CFirePlant : public CGameObject
 {
 private:
 	bool isGoDown;
 	bool isGoUp;
+	bool fired;
+	CFireFromPlant* fireBall;
 	int steps;
 	int startFire;
 	float goOutDist, startY;
