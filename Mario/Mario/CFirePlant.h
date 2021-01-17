@@ -6,6 +6,9 @@ class CFirePlant : public CGameObject
 private:
 	bool isGoDown;
 	bool isGoUp;
+	int steps;
+	int startFire;
+	float goOutDist, startY;
 	int coolDownFire;
 public:
 	CFirePlant();
