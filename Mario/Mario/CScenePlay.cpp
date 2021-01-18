@@ -11,6 +11,7 @@
 #include "FlyKoopas.h"
 #include "CFirePlant.h"
 #include "CQuestionBrick.h"
+#include "BreakableBrick.h"
 #include "CGround.h"
 #include "CGhostPlatform.h"
 #include "FlyGoomba.h"
@@ -156,6 +157,7 @@ void CScenePlay::ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_FLYGOOMBA: obj = new FlyGoomba(); break;
 	case OBJECT_TYPE_PIRANHA: obj = new CPiranha(); break;
 	case OBJECT_TYPE_FLYKOOPAS: obj = new FlyKoopas(); break;
+	case OBJECT_TYPE_BREAKABLEBRIK: obj = new BreakableBrick(); break;
 
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);

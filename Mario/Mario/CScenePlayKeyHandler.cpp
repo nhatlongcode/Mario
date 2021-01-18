@@ -67,6 +67,11 @@ void CScenePlayKeyHandler::OnKeyDown(int KeyCode)
 			CGame::Instance()->GetCurrentScene()->GetPlayer()->Die();
 			//CGame::Instance()->GetCurrentScene()->SetAlpha(0);
 		}
+		case DIK_8:
+		{
+			CGame::Instance()->GetCurrentScene()->GetPlayer()->SetPosition(5812.0f, 1000.0f);
+			//CGame::Instance()->GetCurrentScene()->SetAlpha(0);
+		}
 	}
 
 

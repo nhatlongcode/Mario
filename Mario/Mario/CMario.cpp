@@ -416,7 +416,8 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		tag == ObjectTag::Ground ||
 		tag == ObjectTag::Solid ||
 		tag == ObjectTag::QuestionBrick ||
-		tag == ObjectTag::Pipe)
+		tag == ObjectTag::Pipe || 
+		tag == ObjectTag::BreakableBrick)
 	{
 		if (other->ny == -1.0f)
 		{

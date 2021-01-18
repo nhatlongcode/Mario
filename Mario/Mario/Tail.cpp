@@ -46,6 +46,10 @@ void Tail::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		obj->SetState(3);
 	}
+	else if (tag == ObjectTag::BreakableBrick && isHiting)
+	{
+		obj->SetState(-1);
+	}
 }
 
 void Tail::Render()

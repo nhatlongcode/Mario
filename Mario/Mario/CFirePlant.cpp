@@ -30,7 +30,7 @@ void CFirePlant::Fire()
 void CFirePlant::Render()
 {
 	animSet->at(state)->Render(x,y,nx);
-	coverPipe->Draw(1080, 1128);
+	coverPipe->Draw(this->x, startY);
 }
 
 void CFirePlant::SetState(int state)
@@ -41,7 +41,7 @@ void CFirePlant::SetState(int state)
 
 void CFirePlant::SetCoverPipe(int id)
 {
-	coverPipe = CLocator<ISpritesManager>().Get()->Get(id);
+	//coverPipe = CLocator<ISpritesManager>().Get()->Get(id);
 }
 
 void CFirePlant::OnCollisionEnter(LPCOLLISIONEVENT other)
