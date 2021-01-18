@@ -603,6 +603,11 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		DebugOut(L"detect fire from venus");
 		LevelDown();
 	}
+
+	if (tag == ObjectTag::BreakableBrick && other->ny == 1.0f)
+	{
+		go->SetState(-1);
+	}
 	
 }
 
