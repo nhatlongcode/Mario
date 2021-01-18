@@ -17,29 +17,31 @@ BreakableBrick::BreakableBrick()
 	pieces.push_back(piece);
 
 	BrickPiece* piece1 = new BrickPiece();
-	piece->SetPosition(this->x, this->y);
-	piece->SetSprite(30015);
-	piece->SetBounceBreak(0.3f, -0.5f, -1);
+	piece1->SetPosition(this->x, this->y);
+	piece1->SetSprite(30015);
+	piece1->SetBounceBreak(0.3f, -0.5f, -1);
 	pieces.push_back(piece1);
 
 	BrickPiece* piece2 = new BrickPiece();
-	piece->SetPosition(this->x, this->y);
-	piece->SetBounceBreak(0.3f, -0.7f, 1);
-	piece->SetSprite(30016);
+	piece2->SetPosition(this->x, this->y);
+	piece2->SetBounceBreak(0.3f, -0.7f, 1);
+	piece2->SetSprite(30016);
 	pieces.push_back(piece2);
 
 	BrickPiece* piece3 = new BrickPiece();
-	piece->SetPosition(this->x, this->y);
-	piece->SetSprite(30017);
-	piece->SetBounceBreak(0.3f, -0.7f, -1);
+	piece3->SetPosition(this->x, this->y);
+	piece3->SetSprite(30017);
+	piece3->SetBounceBreak(0.3f, -0.7f, -1);
 	pieces.push_back(piece3);
 
 }
 
 void BreakableBrick::Render()
 {
-	if (state == -1) return;
-	animSet->at(state)->Render(this->x, this->y);
+	if (state != -1)
+	{
+		animSet->at(state)->Render(this->x, this->y);
+	}
 	if (isBreaked)
 	{
 		for each (auto piece in pieces)
