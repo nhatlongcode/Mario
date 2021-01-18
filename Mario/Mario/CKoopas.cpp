@@ -53,6 +53,7 @@ void CKoopas::SetState(int state)
 		break;
 	case KOOPAS_STATE_SHELL:
 		vx = 0;
+		vy = 0;
 		startTime = GetTickCount();
 		SetBoundingBox(KOOPAS_SHELL_BBOX_WIDTH, KOOPAS_SHELL_BBOX_HEIGHT);
 		break;
@@ -108,6 +109,18 @@ void CKoopas::OnCollisionEnter(LPCOLLISIONEVENT other)
 	{
 		go->SetState(GOOMBA_STATE_DIE_INSTANT);
 		this->vx = nx * KOOPAS_SPEED_SPIN;
+	}
+	else if (tag == ObjectTag::Venus)
+	{
+		if (state == 3)
+		{
+			go->SetState(-1);
+			this->vx = this->nx * KOOPAS_SPEED_SPIN;
+		}
+	}
+	else if (tag == ObjectTag::GoombaFly)
+	{
+
 	}
 }
 

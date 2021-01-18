@@ -12,7 +12,8 @@ CFirePlant::CFirePlant()
 	fired = false;
 	steps = 0;
 	goOutDist = 0.0f;
-	startY = 1132.0f;
+	startY = 1128.0f;
+	coverPipe = CLocator<ISpritesManager>().Get()->Get(60000);
 	startFire = 0;
 }
 
@@ -22,7 +23,6 @@ void CFirePlant::Fire()
 	fired = true;
 	CFireFromPlant* fireBall2 = new CFireFromPlant(this->x, this->y - 48.0f, -this->nx);
 	fireBall2->SetTag(ObjectTag::FireFromMario);
-	//DebugOut(L"asdad\n");
 	CGame::Instance()->GetCurrentScene()->AddGameObject(fireBall2);
 
 }
@@ -30,6 +30,7 @@ void CFirePlant::Fire()
 void CFirePlant::Render()
 {
 	animSet->at(state)->Render(x,y,nx);
+	coverPipe->Draw(1080, 1128);
 }
 
 void CFirePlant::SetState(int state)
@@ -38,8 +39,14 @@ void CFirePlant::SetState(int state)
 	this->state = state;
 }
 
+void CFirePlant::SetCoverPipe(int id)
+{
+	coverPipe = CLocator<ISpritesManager>().Get()->Get(id);
+}
+
 void CFirePlant::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
+	//DebugOut(L"asdad");
 }
 
 bool CFirePlant::GetThrought(ObjectTag tag, float nx, float ny)
@@ -60,15 +67,18 @@ void CFirePlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (steps == 0) // stay in pipe
 	{
-		if (!((abs(this->x - pX) < 100.0f) || (abs(this->x - pX) > 350))) steps = 1;
+		if (!((abs(this->x - pX) < 100.0f) || (abs(this->x - pX) > 350)))
+		{
+			IsCollisionEnabled = true;
+			steps = 1;
+		}
 	}
 	else if (steps == 1) // go up
 	{
 		vy = -0.05f;
-		goOutDist += vy * dt;
-		if (abs(this->y - startY) >= 96.0f)
+		if (abs(this->y - startY) >= 90.0f)
 		{
-			this->y = startY - 96.0f;
+			this->y = startY - 90.0f;
 			vy = 0.0f;
 			steps = 2;
 			startFire = 0;
@@ -89,15 +99,14 @@ void CFirePlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	else if (steps == 3) // go down
 	{
 		vy = 0.05f;
-		goOutDist += vy * dt;
 		if (abs(startY - this->y) <= 2.0f)
 		{
 			vy = 0.0f;
 			this->y = startY;
+			IsCollisionEnabled = false;
 			steps = 0;
 		}
 
 	}
-	//DebugOut(L"steps: %d\n", steps);
 
 }

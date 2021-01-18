@@ -151,6 +151,9 @@
     <Filter Include="Game\Objects\BreakableBrick">
       <UniqueIdentifier>{b17c8d44-cbf3-43fc-b189-8c1c102ff324}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Enemies\Piranha">
+      <UniqueIdentifier>{5ec42dd0-2d0f-4a95-8dbd-51920dc35aff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -329,6 +332,9 @@
     </ClCompile>
     <ClCompile Include="BrickPiece.cpp">
       <Filter>Game\Objects\BreakableBrick</Filter>
+    </ClCompile>
+    <ClCompile Include="CPiranha.cpp">
+      <Filter>Game\Enemies\Piranha</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -544,6 +550,9 @@
     </ClInclude>
     <ClInclude Include="BrickPiece.h">
       <Filter>Game\Objects\BreakableBrick</Filter>
+    </ClInclude>
+    <ClInclude Include="CPiranha.h">
+      <Filter>Game\Enemies\Piranha</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

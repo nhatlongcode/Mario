@@ -25,7 +25,7 @@ void CFireFromPlant::SetState(int state)
 
 void CFireFromPlant::OnCollisionEnter(LPCOLLISIONEVENT other)
 {
-	if (other->obj->GetTag() == ObjectTag::Player) DebugOut(L"Detect from venus\n");
+	if (other->obj->GetTag() == ObjectTag::Ground) SetState(-1);
 }
 
 void CFireFromPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
@@ -37,5 +37,5 @@ void CFireFromPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 bool CFireFromPlant::GetThrought(ObjectTag tag, float nx, float ny)
 {
-	return false;
+	return true;
 }

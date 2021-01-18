@@ -4,7 +4,7 @@
 CMushroom::CMushroom()
 {
 	IsCollisionEnabled = true;
-	SetBoundingBox(48, 48);
+	SetBoundingBox(35, 35);
 	SetAnimationSet(30004);
 	SetTag(ObjectTag::Buff);
 	nx = DIRECTION_RIGHT;
@@ -38,7 +38,7 @@ void CMushroom::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 	if (isOutOfBrick)
 	{
-		vy += 0.03f;
+		vy += 0.02f;
 	}
 	CGameObject::Update(dt, coObjects);
 }

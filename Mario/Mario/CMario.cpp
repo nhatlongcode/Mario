@@ -269,6 +269,7 @@ void CMario::OnKeyUp(int keyCode)
 		{
 			Koopas->IsCollisionEnabled = true;
 			this->SetState(MARIO_STATE_KICK);
+			Koopas->SetSpeedY(0.0f);
 			Koopas->SetState(KOOPAS_STATE_SPIN);
 			Koopas->SetDirection(this->nx);
 			//Koopas->SetPosition()
@@ -610,6 +611,9 @@ void CMario::Reset()
 	isGrounded = false;
 	canHighJump = false;
 	isAlive = true;
+	unTouchable = false;
+	unTouchableStart = -1;
+	IsCollisionEnabled = true;
 	vx = vy = 0.0f;
 	forceJump = 0.0f;
 }

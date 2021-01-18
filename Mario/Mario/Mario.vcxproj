@@ -184,6 +184,7 @@
     <ClCompile Include="CMarioIcon.cpp" />
     <ClCompile Include="CMushroom.cpp" />
     <ClCompile Include="CPipe.cpp" />
+    <ClCompile Include="CPiranha.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRaccoonMario.cpp" />
     <ClCompile Include="CScene.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="CMapObject.h" />
     <ClInclude Include="CMarioIcon.h" />
     <ClInclude Include="CMushroom.h" />
+    <ClInclude Include="CPiranha.h" />
     <ClInclude Include="CRaccoonMario.h" />
     <ClInclude Include="CRewardObject.h" />
     <ClInclude Include="CScene.h" />

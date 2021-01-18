@@ -1,28 +1,21 @@
 #pragma once
 #include "CGameObject.h"
-#include "CFireFromPlant.h"
 
-class CFirePlant : public CGameObject
+class CPiranha : public CGameObject
 {
 private:
-	bool isGoDown;
-	bool isGoUp;
-	bool fired;
-	LPSPRITE coverPipe;
-	CFireFromPlant* fireBall;
 	int steps;
-	int startFire;
-	float goOutDist, startY;
-	int coolDownFire;
+	int stayTime;
+	int startY;
+	LPSPRITE coverPipe;
 public:
-	CFirePlant();
-	void Fire();
-	// Inherited via CGameObject
+
+	CPiranha();
 	virtual void Render() override;
 	virtual void SetState(int state) override;
 	void SetCoverPipe(int id);
 	void OnCollisionEnter(LPCOLLISIONEVENT other) override;
 	virtual bool GetThrought(ObjectTag tag, float nx, float ny) override;
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) override;
-};
 
+};
