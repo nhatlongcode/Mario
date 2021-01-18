@@ -604,7 +604,7 @@ void CMario::OnCollisionEnter(LPCOLLISIONEVENT other)
 		LevelDown();
 	}
 
-	if (tag == ObjectTag::BreakableBrick && other->ny == 1.0f)
+	if (tag == ObjectTag::BreakableBrick && other->ny == 1.0f && level != MARIO_TYPE_SMALL)
 	{
 		go->SetState(-1);
 	}

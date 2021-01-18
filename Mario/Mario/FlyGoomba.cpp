@@ -4,7 +4,7 @@
 FlyGoomba::FlyGoomba()
 {
 
-	SetBoundingBox(48,48);
+	SetBoundingBox(35,35);
 	SetAnimationSet(20001);
 	this->state = 0;
 	SetTag(ObjectTag::GoombaFly);
