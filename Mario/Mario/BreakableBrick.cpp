@@ -11,27 +11,23 @@ BreakableBrick::BreakableBrick()
 	SetState(0);
 
 	BrickPiece* piece = new BrickPiece();
-	piece->SetPosition(this->x, this->y);
 	piece->SetSprite(30014);
-	piece->SetBounceBreak(0.3f, -0.5f, 1);
+	piece->SetBounceBreak(0.15f, -0.5f, 1);
 	pieces.push_back(piece);
 
 	BrickPiece* piece1 = new BrickPiece();
-	piece1->SetPosition(this->x, this->y);
 	piece1->SetSprite(30015);
-	piece1->SetBounceBreak(0.3f, -0.5f, -1);
+	piece1->SetBounceBreak(0.15f, -0.5f, -1);
 	pieces.push_back(piece1);
 
 	BrickPiece* piece2 = new BrickPiece();
-	piece2->SetPosition(this->x, this->y);
-	piece2->SetBounceBreak(0.3f, -0.7f, 1);
+	piece2->SetBounceBreak(0.15f, -0.7f, 1);
 	piece2->SetSprite(30016);
 	pieces.push_back(piece2);
 
 	BrickPiece* piece3 = new BrickPiece();
-	piece3->SetPosition(this->x, this->y);
 	piece3->SetSprite(30017);
-	piece3->SetBounceBreak(0.3f, -0.7f, -1);
+	piece3->SetBounceBreak(0.15f, -0.7f, -1);
 	pieces.push_back(piece3);
 
 }
@@ -79,6 +75,7 @@ void BreakableBrick::Break()
 	SetBoundingBox(0, 0);
 	for each (auto piece in pieces)
 	{
+		piece->SetPosition(this->x, this->y);
 		piece->Break();
 	}
 	isBreaked = true;

@@ -45,4 +45,5 @@ void BrickPiece::Render()
 {
 	if (!isBreaked) return;
 	sprite->Draw(x, y);
+
 }
